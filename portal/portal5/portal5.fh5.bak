@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>门户5</title>
+  <link rel="stylesheet" type="text/css" href="../../css/bgothl.ttf">
+  <link rel="stylesheet" type="text/css" href="../../css/bgothm.ttf">
+	<link rel="stylesheet" type="text/css" href="portal5_total.css">
+</head>
+<body>
+	<div class="bd_tl_bg">
+		<img class="logo_5" src="../../images/logo/5.png">
+		<div class="nav_icon">
+	      <img id="nav_img" src="../../images/portal02/nav_icon.png" />
+	    </div>
+	</div>
+	<div id="c">
+		<div id="main" style="width:100%;position: absolute;top: 80px;height:100%;"></div>
+	</div>
+  <div id="big_box" style="display:none;width:100%;height:1200px;margin: auto;background:transparent;background-color:rgba(22,30,47,0.7);z-index: 20;">
+      <div id="box" style="position: relative;width: 480px;height: 480px;margin:auto;margin-top: 120px;background-image: url(../../images/portal02/portal_3_nav_bg-re1.png);">
+        <div class="secondList" id="northbox" data-id="0">
+          <span class="secondListspan"></span>
+        </div>
+        <div class="secondList" id="northeastBox" data-id="1">
+          <span class="secondListspan"></span>
+        </div>
+        <div class="secondList" id="eastBox" data-id="2">
+          <span class="secondListspan"></span>
+        </div>
+        <div class="secondList" id="southeastBox" data-id="3">
+          <span></span>
+        </div>
+        <div class="secondList" id="southBox" data-id="4"><span></span></div>
+        <div class="secondList" id="southwestBox" data-id="5"><span></span></div>
+        <div class="secondList" id="westBox" data-id="6"><span></span></div>
+        <div class="secondList" id="northwestBox" data-id="7">
+          <span class="secondListspan"></span>
+        </div>
+
+        <img src="../../images/portal02/portal_3_nav_bg_logocenter for DQ.png" style="position: absolute;top: 38%;left:38.5%;z-index: 100;">
+      </div>
+  </div>
+	<!-- <div class="ct">
+		<p class="ct_tl">标题1</p>
+		<div class="ct_ct"></div>
+	</div> -->
+	<script type="text/javascript" src="../../libs/jquery-1.11.0.min.js"></script>
+	<script type="text/javascript" src="../../libs/bootstrap/js/bootstrap.min.js"></script>
+	<!-- <script type="text/javascript" src="../../libs/echarts.min.js"></script> -->
+	<script type="text/javascript" src="../../libs/cookie/jquery.cookie.js"></script>
+	<script type="text/javascript" src="../../libs/jqueryUI/js/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="../../js/jquery.rotate.min.js"></script>
+	<script type="text/javascript" src="../../fea/cfg/borders.js"></script>
+
+	<script type="text/javascript">
+$(function(){
+    var angle = 0;
+    var n = 0;
+    $("#nav_img").rotate({
+        bind: {
+            click: function(){
+                if(n==0){
+                    $(this).rotate({ angle:0,animateTo:180,easing: $.easing.easeInOutExpo })
+                    n= 1;
+                }else{
+                    $(this).rotate({ angle:0,animateTo:-180,easing: $.easing.easeInOutExpo })
+                    n = 0;
+                }
+            }
+        }
+    });
+});
+var userName=$.cookie('userName');
+$("body").find('#user').text(userName);
+var box=$("#box");
+var y=window.screen.height;
+var h=parseInt(y-480)/2-60;
+var theRequest ={};
+var key,data,plogo;
+var ntitle;
+function GetRequest() {
+    var url = location.search; //获取url中"?"符后的字串
+    var a=decodeURI(url);
+    if (a.indexOf("?") != -1) {
+        var str = a.substr(1);
+        strs = str.split("&");
+        for(var i = 0; i < strs.length; i ++) {
+            theRequest[strs[i].split("=")[0]]=unescape(strs[i].split("=")[1]);
+        }
+    }
+
+     key=theRequest.key;
+     ntitle=theRequest.ntitle;
+    plogo=theRequest.logo;
+    return theRequest;
+}
+GetRequest();
+if (plogo) {
+	$.ajax({
+			type: "get",
+			async: false,
+			dataType:"jsonp",
+			cache:false,
+			url: "/db/scan/ssdb0/img:/img:~/200",
+			success: function(data) {
+				for (var i = 0; i < data.length; i++) {
+						var d=data[i];
+					 for(var j in data[i]){
+						 if(j.indexOf(plogo) != -1){
+							 var t=JSON.parse(d[plogo]);
+							 var src=t.img;
+							 $(".logo_5").attr('src','../../images/logo/'+src);
+						 }
+					 }
+			 }
+			},
+			error:function(XMLHttpRequest,message){
+					console.log(message)
+			}
+	});
+  // $(".logo_5").attr('src','../../images/logo/'+plogo);
+
+}
+var dbdK;
+var getAjax1=function(dbdK,tt,dbdcs){
+
+  if (dbdK.indexOf("http://")!="-1") {
+    var dbd='<iframe width="100%" height="100%" frameborder=0 src="'+dbdK+'?d2title='+tt+'"></iframe>';
+    //console.info(dbd);
+    $("#main").html(dbd);
+  }else{
+    getOther(dbdK,tt,dbdcs);
+  }
+};
+var getAjax=function(dbdK,tt,dbdcs){
+  //console.info(dbdK);
+  $("#big_box").fadeToggle();
+  if (dbdK.indexOf("http://")!="-1") {
+    var dbd='<iframe width="100%" height="100%" frameborder=0 src="'+dbdK+'?d2title='+tt+'"></iframe>';
+    //console.info(dbd);
+    $("#main").html(dbd);
+  }else{
+    getOther(dbdK,tt,dbdcs);
+  }
+};
+var getOther=function(dbdK,tt,dbdcs){
+  //console.info(dbdcs);
+  $.ajax({
+      type: "get",
+      async: true,
+      dataType:"jsonp",
+      url: "/db/jsonp/ssdb0/"+dbdK,
+      success: function(response) {
+        if(dbdK.indexOf("dashboard:")!="-1"){
+          $("#title_main").text(tt);
+          var dbd='<iframe width="100%" height="100%" frameborder=0 src="../../dbd/dbd_view.fh5?key='+dbdK+'&dtitle='+tt+'&mh=portal5"></iframe>';
+        //console.info(dbd);
+          $("#main").html(dbd);
+        }else if (dbdK.indexOf("am:")!="-1") {
+          if (dbdcs) {
+            $("#title_main").text(tt);
+            var dbd='<iframe width="100%" height="100%" frameborder=0 src="../../dbd/am_run.fh5?key='+dbdK+'&atitle='+tt+'&'+dbdcs+'&mh=portal5"></iframe>';
+          }else{
+            $("#title_main").text(tt);
+            var dbd='<iframe width="100%" height="100%" frameborder=0 src="../../dbd/am_run.fh5?key='+dbdK+'&atitle='+tt+'&mh=portal5"></iframe>';
+          }
+          $("#main").html(dbd);
+        }
+        else if (dbdK.indexOf("dashboard2:")!="-1") {
+          $.ajax({
+            type: "get",
+            async: true,
+            timeout : 1000*600,
+            dataType:"jsonp",
+            url: "/db/jsonp/ssdb0/"+dbdK,
+            success:function(dataAll){
+              var cs=dataAll[0].dcs;
+              var oo=[];
+              var cs_obj={};
+              $.each(cs,function(name,value){
+                var cs_connect=name+'='+value;
+                cs_obj[name]=value;//讲原来的参数组装成对象；
+                oo.push(cs_connect);
+              });
+
+              if(dbdcs){
+                dbdcs=dbdcs.split("&");
+                var dbdcs_obj={};
+                for (var i = 0; i < dbdcs.length; i++) {
+                  dbdcs_obj[dbdcs[i].split("=")[0]]=unescape(dbdcs[i].split("=")[1]);//讲导航的参数组装成对象；
+                }
+                for(var j in cs_obj){
+                  var value=cs_obj[j];
+                  for(var i in dbdcs_obj){
+                    if(i==j){
+                      var d=dbdcs_obj[i].replace(j,value);//将新参数和老参数进行匹配；
+                      cs_obj[j]=d;
+                    }
+                  }
+                }
+                var params = $.param(cs_obj);
+                cs= decodeURIComponent(params);
+                //console.info(cs);
+              }else{
+                cs=oo.join("&");
+              }
+              $("#title_main").text(tt);
+              var dbd='<iframe width="100%" height="100%" frameborder=0 src="../../dbd/dbd2_view.fh5?key='+dbdK+'&d2title='+tt+'&'+cs+'&mh=portal5"></iframe>';
+              $("#main").html(dbd);
+            }
+          });
+        }
+        else if (dbdK.indexOf("dp:")!="-1") {
+          $.ajax({
+            type: "get",
+            async: true,
+            timeout : 1000*600,
+            dataType:"jsonp",
+            url: "/db/jsonp/ssdb0/"+dbdK,
+            success:function(dataAll){
+              var cs=dataAll[0].mcs;
+             //console.info(cs);
+              var oo=[];
+              $.each(cs,function(name,value){
+                var cs_connect=name+'='+value;
+                oo.push(cs_connect);
+
+              });
+              cs=oo.join("&");
+             // console.info(cs);
+             $("#title_main").text(tt);
+              var dbd='<iframe width="100%" height="100%" frameborder=0 src="../../dbd/more_view.fh5?key='+dbdK+'&mtitle='+tt+'&'+cs+'&mh=portal5"></iframe>';
+              $("#main").html(dbd);
+            }
+          });
+        }
+      }
+    });
+};
+var p_index=1;
+$(".nav_icon").click(function(){
+  $("#big_box").fadeToggle();
+  $("#box").css('margin-top',h+'px');
+});
+
+var t_now=function(time_lb){
+	$.ajax({
+  type: "get",
+  async: false,
+  dataType:"jsonp",
+  url: "/db/jsonp/ssdb0/"+key,
+  success:function(res){
+    // console.info(res);
+    data=res[0].num;
+    getAjax1(data[0].key,data[0].tit,data[0].cs);
+    //console.info(data[0].cs);
+    for (var i = 0; i < data.length; i++) {
+      var tt=data[i].tit;
+      var likey=data[i].key;
+      var cs=data[i].cs;
+      var div=$('<div data-name="'+i+'" class="navC nav'+i+'"></div>');
+      var a=$(
+        '<a class="a'+i+'" data-key="'+data[i].key+'" data-id="'+i+'" href="#" onclick=getAjax("'+likey+'","'+tt+'","'+cs+'");>'+data[i].name+'</a>'
+        );
+      div.append(a);
+      box.append(div);
+    }
+    //$.cookie('dataArr',JSON.stringify(data));
+    localStorage.dataArr=JSON.stringify(data);
+    //console.info(localStorage.dataArr);
+		// var m_index=data.length-1;
+
+//需要门户轮播的时候打开注释
+		// setInterval(function(data){
+		// 	if(p_index >= data.length){
+		// 		p_index=0
+		// 	}
+		// 		var main_div = '<div id="main" style="width:100%;position: absolute;top: 80px;display:none;"></div>'
+		// 		$("#main").attr('id', 'main_B');
+		// 		$("#c").append(main_div);
+		// 		getAjax1(data[p_index].key,data[p_index].tit,data[p_index].cs);
+		// 		$("#main_B").remove();
+		// 		$("#main").slideDown();
+		// 		p_index++;
+		// },300000,data)
+			if(time_lb != '' && time_lb != '0'){
+				setInterval(function(data){
+					if(p_index >= data.length){
+						p_index=0
+					}
+					var main_div = '<div id="main" style="width:100%; height:100%;position: absolute;top: 80px;display:none;"></div>'
+					$("#main").attr('id', 'main_B');
+					$("#c").append(main_div);
+					getAjax1(data[p_index].key,data[p_index].tit,data[p_index].cs);
+					$("#main_B").remove();
+					$("#main").slideDown();
+					p_index++;
+				},time_lb*1000,data)
+			}
+  	}
+	});
+}
+function lb_zd(){
+	$.ajax({
+			type: "get",
+			async: false,
+			dataType:"jsonp",
+			cache:false,
+			url: "/db/scan/ssdb0/use:/use:~/200",
+			success: function(data) {
+				var yy_id=[];
+				var yy_val=[];
+				$.each(data,function(name,value){
+					for(i in value){
+						var ys=i.split(":");
+						yy_id.push(ys[1]);
+						var val_json=JSON.parse(value[i])
+						yy_val.push(val_json);
+					}
+				})
+        if(userName){
+        $.ajax({
+    			type: "get",
+    	        async: true,
+    	        dataType:"json",
+    	        cache:false,
+    		    url: "/db/list_user",
+    		    success: function(data) {
+              var use=[];
+              var yyid=[];
+              for(var k=0;k<data.length;k++){
+                use.push(data[k][0]);
+                yyid.push(data[k][4])
+              }
+              var yy_i=use.indexOf(userName);
+              var id_yy1=yyid[yy_i];//应用的id
+              var id_yy2=id_yy1.split(":");
+              var id_yy=id_yy2[1];
+              var id_index=yy_id.indexOf(id_yy);
+              // if("bg" in yy_val[id_index]){
+              //   var bg_mh=yy_val[id_index].bg;
+              //   var jb_mh=bg_mh.split("&");
+              //   if(jb_mh[1]){
+              //     var start_jb=jb_mh[0];//渐变初始
+              //     var end_jb=jb_mh[1];//渐变结束
+              //     $('body').css({'background': '-webkit-linear-gradient('+start_jb+', '+end_jb+')','background': '-o-linear-gradient('+start_jb+', '+end_jb+')','background': '-moz-linear-gradient('+start_jb+', '+end_jb+')','background': 'linear-gradient('+start_jb+', '+end_jb+')'});
+              //   }
+              //   else if(bg_mh.split("#")){
+              //     $('body').css('background',bg_mh);
+              //   }
+              //   if(bg_mh.split(":")){
+              //     $.ajax({
+              //         type: "get",
+              //         async: false,
+              //         dataType:"jsonp",
+              //         cache:false,
+              //         url: "/db/scan/ssdb0/img:/img:~/200",
+              //         success: function(data) {
+              //           for (var i = 0; i < data.length; i++) {
+              //               var d=data[i];
+              //              for(var j in data[i]){
+              //                if(j.indexOf(bg_mh) != -1){
+              //                  var t=JSON.parse(d[bg_mh]);
+              //                  var src=t.img;
+              //                  $('body').css('background','url(../../images/logo/'+src+')');
+              //                }
+              //              }
+              //          }
+              //         },
+              //         error:function(XMLHttpRequest,message){
+              //             console.log(message)
+              //         }
+              //     });
+              //   }
+              // }
+              if("lb" in yy_val[id_index]){
+      					var lb_t=yy_val[id_index].lb;//轮播时间
+      				}else{
+      					var lb_t=0;
+      				}
+      				t_now(lb_t)
+    		    },
+    		    error:function(XMLHttpRequest,message){
+    				console.log(message);
+    			}
+    		});
+      }else{
+        t_now('0');
+      }
+
+
+			},
+			error:function(XMLHttpRequest,message){
+					console.log(message);
+			}
+	});
+};
+lb_zd();
+
+$(document).keydown(function(event){
+  if(event.keyCode == 27){
+     $("#big_box").fadeToggle();
+  }
+});
+
+//浮动窗口
+var foxbox = '<div id="foxboxs"></div><div id="foxbox"></div>';
+$('body').append(foxbox);
+$('#foxbox').hide();
+$('#foxboxs').mouseover(function() {
+	lsjl();
+	$('#foxbox').slideDown();
+})
+$('#foxbox').mouseleave(function() {
+	$('#foxbox').slideUp()
+})
+
+function lsjl(){
+  $('#foxbox').html('');
+    var imgurl = window.sessionStorage.getItem("lsurl");
+    var imgsrc = window.sessionStorage.getItem("lsimg");
+    var this_url=window.sessionStorage.getItem("thisurl");
+    var img_url=JSON.parse(imgurl);
+    var img_src=JSON.parse(imgsrc);
+    for(var i=0;i<img_url.length;i++){
+      var foxbox_a = '<a data="'+img_url[i]+'"><img src="'+window.sessionStorage.getItem(img_src[i])+'"></a>';
+      $('#foxbox').prepend(foxbox_a);
+    };
+    $('#foxbox>a').on('click',function(){
+      var a_data = $(this).attr('data');
+      var dbd='<iframe width="100%" height="100%" frameborder=0 src="'+a_data+'"></iframe>';
+      $("#main").html(dbd);
+    });
+	}
+	function mh_bg(){
+		var mhbg=$('body').css('background-color');
+		window.sessionStorage.setItem("mhbg",mhbg);
+	}
+	mh_bg();
+	</script>
+	<script type="text/javascript" src="../../libs/jquery-1.11.0.min.js"></script>
+	<script type="text/javascript" src="../../libs/bootstrap/js/bootstrap.min.js"></script>
+	<!-- <script type="text/javascript" src="../../libs/echarts.min.js"></script> -->
+	<script type="text/javascript" src="../../libs/cookie/jquery.cookie.js"></script>
+	<script type="text/javascript" src="../../libs/jqueryUI/js/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="../../js/jquery.rotate.min.js"></script>
+	<script type="text/javascript" src="e_portal5.js"></script>
+	<script type="text/javascript" src="portal5.js"></script>
+</body>
+</html>

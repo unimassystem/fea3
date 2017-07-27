@@ -1,0 +1,333 @@
+$(document).ready(function(){
+	var tbody=$("#userManage tbody");
+	var user=$("#userManage tbody tr");
+	var newTr=$("#userModal");
+	var userName=$.cookie('userName');
+	var language = {
+		"emptyTable" : "表中数据为空",
+		'search':'搜索',
+		"paginate" : {
+			"first" : "首页",
+			"previous" : "上页",
+			"next" : "下页",
+			"last" : "末页"
+		}
+	};
+	var mgr=$("#userManage").DataTable({
+		'searching':true,
+		'language':language,
+		'lengthChange': false,
+		'ordering':true,
+		'info':false,
+		"columns": [
+		    { "title": "用户名" },
+		    { "title": "中文名" },
+		    { "title": "分析员" },
+		    { "title": "引擎选择" },
+		    { "title": "应用选择" },
+		    //{ "title": "引擎" },
+		    { "title": "操作"}
+		  ],
+		"columnDefs": [
+			{ "width": "11%", "targets": 2 },
+			{ "width": "18%", "targets": 5 },
+		    {
+		      "data": null,
+		      "width":"11%",
+		      "defaultContent": '<button class="edit btn btn-info">编辑</button><button class="del btn btn-danger">删除</button>',
+		      "targets":-1
+		    }
+		  ],
+		"ajax": {
+			url: "/db/list_user",
+			'dataType':'json',
+			'dataSrc':function(res){
+        		// console.info(res);
+        		var engDataArr=[];
+        		for (var i = 0; i < res.length; i++) {
+        			var keyAll = [];
+        			// if(res[i].length==6){
+        			// 	res[i].pop();
+        			// }
+        				var yhm = res[i][0];
+        				var zwm= res[i][1];
+        				var fxy = res[i][2];
+        				var yqxz = res[i][3];
+        				var yyxz = res[i][4];
+        				if(yyxz.indexOf(":")!=-1){
+        					yyxz = yyxz.split(":");
+							keyAll.push(yhm,zwm,fxy,yqxz,yyxz[1]);
+        				}else{
+        					keyAll.push(yhm,zwm,fxy,yqxz,yyxz);
+        				}
+
+        			engDataArr.push(keyAll);
+        		}
+        		// console.info(engDataArr);
+				return engDataArr;
+			}
+	  	},
+	});
+	$("#userManage")
+		.on( 'error.dt', function ( e, settings, techNote, message ) {
+		    //console.log( 'An error has been reported by DataTables: ', message );
+		    alert('操作超时！点击确定后重新登陆。');
+		    window.parent.location.href='login.fh5';
+		   // window.close();
+		    $('table').dataTable().fnProcessingIndicator( false );
+		})
+		.DataTable();
+
+	var addData=function(){
+		var addTr=[];
+		for (var i = 0; i < 5; i++) {
+			var text=$('input[data-id="'+i+'"]').val();
+			addTr.push(text);
+		}
+		//console.info(addTr);
+		// var patrn=/^[a-zA-Z]{1}([a-zA-Z0-9]|[._]){1,10}$/;
+		// if (!patrn.exec(addTr[0])){
+		// 	alert('用户名格式不对');
+		// }else{
+		var use_a=addTr[0];
+		var use_n=use_a.split("");
+		var result=use_a.match(/^[\u4e00-\u9fa5]$/);
+		if (result != null) {
+			alert('用户名格式不对');
+			return false;
+		}
+		if(use_n.indexOf('@') != -1 ||use_n.indexOf('!') != -1 ||use_n.indexOf('~') != -1 ||use_n.indexOf('#') != -1 ||use_n.indexOf('*') != -1||use_n.indexOf(" ") != -1||use_n.indexOf('&') != -1){
+			alert('用户名格式不对');
+			return false;
+		}
+		if(use_n.length < 1 || use_n.length > 20){
+			alert('用户名格式不对');
+			return false;
+		}
+		else{
+			mgr.row.add( [
+		        addTr[0],
+		        addTr[1],
+		        addTr[2],
+		        addTr[3],
+		        addTr[4],
+		        //addTr[5],
+		        '<button class="edit btn btn-primary">编辑</button>'+
+		        '<button class="del btn btn-danger">删除</button>'
+		    ]).draw();
+			saveData();
+			$("#addModal").modal("toggle");
+		}
+	};
+	$(".dataTables_wrapper .dataTables_filter").find("input").attr("placeholder","请输入关键字");
+	var inputval='<button id="search123" type="button" name=""></button>';
+	$(".dataTables_wrapper .dataTables_filter").find("label").append(inputval);
+	$("body").find("#search123").addClass("anniu");
+
+	var add='<div class="btn group" style="float: right;margin-right: 4px;padding:0;">\
+			<button id="add_btn" class="btn btn-primary" style="padding:4px 12px;">新增</button>\
+		</div>';
+	$("#userManage_filter").append(add);
+	$("#add_btn").click(function(){
+		newTr.find('input').val("");
+		$("#saveOK_btn").css("display","none");
+		$("#ok_btn").css("display","inline-block");
+		$("#addModal").modal("toggle");
+		$("#user").attr('readonly',false);
+		$('input[data-id="2"]').val("Y");
+		getYq();
+		getUse();
+		setTimeout(function(){
+			var aaa = $("#yq_list li").eq(1).attr("data-id");
+			$('input[data-id="3"]').val(aaa);
+			var bbb = $("#nav_list li").eq(0).attr("data-id");
+			$('input[data-id="4"]').val(bbb);
+		},500);
+	});
+	$("#ok_btn").click(function(){
+		$.ajax({
+			type: "get",
+	        async: true,
+	        dataType:"json",
+	        cache:false,
+		    url: "/db/list_user",
+		    success: function(data) {
+		    	// console.log(data);
+		    	var username = $('input[data-id="0"]').val();
+		    	var username2 = [];
+		    	for(var i=0;i<data.length;i++){
+		    		username2.push(data[i][0]);
+		    	}
+		    	// console.log(username);
+		    	// console.log(username2);
+		    	if(username2.indexOf(username) != -1){
+		    		alert("用户名重复，请重新设定！");
+		    	}else{
+					addData();
+		    	}
+		    },
+		    error:function(XMLHttpRequest,message){
+				console.log(message);
+			}
+		});
+	});
+	$("#saveOK_btn").click(function(){
+		saveData();
+	});
+	$("body").on('click','.edit',function(){
+		$("#ok_btn").css("display","none");
+		$("#saveOK_btn").css("display","inline-block");
+		$("#addModal").modal("toggle");
+		$("#user").attr('readonly',true);
+		editData(this);
+	});
+	var delData=function(dom){
+		var key=$(dom).parent().parent().children(":first").text();
+		//console.info(key);
+		$.ajax({
+			type: "get",
+	        async: true,
+	        dataType:"json",
+	        cache:false,
+			url:"/db/deluser/"+key,
+			success:function(){}
+		});
+		mgr
+        .row( $(dom).parent().parent())
+        .remove()
+        .draw();
+	};
+
+	$("body").on('click','.del',function(){
+		delData(this);
+	});
+	var saveData=function(){
+		var data=getData();
+		// console.info(data);
+		data=JSON.stringify(data);
+
+		$.ajax({
+			type: "post",
+		    async: true,
+		    dataType:"json",
+		    cache:false,
+		    url: "/db/adduser/xyy",
+		    data:{data:data},
+		    success: function(data) {
+		    	window.location.reload();
+		    },
+		    error:function(XMLHttpRequest,message){
+				console.log(message)
+			}
+		});
+	};
+	var getData=function(){
+		var string={
+			"name":$('input[data-id="0"]').val(),
+			"realname":$('input[data-id="1"]').val(),
+			"isadmin":$('input[data-id="2"]').val(),
+			"pot":$('input[data-id="3"]').val(),
+			"nav":$('input[data-id="4"]').val()
+			//"yq":$('input[data-id="5"]').val()
+		};
+		//console.info(string);
+		return string;
+	};
+	var editData=function(a){
+		var tr=$(a).parent().parent();
+		for (var i = 0; i < 5; i++) {
+			if(i==4){
+				var td='use:'+tr.children().eq(i).text();
+			}else{
+				var td=tr.children().eq(i).text();
+			}
+			newTr.find('input[data-id="'+i+'"]').val(td);
+		}
+
+	};
+	var getUse=function(){
+		$.ajax({
+	        type: "get",
+	        async: true,
+	        dataType:"jsonp",
+	        cache:false,
+	        url: "/db/scan/ssdb0/use:/use:~/200",
+	        success: function(data) {
+	        	$("#nav_list").empty();
+	            for (var i = 0; i < data.length; i++) {
+	                var d=data[i];
+	               for(var j in data[i]){
+	                   // var t=JSON.parse(d[j]);
+	                    var li=$(
+	                        '<li data-id="'+j+'"><a href="#">'+j+'</a></li>'
+	                        );
+	                    $("#nav_list").append(li);
+	               }
+	           }
+	        },
+	        error:function(XMLHttpRequest,message){
+	            console.log(message)
+	        }
+	    });
+	};
+	var getYq=function(){
+		$.ajax({
+	        type: "get",
+	        async: true,
+	        dataType:"jsonp",
+	        cache:false,
+	        url: "/db/jsonp/ssdb0/fea_stats",
+	        success: function(data) {
+				var engs=data.engs;
+				//console.info(engs);
+	        	$("#yq_list").empty();
+	            for (var i = 0; i < engs.length; i++) {
+	               for(var j in engs[i]){
+	                    var li=$(
+	                        '<li data-id="'+j+'"><a href="#">'+j+'</a></li>'
+	                        );
+	                    $("#yq_list").append(li);
+	               }
+	           }
+	        },
+	        error:function(XMLHttpRequest,message){
+	            console.log(message)
+	        }
+	    });
+	}
+	$("#nav_btn").click(function(){
+		getUse();
+	});
+	$("#yq_btn").click(function(){
+		getYq();
+	});
+	$("body").on("click","#nav_list li",function(){
+       // alert();
+        var val=$(this).attr("data-id");
+        //console.info(val);
+        $('input[data-id="4"]').val(val);
+    });
+    $("body").on("click","#mh_list li",function(){
+       // alert();
+        var val=$(this).attr("data-id");
+        //console.info(val);
+        $('input[data-id="3"]').val(val);
+    });
+    $("body").on("click","#yn_list li",function(){
+       // alert();
+        var val=$(this).attr("data-id");
+        //console.info(val);
+        $('input[data-id="2"]').val(val);
+        /*if ($('input[data-id="2"]').val()=='Y') {
+			$('#yq_btn').attr('disabled',false);
+		}else{
+			$('#yq_btn').attr('disabled',true);
+		}*/
+    });
+    $("body").on("click","#yq_list li",function(){
+       // alert();
+        var val=$(this).attr("data-id");
+        //console.info(val);
+        $('input[data-id="3"]').val(val);
+    });
+});

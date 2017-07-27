@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Welcome to FEA!</title>
+<style>
+    body {
+        width: 35em;
+        margin: 0 auto;
+        font-family: Tahoma, Verdana, Arial, sans-serif;
+    }
+</style>
+<script language="javascript" type="text/javascript">
+	window.location.href="/portal/index.fh5";
+</script>
+</head>
+<body>
+<h1>Welcome to FEA!</h1>
+</body>
+</html>

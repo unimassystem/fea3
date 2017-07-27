@@ -1,0 +1,752 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><!-- InstanceBegin template="/Templates/indexTemp.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>门户2</title>
+  <link rel="stylesheet" type="text/css" href="../css/bgothl.ttf">
+  <link rel="stylesheet" type="text/css" href="../css/bgothm.ttf">
+<link href="../../css/userpass.css" rel="stylesheet" type="text/css" />
+<link href="portal2_total_1.css" rel="stylesheet" type="text/css" />
+</head>
+<body  style="position:initial;" onload="load()">
+<!-- <header class="common-header">
+<div class="warp">
+  <div class="logodiv"><img src="../../images/logo/1.png" width="247" height="25" alt="logo" /></div>
+     <div class="right-tip">
+      <div class="header-tools">
+        <div class="fn-icon user">
+          <div class="fn-cont" id="showTab">
+            <div class="fn-opt" id="change-password-button"><p>修改密码</p></div>
+            <div class="fn-opt"><p><a href="../index.fh5">退出登录</a></p></div>
+            <div class="corner" style="width:33px"><span id="usename" class="user-name" style="opacity: 0;"></span></div>
+          </div>
+        </div>
+        <span class="interval"> |</span>
+      </div>
+
+    </div>
+</div>
+
+</header> -->
+<div class="nav_icon">
+        <img id="nav_img" src="../../images/portal02/nav_icon2.png" />
+</div>
+<!-- <nav class="common-nav">
+  <ul class="level1" id="nav"></ul>
+
+</nav> -->
+
+<div id="c">
+  <div id="main" class="pt-page-rotateSlideIn" style="width:100%;position: absolute;height:100%;"></div>
+</div>
+
+<div id="big_box" style="display:none;width:100%;height:1200px;margin: auto;background:transparent;background-color:rgba(22,30,47,0.7);z-index: 20;">
+      <div id="box" style="position: relative;width: 480px;height: 480px;margin:auto;margin-top: 120px;background-image: url(../../images/portal02/portal_3_nav_bg-re1.png);">
+        <div class="secondList" id="northbox" data-id="0">
+          <span class="secondListspan"></span>
+        </div>
+        <div class="secondList" id="northeastBox" data-id="1">
+          <span class="secondListspan"></span>
+        </div>
+        <div class="secondList" id="eastBox" data-id="2">
+          <span class="secondListspan"></span>
+        </div>
+        <div class="secondList" id="southeastBox" data-id="3">
+          <span></span>
+        </div>
+        <div class="secondList" id="southBox" data-id="4"><span></span></div>
+        <div class="secondList" id="southwestBox" data-id="5"><span></span></div>
+        <div class="secondList" id="westBox" data-id="6"><span></span></div>
+        <div class="secondList" id="northwestBox" data-id="7">
+          <span class="secondListspan"></span>
+        </div>
+
+        <img src="../../images/portal02/portal_3_nav_bg_logocenter for DQ.png" style="position: absolute;top: 38%;left:38.5%;z-index: 100;">
+      </div>
+  </div>
+<div id="dbd"></div>
+
+<!-- <div class="popup">
+    <div class="est-valign-ghost"></div>
+    <div class="popup-content" style="height: 200px;">
+        <div class="popup-header">
+            <h5 title="修改密码">修改密码</h5>
+            <a class="popup-close"><i class="fa fa-close"></i></a>
+        </div>
+        <div class="popup-body">
+            <div class="password-edit">
+                <input type="hidden" id="userName" value="admin">
+                <input type="hidden" id="userId" value="1">
+                <div class="password-edit-item">
+                  <label class="label">用户名：</label>
+                  <span class="edit">admin</span>
+                </div>
+
+                <div class="password-edit-item">
+                  <label class="label" for="userNewPwd">  新密码：</label>
+                  <input class="inputText" type="password" id="userNewPwd" placeholder="6~30位大小写字母、数字、特殊字符组成">
+                </div>
+
+            </div>
+        </div>
+        <div class="popup-footer">
+            <button id="submit"  class="popup-footer-confirm">确认</button>
+            <button class="popup-footer-cancel">取消</button>
+        </div>
+	</div>
+</div> -->
+<!-- InstanceBeginEditable name="main" -->
+
+<!-- InstanceEndEditable -->
+<script type="text/javascript" src="../../libs/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="../../libs/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../../libs/echarts3/echarts.min.js"></script>
+<script type="text/javascript" src="../../libs/cookie/jquery.cookie.js"></script>
+<script type="text/javascript" src="../../js/jquery.rotate.min.js"></script>
+<script type="text/javascript"  src="../../plot/world_china.js"></script>
+<script type="text/javascript">
+
+$(function(){
+          var angle = 0;
+          var n = 0;
+          $("#nav_img").rotate({
+            bind:
+            {
+                click: function(){
+                    if(n==0){
+                        $(this).rotate({ angle:0,animateTo:180,easing: $.easing.easeInOutExpo })
+                        n= 1;
+                    }else{
+                        $(this).rotate({ angle:0,animateTo:-180,easing: $.easing.easeInOutExpo })
+                        n = 0;
+                    }
+                }
+            }
+
+        });
+    });
+var userName=$.cookie('userName');
+$("body").find('#user').text(userName);
+var box=$("#box");
+var y=window.screen.height;
+var h=parseInt(y-480)/2-60;
+var theRequest ={};
+var key,data,plogo;
+var ntitle;
+
+function GetRequest() {
+    var url = location.search; //获取url中"?"符后的字串
+    var a=decodeURI(url);
+    if (a.indexOf("?") != -1) {
+        var str = a.substr(1);
+        strs = str.split("&");
+        for(var i = 0; i < strs.length; i ++) {
+            theRequest[strs[i].split("=")[0]]=unescape(strs[i].split("=")[1]);
+        }
+    }
+
+     key=theRequest.key;
+     ntitle=theRequest.ntitle;
+     plogo=theRequest.logo;
+    return theRequest;
+}
+GetRequest();
+// if (plogo) {
+//   $.ajax({
+// 			type: "get",
+// 			async: false,
+// 			dataType:"jsonp",
+// 			cache:false,
+// 			url: "/db/scan/ssdb0/img:/img:~/200",
+// 			success: function(data) {
+// 				for (var i = 0; i < data.length; i++) {
+// 						var d=data[i];
+// 					 for(var j in data[i]){
+// 						 if(j.indexOf(plogo) != -1){
+// 							 var t=JSON.parse(d[plogo]);
+// 							 var src=t.img;
+// 							 $(".logodiv img").attr('src','../../images/logo/'+src);
+// 						 }
+// 					 }
+// 			 }
+// 			},
+// 			error:function(XMLHttpRequest,message){
+// 					console.log(message)
+// 			}
+// 	});
+//   // $(".logo img").attr('src','../../images/logo/'+plogo);
+// }
+var dbdK;
+var getAjax1=function(dbdK,tt,dbdcs){
+
+  if (dbdK.indexOf("http")=="0") {
+    var dbd='<iframe width="100%" height="100%" frameborder=0 src="'+dbdK+'?d2title='+tt+'"></iframe>';
+    //console.info(dbd);
+    if($("#main").hasClass('pt-page-rotateSlideIn')){
+      $("#main").removeClass('pt-page-rotateSlideIn');
+    }
+
+    setTimeout(function () {
+      $("#main").addClass('pt-page-rotateSlideIn')
+      $("#main").html(dbd);
+    },400)
+  }else{
+    getOther(dbdK,tt,dbdcs);
+  }
+};
+var getAjax=function(dbdK,tt,dbdcs){
+  //console.info(dbdK);
+  $("#big_box").fadeToggle();
+  if (dbdK.indexOf("http")=="0") {
+    var dbd='<iframe width="100%" height="100%" frameborder=0 src="'+dbdK+'?d2title='+tt+'"></iframe>';
+    //console.info(dbd);
+    if($("#main").hasClass('pt-page-rotateSlideIn')){
+      $("#main").removeClass('pt-page-rotateSlideIn');
+    }
+
+    setTimeout(function () {
+      $("#main").addClass('pt-page-rotateSlideIn')
+      $("#main").html(dbd);
+    },400)
+  }else{
+    getOther(dbdK,tt,dbdcs);
+  }
+};
+var getOther=function(dbdK,tt,dbdcs){
+  //console.info(dbdcs);
+  $.ajax({
+      type: "get",
+      async: true,
+      dataType:"jsonp",
+      url: "/db/jsonp/ssdb0/"+dbdK,
+      success: function(response) {
+        if(dbdK.indexOf("dashboard:")!="-1"){
+          $("#dbdtitle").text(tt);
+          var dbd='<iframe width="100%" height="100%" frameborder=0 src="../../dbd/dbd_view.fh5?key='+dbdK+'&dtitle='+tt+'&mh=portal2"></iframe>';
+        //console.info(dbd);
+        if($("#main").hasClass('pt-page-rotateSlideIn')){
+          $("#main").removeClass('pt-page-rotateSlideIn');
+        }
+
+        setTimeout(function () {
+          $("#main").addClass('pt-page-rotateSlideIn')
+          $("#main").html(dbd);
+        },400)
+        }else if (dbdK.indexOf("am:")!="-1") {
+          if (dbdcs) {
+            $("#dbdtitle").text(tt);
+            var dbd='<iframe width="100%" height="100%" frameborder=0 src="../../dbd/am_run.fh5?key='+dbdK+'&atitle='+tt+'&'+dbdcs+'&mh=portal2"></iframe>';
+          }else{
+            $("#dbdtitle").text(tt);
+            var dbd='<iframe width="100%" height="100%" frameborder=0 src="../../dbd/am_run.fh5?key='+dbdK+'&atitle='+tt+'&mh=portal2"></iframe>';
+          }
+          if($("#main").hasClass('pt-page-rotateSlideIn')){
+  					$("#main").removeClass('pt-page-rotateSlideIn');
+  				}
+
+          setTimeout(function () {
+            $("#main").addClass('pt-page-rotateSlideIn')
+            $("#main").html(dbd);
+          },400)
+        }
+        else if (dbdK.indexOf("dashboard2:")!="-1") {
+          $.ajax({
+            type: "get",
+            async: true,
+            timeout : 1000*600,
+            dataType:"jsonp",
+            url: "/db/jsonp/ssdb0/"+dbdK,
+            success:function(dataAll){
+              var cs=dataAll[0].dcs;
+              var oo=[];
+              var cs_obj={};
+              $.each(cs,function(name,value){
+                var cs_connect=name+'='+value;
+                cs_obj[name]=value;//讲原来的参数组装成对象；
+                oo.push(cs_connect);
+              });
+
+              if(dbdcs){
+                dbdcs=dbdcs.split("&");
+                var dbdcs_obj={};
+                for (var i = 0; i < dbdcs.length; i++) {
+                  dbdcs_obj[dbdcs[i].split("=")[0]]=unescape(dbdcs[i].split("=")[1]);//讲导航的参数组装成对象；
+                }
+                for(var j in cs_obj){
+                  var value=cs_obj[j];
+                  for(var i in dbdcs_obj){
+                    if(i==j){
+                      var d=dbdcs_obj[i].replace(j,value);//将新参数和老参数进行匹配；
+                      cs_obj[j]=d;
+                    }
+                  }
+                }
+                var params = $.param(cs_obj);
+                cs= decodeURIComponent(params);
+                //console.info(cs);
+              }else{
+                cs=oo.join("&");
+              }
+              $("#dbdtitle").text(tt);
+              var dbd='<iframe width="100%" height="100%" frameborder=0 src="../../dbd/dbd2_view.fh5?key='+dbdK+'&d2title='+tt+'&'+cs+'&mh=portal2"></iframe>';
+              if($("#main").hasClass('pt-page-rotateSlideIn')){
+      					$("#main").removeClass('pt-page-rotateSlideIn');
+      				}
+
+              setTimeout(function () {
+                $("#main").addClass('pt-page-rotateSlideIn')
+                $("#main").html(dbd);
+              },400)
+            }
+          });
+        }
+        else if (dbdK.indexOf("dp:")!="-1") {
+          $.ajax({
+            type: "get",
+            async: true,
+            timeout : 1000*600,
+            dataType:"jsonp",
+            url: "/db/jsonp/ssdb0/"+dbdK,
+            success:function(dataAll){
+              var cs=dataAll[0].mcs;
+             //console.info(cs);
+              var oo=[];
+              $.each(cs,function(name,value){
+                var cs_connect=name+'='+value;
+                oo.push(cs_connect);
+
+              });
+              cs=oo.join("&");
+             // console.info(cs);
+             $("#dbdtitle").text(tt);
+              var dbd='<iframe width="100%" height="100%" frameborder=0 src="../../dbd/more_view.fh5?key='+dbdK+'&mtitle='+tt+'&'+cs+'&mh=portal2"></iframe>';
+              if($("#main").hasClass('pt-page-rotateSlideIn')){
+      					$("#main").removeClass('pt-page-rotateSlideIn');
+      				}
+
+              setTimeout(function () {
+                $("#main").addClass('pt-page-rotateSlideIn')
+                $("#main").html(dbd);
+              },400)
+            }
+          });
+        }
+      }
+    });
+};
+var p_index=1;
+$(".nav_icon").click(function(){
+  $("#big_box").fadeToggle();
+  $("#box").css('margin-top',h+'px');
+});
+var t_now=function(time_lb){
+$.ajax({
+  type: "get",
+  async: false,
+  dataType:"jsonp",
+  url: "/db/jsonp/ssdb0/"+key,
+  success:function(res){
+    data=res[0].num;
+    getAjax1(data[0].key,data[0].tit,data[0].cs);
+    // console.info(data[0].cs);
+    for (var i = 0; i < data.length; i++) {
+      var tt=data[i].tit;
+      var likey=data[i].key;
+      var cs=data[i].cs;
+      var div=$('<div data-name="'+i+'" class="navC nav'+i+'"></div>');
+      var a=$(
+        '<a class="a'+i+'" data-key="'+data[i].key+'" data-id="'+i+'" href="#" onclick=getAjax("'+likey+'","'+tt+'","'+cs+'");>'+data[i].name+'</a>'
+        );
+      div.append(a);
+      box.append(div);
+    }
+    //$.cookie('dataArr',JSON.stringify(data));
+    localStorage.dataArr=JSON.stringify(data);
+    //console.info(localStorage.dataArr);
+    //轮播时间
+    if(time_lb != '' && time_lb != '0'){
+      setInterval(function(data){
+        if(p_index >= data.length){
+          p_index=0;
+        }
+        var main_div = '<div id="main" class="pt-page-rotateSlideIn" style="width:100%;position: absolute;top: 80px;display:none;"></div>'
+        $("#main").attr('id', 'main_B');
+        if($('#main').hasClass('pt-page-rotateSlideIn')){
+          $('#main').removeClass('pt-page-rotateSlideIn')
+        }
+        $("#c").append(main_div);
+        getAjax1(data[p_index].key,data[p_index].tit,data[p_index].cs);
+        setTimeout(function(){
+          $("#main_B").remove();
+        },300)
+        $("#main").slideDown();
+        p_index++;
+      },time_lb*1000,data)
+    }
+  }
+});
+}
+function lb_zd(){
+	$.ajax({
+			type: "get",
+			async: false,
+			dataType:"jsonp",
+			cache:false,
+			url: "/db/scan/ssdb0/use:/use:~/200",
+			success: function(data) {
+				var yy_id=[];
+				var yy_val=[];
+				$.each(data,function(name,value){
+					for(i in value){
+						var ys=i.split(":");
+						yy_id.push(ys[1]);
+						var val_json=JSON.parse(value[i])
+						yy_val.push(val_json);
+					}
+				})
+        if(userName){
+          // console.log(userName);
+        $.ajax({
+    			type: "get",
+    	        async: true,
+    	        dataType:"json",
+    	        cache:false,
+    		    url: "/db/list_user",
+    		    success: function(data) {
+              // console.log(data);
+              var use=[];
+              var yyid=[];
+              for(var k=0;k<data.length;k++){
+                use.push(data[k][0]);
+                yyid.push(data[k][4])
+              }
+              var yy_i=use.indexOf(userName);
+              var id_yy1=yyid[yy_i];//应用的id
+              if(id_yy1.indexOf(";") !=-1){
+								var id_yy1 = window.localStorage.getItem('use');
+								var id_yy2=id_yy1.split(":");
+								var id_yy=id_yy2[1];
+								var id_index=yy_id.indexOf(id_yy);
+							}else{
+								var id_yy2=id_yy1.split(":");
+								var id_yy=id_yy2[1];
+								var id_index=yy_id.indexOf(id_yy);
+							}
+              if("bg" in yy_val[id_index]){
+                var bg_mh=yy_val[id_index].bg;
+                var jb_mh=bg_mh.split("&");
+                if(jb_mh[1]){
+                  var start_jb=jb_mh[0];//渐变初始
+                  var end_jb=jb_mh[1];//渐变结束
+                  $('body').css({'background': '-webkit-linear-gradient('+start_jb+', '+end_jb+')','background': '-o-linear-gradient('+start_jb+', '+end_jb+')','background': '-moz-linear-gradient('+start_jb+', '+end_jb+')','background': 'linear-gradient('+start_jb+', '+end_jb+')'});
+                }
+                else if(bg_mh.split("#")){
+                  $('body').css('background-color',bg_mh);
+                }
+                if(bg_mh.split(":")){
+                  $.ajax({
+                      type: "get",
+                      async: false,
+                      dataType:"jsonp",
+                      cache:false,
+                      url: "/db/scan/ssdb0/img:/img:~/200",
+                      success: function(data) {
+                        for (var i = 0; i < data.length; i++) {
+                            var d=data[i];
+                           for(var j in data[i]){
+                             if(j.indexOf(bg_mh) != -1){
+                               var t=JSON.parse(d[bg_mh]);
+                               var src=t.img;
+                               $('body').css('background','url(../../images/logo/'+src+')');
+                             }
+                           }
+                       }
+                      },
+                      error:function(XMLHttpRequest,message){
+                          console.log(message)
+                      }
+                  });
+                }
+              }
+              // if("plan" in yy_val[id_index]){
+              //   if(yy_val[id_index].plan !=''){
+              //     window.sessionStorage.setItem('plan',yy_val[id_index].plan)
+              //   }
+              // }
+              if("lb" in yy_val[id_index]){
+      					var lb_t=yy_val[id_index].lb;//轮播时间
+      				}else{
+      					var lb_t='0';
+      				}
+      				t_now(lb_t)
+    		    },
+    		    error:function(XMLHttpRequest,message){
+    				console.log(message);
+    			}
+    		});
+      }else{
+        t_now('0');
+      }
+
+
+			},
+			error:function(XMLHttpRequest,message){
+					console.log(message);
+			}
+	});
+};
+lb_zd();
+$(document).keydown(function(event){
+  if(event.keyCode == 27){
+     $("#big_box").fadeToggle();
+  }
+});
+function mh_bg(){
+  var mhbg=$('body').css('background-color');
+  if(mhbg == null ||mhbg == undefined){
+    mhbg='#fff'
+  }
+  window.sessionStorage.setItem("mhbg",mhbg);
+}
+mh_bg();
+function load(){
+  var h=$(window).height();
+  $('body').css('height', h);
+  var h1=$('.common-header').height();
+  var h2=h-h1;
+  $('#main').css('height', h2);
+}
+function getData(){
+
+  var ws=null;
+      var ip_addr = document.location.hostname;
+      var mq_topic ='nav_'+window.localStorage.getItem('ipad_ld');
+      var url = "ws://"+ip_addr+":8998/"+mq_topic+":info";
+
+      if (ws !=null && ws.url !=url){
+          ws.close();
+          ws =null;
+      }
+
+      if (ws==null){
+          ws = new WebSocket(url);
+          /*
+          ws.onopen = function() {
+              ws.send(mq_topic);
+          };
+          */
+          ws.onmessage = function (evt) {
+            var datas=evt.data;
+						var datas=JSON.parse(datas);
+						console.log(datas);
+						// var link=datas.link;
+						// link=link.split(";");
+						var dbdK=datas.dbdK;
+						var tt=datas.tt;
+						var dbdcs=datas.dbdcs;
+						getAjax(dbdK,tt,dbdcs);
+
+						if($('#big_box').is(":hidden")){
+							$('#big_box').hide();
+						}else{
+							$('#big_box').hide();
+						}
+          };
+          ws.onclose = function(){
+              //alert("Connection is closed");
+              ws=null;
+          };
+          ws.error = function()
+          {
+              //alert("Error Happended");
+              ws.close();
+              ws=null;
+          };
+
+      }//end if
+
+  }
+  getData()//ipad导航
+  function getYj(){//预警
+
+	var ws=null;
+			var ip_addr = document.location.hostname;
+			var yy_uses = window.localStorage.getItem('use_cc');
+			var mq_topic ='alarm_'+userName+'_'+yy_uses;
+			var url = "ws://"+ip_addr+":8998/"+mq_topic+":info";
+
+			if (ws !=null && ws.url !=url){
+					ws.close();
+					ws =null;
+			}
+
+			if (ws==null){
+					ws = new WebSocket(url);
+					/*
+					ws.onopen = function() {
+							ws.send(mq_topic);
+					};
+					*/
+					ws.onmessage = function (evt) {
+						var datas=evt.data;
+						var datas=JSON.parse(datas);
+						console.log(datas);
+						mh_yj_tc(datas);
+					};
+					ws.onclose = function(){
+							//alert("Connection is closed");
+							ws=null;
+					};
+					ws.error = function()
+					{
+							//alert("Error Happended");
+							ws.close();
+							ws=null;
+					};
+
+			}//end if
+
+	}
+	getYj();
+	function mh_yj_tc(data){
+		// console.log(data);
+		var top12=parseInt(window.screen.height)*0.1;
+		$('#mh_yj_tc').dialog({
+				height:400,
+				width:parseInt(window.screen.width)*0.6,
+				resizable: false
+		});
+		$('.ui-dialog-titlebar button').addClass('up_close');
+		$(".ui-dialog").css({top:top12+'px'});
+		var id_mh=data.ID;
+
+		var allData=[],id_uncf=[];
+		var columns=[];
+
+		for (var key in data){
+        var value=data[key];
+				if(key.indexOf('resp')==-1){
+					columns.push(key);
+				}
+    }
+		// columns.push("id","time","source","level","type","desc");
+		columns.push('查看');
+		columns.push('指派');
+		$('#mh_yj_tc thead').html('');
+			var a=$('#mh_yj_tc thead');
+			var b=$("#mh_yj_tc tbody");
+				if(id_uncf.indexOf(id_mh) ==-1){
+					id_uncf.push(id_mh);
+					var alls=[];
+					var data_cc=JSON.stringify(data);
+					window.localStorage.setItem(id_mh,data_cc);
+					var zp_use='<button class="ok_zp" data-id="'+id_mh+'"></button>';
+					var ck_cc='<button class="ck_cc" role="'+id_mh+'">查看</button><input data-id="'+id_mh+'" type="button" class="ck_cc_input" readonly="readonly" value="已查看" style="display:none;" />';
+					for (var key in data){
+			        var value=data[key];
+							if(key.indexOf('resp')==-1){
+								alls.push(value);
+							}
+			    }
+					alls.push(ck_cc,zp_use);
+					// alls.push(id_mh,time_mh,source_mh,level_mh,type_mh,desc_mh,ck_cc,zp_use);
+					if(b.children('tr').length<10){
+						allData.push(alls);
+					}else{
+						b.children('tr').eq(-1).remove();
+						allData.push(alls);
+					}
+				}
+				for(var k=0;k<columns.length;k++){
+					var th='<th>'+columns[k]+'</th>';
+					a.append(th);
+				};
+			if(allData.length!='undefined'&&allData.length!=''){
+				for(var q=0;q<allData.length;q++){
+					var tr=$('<tr></tr>');
+					for(var k=0;k<allData[q].length;k++){
+						var td='<td>'+allData[q][k]+'</td>';
+						tr.append(td);
+					}
+					b.prepend(tr);
+				}
+			}
+	}
+	$('body').on('click', '.ok_zp', function() {
+		var id_cc_w=$(this).attr('data-id');
+		var link=window.localStorage.getItem(id_cc_w);
+		var div='<div class="assign"><label>指派'+id_cc_w+'给</label><input type="text" placeholder="指派用户" /><button class="zp_use_ok">确定</button><button class="zp_use_no">取消</button></div>'
+		if($('body').children('assign').length>0){
+			$('body').children('assign').remove();
+		}
+		$('body').append(div);
+    document.onkeydown = function(e){
+		    var ev = document.all ? window.event : e;
+		    if(ev.keyCode==13) {
+						$('.zp_use_ok').click();
+	 		}
+		}
+		$('.zp_use_ok').click(function() {
+			var in_m=$(this).prev('input').val();
+			if(in_m == ''){
+				alert('指派用户不能为空！')
+			}else{
+				var mq='analyse_'+in_m;
+				var data={
+		      "mq":mq,
+		      "msg":link
+		    };
+				console.log(data);
+		    $.ajax({
+		       type: "post",
+		       async: true,
+		       timeout : 1000*600, //超时时间设置，单位毫秒
+		       url: "/send_mq",
+		       data: data,
+		       success: function(response) {
+		           console.info(response);
+							//  window.localStorage.removeItem(id_cc_w);
+							 $('.assign').remove();
+
+		       },
+		       error: function(XMLHttpRequest, textStatus, errorThrown) {
+		              alert(XMLHttpRequest.status+XMLHttpRequest.readyState+textStatus);
+		       }
+		    });
+			}
+		});
+		$('.zp_use_no').click(function() {
+			$(this).parent('div').remove();
+		});
+	});
+	$('body').on('click', '.ck_cc', function() {
+		var id_cc_w=$(this).attr('role');
+		var link=window.localStorage.getItem(id_cc_w);
+		var useName=$.cookie('userName');
+		var mq='analyse_'+useName;
+    var data={
+      "mq":mq,
+      "msg":link
+    };
+    $.ajax({
+       type: "post",
+       async: true,
+       timeout : 1000*600, //超时时间设置，单位毫秒
+       url: "/send_mq",
+       data: data,
+       success: function(response) {
+           console.info(response);
+					 $('input[data-id="'+id_cc_w+'"]').show();
+					 $('button[role="'+id_cc_w+'"]').remove();
+					//  window.localStorage.removeItem(id_cc_w);
+       },
+       error: function(XMLHttpRequest, textStatus, errorThrown) {
+              alert(XMLHttpRequest.status+XMLHttpRequest.readyState+textStatus);
+       }
+    });
+	});
+</script>
+<script type="text/javascript" src="portal2.js"></script>
+</body>
+<!-- InstanceEnd --></html>

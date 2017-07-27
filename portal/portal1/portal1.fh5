@@ -1,0 +1,419 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><!-- InstanceBegin template="/Templates/indexTemp.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>门户1</title>
+<link href="../../css/userpass.css" rel="stylesheet" type="text/css" />
+<link href="portal1_total.css" rel="stylesheet" type="text/css" />
+
+</head>
+<body style="position:initial;">
+<header class="common-header">
+<div class="warp">
+  <div class="logodiv"><img src="../../images/logo/1.png" width="247" height="25" alt="logo" /></div>
+    <div class="right-tip">
+      <div class="header-tools">
+        <div class="fn-icon user">
+          <div class="fn-cont" id="showTab">
+            <div class="fn-opt" id="change-password-button"><p>修改密码</p></div>
+            <div class="fn-opt"><p><a href="../index.fh5">退出登录</a></p></div>
+            <div class="corner" style="width:33px"><span id="usename" class="user-name" style="opacity: 0;"></span></div>
+          </div>
+        </div>
+        <span class="interval"> |</span>
+      </div>
+
+    </div>
+</div>
+</header>
+<nav class="common-nav">
+  <ul class="level1" id="nav"></ul>
+
+</nav>
+
+<div id="dbd" style="position:absolute;width:100%;height:100%;">
+
+</div>
+
+<div class="popup">
+    <div class="est-valign-ghost"></div>
+    <div class="popup-content" style="height: 200px;">
+        <div class="popup-header">
+            <h5 title="修改密码">修改密码</h5>
+            <a class="popup-close"><i class="fa fa-close"></i></a>
+        </div>
+        <div class="popup-body">
+            <div class="password-edit">
+                <input type="hidden" id="userName" value="admin">
+                <input type="hidden" id="userId" value="1">
+                <div class="password-edit-item">
+                  <label class="label">用户名：</label>
+                  <span class="edit">admin</span>
+                </div>
+
+                <div class="password-edit-item">
+                  <label class="label" for="userNewPwd">  新密码：</label>
+                  <input class="inputText" type="password" id="userNewPwd" placeholder="6~30位大小写字母、数字、特殊字符组成">
+                </div>
+
+            </div>
+        </div>
+        <div class="popup-footer">
+            <button id="submit"  class="popup-footer-confirm">确认</button>
+            <button class="popup-footer-cancel">取消</button>
+        </div>
+	</div>
+</div>
+<!-- InstanceBeginEditable name="main" -->
+<!-- <div id="foxbox" style="width:100%;height:100px;line-height:100px;position:fixed;bottom:0;left:0;background:yellow;z-index:999;">
+
+</div> -->
+<!-- InstanceEndEditable -->
+<script type="text/javascript" src="../../libs/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="../../libs/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../../libs/echarts3/echarts.min.js"></script>
+<script type="text/javascript" src="../../libs/cookie/jquery.cookie.js"></script>
+<script type="text/javascript"  src="../../plot/world_china.js"></script>
+<script src="e_portal1.js"></script>
+<script type="text/javascript">
+var userName=$.cookie('userName');
+$("body").find('#usename').text(userName);
+var theRequest ={};
+var key,plogo;
+var ntitle;
+function GetRequest() {
+    var url = location.search; //获取url中"?"符后的字串
+    var a=decodeURI(url);
+    if (a.indexOf("?") != -1) {
+        var str = a.substr(1);
+        strs = str.split("&");
+        for(var i = 0; i < strs.length; i ++) {
+            theRequest[strs[i].split("=")[0]]=unescape(strs[i].split("=")[1]);
+        }
+    }
+
+     key=theRequest.key;
+     //console.info(key);
+     ntitle=theRequest.ntitle;
+     plogo=theRequest.logo;
+    return theRequest;
+  }
+GetRequest();
+//console.info(key);
+//var dbdK;
+if (plogo) {
+  $.ajax({
+			type: "get",
+			async: false,
+			dataType:"jsonp",
+			cache:false,
+			url: "/db/scan/ssdb0/img:/img:~/200",
+			success: function(data) {
+				for (var i = 0; i < data.length; i++) {
+						var d=data[i];
+					 for(var j in data[i]){
+						 if(j.indexOf(plogo) != -1){
+							 var t=JSON.parse(d[plogo]);
+							 var src=t.img;
+							 $(".logodiv img").attr('src','../../images/logo/'+src);
+						 }
+					 }
+			 }
+			},
+			error:function(XMLHttpRequest,message){
+					console.log(message)
+			}
+	});
+  // $(".logodiv img").attr('src','../../images/logo/'+plogo);
+}
+
+$.ajax({
+  type: "get",
+    async: true,
+    dataType:"jsonp",
+    url: "/db/jsonp/ssdb0/"+key,
+    success: function(response){
+      //console.info(response);
+      var data=response[0].num;
+      //console.info(data);
+      getAjax(data[0].key,data[0].tit);
+      for (var i = 0; i < data.length; i++) {
+
+        var tt=data[i].tit;
+        var likey=data[i].key;
+        var li=$(
+          '<li class="active" style="margin-right:10px;" data-key="'+data[i].key+'" data-id="'+data[i].id+'"><a href="javascript:void(0);" onclick=getAjax("'+likey+'","'+tt+'");>'+data[i].name+'</a></li>'
+          );
+        //判断是否有children
+        //var li_child=;
+        if (data[i].children) {
+          var li_child=data[i].children;
+          var ul=$(
+            '<ul class="subs li_child_ul"></ul>'
+            )
+          for (var j = 0; j < li_child.length; j++) {
+            var tt=li_child[j].tit;
+            var ul_li=$(
+            '<li data-id="'+li_child[j].id+'"><a href="javascript:void(0);" onclick=getAjax("'+li_child[j].key+'","'+tt+'");>'+li_child[j].name+'</a></li>'
+            )
+            ul.append(ul_li);
+            //console.info(ul);
+          }
+          li.append(ul);
+        }
+
+
+        $("#nav").append(li);
+       // dbdK=response[i].key;
+
+      }
+    }
+});
+$("body").on('click','#submit',function(){
+ // alert();
+  var username=$(".edit").text();
+  var newPass=$("#userNewPwd").val();
+  changePass(username,newPass);
+});
+var getAjax=function(dbdK,tt){
+  if (dbdK.indexOf("http")=="0") {
+    var dbd='<iframe width="100%" height="100%" frameborder=0 src="'+dbdK+'?d2title='+tt+'"></iframe>';
+    //console.info(dbd);
+    $("#dbd").html(dbd);
+  }else{
+    $.ajax({
+    type: "get",
+    async: true,
+    dataType:"jsonp",
+    url: "/db/jsonp/ssdb0/"+dbdK,
+    success: function(response) {
+      if(dbdK.indexOf("dashboard:")!="-1"){
+        var dbd='<iframe width="100%" height="100%" frameborder=0 src="../../dbd/dbd_view.fh5?key='+dbdK+'&dtitle='+tt+'&mh=portal1"></iframe>';
+        $("#dbd").html(dbd);
+      }else if (dbdK.indexOf("am:")!="-1") {
+        var dbd='<iframe width="100%" height="100%" frameborder=0 src="../../dbd/am_run.fh5?key='+dbdK+'&atitle='+tt+'&mh=portal1"></iframe>';
+        $("#dbd").html(dbd);
+      }
+      else if (dbdK.indexOf("dashboard2:")!="-1") {
+        //alert();
+          $.ajax({
+            type: "get",
+            async: true,
+            timeout : 1000*600,
+            dataType:"jsonp",
+            url: "/db/jsonp/ssdb0/"+dbdK,
+            success:function(dataAll){
+
+              var cs=dataAll[0].dcs;
+             //console.info(cs);
+              var oo=[];
+              $.each(cs,function(name,value){
+                var cs_connect=name+'='+value;
+                oo.push(cs_connect);
+
+              });
+              cs=oo.join("&");
+             // console.info(cs);
+              var dbd='<iframe width="100%" height="100%" frameborder=0 src="../../dbd/dbd2_view.fh5?key='+dbdK+'&d2title='+tt+'&'+cs+'&mh=portal1"></iframe>';
+             // console.info(dbd);
+              $("#dbd").html(dbd);
+            }
+          });
+      }
+      else if (dbdK.indexOf("dp:")!="-1") {
+        $.ajax({
+          type: "get",
+          async: true,
+          timeout : 1000*600,
+          dataType:"jsonp",
+          url: "/db/jsonp/ssdb0/"+dbdK,
+          success:function(dataAll){
+            var cs=dataAll[0].mcs;
+           //console.info(cs);
+            var oo=[];
+            $.each(cs,function(name,value){
+              var cs_connect=name+'='+value;
+              oo.push(cs_connect);
+
+            });
+            cs=oo.join("&");
+           // console.info(cs);
+            var dbd='<iframe width="100%" height="100%" frameborder=0 src="../../dbd/more_view.fh5?key='+dbdK+'&mtitle='+tt+'&'+cs+'&mh=portal1"></iframe>';
+            $("#dbd").html(dbd);
+          }
+        });
+      }
+    }
+  });
+  }
+
+};
+
+var changePass=function(name,pass){
+    var o={
+      "name":name,
+      "auth_key":pass
+    };
+    o=JSON.stringify(o);
+    $.ajax({
+      type:'post',
+      async: true,
+      url:'/db/up_auth_key',
+      data:{data:o},
+      success:function(data){
+        var datas=eval('('+data+')');
+        if(datas.success == true){
+          alert('修改成功!')
+          $(".popup").hide();
+        }else{
+          alert('密码错误!');
+        }
+      },
+      error:function(XMLHttpRequest,message){
+        console.log(message)
+      }
+    });
+
+  };
+
+$(function(){
+  $(".level1 > li").click(function(){
+    $(this).addClass("active").siblings().removeClass("active");
+  });
+  $(".common-header .warp .right-tip .header-tools .fn-icon.user").mouseover(function(){
+    $("#showTab").css("display","block");
+    $(".common-header .warp .right-tip .header-tools .fn-icon.user .fn-cont .corner").stop().animate({
+      width: "100%"
+    }).mouseout(function(){
+      $(".common-header .warp .right-tip .header-tools .fn-icon.user .fn-cont .corner").stop().animate({
+      width: "33px"
+    });
+    });
+    $(".common-header .warp .right-tip .header-tools .fn-icon.user .fn-cont .corner .user-name").css("opacity","1");
+    $(".common-header .warp .right-tip .header-tools .fn-icon.user .fn-cont .corner .user-name").attr("aria-describedby","ui-id-61");
+
+  });
+
+  $(".common-header .warp .right-tip .header-tools .fn-icon.user").mouseout(function(){
+    $("#showTab").css("display","none");
+    $(".common-header .warp .right-tip .header-tools .fn-icon.user .fn-cont .corner .user-name").css("opacity","0");
+    $(".common-header .warp .right-tip .header-tools .fn-icon.user .fn-cont .corner .user-name").removeAttr("aria-describedby");
+
+  });
+  $("#change-password-button").click(function(){
+    $(".popup").css("display","block");
+    var usename=$.cookie('userName');
+    $(".edit").text(usename);
+  });
+  $(".popup-footer-cancel").click(function(){
+
+    $(".popup").hide();
+  });
+  //获得数据
+  var thisYear = new Date().getFullYear();
+
+  var curDate = new Date();
+  var curTime = new Date();
+  var date = curDate.getFullYear() + "-" + (curDate.getMonth() + 1) + "-" + curDate.getDate();
+  var time = curDate.getHours();
+  $("#time").text(time);
+  $("#day").text(date);
+});
+
+
+//浮动窗口
+var foxbox = '<div id="foxboxs"></div><div id="foxbox"></div>';
+$('body').append(foxbox);
+$('#foxbox').hide();
+$('#foxboxs').mouseover(function() {
+	lsjl();
+	$('#foxbox').slideDown();
+})
+$('#foxbox').mouseleave(function() {
+	$('#foxbox').slideUp()
+})
+function lsjl(){
+  $('#foxbox').html('');
+    var imgurl = window.sessionStorage.getItem("lsurl");
+    var imgsrc = window.sessionStorage.getItem("lsimg");
+    var this_url=window.sessionStorage.getItem("thisurl");
+    var img_url=JSON.parse(imgurl);
+    var img_src=JSON.parse(imgsrc);
+    for(var i=0;i<img_url.length;i++){
+      var foxbox_a = '<a data="'+img_url[i]+'"><img src="'+window.sessionStorage.getItem(img_src[i])+'"></a>';
+      $('#foxbox').prepend(foxbox_a);
+    };
+    $('#foxbox>a').on('click',function(){
+      var a_data = $(this).attr('data');
+      var dbd='<iframe width="100%" height="100%" frameborder=0 src="'+a_data+'"></iframe>';
+      $("#dbd").html(dbd);
+    });
+
+}
+function mh_bg(){
+  var mhbg=$('body').css('background-color');
+  window.sessionStorage.setItem("mhbg",mhbg);
+}
+mh_bg();
+function getData(){
+
+var ws=null;
+    var ip_addr = document.location.hostname;
+    var mq_topic ='nav_'+window.localStorage.getItem('ipad_ld');
+    var url = "ws://"+ip_addr+":8998/"+mq_topic+":info";
+
+    if (ws !=null && ws.url !=url){
+        ws.close();
+        ws =null;
+    }
+
+    if (ws==null){
+        ws = new WebSocket(url);
+        /*
+        ws.onopen = function() {
+            ws.send(mq_topic);
+        };
+        */
+        ws.onmessage = function (evt) {
+          var datas=evt.data;
+          var datas=JSON.parse(datas);
+          console.log(datas);
+          // var link=datas.link;
+          // link=link.split(";");
+          var dbdK=datas.dbdK;
+          var tt=datas.tt;
+          var dbdcs=datas.dbdcs;
+          getAjax(dbdK,tt,dbdcs);
+
+          if($('#big_box').is(":hidden")){
+            $('#big_box').hide();
+          }else{
+            $('#big_box').hide();
+          }
+
+          // if($('#big_box').is(":hidden")){
+          //   $('#big_box').hide();
+          // }else{
+          //   $('#big_box').hide();
+          // }
+        };
+        ws.onclose = function(){
+            //alert("Connection is closed");
+            ws=null;
+        };
+        ws.error = function()
+        {
+            //alert("Error Happended");
+            ws.close();
+            ws=null;
+        };
+
+    }//end if
+
+}
+getData()
+</script>
+</body>
+<!-- InstanceEnd -->
+</html>

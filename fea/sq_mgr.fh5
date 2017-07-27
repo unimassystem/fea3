@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>授权管理</title>
+	<link rel="stylesheet" type="text/css" href="libs/datatable/css/jquery.dataTables.css">
+	<!-- <link href="libs/nestable/css/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" /> -->
+	<link href="libs/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+	<link href="libs/nestable/css/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+	<!-- <link href="libs/nestable/css/components.min.css" rel="stylesheet" id="style_components" type="text/css" /> -->
+	<style type="text/css">
+		#mgr td{
+			text-align: center;
+			word-break: break-all;
+		}
+		#mgr th{
+			background-color: rgb(0,113,197);
+			font-size: 16px;
+			font-weight: normal;
+			color: #fff;
+			word-break: break-all;
+		}
+		.box{
+			width: 86%;
+			margin: auto;
+			margin-top: 10px;
+			height: 100%;
+			background-color: #ffffff;
+			border: solid 1px #cdced1;
+		}
+		#add{
+			padding-right:6px !important;
+			padding-left:6px !important; 
+			text-align:center;
+		}
+		.xglm_box{
+			position:absolute;
+			width:280px;
+			margin:auto;
+			height:100px;
+			text-align:center;
+			/* background-color:rgb(210,224,239);
+			border:solid 1px rgb(240,240,240); */
+			height:50px;
+		}
+		table th{
+			text-align: center;
+		}
+		.dataTables_filter input{
+			background-color:#f2f5fb;
+            border:1px #0071c5 solid;
+            height:30px;
+            width:330px;
+            border-radius:2px;
+            padding-left:10px;
+		}
+		.anniu{
+            height:30px;
+            width:31px;
+            float:right;
+            border:none;
+            padding-left:1px;
+            background:#0071c5 url(img/find_icon.png) no-repeat center center;
+            background-repeat:no-repeat;
+        }
+        .btn{
+        	border-radius: 0;
+        }
+        #newTitle{
+        	width: 80%;
+			height: 32px;
+        }
+        #newID{
+        	width: 87.5%;
+			height: 32px;
+        }
+	</style>
+	
+	
+</head>
+<body style="background-color: #edf6f8;">
+	
+	<div class="box">
+		<div class="mar" style="margin-top:10px;text-align:center;font-size: 24px;color: rgb(51,122,183);font-weight: bold;">授权管理</div>
+		<!-- <div style="width:98%;margin: auto;margin-top: 10px;"> -->
+			<div  style="padding-left: 0;width: 50%;margin: auto;">
+			    <div class="input-group">
+			    	<span class="input-group-btn">
+			        	<button class="btn btn-default" type="text">E-mail</button>
+			      	</span>
+			      	<input id="email" type="text" class="form-control">
+			      	<span class="input-group-btn" style="font-size: 16px;color: red;text-indent: 2px;">*</span>
+			    </div>
+			</div>
+			<div style="margin-left: 20px;width: 50%;margin: auto;margin-top:10px;">
+			    <div class="input-group">
+			      <span class="input-group-btn">
+			        	<button class="btn btn-default" type="text">会员ID</button>
+			      </span>
+			      <input id="id" type="text" class="form-control">
+			      <span class="input-group-btn" style="font-size: 16px;color: red;text-indent: 2px;">*</span>
+			    </div>
+			</div>			
+			<div style="margin-left: 20px;width: 50%;margin: auto;margin-top:10px;">
+			    <div class="input-group">
+			      <span class="input-group-btn">
+			        	<button class="btn btn-default" type="text">PK</button>
+			      </span>
+			      <input id="pk" type="text" class="form-control">
+			      <span class="input-group-btn" style="font-size: 16px;color: red;text-indent: 2px;">*</span>
+			    </div>
+			</div>
+			<div style="margin-left: 20px;width: 50%;margin: auto;margin-top:10px;">
+			    <div class="input-group">
+			      <span class="input-group-btn">
+			        	<button class="btn btn-default" type="text">用户名</button>
+			      </span>
+			      <input id="name" type="text" class="form-control">
+			    </div>
+			</div>
+			<div style="margin-left: 20px;width: 50%;margin: auto;margin-top:10px;">
+			    <div class="input-group">
+			      <span class="input-group-btn">
+			        	<button class="btn btn-default" type="text">公司</button>
+			      </span>
+			      <input id="org" type="text" class="form-control">
+			    </div>
+			</div>
+			<div style="margin-left: 20px;width: 50%;margin: auto;margin-top:10px;">
+			    <div class="input-group">
+			      <span class="input-group-btn">
+			        	<button class="btn btn-default" type="text">项目名称</button>
+			      </span>
+			      <input id="pname" type="text" class="form-control">
+			    </div>
+			</div>
+			<div style="margin-left: 20px;width: 50%;margin: auto;margin-top:10px;">
+			    <div class="input-group">
+			      <span class="input-group-btn">
+			        	<button class="btn btn-default" type="text">电话</button>
+			      </span>
+			      <input id="tel" type="text" class="form-control">
+			    </div>
+			</div>
+			<div style="width: 4%;float: left;margin:1% 2% 0 62%;">
+				<button id="search" class="btn btn-primary" >查询</button>
+			</div>
+			<div style="width: 4%;float: left;margin-top: 1%;">
+				<button id="produce" class="btn btn-primary" >生成SN</button>
+			</div>
+		<!-- </div> -->
+		<div style="width:98%;margin: auto;margin-top: 54px;" >
+			<table id="mgr" class="display table table-bordered" cellspacing="0" width="100%">
+				<thead>
+					<th>PK</th>
+					<th>SN</th>
+					<th>Email</th>
+					<th>ID</th>
+					<th>组织</th>
+					<th>项目名称</th>
+					<th>user</th>
+					<th>电话</th>
+					<th>授权时间</th>
+					<th>授权IP</th>
+				</thead>
+				<tbody>
+					<tr class="blank">
+						<td  colspan="9">表中数据为空</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	
+	<div class="modal fade" id="snShow">
+	  	<div class="modal-dialog">
+	    	<div class="modal-content">
+	      		<div class="modal-header">
+	        		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        		<h4 class="modal-title">生成SN</h4>
+	      		</div>
+	      		<div class="modal-body">
+	      			<div class="input-group">
+					  	<span  id="basic-addon1">SN：</span>
+					  	<label id="sn" style="font-weight: normal;"><span></span></label>
+					</div>			        		
+	      		</div>
+	      		<div class="modal-footer">
+	        		<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+	        		<button type="button" id="ok" class="btn btn-primary">确认</button>
+	      		</div>
+	    	</div>
+	  	</div>
+	</div>
+	<script type="text/javascript"  src="libs/jquery-1.11.0.min.js"></script>
+	<script src="libs/jqueryUI/jquey-ui-1.11.4.js"></script>
+	<script type="text/javascript" src="libs/bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="libs/datatable/js/jquery.dataTables.min.js"></script>
+	<script type="text/javascript" src="libs/cookie/jquery.cookie.js"></script>
+	<script type="text/javascript"  src="sq_mgr.js"></script>
+</body>
+</html>

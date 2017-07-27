@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>系统配置-授权码管理</title>
+<link href="../libs/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/> 
+<link href="../libs/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+<link href="../libs/nestable/css/components.min.css" rel="stylesheet"  type="text/css" />
+<style type="text/css">
+	.box{
+		width: 86%;
+		margin: auto;
+		margin-top: 10px;
+		height:400px;
+		height: 650px;
+		background-color: #ffffff;
+		border: solid 1px #cdced1;
+		}
+	.mangeBox{
+		width: 50%;
+		margin: auto;
+		margin-top: 12px;
+		background-color: rgb(238,246,249);
+		border: solid 1px #cdced1;
+		height:240px;
+	}
+	.group{
+		margin-top: 12px;
+		margin-left: 36px;
+	}
+	.group label{
+		font-size: 16px;
+		color: #0071c5;
+		font-weight: bold;
+		width:48px;
+		line-height: 36px;
+	}
+	.group div{
+		border-bottom: 1px solid rgb(179,187,190);
+		line-height:32px;
+	}
+	.group label,.group input, .group div{
+		float: left;
+		width:10%;
+	}
+	.group input, .group div{
+		width:70%;
+	}
+	.box .save{
+		width:100%;
+		padding-right: 60px;
+		padding-top: 10px;
+		overflow: hidden;
+	}
+</style>
+</head>
+<body style="background-color: #edf6f8;">
+	<div class="box">
+		<div class="mar" style="margin-top:10px;text-align:center;font-size: 24px;color: rgb(51,122,183);font-weight: bold;">授权码管理</div>
+		<div class="mangeBox">
+			<div class="group col-md-12" style="margin-top: 32px;">
+				<label>版本：</label>
+				<div id="banben"></div>
+			</div>
+			<div class="group col-md-12">
+				<label>P K：</label>
+				<div id="pk" ></div>
+			</div>
+			<div class="group col-md-12">
+				<label>S N：</label>
+				<input id="sn" type="text" class="form-control" style="border:1px solid #0071c5">
+			</div>
+			<div class="save">
+			<a id="submit" href="#" style="float: right;"><img src="img/icon/save.png"></a>
+		</div>			
+		</div>
+		
+		
+	</div>
+	<script src="../libs/jquery-1.11.0.min.js" type="text/javascript"></script>
+	<script type="text/javascript" src="../libs/bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="sqm.js"></script>
+</body>
+</html>

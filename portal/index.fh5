@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="UTF-8" />
+  <title>登录</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="../css/userpass.css" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" href="../css/login_new.css" />
+  <link rel="stylesheet" type="text/css" href="../../cc/css/newlogin.css">
+  <script type='text/javascript' src='../libs/jquery-1.11.0.min.js'></script>
+  <!-- <script type='text/javascript' src='../libs/jquery.particleground.min.js'></script> -->
+  <script type="text/javascript" src="../libs/cookie/jquery.cookie.js"></script>
+  <!-- <script type='text/javascript' src='index.js'></script> -->
+  <style type="text/css">
+    body{
+      background: url('../images/newLogin/fea_portal_bg.jpg') center center no-repeat !important;
+      background-size: 100% !important;
+
+    }
+    .logbox{
+      border: 1px #005b62 solid;
+      background-color: rgb(0, 96, 158);
+      top: 31%;
+      left: 51%;
+    }
+    .logbtn{
+      box-shadow: 1px 2px 2px #001971;
+      text-shadow: 1px 2px 3px #001f3e;
+      background-color: #01a4bf !important;
+    }
+    .logbtn:hover{
+       background-color: #20d2d8 !important;
+    }
+    .boxinside p{
+      border: 1px solid #11729f;
+    }
+    .boxinside p:active {
+      background-color: rgba(0, 46, 68, 0.6);
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="logbox">
+  <div class="logo"><!-- <img src="img/logo.png"> --><p>大数据可视化门户</p></div>
+      <div class="boxinside">
+          <p><i class="user"></i><input id="ipt1" type="" placeholder="请输入账号" name="user" class="ip_jq"></p>
+          <p><i class="key"></i><input id="ipt2" type="password" placeholder="请输入密码" name="psw" class="ip_jq"></p>
+          <!-- <label class="checker"><input type="checkbox" name="remember">记住密码 </label> -->
+          <button class="logbtn" id="login">登录</button>
+      </div>
+  </div>
+<div class="popup">
+    <div class="est-valign-ghost"></div>
+    <div class="popup-content" style="height: 200px;">
+        <div class="popup-header">
+            <h5 title="修改密码">修改密码</h5>
+            <a class="popup-close"><i class="fa fa-close"></i></a>
+        </div>
+        <div class="popup-body">
+            <div class="password-edit">
+                <input type="hidden" id="userName" value="admin">
+                <input type="hidden" id="userId" value="1">
+                <div class="password-edit-item">
+                  <label class="label">用户名：</label>
+                  <span class="edit">admin</span>
+                </div>
+
+                <div class="password-edit-item">
+                  <label class="label" for="userNewPwd">  新密码：</label>
+                  <input class="inputText" type="password" id="userNewPwd" placeholder="6~30位大小写字母、数字、特殊字符组成">
+                </div>
+
+            </div>
+        </div>
+        <div class="popup-footer">
+            <button id="submit"  class="popup-footer-confirm">确认</button>
+            <button class="popup-footer-cancel">取消</button>
+        </div>
+	</div>
+</div>
+<script type="text/javascript" src="index.js"></script>
+
+
+</body>
+</html>

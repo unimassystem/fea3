@@ -1,0 +1,499 @@
+
+//---标题文字样式---
+var e_title_textstyle={
+    color:'#f0f0f0',
+    fontSize:16,
+    fontWeight:'normal'
+};
+
+//---图例文字样式---
+var e_legend_textstyle={
+    color:'#f0f0f0',
+    fontSize:12
+};
+
+// 背景图颜色样式
+var e_back_color='rgba(38,137,175,0.2)';
+
+// 直角系以及饼图颜色循环
+var e_angle_color=['rgba(218,75,60,0.8)','#ff4e00','#f4cb0b','#3751a7','#22de0f','#db0bf4'];
+var e_angle_colors=['#8eb82b','#ff7417','#bdbdbd','#bdbdbd'];
+
+
+
+/*-------------------------------------------折线图----------------------------------*/
+/*var e_line_linecolor=['#e9dd06','#00f3fc','#4249ca']
+;
+此颜色配置不包含图例颜色，因此会导致图例和线条显色不对应的问题出现*/
+
+//折线图平均线
+var e_markline_data=[
+    /*{type : 'average', name: '平均值'}*///（显示：把{type : 'average', name: '平均值'}加上）（不显示：把{type : 'average', name: '平均值'}去掉，但是要保留[]）
+];
+
+//全局折线图颜色
+var e_lineglobal_color=['red','blue','#ccc'];
+
+//---折线图(坐标轴)文字样式
+var e_line_textstyle={
+	color:'#f0f0f0',
+	fontSize:12
+};
+
+/*柱状图渐变颜色*/
+var e_zzt_jb_0='rgba(255,255,0,1)';
+var e_zzt_jb_1='rgba(255,255,0,0.05)';
+
+
+//线条是否平滑
+var e_line_smooth=true;//true代表线条平滑，false代表线条尖锐
+//--------------------------面积图--------------------------
+//面积图全局颜色
+var e_areaglobal_color=['#e9dd06','rgba(255,255,0,1)','#4249ca','rgba(255,255,0,1)','#396858'];
+//面积图面积颜色在 0 处时的颜色
+var e_areastyle_0color=['rgba(255,0,0,1)','rgba(255,255,0,1)','rgba(66,73,202,1)','rgba(255,255,0,1)','#396858'];
+
+//面积图面积颜色在 1 处时的颜色
+var e_areastyle_1color=['rgba(255,0,0,.1)','rgba(255,255,0,0.1)','rgba(66,73,202,.1)','rgba(255,255,0,0.1)','#396858'];
+
+//新增面积图线条颜色
+var e_arealine_color=['#e9dd06','#ee3e00','#4249ca','#ffff00','#396858'];
+
+//-------------------------多颜色单数据柱状图-----------------------
+var e_itemnormal_color=['rgba(51,161,101,.8)','#e9dd06','#4249ca','#00f3fc','#e9dd06','#4249ca','#00f3fc','#e9dd06','#4249ca'];
+
+//---柱状图(坐标轴)文字样式
+var e_bar_textstyle={
+	color:'#f0f0f0',
+	fontSize:12
+};
+
+//---散点图(坐标轴)文字样式
+var e_scatter_textstyle={
+	color:'#f0f0f0',
+	fontSize:12
+};
+//---散点图·每个系列点样式
+var e_scatter_color=['#ff4e00','#0bbaf4','#f4cb0b','#3751a7','#22de0f','#db0bf4'];
+
+//---堆积图(坐标轴)文字样式
+var e_barstack_textstyle={
+	color:'#f0f0f0',
+	fontSize:12
+};
+
+
+
+//----------默认饼图外环----------
+var e_pie_mr_shadowBlur_1=6;
+var e_pie_mr_shadowBlur_2=1;
+//----阴影水平方向上的偏移距离
+var e_pie_mr_shadowOffsetX_1=3;
+var e_pie_mr_shadowOffsetX_2=2;
+//----阴影垂直方向上的偏移距离
+var e_pie_mr_shadowOffsetY_1=6;
+var e_pie_mr_shadowOffsetY_2=2;
+//----阴影颜色
+var e_pie_mr_shadowColor_1='rgba(122,122,122,1)';
+var e_pie_mr_shadowColor_2='rgba(122,122,122,1)';
+
+
+//-----饼图内外环
+//饼图图例是否显示
+var e_pie_nw_show=false;
+//----图形阴影的模糊大小,1是内环，2是外环
+var e_pie_shadowBlur_1=6;
+var e_pie_shadowBlur_2=10;
+//----阴影水平方向上的偏移距离
+var e_pie_shadowOffsetX_1=3;
+var e_pie_shadowOffsetX_2=10;
+//----阴影垂直方向上的偏移距离
+var e_pie_shadowOffsetY_1=6;
+var e_pie_shadowOffsetY_2=10;
+//----阴影颜色
+var e_pie_shadowColor_1='rgba(14,48,67,1)';
+var e_pie_shadowColor_2='rgba(14,48,67,1)';
+
+
+
+
+
+
+//----柱线图渐变颜色
+var e_bar_color_jb1=["#f0ff01",'#d4d100','#8b1899','#86a8ff','#00ffe4'];  // 0% 处的颜色
+var e_bar_color_jb2=['rgba(0,183,181,0.01)','rgba(207,0,0,0.4)','rgba(0,157,151,0.31)','#1a00b7','#aa2c0f']; // 100% 处的颜色
+
+var e_line_zx_color='red';
+
+//-------------------------地图散点-----------------------------
+
+var e_mapscatter_visul_color=['#ef1600','#e4d60e','#339ca8'];
+var e_mapscatter_visul_textstyle={
+	color:'#f0f0f0',
+	fontSize:12
+};
+//---地图散点·地图颜色·正常状态---
+var e_mapscatter_geo_itemnormal={
+	areaColor: '#a6d8c0',//块背景
+    borderColor: '#f0f0f0'//区域边线
+};
+//---地图散点·地图颜色·鼠标放置---
+var e_mapscatter_geo_itememphasis={
+	label:{show:true},
+    areaColor:'#7bbb9b',
+    borderColor:'#0d8447',
+    borderWidth:1
+};
+//---地图散点·点颜色·鼠标放置---
+var e_mapscatter_scatter_itememphasis={
+	borderColor: '#fff',
+    borderWidth: 1
+};
+
+//-------------------------地图-----------------------------
+
+var e_map_visul_color=['#ef1600','#e4d60e','#339ca8'];
+var e_map_visul_textstyle={
+	color:'#f0f0f0',
+	fontSize:12
+};
+//---地图·正常状态---
+var e_map_itemnormal={
+	label:{
+		show:false,
+		textStyle:{color:'#f0f0f0'}
+	},//地名样式
+	borderColor:'#24ab6a'
+};
+//---地图·鼠标放置---
+var e_map_itememphasis={
+	label:{show:true},
+	borderColor:'#0d8447',
+	borderWidth:1
+};
+
+
+//-----柱线图阴影颜色
+var e_bar_zx_shadowColor='#004490';
+
+//-----柱线图阴影的模糊大小
+var e_bar_zx_shadowBlur=1;
+
+//-----柱线图阴影水平方向上的偏移距离
+var e_bar_zx_shadowOffsetX=3;
+
+//----柱线图阴影垂直方向上的偏移距离
+var e_bar_zx_shadowOffsetY=1;
+
+//-------------------------热力图-----------------------
+
+//---坐标轴样式---
+var e_hot_textstyle={
+	color:'#f0f0f0',
+	fontSize:12
+};
+//---热力图映射---
+var e_hot_visul_color=['#c00000','#ed7d31','#ffc000','#719014'];
+
+//-------------------------南丁格尔玫瑰图-----------------------
+
+//---块的颜色循环---
+var e_rose_color=["#5db51d","#e4dc0e","#ef1600","#f37814","#72b2ee"];
+
+//-------------------------迁徙图-----------------------
+
+//---地图·327js正常状态---
+var e_mapline_itemnormal={
+	areaColor: 'rgba(99,56,84,.8)',
+    borderColor: '#8d8d8d'
+};
+//地图·区域颜色
+var e_maparea_color='#142136';
+//地图·区域边框线颜色
+var e_mapareaborder_color='#283a57';
+//---地图·鼠标放置---
+var e_mapline_itememphasis={
+	areaColor: 'rgba(22,85,108,0.8)'
+};
+
+//------------------------圆形关系图---------------------
+
+//---圆形颜色---
+var e_gCircle_color=['#11d3ee','#ff00f0','#24da00','#f19149',"#ef1600","#f37814","#72b2ee"];
+//---圆形关系图线条初始样式---
+var e_circlrline_normal={
+    color: '#f0f0f0',
+    width:1,
+    curveness: 0.3//线条弯曲的程度
+};
+//---力导向图线条初始样式---
+var e_forceline_normal={
+    color: '#f0f0f0',
+    width:1
+};
+//---自定义关系图线条初始样式---
+var e_selfline_normal={
+    color: '#f0f0f0',
+    width:1
+};
+//---线条·鼠标放上去·样式---
+var e_circlrline_emphasis={
+    color: 'red',
+    width:2,
+    curveness: 0.3
+};
+//---线条·鼠标放上去·样式---
+var e_forceline_emphasis={
+    color: 'red',
+    width:2
+};
+//---线条·鼠标放上去·样式---
+var e_selfline_emphasis={
+    color: 'red',
+    width:2
+};
+
+//------------------------桑基图------------------------
+
+//---块颜色循环---
+var e_sankey_color=["#005db0","#fcce10","#11ddee","#fad860","#9bca63","#a0a7e6","#96dee8"];
+//---标签样式---
+var e_sankey_label={
+	normal:{
+        show:true,
+        textStyle:{
+        	color:'#f0f0f0',
+    		fontSize:12,
+    		fontWeight:'normal'
+        }
+    },
+    emphasis:{
+    	show:true,
+        textStyle:{
+        	color:'#f0f0f0',
+    		fontSize:12,
+    		fontWeight:'normal'
+        }
+    }
+};
+//---桑基图样式--
+var e_sankey_item={
+	normal: {
+        borderWidth: 1,
+        borderColor: '#aaa'
+    },
+    emphasis:{
+    	borderWidth: 2,
+        borderColor: '#aaa'
+    }
+};
+//---桑基图·线样式--
+var e_sankey_line={
+	normal: {
+        color: 'rgba(0,240,255,0.5)',
+        curveness: 0.5
+    },
+    emphasis:{
+    	color: 'rgba(0,240,255,0.5)',
+        curveness: 0.5
+    }
+};
+
+//---柱线图(坐标轴)---
+var e_barline_textstyle={
+	color:'#f0f0f0',
+	fontSize:12
+};
+//---柱线图柱线颜色---
+// var e_barline_color=["#5db51d","#e4dc0e","#ef1600","#f37814","#72b2ee"];
+var e_19_line_normal = {
+    color: 'red'
+};
+
+//---面积图颜色---
+var e_area_color=["#5db51d","#e4dc0e","#ef1600","#f37814","#72b2ee"];
+//---面积坐标轴颜色---
+var e_area_textstyle={
+	color:'#f0f0f0',
+	fontSize:12
+};
+
+//---横向柱状颜色---
+var e_rowbar_color=["#5db51d","#e4dc0e","#ef1600","#f37814","#72b2ee"];
+//---横向柱状(坐标轴)文字样式
+var e_rowbar_textstyle={
+	color:'#f0f0f0',
+	fontSize:12
+};
+
+//----------------------------------地图热力散点----------------
+
+//---隐射颜色---
+var e_maphotscatter_visulecolor=['#c00000','#ed7d31','#ffc000','#719014'];
+//---隐射字体样式
+var e_maphotscatter_visuletextStyle={
+    color:'#fff'
+};
+//---点样式---
+var e_maphotscatter_point={
+	symbol:'pin',//点形状
+    symbolSize :16,//点大小
+    itemStyle:{
+        normal:{
+            color:'yellow',//初始点颜色
+            label:{show:false}//是否显示标签
+        },
+        emphasis:{
+	    	color:'yellow',//触发后颜色
+            label:{show:false}//触发后是否显示标签
+	    }
+    }
+};
+
+//---内环图环颜色---
+var e_pies_color=["#5db51d","#e4dc0e","#ef1600","#f37814","#72b2ee",'#60c0dd','#d7504b','#c6e579','#26c0c0'];
+
+
+//-----------------------24.js仪表盘------------------
+
+//---坐标轴---
+var e_gauge_linecolor={
+    color: [[0.09, 'lime'],[0.82, '#1e90ff'],[1, '#ff4500']],
+    width: 3,
+    shadowColor : '#fff', //默认透明
+    shadowBlur: 1
+};
+//---坐标轴标签---
+var e_gauge_linelabel={
+    /*fontWeight: 'bolder',*/
+    color: '#fff',
+    shadowColor : '#fff', //默认透明
+    shadowBlur: 1
+};
+//---坐标轴刻度---
+var e_gauge_tick={            // 坐标轴小标记
+    length :10,        // 属性length控制线长
+    lineStyle: {       // 属性lineStyle控制线条样式
+        color: 'auto',
+        shadowColor : e_41_shadow_color, //默认透明
+        shadowBlur: 10
+    }
+};
+//--标题---
+var e_gauge_title={
+    offsetCenter: [0, '-25%'],
+    textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+        fontWeight: 'bolder',
+        fontSize: 20,
+        fontStyle: 'italic',
+        color: '#fff',
+        shadowColor : '#fff', //默认透明
+        shadowBlur: 10
+    }
+};
+//--仪表盘详情---
+var e_gauge_detail={
+    shadowColor : e_41_shadow_color, //默认透明
+    shadowBlur: 5,
+    offsetCenter: [0, '30%'],       // x, y，单位px
+    textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+        fontWeight: 'bolder',
+        color: '#fff'
+    }
+};
+//---指针样式---
+var e_41_itemstyle = {
+    normal:{
+        color: 'auto',//指针颜色，auto为指向区间的颜色
+        borderColor: '#000',
+        borderWidth: 0,
+        borderType: 'solid',
+        shadowBlur: 0,//阴影大小
+        shadowColor: '#fff',
+    }
+};
+//----// 分隔线------
+var e_gauge_splitLine = {
+    length :20,         // 属性length控制线长
+    lineStyle: {       // 属性lineStyle（详见lineStyle）控制线条样式
+        width:3,
+        color: '#fff',
+        shadowColor : '#fff', //默认透明
+        shadowBlur: 10
+    }
+};
+var e_gauge_axisLabel = { //坐标轴小标记
+    textStyle: {       // 属性lineStyle控制线条样式
+        fontWeight: 'bolder',
+        color: e_41_font_color,
+        shadowColor : e_41_shadow_color, //默认透明
+        shadowBlur: 10
+    }
+};
+
+
+
+//---横向柱状堆积图(坐标轴)文字样式
+var e_rowbarstack_textstyle={
+	color:'#f0f0f0',
+	fontSize:12
+};
+//---横向柱状堆积图·柱子样式
+var e_rowbarstack_color=["#5db51d","#e4dc0e","#ef1600","#f37814","#72b2ee"];
+
+//---面积图堆积图颜色---
+var e_areastack_color=["#5db51d","#e4dc0e","#ef1600","#f37814","#72b2ee"];
+//---面积堆积图坐标轴颜色---
+var e_areastack_textstyle={
+	color:'#f0f0f0',
+	fontSize:12
+};
+
+//---K线图(坐标轴)文字样式
+var e_k_textstyle={
+    color:'#f0f0f0',
+    fontSize:12
+};
+
+
+//----门户页面的每个图表的边框
+function getBorder(type){
+    var shuzhi  = parseInt(type);
+    var noBorders = [8,10,13,18,24];//无边框图形
+    if(shuzhi > 300){
+        return 'no_border';
+    }else if($.inArray(shuzhi,noBorders) != -1){
+        return 'no_border';
+    }else{
+        return 'plot_border';
+    }
+}
+
+//---雷达图---------------
+//雷达图的指示器名字的颜色
+var e_radername_color='rgb(238, 197, 102)';
+//坐标轴区域中的分隔线的颜色
+var e_splitline_color=[
+    'rgba(238, 197, 102, 0.1)', 'rgba(238, 197, 102, 0.2)',
+    'rgba(238, 197, 102, 0.4)', 'rgba(238, 197, 102, 0.6)',
+    'rgba(238, 197, 102, 0.8)', 'rgba(238, 197, 102, 1)'
+].reverse();
+//坐标轴线线的颜色
+var e_axisline_color='rgba(238, 197, 102, 0.5)';
+//图形的颜色
+var e_itemstylenormal_color=['#c00000','#719014','#ffc000','#ed7d31','#c00000','#719014','#ffc000','#719014'];//前4个值没用但是要放着
+
+
+
+//----------------------------------41.js 三个仪表盘的样式-----------------------------
+//字体样式
+var e_41_font_color = '#fff';
+//阴影
+var e_41_shadow_color = '#fff';
+//line 线
+var e_41_line_color = '#fff';
+
+/*/----------------------19.js柱状图网格辅助线----------------------------/*/
+var e_19_splitLine = {
+  show:false
+};

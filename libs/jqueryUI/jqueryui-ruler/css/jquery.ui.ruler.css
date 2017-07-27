@@ -1,0 +1,191 @@
+.ef-ruler {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+}
+
+.ef-ruler .corner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 18px;
+    height: 18px;
+    background-color: #fff;
+    border-width: 0 1px 1px 0;
+    border-style: solid;
+    border-color: #000;
+    z-index: 2;
+}
+
+.ef-ruler .ruler {
+    background: none repeat scroll 0% 0% #FFF;
+    color: #444;
+    font-family: source code pro, "Arial Narrow", "Helvetica Neue", Helvetica, Arial, Veranda, sans-serif;
+    font-size: 9px;
+    line-height: 14px;
+    overflow: hidden;
+    z-index: 1;
+
+    /* Disable select */
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.ef-ruler .top-arrow {
+    position: absolute;
+    top: 5px;
+    left: 0;
+    /*font-size: 11px !important;*/
+    width: 0;
+    height: 0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+
+    border-top: 6px solid #000;
+
+    -webkit-transform: scaleX(0.7);
+    -moz-transform: scaleX(0.7);
+
+    z-index: 3;
+}
+
+.ef-ruler .top-line {
+    position: absolute;
+    top: 0;
+    left: 0;
+    /*font-size: 11px !important;*/
+    width: 0;
+    height: 18px;
+    border-left: 1px solid #000;
+
+    z-index: 3;
+}
+
+.ef-ruler .left-arrow {
+    position: absolute;
+    top: 0;
+    left: 5px;
+    width: 0;
+    height: 0;
+    border-top: 6px solid transparent;
+    border-bottom: 6px solid transparent;
+
+    border-left: 6px solid #000;
+
+    -webkit-transform: scaleY(0.7);
+    -moz-transform: scaleY(0.7);
+
+    z-index: 3;
+}
+
+.ef-ruler .left-line {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 18px;
+    height: 0;
+    border-top: 1px solid #000;
+
+    z-index: 3;
+}
+
+
+
+.ef-ruler .tick {
+    background: none repeat scroll 0% 0% #444;
+}
+
+.ef-ruler .top {
+    position: absolute;
+    top: 0;
+    left: 18px;
+    height: 18px;
+    border-bottom: 1px solid #000;
+}
+
+.ef-ruler .top .major {
+    position: absolute;
+    top: 0;
+    width: 1px;
+    height: 100%;
+    text-indent: 1px;
+}
+
+.ef-ruler .top .minor {
+    position: absolute;
+    bottom: 0px;
+    width: 1px;
+    height: 6px;
+}
+
+.ef-ruler .top .micro {
+    position: absolute;
+    bottom: 0px;
+    width: 1px;
+    height: 4px;
+}
+
+.ef-ruler .left {
+    position: absolute;
+    top: 18px;
+    left: 0;
+    width: 18px;
+    border-right: 1px solid #000;
+}
+
+.ef-ruler .left .major {
+    position: absolute;
+    right: 0;
+    height: 1px;
+    width: 100%;
+    text-indent: 1px;
+}
+
+.ef-ruler .left .major span {
+    display: block;
+    position: absolute;
+    top: 1px;
+    right: 0;
+    margin-right: 18px;
+
+    -webkit-transform: rotate(-90deg);
+    -moz-transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg);
+    -o-transform: rotate(-90deg);
+    transform: rotate(-90deg);
+
+    -webkit-transform-origin: right top 0px;
+    -moz-transform-origin: right top 0px;
+    -ms-transform-origin: right top 0px;
+    -o-transform-origin: right top 0px;
+    transform-origin: right top 0px;
+}
+
+.ef-ruler .left .minor {
+    position: absolute;
+    right: 0px;
+    height: 1px;
+    width: 6px;
+}
+
+.ef-ruler .left .micro {
+    position: absolute;
+    right: 0px;
+    height: 1px;
+    width: 4px;
+}
+
+.ef-ruler .stage {
+    position: absolute;
+    top: 18px;
+    left: 18px;
+    width: auto;
+    height: auto;
+}

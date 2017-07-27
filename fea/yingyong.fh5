@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+    <title>应用管理功能</title>
+    <link rel="stylesheet" type="text/css" href="../libs/datatable/css/jquery.dataTables.css">
+    <link rel="stylesheet" href="../libs/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/pbl.css">
+    <link rel="stylesheet" href="css/jquery.minicolors.css">
+
+
+
+	<style type="text/css">
+		#useManage th{
+				background-color: rgb(0,113,197)!important;
+				font-size: 16px;
+				font-weight: normal;
+				color: #fff;
+		}
+		#useManage th,#useManage td {
+			text-align: center;
+		}
+		.box{
+			width: 86%;
+			margin: auto;
+			margin-top: 10px;
+			height:100%;
+			overflow: hidden;
+			background-color: #ffffff;
+			border: solid 1px #cdced1;
+		}
+		table th{
+			text-align: center;
+		}
+		.dataTables_wrapper .dataTables_filter{
+			width: 100%;
+			float: left;
+		}
+		.dataTables_wrapper .dataTables_filter label{
+			float: left;
+			margin-left: 8px;
+		}
+		.dataTables_filter input{
+			background-color:#f2f5fb;
+            border:1px #0071c5 solid;
+            height:30px;
+            width:330px;
+            padding-left:10px;
+		}
+		.anniu{
+            height:30px;
+            width:31px;
+            float:right;
+            border:none;
+            padding-left:1px;
+            background:#0071c5 url(img/find_icon.png) no-repeat center center;
+            background-repeat:no-repeat;
+        }
+		.demo_yz{
+			width: 100%;
+			height: 42px;
+			margin-top: 15px;
+			overflow: hidden;
+			position: relative;
+		}
+		.demo_yz h1{
+			color: #999;
+			font-size: 14px;
+			float: left;
+			margin: 0;
+			/*position: absolute;*/
+			line-height: 42px;
+		}
+		.demo_cs,.demo_jb,.demo_bgt{
+			float: left;
+			width: 85%;
+			height: 42px;
+			overflow: hidden;
+		}
+		.yz_cs{
+			float: left;
+			width: 42px;
+			height: 42px;
+			padding: 2px;
+			margin-left: 30px;
+			cursor: pointer;
+		}
+		.yz_cs span{
+			width: 100%;
+			height: 100%;
+			display: block;
+			border: solid 1px #ccc;
+		}
+		.yz_jb{
+			float: left;
+			width: 96px;
+			height: 42px;
+			padding: 2px;
+			margin-left: 30px;
+			cursor: pointer;
+		}
+		.yz_jb span{
+			width: 36px;
+			height: 36px;
+			display: block;
+			float: left;
+		}
+		.yz_jb a{
+			display: block;
+			width: 18px;
+			height: 42px;
+			line-height: 42px;
+			text-align: center;
+			float: left;
+		}
+		.yz_bgt{
+			float: left;
+			width: 42px;
+			height: 42px;
+			padding: 2px;
+			overflow: hidden;
+			margin-left: 30px;
+			cursor: pointer;
+		}
+		.yz_bgt span{
+			display: block;
+			width: 100%;
+			height: 100%;
+			line-height: 42px;
+		}
+		.border_xz_demo{
+			border: 1px solid #999;
+		}
+	</style>
+</head>
+<body>
+	<!-- 构建dom -->
+<div class="box">
+	<div class="mar" style="margin-top:10px;text-align:center;font-size: 24px;color: rgb(51,122,183);font-weight: bold;">应用管理</div>
+	<div class="col-md-12 row"style="margin:auto;margin-top: 10px;"></div>
+	<table id="useManage" class="display table table-bordered" cellspacing="0" width="100%"></table>
+	<div class="modal fade" id="addModal">
+	  	<div class="modal-dialog ">
+	    	<div class="modal-content">
+	      		<div class="modal-header">
+	        		<button type="button" class="close" id="ck_gb" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        		<h4 class="modal-title">应用管理</h4>
+	      		</div>
+	      		<div class="modal-body" id="useModal">
+	      			<div class="col-lg-12" style="margin-bottom: 20px;">
+				    	<div class="input-group">
+				      		<span class="input-group-btn">
+			        			<button class="btn btn-default" type="button">应用ID</button>
+				      		</span>
+				      		<input type="text" data-id="0" class="form-control" placeholder="输入2-11个以字母开头(可包含数字、“_”、“.”)的字符串">
+			    		</div>
+				  	</div>
+						<div class="col-lg-12" style="margin-bottom: 20px;">
+						<div class="input-group">
+								<span class="input-group-btn">
+									<button class="btn btn-default" type="button">中文名称</button>
+								</span>
+								<input type="text" data-id="1" class="form-control" placeholder="输入应用ID的中文名称">
+						</div>
+					</div>
+	      			<div class="col-lg-12" style="margin-bottom: 20px;">
+				    	<div class="input-group">
+				      		<span class="input-group-btn">
+			        			<button class="btn btn-default" type="button">导航选择</button>
+				      		</span>
+				      		<input type="text" data-id="2" class="form-control" placeholder="请选择导航" readonly="true">
+				      		<div class="input-group-btn">
+						        <button id="nav_btn" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">导航<span class="caret"></span></button>
+						        <ul id="nav_list"style="height: 180px;overflow: auto;" class="dropdown-menu dropdown-menu-left">
+						        </ul>
+					      	</div>
+			    		</div>
+				  	</div>
+				  	<div class="col-lg-12" style="margin-bottom: 20px;">
+				  		<div class="input-group">
+				      		<span class="input-group-btn">
+			        			<button class="btn btn-default" type="button">门户选择</button>
+				      		</span>
+				      		<input type="text" data-id="3" class="form-control" placeholder="门户3：深底全屏" readonly="true">
+				      		<div class="input-group-btn">
+						        <button id="mh_btn" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">门户<span class="caret"></span></button>
+						        <ul id="mh_list" class="dropdown-menu dropdown-menu-left"></ul>
+					      	</div>
+			    		</div>
+				  	</div>
+
+						<div class="col-lg-12" style="margin-bottom: 20px;">
+						<div class="input-group">
+								<span class="input-group-btn">
+									<button class="btn btn-default" type="button">选择LOGO</button>
+								</span>
+								<input type="text" data-id="4" class="form-control" placeholder="请选择LOGO" readonly="true">
+								<div class="input-group-btn">
+									<button id="img_btn" type="button" class="btn btn-default">图片库<span class="caret"></span></button>
+								</div>
+								<!-- <div class="input-group-btn">
+									<button id="img_btn" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">图片库<span class="caret"></span></button>
+									<ul id="img_list"style="height: 180px;overflow: auto;" class="dropdown-menu dropdown-menu-left">
+									</ul>
+								</div> -->
+						</div>
+					</div>
+				  	<div class="col-lg-12" style="margin-bottom: 20px;">
+				    	<div class="input-group">
+				      		<span class="input-group-btn">
+			        			<button class="btn btn-default" type="button">创建者</button>
+				      		</span>
+				      		<input type="text" data-id="5" class="form-control" >
+			    		</div>
+				  	</div>
+						<div class="col-lg-12" style="margin-bottom: 20px;">
+				    	<div class="input-group">
+				      		<span class="input-group-btn">
+			        			<button class="btn btn-default" type="button">轮播时间</button>
+				      		</span>
+				      		<input type="text" data-id="6" class="form-control" placeholder="纯粹的数字（例如：输入1代表1秒）">
+			    		</div>
+				  	</div>
+						<div class="col-lg-12" style="margin-bottom: 20px;">
+						<div class="input-group">
+								<span class="input-group-btn">
+									<button class="btn btn-default" type="button">门户背景</button>
+								</span>
+								<input type="hidden" data-id="7" class="form-control">
+								<input type="text" id="hue-demo" class="form-control demo bg_cs" data-control="hue" value="#fff" placeholder="请选择纯色">
+								<form class="form-inline bg_jb">
+								  <div class="form-group col-lg-6 pd_ts">
+								    <input type="text" id="hue-demo" class="form-control demo start_jb" data-control="hue" value="#fff" placeholder="渐变开始">
+								  </div>
+								  <div class="form-group col-lg-6">
+								    <input type="text" id="hue-demo" class="form-control demo end_jb" data-control="hue" value="#fff" placeholder="渐变结束">
+								  </div>
+								</form>
+								<input type="text" id="img_xx" class="form-control" placeholder="请点击输入框就可以选择背景图片" readonly="true">
+								<div class="input-group-btn">
+									<button id="bg_btn" type="button" class="btn btn-default dropdown-toggle" role="1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">选择<span class="caret"></span></button>
+									<ul id="bg_list" class="dropdown-menu dropdown-menu-left">
+										<li data-id="1"><a href="#">纯色</a></li>
+										<li data-id="2"><a href="#">渐变</a></li>
+										<li data-id="3"><a href="#">图片</a></li>
+									</ul>
+								</div>
+						</div>
+						<div class="demo_yz col-lg-12">
+							<h1>预置方案：</h1>
+							<div class="demo_cs">
+									<div class="yz_cs" data-id="#000">
+										<span style="background:#000;"></span>
+									</div>
+									<div class="yz_cs" data-id="#001737">
+										<span style="background:#001737;"></span>
+									</div>
+									<div class="yz_cs" data-id="#f0f0f0">
+										<span style="background:#f0f0f0;"></span>
+									</div>
+									<div class="yz_cs" data-id="#000">
+										<span style="background:#000;"></span>
+									</div>
+									<div class="yz_cs" data-id="#000">
+										<span style="background:#000;"></span>
+									</div>
+							</div>
+							<div class="demo_jb">
+								<div class="yz_jb">
+									<span data-id="#052336" style="background:#052336;"></span>
+									<a>-</a>
+									<span data-id="#000" style="background:#000;"></span>
+								</div>
+							</div>
+							<div class="demo_bgt">
+								<div class="yz_bgt" data-id="img:mh2">
+									<span style="background:url(../images/logo/portal_2_1_bg_4.png);"></span>
+								</div>
+							</div>
+						</div>
+
+
+					</div>
+					<div class="col-lg-12" style="margin-bottom: 20px;">
+						<div class="input-group">
+								<span class="input-group-btn">
+									<button class="btn btn-default" type="button">图表方案</button>
+								</span>
+								<input type="text" data-id="8" value="1" class="form-control" placeholder="请选择图表方案" readonly="true">
+								<div class="input-group-btn">
+									<button id="mh_fa_cj" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">方案<span class="caret"></span></button>
+									<ul id="mh_list_cj" class="dropdown-menu dropdown-menu-left">
+										<li data-id="1"><a href="#">方案一</a></li>
+										<li data-id="2"><a href="#">方案二</a></li>
+										<li data-id="3"><a href="#">方案三</a></li>
+										<li data-id="4"><a href="#">方案四</a></li>
+										<li data-id="5"><a href="#">方案五</a></li>
+									</ul>
+								</div>
+						</div>
+					</div>
+	      		</div>
+      			<div class="modal-footer">
+        			<button type="button" id="gb_btn" class="btn btn-default" data-dismiss="modal">关闭</button>
+	        		<button id="ok_btn" type="button" class="btn btn-primary">确认</button>
+		        	<button id="saveOK_btn" type="button" class="btn btn-primary">确认</button>
+	      		</div>
+	    	</div><!-- /.modal-content -->
+	  	</div><!-- /.modal-dialog -->
+	</div>
+</div>
+
+<script src="../libs/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="../libs/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../libs/datatable/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="../libs/jUploader/jquery.jUploader-1.0.min.js"></script>
+<script type="text/javascript" src="js/jquery.minicolors.min.js"></script>
+<script type="text/javascript" src="js/pbl.js"></script>
+<script type="text/javascript" src="yingyong.js"></script>
+</body>
+</html>

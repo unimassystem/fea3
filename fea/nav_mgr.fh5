@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>导航管理</title>
+	<link rel="stylesheet" type="text/css" href="../libs/datatable/css/jquery.dataTables.css">
+	<link href="../libs/nestable/css/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+	<link href="../libs/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+	<link href="../libs/nestable/css/components.min.css" rel="stylesheet" id="style_components" type="text/css" />
+	<style type="text/css">
+		#mgr td{
+			text-align: center;
+		}
+		#mgr th{
+			background-color: rgb(0,113,197)!important;
+			font-size: 16px;
+			font-weight: normal;
+			color: #fff;
+		}
+		.box{
+			width: 86%;
+			margin: auto;
+			margin-top: 10px;
+			height: 100%;
+			background-color: #ffffff;
+			border: solid 1px #cdced1;
+		}
+		#add{
+			padding-right:6px !important;
+			padding-left:6px !important; 
+			text-align:center;
+		}
+		table th{
+			text-align: center;
+		}
+		.dataTables_filter input{
+			background-color:#f2f5fb;
+            border:1px #0071c5 solid;
+            height:30px;
+            width:330px;
+            border-radius:2px;
+            padding-left:10px;
+		}
+		.anniu{
+            height:30px;
+            width:31px;
+            float:right;
+            border:none;
+            padding-left:1px;
+            background:#0071c5 url(img/find_icon.png) no-repeat center center;
+            background-repeat:no-repeat;
+        }
+	</style>
+	
+</head>
+<body style="background-color: #edf6f8;">
+	<div class="box">
+		<div class="mar" style="margin-top:10px;text-align:center;font-size: 24px;color: rgb(51,122,183);font-weight: bold;">导航管理</div>
+		<div style="width:98%;margin: auto;margin-top: 10px;">
+			<div  style="padding-left: 0;width: 46%;float:left;">
+			    <div class="input-group">
+			    	<span class="input-group-btn">
+			        	<button class="btn btn-default" type="text">ID</button>
+			      	</span>
+			      	<input id="key" type="text" class="form-control">
+			    </div>
+			</div>
+			<div style="margin-left: 28px;width: 46%;float:left;">
+			    <div class="input-group">
+			      <span class="input-group-btn">
+			        	<button class="btn btn-default" type="text">中文描述</button>
+			      </span>
+			      <input id="title" type="text" class="form-control">
+			    </div>
+			</div>
+			<!-- <div style="margin-left: 20px;width: 21%;float:left;">
+				<div class="input-group">		
+					<div class="input-group-btn">
+				        <button id="mh_btn" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">门户预览<span class="caret"></span></button>
+				        <ul id="mh_list" class="dropdown-menu dropdown-menu-left"> 
+				        	<li data-id="1"><a href="#">门户1：白底横向导航</a></li> 	
+				        	<li data-id="2"><a href="#">门户2：白底纵向导航</a></li> 
+				        	<li data-id="3"><a href="#">门户3：深底全屏</a></li> 
+				        	<li data-id="4"><a href="#">门户4：星空全屏</a></li> 
+				        </ul>
+			      	</div>
+					      		<input id="mh" type="text" class="form-control">		      
+					      	</div>
+			</div> -->
+			<div style="width: 4%;float: right;">
+				<button id="add" class="btn btn-primary" >添加</button>
+			</div>
+		</div>
+		
+		<div style="width:98%;margin: auto;margin-top: 54px;">
+			<table id="mgr" class="display table table-bordered" cellspacing="0" width="100%">
+				<!-- <thead >
+					<th style="text-align: center;">ID</th>
+					<th style="text-align: center;">中文描述</th>
+					<th style="text-align: center;">操作</th>
+				</thead>
+				<tbody>
+				</tbody> -->
+			</table>
+		</div>
+	</div>
+	
+	<div class="modal fade" id="bcgChoose">
+	  	<div class="modal-dialog">
+		    <div class="modal-content">
+			      <div class="modal-header">
+			        	<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			        	<h4 class="modal-title">背景选择</h4>
+			      </div>
+			      <div class="modal-body" id="choose">
+		        		<label style="display: block;padding-left: 38%;">请选择您的预览背景</label>
+		        		<!--<div class="radio" style="padding-left: 38%;">
+						    <label>
+						      <input type="radio" name="bag" data-id="0" checked="true">白底横向导航
+						    </label>
+					  	</div>
+					  	<div class="radio" style="padding-left: 38%;">
+						    <label>
+						      <input type="radio" name="bag" data-id="1">白底纵向导航
+						    </label>
+					  	</div>
+					  	<div class="radio" style="padding-left: 38%;">
+						    <label>
+						      <input type="radio" name="bag" data-id="2">深底全屏
+						    </label>
+					  	</div>
+					  	<div class="radio" style="padding-left: 38%;">
+						    <label>
+						      <input type="radio" name="bag" data-id="3">星空全屏
+						    </label>
+					  	</div>
+					  	<div class="radio" style="padding-left: 38%;">
+						    <label>
+						      <input type="radio" name="bag" data-id="4">酷绚蓝
+						    </label>
+					  	</div>-->
+			      </div>
+			      <div class="modal-footer">
+			        	<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+			        	<button id="submit" type="button" class="btn btn-primary">确定</button>
+			      </div>
+		    </div><!-- /.modal-content -->
+	  	</div><!-- /.modal-dialog -->
+	</div>
+	<script type="text/javascript"  src="../libs/jquery-1.11.0.min.js"></script>
+	<script src="../libs/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+	<script type="text/javascript" src="../libs/datatable/js/jquery.dataTables.min.js"></script>
+	<script type="text/javascript" src="../libs/cookie/jquery.cookie.js"></script>
+	<script src="nav_mgr.js" type="text/javascript"  ></script>
+
+</body>
+</html>

@@ -1,0 +1,313 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>fea分析平台</title>
+<link rel="stylesheet" type="text/css" href="../libs/jqueryUI/css/jquery-ui.min.css">
+<!-- <link rel="stylesheet" type="text/css" media="screen" href="../libs/jUploader/jquery-ui-custom.css" /> -->
+<link rel="stylesheet" type="text/css" media="screen" href="../libs/jUploader/ui.jqgrid.css" />
+<link href="../libs/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+
+<link href="../libs/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+
+<link rel="stylesheet"  href="css/main.css" type="text/css" />
+
+</script>
+<style type="text/css">
+	.ui-dialog-titlebar{
+		background-color: rgb(0,113,197);
+		color: #fff;
+	}
+	.ui-dialog-titlebar-close{
+		background-color: rgb(0,113,197)!important;
+		color: #fff;
+		border-color: rgb(0,113,197)!important;
+		background-image: url('img/icon/X_icon.png')  !important;
+	}
+	 .ui-button .ui-icon  {
+		background-image: none!important;
+	}
+	#csTable{
+		width: 95%;float: left;
+	}
+	#csTable th{
+		text-align: center;
+		font-size: 16px;
+		font-weight: normal;
+	}
+	#csTable td,#csTable td a{
+		text-align: center;
+	}
+	#csTable td a{
+		text-decoration: none;
+		line-height: 36px;
+	}
+	#progress,#LoadProgress{
+		width: 60px;
+		line-height:33px;
+		text-align:center;
+		color: #fff;
+		background-color: rgb(49,176,213);
+		float: right;
+	}
+	#shangchuan{
+		color: #fff;
+		font-size: 14px;
+	}
+	#newPass{
+		width: 86%;
+		height: 32px;
+	}
+</style>
+<script src="../libs/jquery-1.11.0.min.js" type="text/javascript"></script>
+
+
+<script type="text/javascript" src="../libs/cookie/jquery.cookie.js"></script>
+
+<script type="text/javascript" src="../libs/jUploader/jquery.jUploader-1.0.min.js" ></script>
+<script type="text/javascript" src="../libs/bootstrap/js/bootstrap.min.js"></script>
+<!-- <script type="text/javascript" src="../libs/jUploader/jquery-ui-1.8.1.custom.min.js"></script> -->
+<script type="text/javascript" src="../libs/jqueryUI/js/jquery-ui.min.js"></script>
+
+
+<script type="text/javascript" src="js/vivo.js"></script>
+<script type="text/javascript" src="main.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("body").on('click','.list .lista',function(){
+			$(this).css({"color":"#0071c5","background":"#ffffff"});
+			$('.list .lista').not(this).css({"color":"#ffffff","background":"rgb(0,113,197)"});
+		});
+
+
+	});
+</script>
+
+</head>
+
+<body class="nav" style="background-color:#edf6f8;padding-right: 0;" >
+    <div class="top1" style="z-index: -1; margin-top: 0px;">
+        <div class="nav_bg">
+	        <div class="logo">
+	        	<img src="./img/main/logo2.png">
+			    <div class="logotext"><span>飞象大数据分析可视化平台</span></div>
+			</div>
+			<div class="userandfind" style="position: relative;">
+			    <a href="#" style="display:block; width:22px; height:26px; float:left;">
+			    	<img src="img/main/usericon.png"/>
+			    </a>
+		    	<div id="userEdit">
+		    		<ul class="list-unstyled">
+		    			<li class="item1"><a href="#"><img src="img/usericon.png"><span></span></a></li>
+		    			<li class="item2"><a href="#">修改密码</a></li>
+		    			<li style="height: 1px;background-color: #d2dde2;margin-left: 0;"></li>
+		    			<li class="item3"><a href="#">注销</a></li>
+		    		</ul>
+		    	</div>
+			</div>
+		    <div class="icon1" >
+	           <a href="#"  class="one" ><img src="img/main/shuju.png" /><p class="ap">数据</p></a>
+			   <a href="#"  class="two"><img src="img/main/2.png"/><p>UDB</p></a>
+			   <a href="#"  class="three"><img src="img/main/3.png"/><p>JDBC</p></a>
+			   <a href="#"  class="four"><img src="img/main/4.png" /><p>对象管理</p></a>
+			   <a href="#" class="five"><img  src="img/main/yunxing.png" class="epa"/><p>运行</p></a>
+			   <!-- <a href="#" class="five"><img src="img/main/6.png"/><p class="fp">控制台</p></a> -->
+	        </div>
+        </div>
+    </div>
+    <div class="menu">
+    	<ul class="nav nav-tabs" style="border-bottom: 0px;">
+    		<li class="list"><a class="lista" href="#">首页</a></li>
+    		<li class="list"><a class="lista" href="#">可视分析</a></li>
+    		<li class="list"><a class="lista" href="#">自助分析</a></li>
+    		<li class="list"><a class="lista" href="#">原语分析</a></li>
+    		<li class="list">
+    			<a class="dropdown-toggle lista" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">可视化设计<span class="caret"></span>
+			    </a>
+			    <ul class="dropdown-menu">
+			     	<li class="sec"><a href="#">静态面板管理</a></li>
+			     	<li class="sec"><a href="#">动态面板管理</a></li>
+					<li class="sec"><a href="#">交互面板管理</a></li>
+			     	<li class="sec"><a href="#">多屏互动管理</a></li>
+					<li class="sec"><a href="#">导航管理</a></li>
+			    </ul>
+    		</li>
+    		<li class="list dropdown">
+			    <a class="dropdown-toggle lista" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">系统管理<span class="caret"></span>
+			    </a>
+			    <ul class="dropdown-menu">
+			     	<li class="sec"><a href="#">用户管理</a></li>
+					<li class="sec"><a href="#">授权码管理</a></li>
+					<li class="sec"><a href="#">应用管理</a></li>
+					<li class="sec"><a href="#">图片管理</a></li>
+			    </ul>
+    		</li>
+    	</ul>
+	</div>
+	<div id="contentBox1" style="margin:auto;height:100%;position:absolute;width:100%;background-color: #ffffff"></div>
+	<div id="contentBox2" style="margin:auto;height:100%;position:absolute;width:100%;background-color: #ffffff"></div>
+	<div id="contentBox3" style="margin:auto;height:100%;position:absolute;width:100%;background-color: #ffffff"></div>
+	<div id="contentBox4" style="margin:auto;height:100%;position:absolute;width:100%;background-color: #ffffff"></div>
+	<div id="contentBox5" style="margin:auto;height:100%;position:absolute;width:100%;background-color: #ffffff"></div>
+	<div id="contentBox6" style="margin:auto;height:100%;position:absolute;width:100%;background-color: #ffffff"></div>
+
+	<div class="modal fade" id="passModal">
+	  	<div class="modal-dialog">
+	    	<div class="modal-content">
+	      		<div class="modal-header">
+	        		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        		<h4 class="modal-title">修改密码</h4>
+	      		</div>
+	      		<div class="modal-body">
+	      			<div class="input-group">
+					  	<span  id="basic-addon1">用户名：</span>
+					  	<label id="yhm" style="font-weight: normal;"><span></span></label>
+					</div>
+	        		<!-- <label id="yhm" style="display: block;font-weight: normal;">用户名：<span></span></label> -->
+	        		<div class="input-group" style="margin-top: 10px;width: 100%;">
+					  	<span id="basic-addon1">新密码：</span>
+					  	<input id="newPass" type="password" placeholder=" 请输入新的密码" aria-describedby="basic-addon1">
+					</div>
+
+	      		</div>
+	      		<div class="modal-footer">
+	        		<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+	        		<button type="button" id="submit" class="btn btn-primary">确认</button>
+	      		</div>
+	    	</div>
+	  	</div>
+	</div>
+
+	<div id="data" title="装载数据" style="display: none;">
+		<div class="col-md-12" style="margin-top: 10px;">
+			<label style="line-height:34px;float: left;width: 10%;">装载类型：</label>
+			<div class="input-group" style="width: 42%;float: left;">
+		      	<input id="type" type="text" class="form-control" placeholder="请输入/选择装载类型">
+		      	<div class="input-group-btn">
+		        	<button style="height: 34px;" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="caret"></span></button>
+		        	<ul id="loadType" class="dropdown-menu dropdown-menu-right">
+		        		<li><a href="#">CSV</a></li>
+		        		<li><a href="#">PKL</a></li>
+		        		<!-- <li><a href="#">ESQL</a></li> -->
+		        		<li><a href="#">UDB(scan)</a></li>
+		        		<li><a href="#">UDB(query)</a></li>
+		        		<li><a href="#">JDBC</a></li>
+		        		<li><a href="#">NOSQL</a></li>
+		        	</ul>
+		      	</div>
+		    </div>
+		    <div class="input-group csvShow" style="display:none;width: 34%;float: left;margin-left: 32px;">
+		      	<input id="txttype" type="text" class="form-control" placeholder="请输入/选择数据文件">
+		      	<div class="input-group-btn">
+		        	<button style="height: 34px;" id="txtType_btn" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="caret"></span></button>
+		        	<ul id="txtType" class="dropdown-menu dropdown-menu-right"style="height: 280px;overflow: scroll;"></ul>
+		      	</div>
+		    </div>
+		    <div class="input-group csvShow" style="display:none;width: 9%;float: right;">
+	        	<div id="shangchuan" class="btn btn-primary" type="button"><span></span></div>	      				      	<!-- </span> -->
+		    </div>
+		</div>
+		<div class="col-md-12" style="margin-top: 10px;">
+			<label style="line-height:34px;float: left;width: 5%;">参数：</label>
+			<input id="canshu" type="text" class="form-control" style="width:95%;" placeholder=""></input>
+		</div>
+		<div class="col-md-12" style="margin-top: 10px;">
+			<label style="line-height:34px;float: left;width: 6%;">DF表：</label>
+			<input id="loadTxt" type="text" class="form-control" style="width: 94%;float: left;" placeholder="请输入df表名">
+		</div>
+		<div class="col-md-12"style="margin-top: 10px;">
+			<div style="width: 15%;margin: auto;">
+				<button id="loadOk" class="btn btn-primary" style="border-radius: 0;">装载</button>
+				<span>：</span>
+				<div id="LoadProgress">0</div>
+			</div>
+		</div>
+		<div class="col-md-12" style="margin-top: 10px;">
+			<div id="len" style="margin-top: 10px;width: 12%;float: right;"></div>
+		</div>
+		<div id="loadMessage">
+			<div>开始时间：<span class="kssj"></span></div>
+			<div>结束时间：<span class="jssj"></span></div>
+			<table class="table table-bordered" style="margin-top: 10px;">
+				<thead>
+					<th>错误详情
+					</th>
+				</thead>
+				<tbody></tbody>
+			</table>
+		</div>
+	</div>
+	<div id="udb0" title="UDB" style="display: none;">
+		<iframe src="" frameborder="0" scrolling="auto" height="100%" width="100%"></iframe>
+	</div>
+	<div id="jdbc0" title="JDBC" style="display: none;">
+		<iframe src="" frameborder="0" scrolling="auto" height="100%" width="100%"></iframe>
+	</div>
+	<div id="ckq" title="对象管理" style="display: none;">
+		<iframe src="ckq.fh5" frameborder="0" scrolling="auto" height="100%" width="100%"></iframe>
+	</div>
+	<div id="runData" title="运行" style="display: none;">
+		<div class="col-md-12">
+			<label style="line-height:34px;float: left;width: 5%;">fea：</label>
+			<div class="input-group" style="width: 50%;float: left;">
+		      	<input id="feaName" type="text" class="form-control" placeholder="请输入/选择fea脚本">
+		      	<div class="input-group-btn">
+		        	<button id="runButton" style="height: 34px;" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="caret"></span></button>
+		        	<ul id="runList" style="height: 280px;overflow: scroll;" class="dropdown-menu dropdown-menu-right"></ul>
+		      	</div>
+		    </div>
+		    <div class="input-group" style="width: 9%;float: right;">
+	        	<div id="shangchuan2" class="btn btn-primary" type="button"><span></span></div>
+	      				      	<!-- </span> -->
+		    </div>
+		</div>
+
+		<div class="col-md-12" style="margin-top: 10px;">
+			<label style="line-height:34px;float: left;width: 5%;">参数：</label>
+			<table id="csTable" class="table table-bordered">
+				<thead>
+					<th>参数名</th>
+					<th>默认值</th>
+					<th colspan="2">操作</th>
+				</thead>
+				<tbody>
+					<tr>
+						<td><input class="form-control" type="text"></td>
+						<td><input class="form-control" type="text"></td>
+						<td>
+							<a class="glyphicon glyphicon-plus plus" style="color: red;"></a>
+						</td>
+						<td>
+							<a class="glyphicon glyphicon-minus remove" style="color: green"></a>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="col-md-12"style="margin-top: 10px;">
+			<div style="width: 15%;margin: auto;">
+				<button id="ok" class="btn btn-primary" style="border-radius: 0;">运行</button>
+				<span>：</span>
+				<div id="progress">0</div>
+			</div>
+		</div>
+		<div class="col-md-12" style="margin-top:10px;">
+			<div id ="dateCon" style="line-height: 32px;"></div>
+		</div>
+		<div id="message" class="col-md-12" style="margin-top:10px;">
+			<div>开始时间：<span class="kssj"></span></div>
+			<div>结束时间：<span class="jssj"></span></div>
+			<div><span>错误信息：<span class="errorCount"></div>
+			<table class="table table-bordered" style="margin-top: 10px;">
+				<thead>
+					<th>错误详情
+					</th>
+				</thead>
+				<tbody></tbody>
+			</table>
+		</div>
+	</div>
+
+</body>
+</html>

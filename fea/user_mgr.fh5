@@ -1,0 +1,138 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>用户管理</title>
+	<link rel="stylesheet" type="text/css" href="../libs/datatable/css/jquery.dataTables.css">
+	<link href="../libs/nestable/css/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+	<link href="../libs/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+	<link href="../libs/nestable/css/components.min.css" rel="stylesheet" id="style_components" type="text/css" />
+	<link rel="stylesheet" type="text/css" href="./css/fea_for_user_mgr.css">
+	<style type="text/css">
+
+		/*#nav_list li a:hover{
+			background-color:#f6f6f6;
+			color:#555;
+		}*/
+	</style>
+</head>
+<body style="background-color: #edf6f8;">
+<div class="box">
+	<div class="mar" style="margin-top:10px;text-align:center;font-size: 24px;color: rgb(51,122,183);font-weight: bold;">用户管理</div>
+
+	<div class="col-md-12 row"style="margin:auto;margin-top: 10px;">
+
+		</div>
+		<table id="userManage" class="display table table-bordered" cellspacing="0" width="100%">
+		</table>
+		<div class="modal fade" id="addModal">
+		  	<div class="modal-dialog ">
+		    	<div class="modal-content">
+		      		<div class="modal-header">
+		        	<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		        	<h4 class="modal-title">用户管理</h4>
+		      		</div>
+		      		<div class="modal-body" id="userModal">
+					  	<div class="col-lg-12" style="margin-bottom: 20px;">
+					    	<div class="input-group">
+					      		<span class="input-group-btn">
+					        		<button class="btn btn-default" type="button">用户名</button>
+					      		</span>
+					      		<input id="user" type="text" data-id="0" class="form-control" placeholder="输入2-20个(可包含数字、字母、“_”、“.”)的字符串">
+					    	</div>
+					  	</div>
+					  	<div class="col-lg-12" style="margin-bottom: 20px;">
+					    	<div class="input-group">
+					      		<span class="input-group-btn">
+				        			<button class="btn btn-default" type="button">中文名</button>
+					      		</span>
+					      		<input type="text" data-id="1" class="form-control" placeholder="请输入中文名">
+				    		</div>
+					  	</div>
+					  	<div class="col-lg-12" style="margin-bottom: 20px;">
+					  		<div class="input-group ">
+					      		<span class="input-group-btn">
+				        			<button class="btn btn-default" type="button">分析员</button>
+					      		</span>
+					      		<input type="text" data-id="2" class="form-control" readonly="true">
+					      		<div class="input-group-btn">
+							        <button id="yn_btn" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">选择<span class="caret"></span></button>
+							        <ul id="yn_list" class="dropdown-menu dropdown-menu-left">
+							        	<li data-id="Y"><a href="#">是</a></li>
+							        	<li data-id="N"><a href="#">否</a></li>
+							        </ul>
+						      	</div>
+				    		</div>
+					  	</div>
+					  	<div class="col-lg-12" style="margin-bottom: 20px;">
+					  		<div class="input-group">
+					      		<span class="input-group-btn">
+				        			<button class="btn btn-default" type="button">引擎选择</button>
+					      		</span>
+					      		<input type="text" data-id="3" class="form-control" readonly="true">
+					      		<div class="input-group-btn">
+							        <button id="yq_btn" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">引擎<span class="caret"></span></button>
+							        <ul id="yq_list" style="height: 180px;overflow: auto;"class="dropdown-menu dropdown-menu-left"></ul>
+						      	</div>
+				    		</div>
+					  	</div>
+					  	<div class="col-lg-12" style="margin-bottom: 20px;">
+					    	<div class="input-group">
+					      		<span class="input-group-btn">
+				        			<button class="btn btn-default" type="button">应用选择</button>
+					      		</span>
+					      		<input type="text" data-id="4" class="form-control" placeholder="请选择应用" readonly="true">
+					      		<div class="input-group-btn">
+							        <button id="nav_btn" type="button" class="btn btn-default dropdown-toggle">应用<span class="caret"></span></button>
+											<div class="dropdown-menu dropdown-menu-left nav_nav" style="height: 220px;overflow: hidden;">
+												<ul id="nav_list"style="height: 180px;overflow: auto;">
+												</ul>
+												<div style="height:40px; overflow:hidden;"><button class="nav_all btn btn-primary">全部</button><button class="nav_no btn btn-info">取消</button><button class="nav_ok btn btn-success">确定</button></div>
+											</div>
+						      	</div>
+				    		</div>
+					  	</div>
+							<div class="col-lg-12" style="margin-bottom: 20px;">
+					    	<div class="input-group">
+					      		<span class="input-group-btn">
+				        			<button class="btn btn-default" type="button">工具栏</button>
+					      		</span>
+					      		<input type="text" data-id="5" class="form-control" placeholder="请选择工具" readonly="true">
+					      		<div class="input-group-btn">
+							        <button id="tool_btn" type="button" class="btn btn-default dropdown-toggle"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">工具<span class="caret"></span></button>
+												<ul id="tool_list"style="height: 180px;overflow: auto;" class="dropdown-menu dropdown-menu-left">
+												</ul>
+						      	</div>
+				    		</div>
+					  	</div>
+							<div class="col-lg-12" style="margin-bottom: 20px;">
+					    	<div class="input-group">
+					      		<span class="input-group-btn">
+				        			<button class="btn btn-default" type="button">数据属性</button>
+					      		</span>
+					      		<input type="text" data-id="6" class="form-control" placeholder="请填写数据" readonly="true">
+					      		<div class="input-group-btn">
+							        <button id="data_btn" type="button" class="btn btn-default dropdown-toggle">编辑<span class="caret"></span></button>
+						      	</div>
+				    		</div>
+					  	</div>
+		      		</div>
+	      			<div class="modal-footer">
+	        			<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+		        		<button id="ok_btn" type="button" class="btn btn-primary">确认</button>
+		        		<button id="saveOK_btn" type="button" class="btn btn-primary">确认</button>
+		      		</div>
+		    	</div><!-- /.modal-content -->
+		  	</div><!-- /.modal-dialog -->
+		</div>
+	</div>
+
+
+	<script src="../libs/jquery-1.11.0.min.js" type="text/javascript"></script>
+	<script type="text/javascript" src="../libs/cookie/jquery.cookie.js"></script>
+	<script type="text/javascript" src="../libs/bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="../libs/datatable/js/jquery.dataTables.min.js"></script>
+	<script type="text/javascript" src="user_mgr.js"></script>
+</body>
+</html>

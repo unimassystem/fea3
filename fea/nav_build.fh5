@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+    <!--<![endif]-->
+    <!-- BEGIN HEAD -->
+
+    <head>
+        <meta charset="utf-8" />
+        <title>导航构建</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta content="width=device-width, initial-scale=1" name="viewport" />
+        <meta content="" name="description" />
+        <meta content="" name="author" />
+       <!--  <link href="libs/nestable/css/font-opensans/Open-Sans.css" rel="stylesheet" type="text/css" /> -->
+        <link href="../libs/nestable/css/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+        <link href="../libs/nestable/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <link href="../libs/nestable/css/components.min.css" rel="stylesheet" id="style_components" type="text/css" />
+        <link href="../libs/nestable/css/jquery.nestable.css" rel="stylesheet" type="text/css" />
+       <script src="../libs/nestable/require.js" type="text/javascript"></script> 
+        <style type="text/css">
+        	body {
+			  font-family: 'Open Sans','Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', 微软雅黑, Arial, sans-serif, sans-serif;
+			  font-size: 14px;
+			}
+			body,h1,h2,h3,h4,h5,h6 {
+				font-family:"Open Sans",'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', 微软雅黑, Arial, sans-serif, sans-serif;
+			}
+			.dd3-content .actions {
+				padding: 0;
+				margin: 0;
+				margin-top: -3px;
+				float: right;
+			}
+			.dd3-content .actions .btn {
+				margin-right: 5px;
+				padding: 1px 2px;
+			}
+        </style>
+    </head>
+
+    <body style="background: rgb(239,243,248);">
+
+    	<div style="width:86%;margin: auto;overflow: hidden;background-color: #ffffff;border: solid 1px #cdced1;">
+    		<div class="portlet light">
+				<div class="portlet-title">
+					<div class="caption"><i class="icon-list-ul"></i>导航构建</div>
+					<div id="btn_box" class="actions">
+                        <a href="javascript: void(0);" data-toggle="modal" id="key"></a>
+						<a href="#addDirModal" data-toggle="modal"id="add_btn"><img src="img/icon/add.png"></a>
+						<a href="javascript: void(0);" id="save_btn"><img src="img/icon/save.png"></a>
+                        <a href="javascript: void(0);"  id="yulan_btn"><img src="img/icon/yulan.png"></a>
+                        <a href="javascript: void(0);"id="back_btn"><img src="img/icon/back.png"></a>
+						<!-- <div class="btn-group"></div> -->
+					</div>
+				</div>
+				<div class="portlet-body ">
+					<div class="dd" id="zyml_list">
+						<ol class="dd-list">
+						</ol>
+					</div>
+				</div>
+			</div>
+    	</div>
+
+
+		<div id="addDirModal" class="modal fade" tabindex="-1" data-backdrop="static" data-keyboard="false">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="fa fa-remove"></i></button>
+                        <h4 class="modal-title">添加/修改导航</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form id="edit_dir_from" action="#" class="form-horizontal">
+							<div class="form-group" style="margin-bottom: 5px;">
+								<label class="control-label col-md-2">导航名称<span class="required">*</span></label>
+								<div class="col-md-9">
+									<div class="input-icon right">
+                                        <i class="fa"></i>
+										<input type="hidden" name="nId" value=0>
+										<input type="hidden" name="type" value="add">
+										<input type="text" class="form-control" validate="{required:true}" name="dirname" placeholder="请输入导航名称">
+                                    </div>
+									 <span class="help-block" id="YN" style="margin-bottom: 0;">是否显示标题？
+                                            <label>
+                                                <input type="radio" name="group" checked="checked">是
+                                                <input type="radio" name="group">否
+                                            </label>
+                                    </span>
+								</div>
+							</div>	
+                            <div class="form-group">
+                                <label class="control-label col-md-2">页面</label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control" name="dirkey" placeholder="请选择或输入所需要的页面">
+                                    <span class="help-block">
+                                        <div class="input-group-btn">
+                                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="caret"></span>静态面板</button>
+                                            <ul class="dropdown-menu" id="keyList" style="height: 180px;overflow: auto;"></ul>
+                                        </div>
+                                        <div class="input-group-btn">
+                                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="caret"></span>动态面板</button>
+                                            <ul class="dropdown-menu" id="keyListdb2" style="height: 180px;overflow: auto;"></ul>
+                                        </div>
+                                        <div class="input-group-btn">
+                                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="caret"></span>分析模型</button>
+                                            <ul class="dropdown-menu" id="keyListam" style="height: 180px;overflow: auto;"></ul>
+                                        </div>
+                                        <div class="input-group-btn">
+                                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="caret"></span>多屏互动</button>
+                                            <ul class="dropdown-menu" id="keyListdp" style="height: 180px;overflow: auto;"></ul>
+                                        </div>
+                                   </span> 
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-2">参数</label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control" name="dircs" placeholder="格式参考：@ws=public&@city=杭州">
+                                </div>
+                            </div>			
+						</form>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn" data-dismiss="modal" aria-hidden="true">取消</button>
+						<button id="save_dir_btn" class="btn btn-primary" data-dismiss="modal">确定</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="bcgChoose">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                      <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title">背景选择</h4>
+                      </div>
+                      <div class="modal-body" id="choose">
+                        <label style="display: block;padding-left: 38%;">请选择您的预览背景</label>
+                        <!--<div class="radio" style="padding-left: 38%;">
+                            <label>
+                              <input type="radio" name="bag" data-id="0" checked="true">白底横向导航
+                            </label>
+                        </div>
+                        <div class="radio" style="padding-left: 38%;">
+                            <label>
+                              <input type="radio" name="bag" data-id="1">白底纵向导航
+                            </label>
+                        </div>
+                        <div class="radio" style="padding-left: 38%;">
+                            <label>
+                              <input type="radio" name="bag" data-id="2">深底全屏
+                            </label>
+                        </div>
+                        <div class="radio" style="padding-left: 38%;">
+                            <label>
+                              <input type="radio" name="bag" data-id="3">星空全屏
+                            </label>
+                        </div>
+                        <div class="radio" style="padding-left: 38%;">
+                            <label>
+                              <input type="radio" name="bag" data-id="4">炫酷蓝
+                            </label>
+                        </div>-->
+                  </div>
+                      <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                            <button id="submit" type="button" class="btn btn-primary">确定</button>
+                      </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div>
+		<!--[if lt IE 9]>
+		<script src="../assets/global/plugins/respond.min.js"></script>
+		<script src="../assets/global/plugins/excanvas.min.js"></script> 
+		<![endif]-->
+        <script src="../libs/jquery-1.11.0.min.js" type="text/javascript"></script>
+        <script src="../libs/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+        <script src="../libs/nestable/jquery.nestable.js" type="text/javascript"></script>
+        <script src="../libs/nestable/ui-nestable.js" type="text/javascript"></script>
+        <!-- <script src="js/nav_mgr.js" type="text/javascript"></script>
+        -->
+    </body>
+
+</html>

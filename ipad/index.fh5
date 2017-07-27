@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- <link rel="stylesheet" href="css/index.css"> -->
+  	<link rel="stylesheet" type="text/css" href="./css/ipad_login.css">
+  <script type='text/javascript' src='../libs/jquery-1.11.0.min.js'></script>
+  <!-- <script type='text/javascript' src='../libs/jquery.particleground.min.js'></script> -->
+  <script type="text/javascript" src="../libs/cookie/jquery.cookie.js"></script>
+  <title>ipad login</title>
+</head>
+<body>
+  <div class="ipad_login">
+    <div class="ipad_login_ctn">
+      <p>让控制没有距离</p>
+      <div class="login_b">
+        <span class="login_sp1"><img src="img/user.png"><input type="test" placeholder="账号"  name="user" id="ipt1"></span>
+        <span class="login_sp2" ><img src="img/password.png"><input type="password" placeholder="密码"  name="psw"  id="ipt2"></span>
+        <button id="login"	>登陆</button>
+      </div>
+
+    </div>
+  </div>
+</body>
+<script>
+$(document).ready(function() {
+  // $('#particles').particleground({
+	//     dotColor: '#283a76',
+	//     lineColor: '#283a76'
+	// });
+  $("#login").click(function(){
+		//alert();
+		var name=$("#ipt1").val();
+		var pass=$("#ipt2").val();
+		var data={
+			"name":name,
+			"auth_key":pass
+		};
+    window.localStorage.setItem('userName',name);
+		data=JSON.stringify(data);
+		$.cookie('userName',name);
+		//$.cookie('usePass',pass,{path:'index.fh5'});
+		login(data);
+	});
+  var login=function(data){
+		$.ajax({
+			type:'post',
+			async: false,
+			url:'/db/auth2',
+			data:{data:data},
+			success:function(data){
+				// console.log(data);
+				var back=eval('('+data+')');
+				var yq=back.portal;
+				var use=back.nav;
+				if(back.success==true){
+					if(use.indexOf(";") !=-1){
+            var uses=use.split(';');
+            for (var i = 0; i < uses.length; i++) {
+              if(uses[i]==''){
+                uses.splice(i,1)
+              }
+            }
+
+            var taskss=[];
+            var porjets=[];
+            var id_name=[];
+            for(var s=0;s<uses.length;s++){
+              $.ajax({
+                type: "get",
+                  async: false,
+                  dataType:"jsonp",
+                  url: "/db/jsonp/ssdb0/"+uses[s],
+                  success:function(data){
+                    // console.log(data);
+                    if(data.name==''||data.name==null){
+                      alert('应用没有中文名称')
+                    }
+                    nav= data.nav;
+                    id_name.push(data.name);
+                    $.ajax({
+                      type: "get",
+                      async: false,
+                      dataType:"jsonp",
+                      url: "/db/jsonp/ssdb0/"+nav,
+                      success:function(res){
+                        // console.log(res);
+                        var title2=[],dbdk2=[],cs2=[];
+                        if(res[0].num){
+                          data=res[0].num;
+                      		// console.log(data);
+                          var title4=[];
+                          for (var i = 0; i < data.length; i++) {
+                            var tt=data[i].tit;
+                            var likey=data[i].key;
+                            var cs=data[i].cs;
+                            title2.push(tt);
+                            dbdk2.push(likey);
+                            cs2.push(cs);
+                            if(data[i].children){
+                              var title3=[];
+                              for (var k = 0; k < data[i].children.length; k++) {
+                                var tt1=data[i].children[k].tit;
+                                var likey1=data[i].children[k].key;
+                                var cs1=data[i].children[k].cs;
+                                title3.push({
+                                  'title':tt1,
+                                  'dbdk':likey1,
+                                  'cs':cs1,
+                                });
+                              }
+                              title4.push(title3)
+                            }
+                          }
+                          var tasks=[];
+                            for (var i = 0; i < title2.length; i++) {
+                              var c_t={
+                                    'title':title2[i],
+                                    'children':title4[i],
+                                    'dbdk':dbdk2[i],
+                                    'cs':cs2[i]
+                                  }
+                                  tasks.push(c_t);
+                            }
+                            taskss.push(tasks);
+                            var o={
+                              'title':id_name[s],
+                              'tasks':taskss[s],
+                              'id':uses[s]
+                            }
+                            porjets.push(o);
+                        }else{// 2017.7.18 ycj 修改
+                          alert('没有关联导航！');
+                        }
+
+                      }
+                  	});
+
+                }
+              });
+            }
+            porjets=JSON.stringify(porjets);
+            localStorage.setItem('projects',porjets)
+            window.location.href="main.fh5"
+
+					}else{
+            $.ajax({
+              type: "get",
+                async: false,
+                dataType:"jsonp",
+                url: "/db/jsonp/ssdb0/"+use,
+                success:function(data){
+                  nav= data.nav;
+                  var id_name=data.name;
+                  if(data.name==''||data.name==null){
+                    alert('应用没有中文名称')
+                  }
+                  $.ajax({
+                    type: "get",
+                    async: false,
+                    dataType:"jsonp",
+                    url: "/db/jsonp/ssdb0/"+nav,
+                    success:function(res){
+                      if(res[0].num){
+                      // console.log(res);
+                      data=res[0].num;
+                  		// console.log(data);
+                      var title2=[],dbdk2=[],cs2=[];
+                      var title4=[];
+                      for (var i = 0; i < data.length; i++) {
+                        var tt=data[i].tit;
+                        var likey=data[i].key;
+                        var cs=data[i].cs;
+                        title2.push(tt);
+                        dbdk2.push(likey);
+                        cs2.push(cs);
+                        if(data[i].children){
+                          var title3=[];
+                          for (var k = 0; k < data[i].children.length; k++) {
+                            var tt1=data[i].children[k].tit;
+                            var likey1=data[i].children[k].key;
+                            var cs1=data[i].children[k].cs;
+                            title3.push({
+                              'title':tt1,
+                              'dbdk':likey1,
+                              'cs':cs1
+                            });
+                          }
+                          title4.push(title3);
+                        }
+                      }
+                      var tasks=[];
+                      for (var i = 0; i < title2.length; i++) {
+                        var c_t={
+                              'title':title2[i],
+                              'children':title4[i],
+                              'dbdk':dbdk2[i],
+                              'cs':cs2[i]
+                            }
+                            tasks.push(c_t);
+                      }
+                      var o={
+                        'title':id_name,
+                        'tasks':tasks,
+                        "id":use
+                      }
+                      var porjets=[];
+                      porjets.push(o);
+                      porjets=JSON.stringify(porjets);
+                      localStorage.setItem('projects',porjets);
+                      window.location.href="main.fh5";
+                    }else{
+                      alert('没有关联导航!')
+                    }
+                    }
+                	});
+                }
+            });
+					}
+				}else{
+					alert("验证失败，请重新登录");
+				}
+			},
+			error:function(XMLHttpRequest,message){
+				console.log(message)
+			}
+		});
+	};
+})
+</script>
+</html>

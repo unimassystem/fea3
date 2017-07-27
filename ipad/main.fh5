@@ -1,0 +1,59 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+        <title></title>
+        <link href="css/ionic.css" rel="stylesheet">
+        <script src="js\jquery-1.11.0.min.js"></script>
+        <script src="js/ionic.bundle.min.js"></script>
+        <script type="text/javascript" src="../libs/cookie/jquery.cookie.js"></script>
+        <style>
+          .act_ds{
+            background: #d9d9d9;
+          }
+        </style>
+    </head>
+    <body ng-app="todo" ng-controller="TodoCtrl">
+    <ion-side-menus>
+
+    <!-- 中心内容 -->
+    <ion-side-menu-content>
+      <ion-header-bar class="bar-dark">
+        <button class="button button-icon" ng-click="toggleProjects()">
+          <i class="icon ion-navicon"></i>
+        </button>
+        <h1 class="title nav_dh" data-id="{{activeProject.id}}" ng-cloak>当前应用：{{activeProject.title}}</h1>
+      </ion-header-bar>
+      <ion-content scroll="true">
+        <ion-list ng-repeat="task in activeProject.tasks" class="menu_cd">
+          <ion-item class="select_xz" ng-cloak ng-click="selectT(task,$index)" data-id="{{task.dbdk}};{{task.title}};{{task.cs}}">
+            {{task.title}}
+          </ion-item>
+          <div ng-cloak class="select_xzc" ng-repeat="children in task.children" ng-click="selectTC(children,$index)"  data-id="{{children.dbdk}};{{children.title}};{{children.cs}}">
+            {{children.title}}
+          </div>
+        </ion-list>
+      </ion-content>
+    </ion-side-menu-content>
+
+    <!-- 左边栏 -->
+    <ion-side-menu side="left">
+    <ion-header-bar class="bar-dark">
+      <h1 class="title">选择应用</h1>
+    </ion-header-bar>
+    <ion-content scroll="true">
+      <ion-list>
+        <ion-item ng-repeat="project in projects" ng-click="selectProject(project, $index)" ng-class="{active: activeProject == project}" ng-cloak>
+          {{project.title}}
+        </ion-item>
+        <div ng-click="out()" class="exit"></div>
+      </ion-list>
+    </ion-content>
+    </ion-side-menu>
+
+    </ion-side-menus>
+
+
+    <script src="js/app2.js"></script>
+</body>
+</html>
