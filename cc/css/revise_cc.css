@@ -1,0 +1,56 @@
+.nav{
+	background: transparent !important;
+}
+
+#nav_box{
+	border-bottom: solid 1px rgb(198, 0, 0);
+}
+#nws{
+	color: #fff;
+}
+#nws button{
+	height: 30px;
+	background-color: #a50202;
+	color: #fff;
+	border: 1px solid #d50000 !important;
+}
+#nav_box .btn{
+	height: 30px;
+	background-color: #a50202;
+	color: #fff;
+	border: 1px solid #d50000 !important;
+}
+#content_box #left_list{
+	min-height: 300px;
+	max-height: 700px;
+	background-color: rgba(255, 255, 255, 1) !important;
+	border: 1px solid #8d0000;
+	border-radius: 4px;
+}
+.ui-widget-header{
+	background-color: #9b0000;
+}
+.ui-widget-header:active{
+	background-color: #ccc;
+}
+.ui-button .ui-icon{
+	background-color: transparent !important;
+}
+.ui-widget.ui-widget-content{
+	border:0px;
+}
+.ui-dialog .ui-dialog-titlebar-close{
+	background-color: transparent;
+	width: 14px !important;
+	height: 14px !important;
+
+}
+.ui-dialog .ui-dialog-titlebar-close:hover{
+	background-color: transparent;
+	
+}
+.ui-button:hover, .ui-icon:hover{
+	background-image: none !important;
+}
+
+

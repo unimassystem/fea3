@@ -1,0 +1,187 @@
+ul,li{
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+		#userManage th{
+				background-color: rgb(0,113,197)!important;
+				font-size: 16px;
+				font-weight: normal;
+				color: #fff;
+		}
+		#userManage th,#userManage td {
+			text-align: center;
+		}
+		.box{
+			width: 86%;
+			margin: auto;
+			margin-top: 10px;
+			height:100%;
+			overflow: hidden;
+			background-color: #ffffff;
+			border: solid 1px #cdced1;
+		}
+		table th{
+			text-align: center;
+		}
+		.dataTables_wrapper .dataTables_filter{
+			width: 100%;
+			float: left;
+		}
+		.dataTables_wrapper .dataTables_filter label{
+			float: left;
+			margin-left: 8px;
+		}
+		.dataTables_filter input{
+			background-color:#f2f5fb;
+            border:1px #0071c5 solid;
+            height:30px;
+            width:330px;
+            padding-left:10px;
+		}
+		.anniu{
+            height:30px;
+            width:31px;
+            float:right;
+            border:none;
+            padding-left:1px;
+            background:#0071c5 url('../img/find_icon_wh.png') no-repeat center center;
+            background-repeat:no-repeat;
+        }
+		.nav_click{
+			background-color: #ccc;
+		}
+		#nav_list li a{
+			padding:8px 16px;
+			text-decoration:none;
+			color:#6e6e6e;
+			display:block;
+			font-weight:300;
+			line-height:18px;
+			white-space:nowrap;
+		}
+		.nav_list_a{
+			background-color:#f6f6f6;
+			color:#555;
+		}
+
+
+
+#nav_list /* input[type="checkbox"] +  */label {
+	cursor: pointer;
+    background: #fff;
+	background-size: auto auto;
+	content: " ";
+	height: 22px;
+	left: 0;
+	position: absolute;
+	width: 22px;
+	border: 1px #147b92 solid;
+	background-size: 80% !important;
+	padding-left: 2px;
+	border-radius: 3px !important;
+}
+.fxk_st{
+	background: #fff url('../img/correct_1.png') center center no-repeat !important;
+}
+/* #nav_list input[type="checkbox"][disabled]:checked + label:before {
+  background: #fff url('../img/correct_1.png') center center no-repeat !important;
+
+  border:1px blue solid;
+} */
+/* input[type="checkbox"]:not(:checked):focus + label:before, */
+/* input[type="checkbox"]:not(:checked) + label:hover:before {
+background: #fff url('../img/correct_1.png') center center no-repeat !important;
+ border:#ccc 2px solid;
+}
+ */
+ #nav_list input{
+ 	display: none;
+ }
+  #nav_list li{
+  	cursor: pointer;
+  	position: relative;
+  	margin-bottom: 10px;
+  }
+   #nav_list span{
+
+   	display: block;
+   	height: 22px;
+   	margin-left: 24px;
+	display: block;
+	height: 22px;
+	padding-left: 4px;
+	border-radius: 4px !important;
+   }
+   #nav_list span:hover{
+   	background-color: #858586;
+	color: #fff;
+   }
+   #nav_list{
+   	padding: 4px;
+   	border:1px #bcbcbc solid;
+   	min-width: 185px;
+   }
+   .nav_no,.nav_ok,.nav_all{
+   	margin: 2%;
+   }
+	.data_zz{
+		position: fixed;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		background: rgba(0, 0, 0, 0.4);
+		z-index: 10051;
+	}
+	.data_main{
+		position: absolute;
+		width: 50%;
+		height: 500px;
+		top: 15%;
+		left: 25%;
+		background: #fff;
+	}
+	.data_title{
+		height: 40px;
+		width: 100%;
+	}
+	.data_title h4{
+		line-height: 40px;
+		padding-left: 15px;
+	}
+	.data_bottom{
+		width: 100%;
+		height: 40px;
+	}
+	.data_bottom button{
+		float: right;
+		margin-right: 20px;
+	}
+	.data_ma_m{
+		width: 100%;
+		height: 420px;
+		overflow-x: hidden;
+		overflow-y: auto;
+	}
+	.data_ma_m div{
+		width: 100%;
+		height: 40px;
+		margin-bottom: 15px;
+		padding: 0 15px;
+		overflow: hidden;
+	}
+	.data_ma_m div input{
+		width: 35%;
+		float: left;
+		height: 40px;
+		padding-left: 5px;
+	}
+	.data_ma_m div label{
+		width: 10%;
+		float: left;
+		line-height: 40px;
+		font-size: 16px;
+		text-align: right;
+		padding-right: 1%;
+	}

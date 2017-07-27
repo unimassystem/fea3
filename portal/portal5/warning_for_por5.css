@@ -1,0 +1,119 @@
+/* .ui-widget.ui-widget-content {
+    background-color: rgba(17, 56, 93, 0.7);
+    padding: 0px;
+   border: 1px solid #ae0000;
+    box-shadow: 0px 0px 40px #030e20;
+    border-radius: 4px;
+
+} */
+.ui-widget.ui-widget-content {
+    background-color:rgba(54, 0, 0, 0.7);
+    padding: 0px;
+    border: 1px solid #4a0000;
+    box-shadow: 0px 0px 40px #230000;
+    border-radius: 4px;
+
+}
+.ui-widget.ui-widget-content:active{
+	border:0px;
+	outline: none;
+}
+.ui-draggable .ui-dialog-titlebar{
+	/* background-color: rgba(255, 255, 255, 0.1) */
+}
+#useManage{
+ width: 98%;
+ margin: 0 auto; 
+}
+#useManage thead th{
+	background-color: transparent !important;
+	border-bottom: 1px solid #5f0000 !important;
+}
+#table2 tr td{
+	height: 30px;
+	line-height: 30px;
+	/* border-bottom: 1px solid #a70000 !important; */
+
+}
+#table2 .ck_cc,#table2 .ok_zp{
+	background-color: #a10000;
+	border-radius: 4px;
+	padding: 2px 4px ;
+	color: #fff;
+	height: 25px;
+	cursor: pointer;
+}
+#table2 .ck_cc:hover,#table2 .ok_zp:hover{
+	background-color: #cf0c0c;
+}
+.ui-dialog-titlebar button{
+	float: right;
+	/* background:transparent url('../../images/X_icon.png') no-repeat !important; */
+	margin: 0.2% 0.5%;
+	background-size: 80% !important;
+	cursor: pointer;
+	color: rgba(255, 255, 255, 0);
+}
+
+.up_close:hover{
+	background: url('../../images/X_hover1_icon.png') center center no-repeat !important;
+	background-size:80% !important; 
+}
+.assign{
+	padding: 4px;
+    background: #656565;
+    position: fixed;
+    left: 45%;
+    top: 40%;
+    /* height: 40px; */
+    width: auto;
+    border: 1px #767676 solid;
+    box-shadow: 1px 1px 4px #1f0000;
+    border-radius: 4px;
+}
+.assign input{
+	font-size: 16px;
+	border:0px;
+	padding: 0px;
+	padding-left: 4px;
+	margin:0px;
+	border-radius: 4px;
+}
+.assign label,.assign input,.assign button{
+	display: block;
+	float: left;
+	height: 25px;
+	line-height: 25px;
+	outline: none;
+
+}
+.assign label{
+	ont-size: 16px;
+    padding-right: 4px;
+    color: #fff;
+}
+.assign button{
+	cursor: pointer;
+	padding-left: 4px;
+    color: #513b3b;
+    margin: 0px 4px;
+    padding-right: 4px;
+    border-radius: 3px;
+    background: #fff;
+    box-shadow: 1px 2px 3px #3c2323;
+}
+.assign button:hover{
+	background-color: #ccc;
+}
+.ok_zp{
+	width: 30px;
+    background: transparent url(../../images/jiantou_icon.png)center no-repeat;
+    background-color: transparent !important;
+    background-size: 70%;
+}
+.ok_zp:hover{
+	
+    background: transparent url(../../images/jiantou_icon_clk.png)center no-repeat;
+    background-size: 70%;
+    
+}

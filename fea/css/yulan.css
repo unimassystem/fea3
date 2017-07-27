@@ -1,0 +1,95 @@
+html {overflow-y:scroll;}
+body {margin:0; padding:0px; font:14px/1.5 \5b8b\4f53,Arial,sans-serif，Microsoft Yahei;background:#f9f9f9;}
+div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,blockquote,p{padding:0; margin:0;}
+table,td,tr,th{font-size:16px;}
+ol,ul {list-style:none;}
+li{list-style-type:none;}
+img{vertical-align:top;border:0;}
+h1,h2,h3,h4,h5,h6{font-size:inherit; font-weight:normal;}
+address,cite,code,em,th,i{font-weight:normal; font-style:normal;}
+.hx a,.hx em,.fB{font-weight:bold;}
+.clearfix{*zoom:1;}
+.clearfix:after{display:block; overflow:hidden; clear:both; height:0; visibility:hidden; content:".";}
+a {text-decoration:none;}
+a:visited {text-decoration:none;}
+a:hover {color:#ba2636;text-decoration:underline;}
+a:active {color:#ba2636;}
+
+body{
+	font-family:Microsoft Yahei;
+}
+.nav{
+	font-size:16px;
+
+	float:left;
+	width:15%;
+	height:auto;
+	background-color:#008cb2;
+}
+.nav ul li{
+
+	display:block;
+	margin:0 auto;
+}
+.nav ul li a{
+	padding-left:20%;
+	width:100%;
+	text-align:left;
+	margin:0 auto;
+	display:inline-block;
+	text-decoration:none;
+	color:#fff;
+	line-height:40px;
+}
+
+.navbg{
+	background-color:#004d62;
+}
+.content{
+	font-size:14px;
+	float:right;
+	width:85%;
+	height:auto;
+}
+.content a{
+	overflow:hidden;
+	width:25%;
+	height:16.7rem;
+	margin:1%;
+	background-color:#fff;
+	border:1px #e6e6e6 solid;
+	display:inline-block;
+}
+.content a img{
+	height:80%;
+	width:90%;
+}
+.content a p{
+	padding:5px;
+}
+.title{
+	margin-left:20px;
+	line-height:45px;
+	color:#666;
+	border-bottom:1px #008cb2 solid;
+	font-size:18px;
+	display:block;
+}
+#smallChart{
+	position: fixed;
+	right: 25%;
+	z-index: 999;
+	top: 0px;
+}
+.modal-body{
+	padding: 2px;
+}
+/*.zhuzhuang{
+	display:none;
+}
+.bingtu{
+	display:none;
+}
+.zhuzhuangtu,.ybp,.bingtu,.ditu,.biaoge,.guanxitu,.sandiantu,.relitu,.sangjitu,.wenben,.renwuhuaxiang,.kxiantu{
+	display:none;
+}*/

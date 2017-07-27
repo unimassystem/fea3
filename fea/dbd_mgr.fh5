@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>仪表盘管理</title>
+	<link rel="stylesheet" type="text/css" href="../libs/datatable/css/jquery.dataTables.css">
+	<!-- <link href="../libs/nestable/css/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" /> -->
+	<link href="../libs/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+	<link href="../libs/nestable/css/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+	<!-- <link href="../libs/nestable/css/components.min.css" rel="stylesheet" id="style_components" type="text/css" /> -->
+	<link rel="stylesheet" type="text/css" href="./css/fea_bootstrap_re.css">
+	<link rel="stylesheet" type="text/css" href="./css/user_defined.css">
+
+
+
+</head>
+<body style="background-color: #edf6f8;">
+
+	<div class="box">
+		<div class="mar" style="margin-top:10px;text-align:center;font-size: 24px;color: rgb(51,122,183);font-weight: bold;">静态面板管理</div>
+		<div style="width:98%;margin: auto;margin-top: 10px;">
+			<div  style="padding-left: 0;width: 46%;float:left;">
+			    <div class="input-group">
+			    	<span class="input-group-btn">
+			        	<button class="btn btn-default" type="text">ID</button>
+			      	</span>
+			      	<input id="key" type="text" class="form-control">
+			    </div>
+			</div>
+			<div style="margin-left: 20px;width: 46%;float:left;">
+			    <div class="input-group">
+			      <span class="input-group-btn">
+			        	<button class="btn btn-default" type="text">中文描述</button>
+			      </span>
+			      <input id="title" type="text" class="form-control">
+			    </div>
+			</div>
+			<!-- <div style="margin-left: 20px;width: 21%;float:left;">
+				<div class="input-group">
+					<div class="input-group-btn">
+				        <button id="mh_btn" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">背景<span class="caret"></span></button>
+				        <ul id="mh_list" class="dropdown-menu dropdown-menu-left">
+				        	<li data-id="0"><a href="#">0：白底</a></li>
+				        	<li data-id="1"><a href="#">1：深底</a></li>
+				        </ul>
+			      	</div>
+					      		<input id="mh" type="text" class="form-control">
+					      	</div>
+			</div> -->
+			<div style="width: 4%;float: right;">
+				<button id="add" class="btn btn-primary" >添加</button>
+			</div>
+		</div>
+		<div style="width:98%;margin: auto;margin-top: 54px;overflow: hidden;" >
+			<table id="mgr" class="display table table-bordered" cellspacing="0" width="100%">
+			</table>
+		</div>
+	</div>
+
+	<div class="modal fade" id="bcgChoose">
+	  	<div class="modal-dialog">
+		    <div class="modal-content">
+			      <div class="modal-header">
+			        	<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			        	<h4 class="modal-title">背景选择</h4>
+			      </div>
+			      <div class="modal-body" id="choose">
+		        		<label style="display: block;padding-left: 38%;">请选择您的预览背景</label>
+		        		<div class="radio" style="padding-left: 38%;">
+						    <label>
+						      <input type="radio" name="bag" data-id="0" checked="true">浅色
+						    </label>
+					  	</div>
+					  	<div class="radio" style="padding-left: 38%;">
+						    <label>
+						      <input type="radio" name="bag" data-id="1">深色
+						    </label>
+					  	</div>
+			      </div>
+			      <div class="modal-footer">
+			        	<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+			        	<button id="submit" type="button" class="btn btn-primary">确定</button>
+			      </div>
+		    </div><!-- /.modal-content -->
+	  	</div><!-- /.modal-dialog -->
+	</div>
+
+	<div class="modal fade" id="copyPage">
+	  	<div class="modal-dialog">
+	    	<div class="modal-content">
+	      		<div class="modal-header">
+	        		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        		<h4 class="modal-title">页面复制</h4>
+	      		</div>
+	      		<div class="modal-body">
+	      			<div class="input-group">
+					  	<span  id="basic-addon1">旧·ID：</span>
+					  	<label id="oldID" style="font-weight: normal;"><span></span></label>
+					</div>
+	        		<div class="input-group" style="margin-top: 10px;width: 100%;">
+					  	<span id="basic-addon1">新·ID：</span>
+					  	<input id="newID" type="text" placeholder=" 请输入新的ID" aria-describedby="basic-addon1"><!-- 请输入新的ID,格式为:dashboard:xxx -->
+					</div>
+					<div class="input-group" style="margin-top: 10px;width: 100%;">
+					  	<span  id="basic-addon1">旧·中文描述：</span>
+					  	<label id="oldTitle" style="font-weight: normal;"><span></span></label>
+					</div>
+	        		<div class="input-group" style="margin-top: 10px;width: 100%;">
+					  	<span id="basic-addon1">新·中文描述：</span>
+					  	<input id="newTitle" type="text" placeholder=" 请输入新的中文描述" aria-describedby="basic-addon1">
+					</div>
+
+	      		</div>
+	      		<div class="modal-footer">
+	        		<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+	        		<button type="button" id="ok" class="btn btn-primary">确认</button>
+	      		</div>
+	    	</div>
+	  	</div>
+	</div>
+	<script type="text/javascript"  src="../libs/jquery-1.11.0.min.js"></script>
+	<script src="../libs/jqueryUI/jquey-ui-1.11.4.js"></script>
+	<script type="text/javascript" src="../libs/bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="../libs/datatable/js/jquery.dataTables.min.js"></script>
+	<script type="text/javascript" src="../libs/cookie/jquery.cookie.js"></script>
+	<script type="text/javascript"  src="dbd_mgr.js"></script>
+</body>
+</html>

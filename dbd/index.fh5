@@ -1,0 +1,39 @@
+<!doctype html> 
+<html lang="en" class="no-js"> 
+<head> 
+  <meta charset="UTF-8" /> 
+  <title>登录</title> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style/login_new.css" />
+  <script type='text/javascript' src='libs/jquery-1.11.0.min.js'></script>
+  <script type='text/javascript' src='js/jquery.particleground.min.js'></script>
+  <script type="text/javascript" src="libs/cookie/jquery.cookie.js"></script>
+  <script type='text/javascript' src='js/demo.js'></script>
+</head> 
+
+<body>
+
+<div id="particles">
+  <div class="denglu">
+    <div class="dl-content" id="djq">
+        <div class="logo-fea">
+            <img src="images/newLogin/logo.png">
+            <!--<img src="img/logo-fea.png">
+            <p>大数据分析平台</p>-->
+        </div>
+        <br>
+        <span class="tle">账号</span>
+        <input class="ipt" id="ipt1" type="test" placeholder=""  name="user" style="" >
+        <br>
+        <span class="tle">密码</span>
+        <input class="ipt" id="ipt2" type="password" placeholder=""  name="psw" >
+        <br>
+        <button id="login">登录</button>
+    </div>
+  </div>
+</div>
+<script type="text/javascript" src="js/jqcss.js"></script>
+
+
+</body> 
+</html> 

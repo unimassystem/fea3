@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>dashboard视图</title>
+<link rel="stylesheet" type="text/css" href="../libs/jqueryUI/css/jquery-ui.min.css">
+<link rel="stylesheet" type="text/css" href="../portal/portal1/portal1_total.css">
+<link rel="stylesheet" type="text/css" href="../css/06.css">
+<link rel="stylesheet" type="text/css" href="../css/pmt.css"/>
+<link rel="stylesheet" type="text/css" href="../css/user_defined.css">
+
+<style type="text/css">
+        #colee p:nth-of-type(2n+2) {
+            text-align: left;
+            background-color:#e6f8fe;
+        }
+         #colee p:nth-of-type(2n+1) {
+            text-align: left;
+            background-color:white;
+        }
+        #colee p span{
+            
+            display:inline-block;
+            padding-left:15px; 
+            
+            line-height:25px;
+        }
+
+        #colee{
+            overflow:hidden;
+            height:120px;
+            width:100%;
+             /*background-color:#0f356c; */
+            
+        } 
+        #colee p{
+            margin:0px;
+        }
+        /*#colee1{
+            background-color:#0f356c;
+        }*/
+       .table-title{
+        border-bottom:1px #d6d6d6 solid;
+        
+       /* width:410px;*/
+        background-color:#f1f4f7;
+        margin:0px;
+        padding:0px;
+       }
+       .table-title p{
+        line-height:25px;
+        margin:0px;
+       }
+       #colee p:hover{
+        background-color:#aedfef;
+        color:#666;
+       }
+</style>
+</head>
+<body >
+  <div id="dbdtitle" style="text-align: center;"></div>
+  <div id="content" style="position: relative;"></div>
+  <div id="two" title="">
+    <iframe id="test" src="" frameborder="0" scrolling="0" height="100%" width="100%"></iframe>
+  </div>
+</body>
+<script type="text/javascript" src="../libs/jquery-1.11.0.min.js"></script> 
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=mRh57fdOt8eV4XAmeGK5Ou6pk8HoDFLK"></script>
+<script type="text/javascript" src="../libs/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../libs/cookie/jquery.cookie.js"></script>  
+<script type="text/javascript" src="../libs/jqueryUI/js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="../js/jquery.rotate.min.js"></script>
+<script type="text/javascript" src="../libs/jqmeter/jqmeter.min.js"></script>
+<script type="text/javascript" src="../libs/jUploader/jquery.jUploader-1.0.min.js" ></script>
+<script type="text/javascript"src="../libs/echarts3/echarts.js"></script>
+<script type="text/javascript"src="../libs/echarts3/theme/shine.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/china.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/anhui.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/aomen.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/beijing.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/china.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/chongqing.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/fujian.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/gansu.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/guangdong.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/guangxi.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/guizhou.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/hainan.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/hebei.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/heilongjiang.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/henan.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/hubei.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/hunan.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/jiangsu.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/jiangxi.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/jilin.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/liaoning.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/neimenggu.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/ningxia.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/qinghai.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/shanghai.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/shanxi.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/shanxi1.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/sichuan.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/tianjin.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/world.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/xianggang.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/xinjiang.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/xizang.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/yunnan.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/shandong.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/zhejiang.js"></script>
+<script type="text/javascript" src="../libs/jquery-kxbdmarquee/js/jquery.kxbdmarquee.js"></script>
+<script type="text/javascript" src="../libs/datatable/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="../libs/datatable/dataTables.bootstrap.js"></script>
+ <script type="text/javascript" src="../libs/heatmap/heatmap_min.js"></script>
+ <script type='text/javascript' src='../portal/portal1/e_portal1.js'></script>
+<script type='text/javascript' src='dbd_yl.js'></script>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+    <title>应用管理功能</title>
+    <link rel="stylesheet" type="text/css" href="../libs/datatable/css/jquery.dataTables.css">
+    <link rel="stylesheet" href="../libs/bootstrap/css/bootstrap.min.css">
+
+
+	<style type="text/css">
+		#useManage th{
+				background-color: rgb(0,113,197)!important;
+				font-size: 16px;
+				font-weight: normal;
+				color: #fff;
+		}
+		#useManage th,#useManage td {
+			text-align: center;
+		}
+		.box{
+			width: 86%;
+			margin: auto;
+			margin-top: 10px;
+			height:100%;
+			overflow: hidden;
+			background-color: #ffffff;
+			border: solid 1px #cdced1;
+		}
+		table th{
+			text-align: center;
+		}
+		.dataTables_wrapper .dataTables_filter{
+			width: 100%;
+			float: left;
+		}
+		.dataTables_wrapper .dataTables_filter label{
+			float: left;
+			margin-left: 8px;
+		}
+		.dataTables_filter input{
+			background-color:#f2f5fb;
+            border:1px #0071c5 solid;
+            height:30px;
+            width:330px;
+            padding-left:10px;
+		}
+		.anniu{
+            height:30px;
+            width:31px;
+            float:right;
+            border:none;
+            padding-left:1px;
+            background:#0071c5 url('img/find_icon_wh.png') no-repeat center center;
+            background-repeat:no-repeat;
+        }
+	</style>
+</head>
+<body>
+	<!-- 构建dom -->
+<div class="box">
+	<div class="mar" style="margin-top:10px;text-align:center;font-size: 24px;color: rgb(51,122,183);font-weight: bold;">图片管理</div>
+	<div class="col-md-12 row"style="margin:auto;margin-top: 10px;"></div>
+	<table id="useManage" class="display table table-bordered" cellspacing="0" width="100%"></table>
+	<div class="modal fade" id="addModal" aria-hidden="true" data-backdrop="static">
+	  	<div class="modal-dialog ">
+	    	<div class="modal-content">
+	      		<div class="modal-header">
+	        		<button type="button" class="close" id="ck_gb" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        		<h4 class="modal-title">图片上传</h4>
+	      		</div>
+						<div class="modal-body" id="useModal">
+	      			<div class="col-lg-12" style="margin-bottom: 20px;">
+					    	<div class="input-group">
+					      		<span class="input-group-btn">
+				        			<button class="btn btn-default" type="button">图片ID</button>
+					      		</span>
+					      		<input type="text" data-id="0" class="form-control" placeholder="请输入2-11个以字母开头(可包含数字、“_”、“.”)的字符串">
+				    		</div>
+					  	</div>
+	      			<div class="col-lg-12" style="margin-bottom: 20px;">
+					    	<div class="input-group">
+					      		<span class="input-group-btn">
+				        			<button class="btn btn-default" type="button">图片描述</button>
+					      		</span>
+					      		<input type="text" data-id="1" class="form-control" placeholder="请对图片进行描述">
+				    		</div>
+					  	</div>
+					  	<div class="col-lg-12" style="margin-bottom: 20px;">
+					  		<div class="input-group">
+					  			<span class="input-group-btn">
+					  				<button id="logoUp" class="btn btn-default" type="button">上传图片</button>
+					  			</span>
+					  			<input type="text" data-id="2" class="form-control" readonly placeholder="图片名称不能是中文">
+					  			<div class="input-group-btn">
+							        <div id="logo_btn" type="button" class="btn btn-default">上传</div>
+						      	</div>
+					  		</div>
+					  	</div>
+	      		</div>
+      			<div class="modal-footer">
+        			<button type="button" id="gb_btn" class="btn btn-default" data-dismiss="modal">关闭</button>
+	        		<button id="ok_btn" type="button" class="btn btn-primary">确认</button>
+		        	<button id="saveOK_btn" type="button" class="btn btn-primary">确认</button>
+	      		</div>
+	    	</div><!-- /.modal-content -->
+	  	</div><!-- /.modal-dialog -->
+	</div>
+</div>
+
+<script src="../libs/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="../libs/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../libs/datatable/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="../libs/jUploader/jquery.jUploader-1.0.min.js"></script>
+<script type="text/javascript" src="image.js"></script>
+</body>
+</html>

@@ -1,0 +1,103 @@
+.trans_table{
+  color:#fff;
+  float:left;
+}
+.trans_title{
+  font-size: 16px;color: #666;text-align: center;
+}
+.list{
+  background-color:#a5a5a5;
+  text-align:center;
+  margin-right:3px;
+  line-height:30px;
+  float:left;
+  display:inline-block;
+  width:30px;
+  height:30px;  
+}
+.top10 li {
+  height:30px;
+  
+  margin-bottom:3px;
+  list-style-type:none;
+}
+.trans_list_bg{
+  float:right;
+  position:relative;
+  width:300px;
+  height:30px;
+  background-color:#a5a5a5;
+
+}
+.trans_list_txt{
+  line-height:30px;
+  height:30px;
+  margin:0px;
+  display:block;
+  position:absolute;
+  z-index:999;
+  top:0px;
+  left:0px;
+  width:300px;
+}
+.country{
+  padding-left:6px;
+}
+.num{
+  float:right;
+  padding-right: 6px;
+}
+.list_data_bg{
+  background-color:#a5a5a5;
+  height:30px;
+ /* 没有数据的底色和默认宽度 */
+  position:absolute;
+  left:0px;
+}
+/* 以下代码代表top10里前三的底色 */
+.list1 ,.list2 ,.list3 , .data1 ,.data2 ,.data3{
+  background-color:#c00000;
+}
+/* 以下代码为top10里前三的每个根据数据变化的量，瑶瑶你实现下 */
+.data1{
+  width:100%;
+}
+.data2{
+  width:80%;
+}
+.data3{
+  width:60%;
+
+}
+
+/* 以下代码代表top10里456行排名的底色 */
+.list4,.list5 ,.list6,.data4 ,.data5 ,.data6{
+  background-color:#ed7d31;
+}
+.data4{
+  width:80%;
+}
+.data5{
+  width:40%;
+}
+.data6{
+  width:90%;
+}
+
+/* 以下代码代表top10里最后四行排名的底色 */
+
+.list7,.list8 ,.list9,.list10,.data7 ,.data8 ,.data9,.data10{
+  background-color:#ffc000;
+}
+.data7{
+  width:80%;
+}
+.data8{
+  width:60%;
+}
+.data9{
+  width:40%;
+}
+.data10{
+  width:60%;
+}

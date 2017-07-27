@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+    <!--<![endif]-->
+    <!-- BEGIN HEAD -->
+
+<head>
+    <meta charset="utf-8" />
+    <title>AM运行</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta content="" name="description" />
+    <meta content="" name="author" />
+    <link rel="stylesheet" type="text/css" href="../libs/jqueryUI/css/jquery-ui.min.css">
+    <link href="../libs/nestable/css/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="../libs/jUploader/ui.jqgrid.css" />
+    <link rel="stylesheet" type="text/css" href="../libs/bootstrap/css/bootstrap.min.css">
+    <link href="../libs/nestable/css/components.min.css" rel="stylesheet" id="style_components" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../css/06.css">
+    <link rel="stylesheet" type="text/css" href="../css/pmt.css"/>
+    <link rel="stylesheet" type="text/css" href="../portal/portal1/portal1_total.css">
+    <link href="../css/amrun.css" rel="stylesheet"type="text/css" />
+
+</head>
+
+<body style="background:transparent;background-color:rgba(255,255,255,0)">
+    <div  id="top" style="text-align: center;"></div>
+    <div id="run_box" style="background:transparent;background-color:rgba(255,255,255,0);">
+        <div id="runDiv" style="overflow: hidden;"></div>
+        <div class="col-md-12 mar" >
+            <button id="downLoad" class="btn" disabled="disabled">导出数据</button>
+            <button id="run" class="btn">查询</button>
+            <button id="jd" class="btn">0</button>
+        </div>
+    </div>
+    <div id="dbdView">
+    </div>
+        <!--[if lt IE 9]>
+        <script src="../assets/global/plugins/respond.min.js"></script>
+        <script src="../assets/global/plugins/excanvas.min.js"></script>
+        <![endif]-->
+    <div id="showData">
+        <ul class="list-unstyled"></ul>
+    </div>
+</body>
+<script src="../libs/jquery-1.11.0.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="../libs/jqueryUI/js/jquery-ui.min.js"></script>
+<script src="../libs/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="../libs/jqmeter/jqmeter.min.js"></script>
+<script type="text/javascript" src="../libs/jUploader/jquery.jUploader-1.0.min.js" ></script>
+<script type="text/javascript" src="../libs/cookie/jquery.cookie.js"></script>
+<script type="text/javascript" src="../js/jquery.rotate.min.js"></script>
+<script type="text/javascript"src="../libs/echarts3/echarts.js"></script>
+<script type="text/javascript" src="../libs/echarts-gl-master/dist/echarts-gl.min.js"></script>
+<script type="text/javascript"src="../libs/echarts3/theme/shine.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/china.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/anhui.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/aomen.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/beijing.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/china.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/chongqing.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/fujian.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/gansu.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/guangdong.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/guangxi.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/guizhou.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/hainan.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/hebei.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/heilongjiang.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/henan.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/hubei.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/hunan.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/jiangsu.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/jiangxi.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/jilin.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/liaoning.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/neimenggu.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/ningxia.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/qinghai.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/shanghai.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/shanxi.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/shanxi1.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/sichuan.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/tianjin.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/world.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/xianggang.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/xinjiang.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/xizang.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/yunnan.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/shandong.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/zhejiang.js"></script>
+<script type="text/javascript" src="../libs/jquery-kxbdmarquee/js/jquery.kxbdmarquee.js"></script>
+<script type="text/javascript" src="../libs/datatable/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="../libs/datatable/dataTables.bootstrap.js"></script>
+ <script type='text/javascript' src='../portal/portal1/e_portal1.js'></script>
+<script src="am_yl.js" type="text/javascript"></script>
+</html>

@@ -1,0 +1,206 @@
+html,
+body {
+  height: 100%;
+  background: #e5e8eb;
+  min-height: 700px;
+  color: #666;
+}
+.authorization {
+  background: #fff;
+  min-height: 776px;
+  _height: 776px;
+}
+.authorization .header {
+  height: 48px;
+  padding-left: 8%;
+  background: #092345;
+}
+.authorization .header h1 {
+  font-size: 16px;
+  color: #fff;
+  font-weight: normal;
+  float: left;
+  text-shadow: 0px 5px 5px #000a18;
+  line-height: 48px;
+  margin: 0;
+}
+.authorization .header .logo {
+  float: left;
+  margin: 6px 10px 0 0;
+}
+.authorization .content {
+  height: auto;
+  padding: 48px 0;
+  font-size: 12px;
+  text-align: center;
+}
+.authorization .content .authorizeLogin {
+  cursor: pointer;
+}
+.authorization .content p {
+  margin-top: 0;
+}
+.authorization .content .userPhoto {
+  margin-top: 30px;
+}
+.authorization .content .userPhoto p {
+  margin-top: 10px;
+}
+.hwrap {
+  overflow: hidden;
+  background: #061b34 url('../img/login_bg.png')  top center no-repeat;
+  border-bottom: #82bd3e solid 2px;
+}
+.hwrap > .header {
+  width: 1000px;
+  margin: 0 auto;
+  height: 348px;
+  overflow: hidden;
+}
+.hwrap > .header > .systemIcon {
+  margin: 14px 0 0 0;
+  display: inline-block;
+}
+.hwrap > .header > .right-tip {
+  opacity: 0.4;
+  filter: alpha(opacity=40);
+  margin-top: 5px;
+  text-align: right;
+  float: right;
+  color: #fff;
+  font-size: 12px;
+  line-height: 12px;
+}
+.hwrap > .header > .right-tip span {
+  margin: 0 4px;
+  float: right;
+}
+.hwrap > .header > .right-tip a {
+  color: #fff;
+  float: right;
+}
+.hwrap > .header > .right-tip p {
+  clear: both;
+  padding: 5px;
+  line-height: 12px;
+}
+.bwrap {
+  padding-top: 15px;
+  background: #e5e8eb;
+}
+.bwrap > .login-from {
+  display: block;
+  width: 265px;
+  margin: 0 auto;
+}
+.bwrap > .login-from .forget-password {
+  float: right;
+  font-size: 12px;
+  color: #5691d3;
+}
+.bwrap > .login-from > .input-wrap {
+  background: white;
+  border: 1px solid #c8c8c8;
+  height: 38px;
+  line-height: 38px;
+  margin-top: 15px;
+  width: 100%;
+  font-size: 14px;
+  position: relative;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+}
+.bwrap > .login-from > .input-wrap > label {
+  width: 64px;
+  display: inline-block;
+  text-align: right;
+  padding: 0 5px 0 5px;
+  color: #666;
+}
+.bwrap > .login-from > .input-wrap > input {
+  height: 22px;
+  border: 0;
+  outline: 0;
+  color: #666;
+}
+.bwrap > .login-from > .input-wrap #vcode {
+  width: 110px;
+}
+.bwrap > .login-from > .input-wrap img {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  vertical-align: middle;
+}
+.bwrap > .login-from .checkbox-wrap {
+  margin-top: 13px;
+  font-size: 12px;
+  color: #666;
+  margin-left: 1px;
+}
+.bwrap > .login-from > .cookie-label {
+  font-size: 12px;
+  color: #666;
+}
+.bwrap > .login-from > .login-btn {
+  margin-top: 20px;
+  display: block;
+  width: 100%;
+  background: #82bd3e;
+  color: #fff;
+  border: 0;
+  height: 40px;
+  font-family: "寰蒋闆呴粦";
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+}
+.password-edit {
+  padding: 2em;
+}
+.password-edit-item img {
+  vertical-align: -11px;
+  height: 29px;
+}
+.password-edit-item #user-vcode {
+  width: 50px;
+}
+.languages {
+  color: #666;
+  margin-top: 40px;
+  font-size: 12px;
+  width: 170px;
+  margin: 80px auto 10px auto;
+}
+.languages a {
+  color: #5691d3;
+  float: left;
+}
+.common-footer {
+  clear: both;
+}
+.common-footer .copyright {
+  width: 100%;
+  text-align: center;
+}
+.forget-password-popup {
+  width: 400px;
+  margin: 0 30px;
+}
+.dividingline_grey {
+  width: 1px;
+  background: #cccccc;
+  display: block;
+  height: 8px;
+  margin: 5px;
+  float: left;
+}
+.dividingline_grey2 {
+  width: 1px;
+  background: #4f5b6b;
+  display: block;
+  height: 8px;
+  margin: 1px 8px;
+  float: right;
+}

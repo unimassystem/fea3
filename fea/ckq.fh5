@@ -1,0 +1,156 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="../libs/datatable/css/jquery.dataTables.css">
+<link rel="stylesheet" type="text/css" href="../libs/bootstrap/css/bootstrap.min.css" />
+<link href="../libs/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+<!-- <link rel="stylesheet" type="text/css" href="../libs/datatable/css/dataTables.bootstrap.css"> -->
+<link rel="stylesheet" type="text/css" href="../libs/jsonFormater-master/jsonFormater.css" />
+<style type="text/css">
+	#datatable th{
+		background-color: rgb(51,122,183);
+		color: #fff;
+		height: 48px;
+		font-size: 16px;
+	}
+	th,td{
+		text-align: center;
+	}
+	/* table{
+		height: 300px;
+		overflow: scroll;
+	} */
+	.dx_bj_tc{
+		position: fixed;
+		background: #fff;
+		overflow: hidden;
+		top: 0;
+		left: 0;
+		box-shadow: 0px 3px 2px 3px #ccc;
+	}
+	.dx_tc_title{
+		position: absolute;
+		top: 0;
+		width: 100%;
+		height: 40px;
+		background: #ccc;
+		overflow: hidden;
+	}
+	.dx_tc_title span{
+		font-size: 14px;
+		font-family: '微软雅黑';
+		display: block;
+		line-height: 40px;
+		float: left;
+		margin-left: 15px;
+	}
+	.dx_tc_title button{
+		display: block;
+		float: right;
+		margin-left: 15px;
+		margin-top: 3px;
+	}
+	.dx_tc_main{
+		position: absolute;
+		left: 0;
+		width: 100%;
+		padding: 1%;
+		overflow: auto;
+	}
+	.dx_tc_main input{
+		width: 100%;
+		height: 40px;
+		margin: auto;
+	}
+	.fy_dx{
+		width: 100%;
+		height: 40px;
+	}
+	.dx_bj_tc span{
+		cursor: default;
+		color: #666;
+	}
+	.dx_bj_tc a{
+		cursor: pointer;
+		text-decoration: none;
+		color: #666;
+	}
+</style>
+
+</head>
+<body>
+<div class="container-fluid">
+<div class="row col-md-12" style="margin-top:5px">
+	<!-- <form class="form-horizontal col-md-10" style="padding-left:0;padding-right:10px"></form> -->
+		<input id="select_id" class="form-control" style="width:80%;float: left;margin-right: 10px;">
+	<button id="chaxun" class="btn btn-primary" style="width:8%;float: left; margin-right:15px;">查询</button>
+	<button type="button" name="button" class="dx_bj btn btn-primary" style="width:8%;float: left;">编辑</button>
+</div>
+</div>
+<div  class="container-fluid">
+<ul id="select1" class="row list-unstyled list-inline col-md-12" style="margin-top:5px">
+	<li  class="btn btn-default" style="width: 23%;margin-right: 15px;">表格</li>
+	<li  class="btn btn-default" style="width: 23%;margin-right: 15px;">柱状图(内含折线图，堆积图)</li>
+	<li class="btn btn-default" style="width: 23%;margin-right: 15px;">散点图</li>
+	<li class="btn btn-default" style="width: 23%;margin-right: 15px;">JSON</li>
+</ul>
+ <div id="content" class="row" style="margin-top:5px;">
+	 <div class="tag col-md-12 " id="datatable" style="margin-top: 10px;">
+  		<!-- <div class="col-md-12 title" style="font-size: 20px"></div> -->
+  		<!-- <table id="dataSa" class="table table-bordered table-hover table-striped example table-responsive" cellspacing="0"  height="100%"></table> -->
+  		<table class="table table-bordered table-hover">
+  			<thead></thead>
+  			<tbody></tbody>
+  		</table>
+  	</div>
+	<div class="tag col-md-12 ">
+		<div style="height:300px;width: 100%" id="bar"></div>
+ 	</div>
+ 	<div class="tag col-md-12 ">
+ 	    <div style="height:300px;width: 100%" id="scatter"></div>
+ 	</div>
+	<div class="tag col-md-12 ">
+
+		<form class="form-horizontal" id="JSON">
+			<textarea class="form-control" rows="10px" cols=""></textarea>
+		</form>
+ 	</div>
+
+ </div>
+</div>
+
+<!-- <div class="dx_bj_tc" style="width:'+w+'px;height:'+h+'px;">
+	<div class="dx_tc_title">
+		<span>对象编辑</span>
+		<button type="button" name="button" class="dx_qx btn btn-info">取消</button>
+		<button type="button" name="button" class="dx_tj btn btn-success">保存</button>
+		<button type="button" name="button" class="dx_xz btn btn-primary">新增</button>
+	</div>
+	<div class="dx_tc_main">
+		<table id="dx_table" class="display table table-bordered table-hover" cellspacing="0" width="100%">
+			<thead></thead>
+			<tbody id="table2"></tbody>
+		</table>
+		<div class="fy_dx">
+			<span id="spanFirst">第一页</span>
+			<span id="spanPre">上一页</span>
+			<span id="spanNext">下一页</span>
+			<span id="spanLast">最后一页</span> 第<span id="spanPageNum"></span>页/共<span id="spanTotalPage"></span>页
+		</div>
+	</div>
+</div> -->
+<!-- <div style="width:800px;height:400px;" id="oneChart"></div>
+<div style="width:800px;height:400px;" id="twoChart"></div> -->
+<script type="text/javascript" src="../libs/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="../libs/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../libs/datatable/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="../libs/echarts/build/dist/echarts.js"></script>
+
+<script type="text/javascript" src="../libs/jsonFormater-master/jsonFormater.js"></script>
+<!-- <script type="text/javascript" src="libs/datatable/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="libs/datatable/js/dataTables.bootstrap.js"></script> -->
+<script type="text/javascript" src="ckq.js"></script>
+</body>
+</html>

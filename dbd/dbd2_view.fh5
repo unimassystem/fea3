@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>dashboard视图</title>
+<link rel="stylesheet" type="text/css" href="../libs/jqueryUI/css/jquery-ui.min.css">
+<link rel="stylesheet" type="text/css" href="../libs/bootstrap/css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="../libs/datatable/css/dataTables.bootstrap.css">
+<link rel="stylesheet" type="text/css" href="../fea/css/user_defined.css">
+</head>
+<body style="background-color: rgba(0,0,0,0);background-color: transparent;">
+  <!-- <div id="dbdtitle"></div> -->
+  <div id="content" style="position:absolute; z-index:-2;"></div>
+  <div id="two" title="" style="display: none;">
+    <iframe src="" frameborder="0" scrolling="no" height="100%" width="100%"></iframe>
+  </div>
+</body>
+<script type="text/javascript" src="../libs/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=mRh57fdOt8eV4XAmeGK5Ou6pk8HoDFLK"></script>
+<script type="text/javascript" src="../libs/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../libs/cookie/jquery.cookie.js"></script>
+<script type="text/javascript" src="../libs/jqueryUI/js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="../js/jquery.rotate.min.js"></script>
+<script type="text/javascript" src="../libs/jqmeter/jqmeter.min.js"></script>
+<script type="text/javascript" src="../libs/jUploader/jquery.jUploader-1.0.min.js" ></script>
+<script type="text/javascript"src="../libs/echarts3/echarts.js"></script>
+<script type="text/javascript" src="../libs/echarts3/echarts-gl.min.js"></script>
+<script type="text/javascript"src="../libs/echarts3/echarts-liquidfill.min.js"></script>
+<script type="text/javascript"src="../libs/echarts3/theme/shine.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/china.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/anhui.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/aomen.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/beijing.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/china.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/chongqing.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/fujian.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/gansu.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/guangdong.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/guangxi.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/guizhou.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/hainan.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/hebei.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/heilongjiang.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/henan.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/hubei.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/hunan.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/jiangsu.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/jiangxi.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/jilin.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/liaoning.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/neimenggu.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/ningxia.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/qinghai.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/shanghai.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/shanxi.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/shanxi1.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/sichuan.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/tianjin.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/world.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/xianggang.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/xinjiang.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/xizang.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/yunnan.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/shandong.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/zhejiang.js"></script>
+<script type="text/javascript" src="../libs/jquery-kxbdmarquee/js/jquery.kxbdmarquee.js"></script>
+<script type="text/javascript" src="../libs/datatable/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="../libs/datatable/dataTables.bootstrap.js"></script>
+<script type="text/javascript" src="../libs/heatmap/heatmap_min.js"></script>
+<!--  <script type='text/javascript' src='../portal/portal4/e_portal_4.js'></script> -->
+<script type='text/javascript' src='html2canvas.js'></script>
+<script type='text/javascript' src='dom-to-image.min.js'></script>
+<script type='text/javascript' src='dbd2_view.js'></script>
+<script type="text/javascript"  src="../plot/world_china.js"></script>
+</html>

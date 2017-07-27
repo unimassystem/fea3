@@ -1,0 +1,65 @@
+@charset "utf-8";
+/* CSS Document */
+button{
+	margin-right: 12px; 
+}
+#img_main_tc{background: #fff;overflow: hidden;}
+.nav_img{
+	height: 50px; 
+	line-height: 50px;
+	width: 100%; 
+	overflow: hidden; 
+	text-align: center;
+	position: relative;
+	border-bottom: 1px #cbcbcb solid;
+	background-color: #e9e9e9;
+}
+.nav_img h5{
+	font-weight: bold; 
+	font-size: 16px;
+	font-family: '微软雅黑';
+	margin: 0px;
+	line-height: 50px;
+	color: #656565;
+}
+.img_tc_ok{
+	position: absolute;
+	right: 10px;
+	top: 7px;
+}
+.img_tc_close{
+	position: absolute;
+	right: 80px; 
+	top: 7px;
+}
+#img_box_xs{overflow: auto;}
+#container{ position:relative;}
+.boxs{ 
+	padding:5px; 
+	float:left; 
+	cursor: pointer;
+}
+.boxs a{
+	display: block;
+	text-align: center;
+	 text-decoration: none;
+	}
+.boxs_img{ 
+	padding:5px; 
+	border:1px solid #ccc; 
+	boxs-shadow:0 0 5px #ccc;
+	border-radius: 3px;
+}
+.boxs_img img{ 
+	width:400px; 
+	height:auto;
+}
+
+/*boxs点击之后的样式*/
+.click_boxs{
+	box-shadow: 2px 4px 4px 2px #787878;
+	brder:1px solid #7b7b7b;
+}
+.pd_ts{
+	padding-left: 0px;
+}

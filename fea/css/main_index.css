@@ -1,0 +1,56 @@
+.firstContent{
+	width: 86%;
+	margin: auto;
+	margin-top: 20px;
+	overflow: hidden;
+	background-color: #ffffff;
+	border: solid 1px #cdced1;
+}
+.firstContent .top{
+	width:100%;
+	line-height: 28px;
+	background-color: #e6ecef;
+
+}
+.firstContent .top span{
+	padding-left: 1.2em;
+	font-size: 16px;
+
+}
+.firstContent .gaikuang_box{
+	border-bottom: 1px solid #ecedef;
+	height: 64px;
+	overflow: hidden;
+	}
+.firstContent .gaikuang{
+	width: 80%;
+	margin:auto;
+	overflow: hidden;
+	margin-top: 18px;
+	
+}
+
+ .out{
+	position: relative;	
+} 
+.out span{
+	text-align:left;
+	position: absolute;
+	z-index:99;
+	left:120px;
+	top: 0;
+	font-size: 16px;	
+	color: #ffffff;	
+	line-height: 32px;
+	width: 50%;
+	text-shadow:1 1 1  #000; 
+	
+}
+.firstContent .tableContent{
+	width: 98%;
+	margin:auto;
+}
+table td{
+	text-align: center;
+	font-weight: normal;
+}

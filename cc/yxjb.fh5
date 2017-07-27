@@ -1,0 +1,179 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>fea分析平台</title>
+<link rel="stylesheet" type="text/css" href="../libs/jqueryUI/css/jquery-ui.min.css">
+<!-- <link rel="stylesheet" type="text/css" media="screen" href="../libs/jUploader/jquery-ui-custom.css" /> -->
+<link rel="stylesheet" type="text/css" media="screen" href="../libs/jUploader/ui.jqgrid.css" />
+<link href="../libs/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+
+<link href="../libs/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+
+<link rel="stylesheet"  href="../fea/css/main.css" type="text/css" />
+
+<!-- </script> -->
+<style type="text/css">
+	.ui-dialog-titlebar{
+		background-color: rgb(0,113,197);
+		color: #fff;
+	}
+	.ui-dialog-titlebar-close{
+		background-color: rgb(0,113,197)!important;
+		color: #fff;
+		border-color: rgb(0,113,197)!important;
+		background-image: url('../fea/img/icon/X_icon.png')  !important;
+	}
+	 .ui-button .ui-icon  {
+		background-image: none!important;
+	}
+	#csTable{
+		width: 95%;float: left;
+	}
+	#csTable th{
+		text-align: center;
+		font-size: 16px;
+		font-weight: normal;
+	}
+	#csTable td,#csTable td a{
+		text-align: center;
+	}
+	#csTable td a{
+		text-decoration: none;
+		line-height: 36px;
+	}
+	#progress,#LoadProgress{
+		width: 60px;
+		line-height:33px;
+		text-align:center;
+		color: #fff;
+		background-color: rgb(49,176,213);
+		float: right;
+	}
+	#shangchuan{
+		color: #fff;
+		font-size: 14px;
+	}
+	#newPass{
+		width: 86%;
+		height: 32px;
+	}
+</style>
+<script src="../libs/jquery-1.11.0.min.js" type="text/javascript"></script>
+
+
+<script type="text/javascript" src="../libs/cookie/jquery.cookie.js"></script>
+
+<script type="text/javascript" src="../libs/jUploader/jquery.jUploader-1.0.min.js" ></script>
+<script type="text/javascript" src="../libs/bootstrap/js/bootstrap.min.js"></script>
+<!-- <script type="text/javascript" src="../libs/jUploader/jquery-ui-1.8.1.custom.min.js"></script> -->
+<script type="text/javascript" src="../libs/jqueryUI/js/jquery-ui.min.js"></script>
+
+
+<script type="text/javascript" src="../fea/js/vivo.js"></script>
+<script type="text/javascript" src="../fea/main.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("body").on('click','.list .lista',function(){
+			$(this).css({"color":"#0071c5","background":"#ffffff"});
+			$('.list .lista').not(this).css({"color":"#ffffff","background":"rgb(0,113,197)"});
+		});
+		$('#shangchuans').click(function() {
+			shangchuans('shangchuans','fea');
+		});
+		var shangchuans=function(a,b){
+			//console.info(b);
+			$.jUploader({
+				button: a, // 这里设置按钮id
+				action: '/putfile?filetype='+b, // 这里设置上传处理接口，这个加了参数test_cancel=1来测试取消
+				cancelable: true, // 可取消上传
+				allowedExtensions: ['csv','fea','excel','data','txt','pkl'], // 只允许上传
+				messages: {
+				upload: '上传文件',
+				cancel: '取消上传',
+				emptyFile: "{file} 为空，请选择一个文件.",
+				invalidExtension: "{file} 后缀名不合法. 只有 {extensions} 是允许的.",
+				onLeave: "文件正在上传，如果你现在离开，上传将会被取消。"
+				},
+				onUpload:function(fileName){
+					console.info(fileName);
+				},
+				onComplete: function (fileName, response) {
+					// response是json对象，格式可以按自己的意愿来定义，例子为： { success: true, fileUrl:'' }
+					alert("上传成功");
+
+				}
+		  	});
+		};
+
+	});
+</script>
+
+</head>
+
+<body class="nav" style="background-color:#edf6f8;padding-right: 0;" >
+
+<!-- <div id="runData" title="运行" style="display: none;"> -->
+  <div class="col-md-12">
+    <label style="line-height:34px;float: left;width: 5%;">fea：</label>
+    <div class="input-group" style="width: 50%;float: left;">
+          <input id="feaName" type="text" class="form-control" placeholder="请输入/选择fea脚本">
+          <div class="input-group-btn">
+            <button id="runButton" style="height: 34px;" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="caret"></span></button>
+            <ul id="runList" style="height: 280px;overflow: scroll;" class="dropdown-menu dropdown-menu-right"></ul>
+          </div>
+      </div>
+      <div class="input-group" style="width: 9%;float: right;">
+          <div id="shangchuans" class="btn btn-primary" type="button"><span>上传文件</span></div>
+                      <!-- </span> -->
+      </div>
+  </div>
+
+  <div class="col-md-12" style="margin-top: 10px;">
+    <label style="line-height:34px;float: left;width: 5%;">参数：</label>
+    <table id="csTable" class="table table-bordered">
+      <thead>
+        <th>参数名</th>
+        <th>默认值</th>
+        <th colspan="2">操作</th>
+      </thead>
+      <tbody>
+        <tr>
+          <td><input class="form-control" type="text"></td>
+          <td><input class="form-control" type="text"></td>
+          <td>
+            <a class="glyphicon glyphicon-plus plus" style="color: red;"></a>
+          </td>
+          <td>
+            <a class="glyphicon glyphicon-minus remove" style="color: green"></a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="col-md-12"style="margin-top: 10px;">
+    <div style="width: 15%;margin: auto;">
+      <button id="ok" class="btn btn-primary" style="border-radius: 0;">运行</button>
+      <span>：</span>
+      <div id="progress">0</div>
+    </div>
+  </div>
+  <div class="col-md-12" style="margin-top:10px;">
+    <div id ="dateCon" style="line-height: 32px;"></div>
+  </div>
+  <div id="message" class="col-md-12" style="margin-top:10px;">
+    <div>开始时间：<span class="kssj"></span></div>
+    <div>结束时间：<span class="jssj"></span></div>
+    <div><span>错误信息：<span class="errorCount"></div>
+    <table class="table table-bordered" style="margin-top: 10px;">
+      <thead>
+        <th>错误详情
+        </th>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+<!-- </div> -->
+</body>
+</html>

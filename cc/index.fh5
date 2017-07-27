@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="UTF-8" />
+  <title>登录</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- <link rel="stylesheet" href="css/index.css" /> -->
+  <script type='text/javascript' src='../libs/jquery-1.11.0.min.js'></script>
+  <script type='text/javascript' src='../libs/jquery.particleground.min.js'></script>
+  <script type="text/javascript" src="../libs/cookie/jquery.cookie.js"></script>
+  <script type='text/javascript' src='index.js'></script>
+
+  <link rel="stylesheet" type="text/css" href="css/newlogin.css">  
+</head>
+
+<body>
+
+    <div class="logbox">
+    <div class="logo"><!-- <img src="img/logo.png"> --><p>FEA智能分析中心</p></div>
+        <div class="boxinside">
+            <p><i class="user"></i><input id="ipt1" type="" placeholder="请输入账号" name="user" class="ip_jq"></p>
+            <p><i class="key"></i><input id="ipt2" type="password" placeholder="请输入密码" name="psw" class="ip_jq"></p>
+            <!-- <label class="checker"><input type="checkbox" name="remember">记住密码 </label> -->
+            <button class="logbtn" id="login">登录</button>
+        </div>
+    </div>
+<script src="login.js"></script>
+
+<script type="text/javascript" src="index.js"></script>
+
+
+</body>
+</html>

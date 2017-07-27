@@ -1,0 +1,263 @@
+#search_con{
+	width:60%;
+	float: none;
+	margin: 0px;
+	display: inline-block;
+	float: left;
+}
+.form-group{
+	margin: 0px;
+	padding-bottom: 8px;
+}
+.form-control{
+	margin-top:5px;
+	height:40px;
+}
+#nav_box{
+	padding:0px;
+}
+.ui-widget-content{
+	border:none;
+}
+.ui-widget.ui-widget-content{
+	border:none;
+}
+.panel-container{
+	border-right:none;
+	border-bottom:none;
+	border-left:none;
+}
+.menu_head{
+	width:100%;
+	overflow:hidden;
+}
+
+.menu_body{
+	width:100%;
+}
+.menu_body a{
+	display:inline-block;
+	width:100%;
+}
+.ui-tabs .ui-tabs-panel{
+	padding-bottom:20px;
+	padding-right:0px;
+	padding-left:0px;
+}
+.menu_body a span{
+	margin:3px;
+
+}
+.search_btn{
+	height:26px;
+	display:inline-block;
+	position:relative;
+	margin-right:40px;
+	border:1px solid #003eff;
+	background-color:#007fff;
+	color:#fff;
+	border-radius:2px;
+	padding:4px;
+	margin-bottom:4px;
+}
+.menu_body a span:last-child,.menu_body a span:nth-last-child(2){
+	float:right;
+
+}
+.field_d{
+	position:relative;
+}
+.field_s{
+	white-space:normal;
+	white-space:pre-wrap;
+	word-break:normal;
+	display:none;
+}
+.field_d:hover .field_s{
+
+	color:#fff;
+	word-break:normal; 
+	white-space:pre-wrap;
+	word-wrap:break-word;
+	line-height:20px;
+	z-index:999;
+	height:auto;
+	width:200px;
+	display:block;
+	position:absolute;
+	top:-2px;
+	left:200px;
+	background-color:#72C3FF;
+	font-weight:normal;
+	border-radius:4px;
+	padding:0px 3px;
+}
+#tools{
+	width:12%;
+}
+#nav_box .btn{
+	padding: 0px;
+	height:40px;
+	margin-right:0px;
+	margin-bottom:0px;
+	margin-left:-10px;
+	position:static;
+	top: auto;
+	right: auto;
+}
+#date_fields{
+	margin-bottom:4px;
+}
+.menu_list .current{
+	
+}
+.menu_head{
+	text-overflow:ellipsis;
+	padding-right:40px;
+	
+
+}
+.histogram{
+	display:inline-block;
+	height:200px;
+	width:100%;
+}
+.button_left{
+	display:inline-block;
+
+	float:right;
+	height:45px;
+	width:15%;
+}
+.button_left div{
+	float:right;
+	margin-left:4px;
+}
+#plot_ke button,#save_ke button,#apply button{
+	width:100%;
+}
+.total{
+	float:right;
+}
+.apply{
+	float:right;
+}
+.plotting{
+	float:right;
+}
+#content_box #left_list{
+	overflow:visible;
+	height:auto;
+}
+.dataTables_wrapper{
+	padding:0.5%;
+	background-color:#fff;
+	border:1px solid #C6CACB;
+}
+.total{
+	margin:0.5%;
+}
+.dataTables_scroll{
+	
+}
+#x-group table tr td input{
+	width:100%;
+}
+#x-group table tr th{
+	width:100%;
+}
+.remove_con{
+	position:absolute;
+	top:-1px;
+	padding:0px;
+	margin:0px;
+	border:none;
+	outline:none;
+	width:26px;
+	height:26px;
+	background:#007fff url('../image/Xicon.png') no-repeat center center;
+}
+.remove_con:hover{
+	background-color:#0C72D8;
+}
+::-webkit-scrollbar{width:12px;height:12px;}
+::-webkit-scrollbar-track{background-color:#bee1eb;}
+::-webkit-scrollbar-thumb{background-color:#8498a4;}
+::-webkit-scrollbar-thumb:hover {background-color:#5f7d88;}
+::-webkit-scrollbar-thumb:active {background-color:#606060;}
+
+::-webkit-scrollbar-thumb{  
+}  
+
+#ip_range_tables,#range_tables{
+	height:auto;
+	padding:4px;
+	margin:4px 0px;
+	border:1px solid #DDE1E1;
+}
+#ip_range_tables input,#range_tables input{
+	width:100%;
+	float:right;
+}
+#ip_range_tables p,#range_tables p{
+	width:100%;
+	display:inline-block;
+	height:auto;
+}
+.delrange{
+	border:0px;
+	outline:none;
+	width:15px;
+	height:15px;
+	float:right;
+	background: url('../image/X_icon_b.png') center center no-repeat;
+}
+.delrange:hover{
+	background:   url('../image/X_icon_b_hover.png') center center no-repeat;
+}
+#ip_range_tables input:focus,#range_tables input:focus{
+	border:1px #5BC0DE solid;
+}
+table.dataTable tbody tr td{
+	padding:2px;
+	margin:0px;
+	border:0px;	
+	height:20px;
+}
+table.dataTable tbody tr td{
+	border-bottom:1px solid #e4ebeb;
+}
+table.dataTable tbody tr:nth-child(2n){
+	
+	background-color:#eaf3f5;
+}
+table.dataTable tbody tr:nth-child(2n+1){
+	background-color:#fbfbfb;
+}
+table.dataTable thead{
+	color:#fff;
+	background-color:#56a2cf;
+}
+table.dataTable thead th{
+	border-bottom:1px solid #277CAE;
+}
+#save_ke_c,#apply{
+	float: none;
+	display: inline-block;
+}
+#save_ke_c button,#apply button,#save_data{
+	width: auto !important;
+	background-color: #3084c0 !important;
+	padding: 10px !important;
+	border-radius: 4px;
+	outline: none !important;
+}
+#save_ke{
+	float: left !important;
+}
+#save_ke button{
+	margin-right: 10px !important;
+}
+#save_ke_c button:hover,#apply button:hover,#save_data:hover{
+	background-color: #0967aa !important;
+}

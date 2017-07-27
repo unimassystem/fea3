@@ -1,0 +1,17 @@
+
+ div#rMenu {
+    position:absolute; 
+    visibility:hidden; 
+    top:0; 
+    background-color: #0071C5;
+    text-align: left;
+    padding: 1px;
+}  
+div#rMenu a{  
+    cursor: pointer;  
+    list-style: none outside none;  
+    padding: 3px 15px 3px 15px;  
+}  
+div#rMenu a:hover{
+	background-color:#E3ECEF;
+}

@@ -1,0 +1,9 @@
+body{
+	background: transparent;
+}
+#nav_box .btn{
+	margin-left: -40px;
+}
+#search{
+	background: url('../img/find.png') center center no-repeat;
+}

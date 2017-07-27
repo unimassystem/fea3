@@ -1,0 +1,86 @@
+/*
+ *
+ * Template Name: Fullscreen Login
+ * Description: Login Template with Fullscreen Background Slideshow
+ * Author: Anli Zaimi
+ * Author URI: http://azmind.com
+ *
+ */
+
+
+body {
+    background: #f8f8f8;
+    font-family: 'PT Sans', Helvetica, Arial, sans-serif;
+    text-align: center;
+    color: #fff;
+}
+
+.page-container {
+    margin: 120px auto 0 auto;
+}
+
+h1 {
+    font-size: 30px;
+    font-weight: 700;
+    text-shadow: 0 1px 4px rgba(0,0,0,.2);
+}
+
+form {
+    position: relative;
+    width: 305px;
+    margin: 15px auto 0 auto;
+    text-align: center;
+}
+.all{
+    width:100%;
+    height:100%;
+    margin-top:12%;
+}
+.content{
+    margin:auto;
+    width:710px; height:310px; background-image:url(../img/sq_login_logo.png); 
+}
+.allshuru{  width:300px; float: right;padding-top:30px;margin-right: 20px; padding-right:0px;}
+.title{font-size:20px; font-family:Microsoft Yahei;padding-bottom: 30px;}
+.input{border:solid 1px #ccc;border-radius: 3px; width:300px;height:35px;background: url(../img/login/usericon.png) left center ; background-repeat:no-repeat;background-color:#fff;background-position:10px;
+}
+.input-in-user{float:left;border:none;background:none;height:35px;line-height:35px;width:265px; text-indent:32px;padding-left:35px;font-family:Microsoft Yahei; font-size:16px;}
+
+.input-password{border:solid 1px #ccc;border-radius: 3px; width:300px;height:35px;background: url(../img/login/passwordicon.png) left center ; background-repeat:no-repeat;background-color:#fff;
+    background-position:10px;margin-top:30px;
+
+}
+.input-password-in{float:left;border:none;background:none;height:35px;line-height:35px;width:265px; text-indent:32px;padding-left:35px;font-family:Microsoft Yahei; font-size:16px;}
+
+.btn{width:300px;background-color:#0662c7;height:35px;border-radius:3px;margin-top:30px;
+
+}
+.btn-in{width:300px;background-color:#0662c7; height:35px;color:#fff;font-family: Microsoft Yahei; font-size:18px; border-radius:3px;border:none;
+
+}
+
+button:hover {
+    -moz-box-shadow:
+        0 15px 30px 0 rgba(255,255,255,.15) inset,
+        0 2px 7px 0 rgba(0,0,0,.2);
+    -webkit-box-shadow:
+        0 15px 30px 0 rgba(255,255,255,.15) inset,
+        0 2px 7px 0 rgba(0,0,0,.2);
+    box-shadow:
+        0 15px 30px 0 rgba(255,255,255,.15) inset,
+        0 2px 7px 0 rgba(0,0,0,.2);
+}
+
+button:active {
+    -moz-box-shadow:
+        0 15px 30px 0 rgba(255,255,255,.15) inset,
+        0 2px 7px 0 rgba(0,0,0,.2);
+    -webkit-box-shadow:
+        0 15px 30px 0 rgba(255,255,255,.15) inset,
+        0 2px 7px 0 rgba(0,0,0,.2);
+    box-shadow:        
+        0 5px 8px 0 rgba(0,0,0,.1) inset,
+        0 1px 4px 0 rgba(0,0,0,.1);
+
+    border: 0px solid #ef4300;
+}

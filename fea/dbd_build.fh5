@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>dashboard搭建</title>
+		<link rel="stylesheet" type="text/css" href="../libs/jqueryUI/jqueryui-ruler/css/jquery.ui.ruler.css">
+		<link rel="stylesheet" type="text/css" href="../libs/jqueryUI/ruler_for_zip/css/ruler.css">
+		<link href="../libs/nestable/css/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+		<link href="../libs/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+		<link type='text/css' rel="stylesheet" href ='../portal/portal1/portal1_total.css'>
+		<!-- <link hrelibs/nestable/css/components.min.css" rel="stylesheet" id="style_components" type="text/css" /> -->
+		<link rel="stylesheet" type="text/css" href="css/yulan.css"/>
+		<link rel="stylesheet" type="text/css" href="css/user_defined.css">
+		<script type="text/javascript" src="../libs/jquery-1.11.0.min.js"></script>
+		<!-- <script type="text/javascript" src="../libs/jquery-2.2.3.min.js"></script> -->
+
+
+		<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=mRh57fdOt8eV4XAmeGK5Ou6pk8HoDFLK"></script>
+<script type="text/javascript" src="../libs/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../libs/cookie/jquery.cookie.js"></script>
+<script type="text/javascript" src="../libs/jqueryUI/js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="../js/jquery.rotate.min.js"></script>
+<script type="text/javascript" src="../libs/jqmeter/jqmeter.min.js"></script>
+<script type="text/javascript" src="../libs/jUploader/jquery.jUploader-1.0.min.js" ></script>
+<script type="text/javascript"src="../libs/echarts3/echarts.js"></script>
+<script type="text/javascript" src="../libs/echarts3/echarts-gl.min.js"></script>
+<script type="text/javascript"src="../libs/echarts3/echarts-liquidfill.min.js"></script>
+
+<script type="text/javascript"src="../libs/echarts3/theme/shine.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/china.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/anhui.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/aomen.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/beijing.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/china.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/chongqing.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/fujian.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/gansu.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/guangdong.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/guangxi.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/guizhou.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/hainan.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/hebei.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/heilongjiang.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/henan.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/hubei.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/hunan.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/jiangsu.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/jiangxi.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/jilin.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/liaoning.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/neimenggu.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/ningxia.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/qinghai.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/shanghai.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/shanxi.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/shanxi1.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/sichuan.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/tianjin.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/world.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/xianggang.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/xinjiang.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/xizang.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/yunnan.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/shandong.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/zhejiang.js"></script>
+<script type="text/javascript" src="../libs/jquery-kxbdmarquee/js/jquery.kxbdmarquee.js"></script>
+<script type="text/javascript" src="../libs/datatable/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="../libs/datatable/dataTables.bootstrap.js"></script>
+ <script type='text/javascript' src='../portal/portal1/e_portal1.js'></script>
+<script src="../libs/jqueryUI/jqueryui-ruler/js/jquery.ui.ruler.js"></script>
+<script src="../libs/jqueryUI/ruler_for_zip/js/jquery.zxxPageRuler.1.1.js"></script>
+ <script type="text/javascript" src="../libs/heatmap/heatmap_min.js"></script>
+<script src="cfg/menu.js"></script>
+<script type="text/javascript"  src="dbd_build.js"></script>
+<script type="text/javascript"  src="../plot/world_china.js"></script>
+<!-- <script type="text/javascript" src="js/yulan.js"></script> -->
+<style type="text/css">
+	.input-group-btn>.btn:active, .input-group-btn>.btn:focus, .input-group-btn>.btn{
+		z-index: 2;
+	}
+	.box{
+		width: 86%;
+		margin: auto;
+		margin-top: 10px;
+		 height: 350px;
+		background-color: #ffffff;
+		border: solid 1px #cdced1;
+	}
+	#czIcon{
+		width:98%;
+		float: right;
+		height: 40px;
+		margin-top: 10px;
+		margin-right: 12px;
+		border-bottom: 1px solid rgb(235,235,235);
+	}
+	#czIcon a{
+		float: right;
+		margin-right: 12px;
+	}
+	.first div{
+		padding:0;
+
+	}
+	.first label{
+		font-size: 16px;
+		color: #55575a;
+		width: 4em;
+	}
+	.first label,.first input{
+		float: left;
+		margin:0;
+		font-weight: normal;
+
+	}
+	.first input,.first select{
+		width: 70%;
+		margin-left: 10px;
+		border:1px solid #0071c5;
+		background-color: #f2f5fb;
+		height: 28px;
+	}
+	.ef-ruler{
+		overflow: hidden;
+		z-index: -2;
+	}
+	.maxZ{
+		z-index: 1000 !important;
+	}
+
+</style>
+</head>
+<body style="background-color: #edf6f8;">
+	<div class="box">
+		<div class="mar" style="margin-top:10px;text-align:center;font-size: 24px;color: rgb(51,122,183);font-weight: bold;overflow: hidden;"><span id="build_top"></span>·构建</div>
+		<div id="czIcon">
+			<a href="javascript: void(0);"  id="back"><img  src="img/icon/back.png"></a>
+			<a href="javascript: void(0);"  id="yulan"><img  src="img/icon/yulan.png"></a>
+			<a href="javascript: void(0);"  id="save"><img  src="img/icon/save.png"></a>
+	    	<a href="javascript: void(0);"  id="huitu"><img  src="img/icon/draw.png"></a>
+    	</div>
+	   	<div class="first col-md-12" style="margin-top: 20px">
+		   <div class="col-md-4">
+		      	<label >Key</label>
+      			<input class="form-control" type="text" value="500" id="key">
+		   </div>
+		   <div class="col-md-4">
+		      	<label>绘图标题</label>
+		        <input class="form-control" type="text" value="" id="title" style>
+		   </div>
+		   <div class="col-md-4">
+		        <label style="float: left;width: 15%;">类型 </label>
+				<div class="input-group" style="width: 70%;float: left;">
+			      	<input id="types" type="text" class="form-control" style="height: 28px;margin-left: 0;">
+			      	<div class="input-group-btn">
+			        	<button id="chartButton" style="height: 28px;padding-top: 4px;" type="button" class="btn btn-primary">选择</button>
+			      	</div>
+			    </div>
+		   </div>
+		</div>
+		<div class="first col-md-12" style="margin-top:20px">
+			<div class="col-md-4">
+		      	<label>宽度</label>
+		        <input class="form-control" type="text" value="500" id="width">
+		    </div>
+			<div class="col-md-4">
+		      	<label>高度</label>
+		        <input class="form-control" type="text" value="200" id="height">
+			</div>
+			<div class="col-md-4">
+				<label style="float: left;width: 15%;">图表选择</label>
+				<div class="input-group" style="width: 70%;float: left;">
+							<input id="feaName" type="text" class="form-control" style="height: 28px;margin-left: 0;">
+							<div class="input-group-btn">
+								<button id="runButton" style="height: 28px;padding-top: 4px;top:0;" type="button" class="btn btn-primary dropdown-toggle " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="caret"></span>选择</button>
+								<ul id="runList"class="dropdown-menu dropdown-menu-right"></ul>
+							</div>
+					</div>
+			</div>
+
+		</div>
+
+		<div class="first col-md-12" style="margin-top:20px">
+			<div class="col-md-4">
+		       	<label>横坐标</label>
+		        <input class="form-control" type="text" value="0" id="x">
+		    </div>
+		     <div class="col-md-4 ">
+		       	<label>纵坐标</label>
+		        <input class="form-control" type="text" value="0" id="y">
+		    </div>
+				<div class="col-md-4">
+			      	<label>刷新时间</label>
+			        <input class="form-control" type="text" value="200" id="refresh">
+				</div>
+
+		</div>
+		<div class="first col-md-12 box_false" style="margin-top:20px">
+			<div class="col-md-4">
+				<label style="float: left;width: 4em;">图层</label>
+				<div class="input-group" style="width: 72%;float: left;">
+							<input id="t_zindex" type="text" class="form-control" value="5" readonly style="height: 28px;margin-left: 10px;">
+							<div class="input-group-btn">
+								<button id="t_zindex_button" style="height: 28px;padding-top: 4px;top:0;" type="button" class="btn btn-primary dropdown-toggle " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="caret"></span>选择</button>
+								<ul id="t_zindex_ul"class="dropdown-menu dropdown-menu-right">
+									<li><a>0</a></li>
+									<li><a>1</a></li>
+									<li><a>2</a></li>
+									<li><a>3</a></li>
+									<li><a>4</a></li>
+									<li><a>5</a></li>
+									<li><a>6</a></li>
+									<li><a>7</a></li>
+									<li><a>8</a></li>
+									<li><a>9</a></li>
+									<li><a>10</a></li>
+								</ul>
+							</div>
+					</div>
+			</div>
+			<div class="col-md-4 "><!-- 2017.7.20 ycj 新增图例的位置左（竖排），上（横排），下（横排），右（竖排） -->
+				<label style="float: left;width: 4em;">图例</label>
+				<div class="input-group" style="width: 72%;float: left;">
+							<input id="t_legend" type="text" data-id="false" class="form-control" value="不显示" readonly style="height: 28px;margin-left: 10px;">
+							<div class="input-group-btn">
+								<button id="t_legend_button" style="height: 28px;padding-top: 4px;top:0;" type="button" class="btn btn-primary dropdown-toggle " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="caret"></span>选择</button>
+								<ul id="t_legend_ul"class="dropdown-menu dropdown-menu-right">
+									<li data-id="false">
+										<a>不显示</a>
+									</li>
+									<li data-id="left">
+										<a>左（竖排）</a>
+									</li>
+									<li data-id="right">
+										<a>右（竖排）</a>
+									</li>
+									<li data-id="top">
+										<a>上（横排）</a>
+									</li>
+									<li data-id="bottom">
+										<a>下（横排）</a>
+									</li>
+								</ul>
+							</div>
+					</div>
+		    </div>
+			<div class="col-md-4">
+				<label style="float: left;width: 4em;">边框</label>
+				<div class="input-group" style="width: 72%;float: left;">
+							<input id="t_border" type="text" class="form-control" data-id="无" value="无" readonly style="height: 28px;margin-left: 10px;">
+							<div class="input-group-btn">
+								<button id="t_border_button" style="height: 28px;padding-top: 4px;top:0;" type="button" class="btn btn-primary dropdown-toggle " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="caret"></span>选择</button>
+								<ul id="t_border_ul" class="dropdown-menu dropdown-menu-right">
+									<li data-id="无">
+										<a>无</a>
+									</li>
+									<li data-id="border_1">
+										<a>方案一</a>
+									</li>
+									<li data-id="border_2">
+										<a>方案二</a>
+									</li>
+									<li data-id="border_3">
+										<a>方案三</a>
+									</li>
+									<li data-id="border_4">
+										<a>方案四</a>
+									</li>
+									<li data-id="border_5">
+										<a>方案五</a>
+									</li>
+								</ul>
+							</div>
+					</div>
+	    </div>
+
+
+		</div>
+
+
+
+		<div class="first col-md-12 box_false" style="margin-top:20px">
+			<div class="col-md-4 ">
+	       	<label>x轴名称</label>
+	        <input class="form-control" type="text" value="0" id="xname">
+	    </div>
+			<div class="col-md-4">
+	       	<label>y轴名称</label>
+	        <input class="form-control" type="text" value="0" id="yname">
+	    </div>
+
+				<div class="col-md-4">
+			      	<label>高级参数</label>
+			        <input class="form-control" type="text" id="senior">
+				</div>
+
+		</div>
+		<div class="first col-md-12" style="margin-top:20px"><a class="box_bottom" title="高级选项"><img src="./img/more_move.png" class="more_move"> </a></div>
+
+
+		   <div class="col-md-12" id="maint" style="width:4096px;padding:0;margin-top: 23px;height:2160px;position:absolute;left:0;top:335px;z-index:-2;">
+		      <!-- <div ></div> -->
+		   </div>
+	</div>
+
+	<div class="modal fade" id="bcgChoose">
+	  	<div class="modal-dialog">
+		    <div class="modal-content">
+			      <div class="modal-header">
+			        	<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			        	<h4 class="modal-title">背景选择</h4>
+			      </div>
+			      <div class="modal-body" id="choose">
+		        		<label style="display: block;padding-left: 38%;">请选择您的预览背景</label>
+		        		<div class="radio" style="padding-left: 38%;">
+						    <label>
+						      <input type="radio" name="bag" data-id="0" checked="true">浅色
+						    </label>
+					  	</div>
+					  	<div class="radio" style="padding-left: 38%;">
+						    <label>
+						      <input type="radio" name="bag" data-id="1">深色
+						    </label>
+					  	</div>
+			      </div>
+			      <div class="modal-footer">
+			        	<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+			        	<button id="submit" type="button" class="btn btn-primary">确定</button>
+			      </div>
+		    </div><!-- /.modal-content -->
+	  	</div><!-- /.modal-dialog -->
+	</div>
+
+	<div id="smallChart" style="display:none;">
+	  	<div class="modal-dialog modal-lg">
+		    <div class="modal-content">
+			      <div class="modal-header">
+			        	<button type="button" class="close" id="close_tb_select" ><span aria-hidden="true">&times;</span></button>
+			        	<h4 class="modal-title">图表选择</h4>
+			      </div>
+			      <div class="modal-body" id="chart" style="overflow: auto;">
+		        		<div class="nav">
+							<ul class="navul">
+								<li class="navbg"><a href="#" target="_self">折线图</a></li>
+								<li><a href="#" target="_self">柱状图</a></li>
+								<li><a href="#" target="_self">饼图</a></li>
+								<li><a href="#" target="_self">地图</a></li>
+								<li><a href="#" target="_self">表格</a></li>
+								<li><a href="#" target="_self">关系图</a></li>
+								<li><a href="#" target="_self">散点图</a></li>
+								<li><a href="#" target="_self">热力图</a></li>
+								<li><a href="#" target="_self">桑基图</a></li>
+								<li><a href="#" target="_self">文本</a></li>
+								<li><a href="#" target="_self">人物画像</a></li>
+								<li><a href="#" target="_self">仪表盘</a></li>
+								<li><a href="#" target="_self">K线图</a></li>
+								<li><a href="#" target="_self">流数据图</a></li>
+							</ul>
+						</div>
+						<div class="content">
+							<div class="zx" id="">
+								<p class="title"> 折线图</p>
+								<div class="ajq">
+									<a href="#" data-id="01">
+										<p>折线图</p>
+										<img src="./img/zhexian/zx.png">
+									</a>
+									<a href="#" data-id="27">
+										<p>面积堆积图</p>
+										<img src="./img/zhexian/zx-dj.png">
+									</a>
+									<a href="#" data-id="20">
+										<p>面积图</p>
+										<img src="./img/zhexian/zx-mj.png">
+									</a>
+
+								</div>
+
+							</div>
+							<div class="zhuzhuang" id="">
+								<p class="title"> 柱状图</p>
+								<div class="ajq">
+									<a href="#" data-id="05">
+										<p>堆积图</p>
+										<img src="./img/zzt/zz-djt.png">
+									</a>
+									<a href="#" data-id="26">
+										<p>横向堆积图</p>
+										<img src="./img/zzt/zz-hxdjt.png">
+									</a>
+									<a href="#" data-id="28">
+										<p>横向排名图</p>
+										<img src="./img/zzt/zz-hxpmt.png">
+									</a>
+									<a href="#" data-id="21">
+										<p>横向柱状图</p>
+										<img src="./img/zzt/zz-hxzzt.png">
+									</a>
+									<a href="#" data-id="02">
+										<p>柱状图</p>
+										<img src="./img/zzt/zzu.png">
+									</a>
+									<a href="#" data-id="19">
+										<p>柱线图</p>
+										<img src="./img/zzt/zz-zxt.png">
+									</a>
+									<a href="#" data-id="34">
+										<p>多颜色单数据柱状图</p>
+										<img src="./img/zzt/ds.png">
+									</a>
+									<a href="#" data-id="35">
+										<p>横向多颜色单数据柱状图</p>
+										<img src="./img/zzt/ds1.png">
+									</a>
+
+								</div>
+
+							</div>
+							<div class="bingtu" id="">
+								<p class="title"> 饼图</p>
+								<div class="ajq">
+									<a href="#" data-id="04">
+										<p>饼图</p>
+										<img src="./img/bt/bt.png">
+									</a>
+									<a href="#" data-id="12">
+										<p>南丁格尔玫瑰图</p>
+										<img src="./img/bt/bt-nngemgt.png">
+									</a>
+									<a href="#" data-id="23">
+										<p>内外环</p>
+										<img src="./img/bt/bt-nwh.png">
+									</a>
+									<a href="#" data-id="30">
+										<p>三层套图</p>
+										<img src="./img/bt/bt-sctt.png">
+									</a>
+
+								</div>
+
+							</div>
+							<div class="ditu" id="">
+								<p class="title"> 地图</p>
+								<div class="ajq">
+									<a href="#" data-id="routeMap">
+										<p>百度地图路线</p>
+										<img src="./img/dt/dt-bddtlx.png">
+									</a>
+									<a href="#" data-id="heatMap">
+										<p>百度地图热力</p>
+										<img src="./img/dt/dt-bddtrl.png">
+									</a>
+									<a href="#" data-id="22">
+										<p>地图热力+散点</p>
+										<img src="./img/dt/dt-dtrljsd.png">
+									</a>
+									<a href="#" data-id="13">
+										<p>迁徙图</p>
+										<img src="./img/dt/dt-qxt.png">
+									</a>
+									<a href="#" data-id="10">
+										<p>地图热力</p>
+										<img src="./img/dt/dt-dtrl.png">
+									</a>
+									<a href="#" data-id="09">
+										<p>地图散点</p>
+										<img src="./img/dt/dt-dtsd.png">
+									</a>
+
+								</div>
+
+							</div>
+							<div class="biaoge" id="">
+								<p class="title"> 表格</p>
+								<div class="ajq">
+									<a href="#" data-id="06">
+										<p>跑马灯</p>
+										<img src="./img/bg/bg-pmd.png">
+									</a>
+									<a href="#" data-id="07">
+										<p>排名表</p>
+										<img src="./img/bg/bg-pmb.png">
+									</a>
+									<a href="#" data-id="08">
+										<p>信息块</p>
+										<img src="./img/bg/bg-xxk.png">
+									</a>
+									<a href="#" data-id="25">
+										<p>分页表格</p>
+										<img src="./img/bg/bg-fybg.png">
+									</a>
+
+								</div>
+
+							</div>
+							<div class="guanxitu" id="">
+								<p class="title"> 关系图</p>
+								<div class="ajq">
+									<a href="#" data-id="15">
+										<p>力导向图</p>
+										<img src="./img/gxt/gxt-ldxt.png">
+									</a>
+									<a href="#" data-id="14">
+										<p>圆形关系图</p>
+										<img src="./img/gxt/gxt-yxgxt.png">
+									</a>
+									<a href="#" data-id="16">
+										<p>自定义关系图</p>
+										<img src="./img/gxt/gxt-zdygxt.png">
+									</a>
+
+								</div>
+
+							</div>
+							<div class="sandiantu" id="">
+								<p class="title">散点图</p>
+								<div class="ajq">
+									<a href="#" data-id="03">
+										<p>散点图</p>
+										<img src="./img/sdt/sdt-sdt.png">
+									</a>
+
+								</div>
+
+							</div>
+							<div class="relitu" id="">
+								<p class="title">热力图</p>
+								<div class="ajq">
+									<a href="#" data-id="11">
+										<p>热力图</p>
+										<img src="./img/rlt/rlt-rlt.png">
+									</a>
+
+								</div>
+
+							</div>
+							<div class="sangjitu" id="">
+								<p class="title">桑基图</p>
+								<div class="ajq">
+									<a href="#" data-id="17">
+										<p>桑基图</p>
+										<img src="./img/sjt/sjt-sjt.png">
+									</a>
+
+								</div>
+
+							</div>
+							<div class="wenben" id="">
+								<p class="title">文本</p>
+								<div class="ajq">
+									<a href="#" data-id="18">
+										<p>文本</p>
+										<img src="./img/wb/wb-wb.png">
+									</a>
+
+								</div>
+
+							</div>
+							<div class="renwuhuaxiang" id="">
+								<p class="title">人物画像</p>
+								<div class="ajq">
+									<a href="#" data-id="29">
+										<p>人物画像</p>
+										<img src="./img/rwhx/rwhx-rwhx.png">
+									</a>
+
+								</div>
+
+							</div>
+							<div class="ybp" id="">
+								<p class="title">仪表盘</p>
+								<div class="ajq">
+									<a href="#" data-id="24">
+										<p>仪表盘</p>
+										<img src="./img/ybp/ybp-ybp.png">
+									</a>
+
+								</div>
+
+							</div>
+							<div class="kxiantu" id="">
+								<p class="title">K线图</p>
+								<div class="ajq">
+									<a href="#" data-id="31">
+										<p>K线图</p>
+										<img src="./img/Kxt/Kxt-kxt.png">
+									</a>
+
+								</div>
+
+							</div>
+							<!--新增流数据图-->
+							<div class="liushujutu" id="">
+								<p class="title">流数据图</p>
+								<div class="ajq">
+									<a href="#" data-id="32">
+										<p>单线心电图</p>
+										<img src="./img/Kxt/Kxt-kxt.png">
+									</a>
+									<a href="#" data-id="33">
+										<p>波浪图</p>
+										<img src="./img/Kxt/Kxt-kxt.png">
+									</a>
+									<a href="#" data-id="36">
+										<p>多线心电图</p>
+										<img src="./img/Kxt/Kxt-kxt.png">
+									</a>
+
+								</div>
+
+							</div>
+						</div>
+			      </div>
+			      <div class="modal-footer">
+			        	<button type="button" class="btn btn-default" id="tb_select">关闭</button>
+
+			      </div>
+		    </div><!-- /.modal-content -->
+	  	</div><!-- /.modal-dialog -->
+	</div>
+</body>
+</html>

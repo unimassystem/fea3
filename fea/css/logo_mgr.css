@@ -1,0 +1,73 @@
+	.box{
+		width: 86%;
+		margin: auto;
+		margin-top: 10px;
+		height:400px;
+		height: 650px;
+		background-color: #ffffff;
+		border: solid 1px #cdced1;
+		}
+	.mangeBox{
+		padding-top:25px;
+		width: 50%;
+		margin: auto;
+		margin-top: 12px;
+		background-color: rgb(238,246,249);
+		border: solid 1px #cdced1;
+		height:50%;
+	}
+	.group{
+		margin-top: 12px;
+		margin-left: 36px;
+	}
+	.group label{
+		font-family:Microsoft Yahei;
+		font-size: 16px;
+		color: #0071c5;
+		font-weight: bold;
+		/*  width:86px;  */
+		line-height: 36px;
+	}
+	#menhu{
+		padding:8px 0 ;
+		border:1px solid #0071c5;
+		color: #0071c5;
+		/*width: 70%;*/
+	}
+	.group label,.group input, .group div{
+		float: left;
+	}
+	.box .save{
+		width:100%;
+		padding-right: 60px;
+		padding-top: 10px;
+		overflow: hidden;
+	}
+	.btn-primary{
+		text-shadow:rgba(35,24,21,0.35) 1px 1px 1px;
+		border:0px;
+		background:url(../img/up_load_bg.png) no-repeat center center;
+
+	}
+	.btn-primary:hover{
+		background:url('../img/up_load_bg_hover.png') no-repeat center center;
+	}
+	.btn{
+		padding:5px 23px;
+
+	}
+	.zhushi{
+		margin-bottom:20px;
+		margin-left:38px;
+		color:#999999;
+	}
+	.mangeBox p{
+		line-height:30px;
+		float:left;
+		padding-left:10px;
+		color:#999;
+
+	}
+	.input-group{
+		
+	}

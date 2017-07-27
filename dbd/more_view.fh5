@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>多屏互动视图</title>
+<link rel="stylesheet" type="text/css" href="../libs/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="../libs/jqueryUI/css/jquery-ui.min.css">
+<link rel="stylesheet" type="text/css" href="../libs/datatable/css/dataTables.bootstrap.css">
+<link rel="stylesheet" type="text/css" href="../fea/css/user_defined.css">
+
+<style type="text/css">
+	#content{
+		overflow: hidden;
+    /* height:500px; */
+    /* width:100%; */
+    position: relative;
+		/*border-top: solid 10px #ccc;*/
+	}
+
+	.banner_ul{padding-left: 0;position: relative;}
+  .banner_li {
+    width:calc(100/11*1%);height:1000px;list-style: none; position: relative;float: left;z-index: 0;
+    /*transform:scale(0);transition:transform 0.5s ease 0s, opacity 1.5s ease 0s;*/
+  }
+  /*#content li.active{opacity:1;transform:scale(1);}*/
+  .jsNav{text-align:center;}
+  .jsNav a{
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    margin-left:4px;
+  }
+  #prev{
+    width: 50px;
+    height: 50px;
+    display: inline-block;
+    position: absolute;top: 50%;left: 0;
+    background-image: url(../images/dpicon/portal1_fenye_jiantou1_L.png);
+  }
+  #prev:hover{
+    background-image: url(../images/dpicon/portal1_fenye_jiantou1_click_L.png);
+  }
+  #behind{
+     width: 50px;
+    height: 50px;
+    display: inline-block;
+    position: absolute;top: 50%;right: 0;
+    background-image: url(../images/dpicon/portal1_fenye_jiantou_R.png);
+  }
+  #behind:hover{
+    background-image: url(../images/dpicon/portal1_fenye_jiantou_click_R.png);
+  }
+  .move{
+    transition: left 0.1s;
+    -moz-transition: left 0.1s; /* Firefox 4 */
+    -webkit-transition: left 0.1s; /* Safari 和 Chrome */
+    -o-transition: left 0.1s; /* Opera */
+  }
+  .ui-widget.ui-widget-content{
+      background: #fff ;
+
+    }
+    .ui-widget .ui-widget{
+      border:0px;
+    }
+    .ui-widget-header{
+      border: none;
+    }
+    .ui-dialog-titlebar{
+    background-color: rgb(126,149,165);
+  }
+  .ui-dialog-titlebar-close{
+    background-color: rgba(0,0,0,0)!important;
+    color: #fff;
+    border-color: none!important;
+    background-image: url('../images/close_icon.png') !important;
+    background-repeat: no-repeat;
+  }
+   .ui-button .ui-icon  {
+    background-image: none!important;
+  }
+	#pdf_dc{
+    right: -130px;
+    bottom: 50%;
+    font-size: 20px;
+    color: white;
+    display: flex;
+    align-items: center;
+    padding: 4px 8px 4px 8px;
+    position: fixed;
+    background-color: #00796B;
+    cursor: pointer;
+    transition: background-color 0.4s;
+}
+#pdf_dc:hover{
+    background-color: #009688;
+}
+#pdf_dc:active{
+    background-color: #004D40;
+}
+#pdf_dc img{
+    margin-right: 4px;
+    width: 28px;
+    height: 28px;
+}
+.pdf_cp{
+	position: fixed;
+	top: 0;
+	right: 0;
+	width: 5px;
+	height: 100%;
+}
+.pdf_mb{
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  background: rgba(0,0,0,0.5);
+}
+.pdf_bt{
+  font-size: 30px;
+  color: #fff;
+  margin-top: 10%;
+}
+</style>
+</head>
+<body >
+  <script type="text/javascript">
+  var theRequest ={};
+  function GetRequest() {
+    var url = location.search; //获取url中"?"符后的字串
+    var a=decodeURI(url);
+    if (a.indexOf("?") != -1) {
+        var str = a.substr(1);
+        strs = str.split("&");
+        for(var i = 0; i < strs.length; i ++) {
+            theRequest[strs[i].split("=")[0]]=unescape(strs[i].split("=")[1]);
+        }
+    }
+
+     key=theRequest.key;
+     dtitle=theRequest.dtitle;
+     mh=theRequest.mh;
+    return theRequest;
+  }
+  GetRequest();
+  loadScript('../portal/'+mh+'/e_'+mh+'.js');
+  function loadScript(url) {
+    //console.info(url);
+      var script = document.createElement("script");
+      script.type = "text/javascript";
+      script.src = url;
+      document.getElementsByTagName("head")[0].appendChild(script);
+  }
+</script>
+  <!-- <div id="dbdtitle"></div> -->
+  <div id="content" style="position:absolute;width: 100%">
+
+  	<ul class="banner move banner_ul" style="width:100%;padding-left: 0;">
+  			<li data-id="dp0" class="active banner_li"></li>
+  			<li data-id="dp1" class="banner_li"></li>
+  			<li data-id="dp2" class="banner_li"></li>
+  			<li data-id="dp3" class="banner_li"></li>
+  			<li data-id="dp4" class="banner_li"></li>
+  			<li data-id="dp5" class="banner_li"></li>
+  			<li data-id="dp6" class="banner_li"></li>
+  			<li data-id="dp7" class="banner_li"></li>
+  			<li data-id="dp8" class="banner_li"></li>
+  			<li data-id="dp9" class="banner_li"></li>
+        <li data-id="dp10" class="banner_li"></li>
+  	</ul>
+    <a id="prev"></a>
+    <a id="behind"></a>
+    <div class="fomW" style="width:100%;height:16px;position: absolute;bottom: 10px;">
+      <div class="jsNav">
+      </div>
+    </div>
+  </div>
+
+  <div id="two" title="">
+    <iframe id="test" src="" frameborder="0" scrolling="0" height="100%" width="100%"></iframe>
+  </div>
+	<div id="pdf_dc">
+    <img src="../images/logo/pdf.png">导出PDF
+  </div>
+	<div class="pdf_mb">
+      <div class="pdf_bt">
+        正在生成PDF...
+      </div>
+  </div>
+	<div class="pdf_cp"></div>
+</body>
+<script type='text/javascript' src='../libs/jquery-1.11.0.min.js'></script>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=mRh57fdOt8eV4XAmeGK5Ou6pk8HoDFLK"></script>
+ <script type="text/javascript" src="../libs/heatmap/heatmap_min.js"></script>
+<script type="text/javascript" src="../libs/jqueryUI/js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="../libs/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../libs/cookie/jquery.cookie.js"></script>
+<script type="text/javascript" src="../js/jquery.rotate.min.js"></script>
+<script type="text/javascript" src="../libs/jqmeter/jqmeter.min.js"></script>
+<script type="text/javascript" src="../libs/jUploader/jquery.jUploader-1.0.min.js" ></script>
+<script type="text/javascript"src="../libs/echarts3/echarts.js"></script>
+<script type="text/javascript" src="../libs/echarts3/echarts-gl.min.js"></script>
+<script type="text/javascript"src="../libs/echarts3/echarts-liquidfill.min.js"></script>
+<script type="text/javascript"src="../libs/echarts3/theme/shine.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/china.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/anhui.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/aomen.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/beijing.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/china.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/chongqing.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/fujian.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/gansu.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/guangdong.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/guangxi.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/guizhou.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/hainan.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/hebei.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/heilongjiang.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/henan.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/hubei.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/hunan.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/jiangsu.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/jiangxi.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/jilin.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/liaoning.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/neimenggu.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/ningxia.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/qinghai.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/shanghai.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/shanxi.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/shanxi1.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/sichuan.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/tianjin.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/world.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/xianggang.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/xinjiang.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/xizang.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/yunnan.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/shandong.js"></script>
+<script type="text/javascript"src="../libs/echarts3/mapData/zhejiang.js"></script>
+<script type="text/javascript" src="../libs/jquery-kxbdmarquee/js/jquery.kxbdmarquee.js"></script>
+<script type="text/javascript" src="../libs/datatable/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="../libs/datatable/dataTables.bootstrap.js"></script>
+<script type='text/javascript' src='dom-to-image.min.js'></script>
+<script type='text/javascript' src='html2canvas.js'></script>
+<script type='text/javascript' src='jspdf.min.js'></script>
+<script type='text/javascript' src='more_view.js'></script>
+<script type="text/javascript"  src="../plot/world_china.js"></script>
+</html>

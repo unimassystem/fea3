@@ -1,0 +1,1100 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>modal</title>
+
+	<link rel="stylesheet" type="text/css" href="../libs/bootstrap/css/bootstrap.min.css">
+	<!-- <link rel="stylesheet" type="text/css" href="../libs/datatable/css/dataTables.editor.min.css">
+	<link rel="stylesheet" type="text/css" href="../libs/datatable/css/dataTables.tableTools.min.css"> -->
+	<link rel="stylesheet" type="text/css" href="../libs/jqueryUI/css/jquery-ui.min.css">
+	<link rel="stylesheet" type="text/css" href="../libs/datatable/css/jquery.dataTables.min.css">
+	<link rel="stylesheet" type="text/css" href="../libs/zTree/css/zTreeStyle.css">
+	<link rel="stylesheet" type="text/css" href="css/modal.css">
+	<link rel="stylesheet" type="text/css" href="css/right_menu.css">
+	<link rel="stylesheet" type="text/css" href="../libs/multiselect/css/style.css">
+	<link rel="stylesheet" type="text/css" href="css/showLoading.css">
+	<!-- <link type='text/css' rel="stylesheet" href ='../portal/portal1/portal1_total.css'> -->
+	<!-- <script type="text/javascript" src="../libs/jquery-1.11.0.min.js"></script>
+	 --><script type="text/javascript" src="../libs/jquery-2.0.3.min.js"></script>
+
+	<script type='text/javascript' src='../portal/portal1/e_portal1.js'></script>
+	<script type="text/javascript" src="../libs/bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="../libs/datatable/jquery.dataTables.min.js"></script>
+	<script type="text/javascript" src="../libs/jqueryUI/js/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="../libs/zTree/js/jquery.ztree.all.min.js"></script>
+	<script type="text/javascript" src="../libs/zTree/js/jquery.ztree.exhide.min.js"></script>
+	<script type="text/javascript" src="../libs/multiselect/js/prettify.min.js"></script>
+	<script type="text/javascript" src="../libs/multiselect/js/multiselect.min.js"></script>
+	<script type="text/javascript" src="../libs/jquery-kxbdmarquee/js/jquery.kxbdmarquee.js"></script>
+	<!--<script type="text/javascript"src="libs/echarts3/echarts.js"></script>
+	<script type="text/javascript"src="libs/echarts3/theme/infographic.js"></script>-->
+	<script type="text/javascript" src="../libs/showLoading/jquery.showLoading.js"></script>
+	<script type="text/javascript" src="../libs/showLoading/jquery.showLoading.min.js"></script>
+	<script type="text/javascript" src="../libs/echarts3/echarts.js"></script>
+	<script type="text/javascript" src="../libs/echarts3/theme/shine.js"></script>
+	<script type="text/javascript" src="../libs/echarts3/mapData/china.js"></script>
+	<script type="text/javascript" src="../libs/echarts3/mapData/anhui.js"></script>
+	<script type="text/javascript" src="../libs/echarts3/mapData/aomen.js"></script>
+	<script type="text/javascript" src="../libs/echarts3/mapData/beijing.js"></script>
+	<script type="text/javascript" src="../libs/echarts3/mapData/china.js"></script>
+	<script type="text/javascript" src="../libs/echarts3/mapData/chongqing.js"></script>
+	<script type="text/javascript" src="../libs/echarts3/mapData/fujian.js"></script>
+	<script type="text/javascript" src="../libs/echarts3/mapData/gansu.js"></script>
+	<script type="text/javascript" src="../libs/echarts3/mapData/guangdong.js"></script>
+	<script type="text/javascript" src="../libs/echarts3/mapData/guangxi.js"></script>
+	<script type="text/javascript" src="../libs/echarts3/mapData/guizhou.js"></script>
+	<script type="text/javascript" src="../libs/echarts3/mapData/hainan.js"></script>
+	<script type="text/javascript" src="../libs/echarts3/mapData/hebei.js"></script>
+	<script type="text/javascript" src="../libs/echarts3/mapData/heilongjiang.js"></script>
+	<script type="text/javascript" src="../libs/echarts3/mapData/henan.js"></script>
+	<script type="text/javascript" src="../libs/echarts3/mapData/hubei.js"></script>
+	<script type="text/javascript" src="../libs/echarts3/mapData/hunan.js"></script>
+	<script type="text/javascript" src="../libs/echarts3/mapData/jiangsu.js"></script>
+	<script type="text/javascript" src="../libs/echarts3/mapData/jiangxi.js"></script>
+	<script type="text/javascript" src="../libs/echarts3/mapData/jilin.js"></script>
+	<script type="text/javascript" src="../libs/echarts3/mapData/liaoning.js"></script>
+	<script type="text/javascript" src="../libs/echarts3/mapData/neimenggu.js"></script>
+	<script type="text/javascript" src="../libs/echarts3/mapData/ningxia.js"></script>
+	<script type="text/javascript" src="../libs/echarts3/mapData/qinghai.js"></script>
+	<script type="text/javascript" src="../libs/echarts3/mapData/shanghai.js"></script>
+	<script type="text/javascript" src="../libs/echarts3/mapData/shanxi.js"></script>
+	<script type="text/javascript" src="../libs/echarts3/mapData/shanxi1.js"></script>
+	<script type="text/javascript" src="../libs/echarts3/mapData/sichuan.js"></script>
+	<script type="text/javascript" src="../libs/echarts3/mapData/tianjin.js"></script>
+	<script type="text/javascript" src="../libs/echarts3/mapData/world.js"></script>
+	<script type="text/javascript" src="../libs/echarts3/mapData/xianggang.js"></script>
+	<script type="text/javascript" src="../libs/echarts3/mapData/xinjiang.js"></script>
+	<script type="text/javascript" src="../libs/echarts3/mapData/xizang.js"></script>
+	<script type="text/javascript" src="../libs/echarts3/mapData/yunnan.js"></script>
+	<script type="text/javascript" src="../libs/echarts3/mapData/shandong.js"></script>
+	<script type="text/javascript" src="../libs/echarts3/mapData/zhejiang.js"></script>
+	<script type="text/javascript" src="../libs/heatmap/heatmap_min.js"></script>
+	<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=mRh57fdOt8eV4XAmeGK5Ou6pk8HoDFLK"></script>
+</head>
+
+<body>
+<div id="content_box" class="container-fluid top_px" style="overflow: hidden;padding-left: 100px;">
+	<div id="nav_box" class=" col-md-12 top_px" style="height: 35px;">
+		<label id="nws" for="type" class="dropdown">当前工作区：
+    		<button class="dropdown-toggle" type="button" data-toggle="dropdown" >
+    			<span class="caret"></span>
+    			<span id="nowWorkSpace"></span>
+    		</button>
+    		<ul class="dropdown-menu active">
+			<li><input id="nws_input" type="text" placeholder="请输入工作区"></input></li>
+    		</ul>
+    	</label>
+	</div>
+	<div id="left_list" class="col-md-2 top_px" >
+		<img id="shuaxin" src="../images/shuaxin.jpg" style="width:24px;height:24px;cursor:pointer;position:absolute;top:13px;left:6px;" alt="刷新">
+		<input id="inputVal" class="form-control" type="text" placeholder="请输入表名" >
+		<button id="search" class="btn glyphicon glyphicon-search"></button>
+
+		<!-- <button class="btn btn-default" id="shuaxin1"></button> -->
+		<ul id="treeList" class="ztree" ></ul>
+	</div>
+	<div id="right_list" class="col-md-10 top_px" ></div>
+	<!-- <div class="col-md-9" style="position: fixed;bottom: 0;right: 0;z-index: 1000000">
+		<input id="errorSpace" class="form-control" style="color: red;"></input>
+	</div>	  -->
+</div>
+
+<div class="modal fade" id="mt01">
+ 	<div class="modal-dialog ">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">
+					<span aria-hidden="true">&times;</span>
+					<span class="sr-only">Close</span>
+				</button>
+				<h4>存储数据</h4>
+			</div>
+			<div class="modal-body">
+<!-- 				<div class="store_DT">
+   					<label for="txt" class="dropdown">df表名：</label>
+			    	<input type="text" name="store_DT" id="store_DT" value="" class="form-control"><br/>
+   				</div> -->
+				<div class="store_type">
+				  	<label for="type" class="dropdown">存储类型：
+			    		<button class="dropdown-toggle" type="button" data-toggle="dropdown" >
+			    			<span class="caret"></span>
+			    		</button>
+			    		<ul class="dropdown-menu active">
+		    				<li><a href="javascript:void(0);">csv</a></li>
+		    				<li><a href="javascript:void(0);">pkl</a></li>
+		    				<li><a href="javascript:void(0);">jdbc</a></li>
+		    				<li><a href="javascript:void(0);">esql</a></li>
+		    				<li><a href="javascript:void(0);">nosql</a></li>
+			    		</ul>
+			    	</label>
+			    	<input type="text" name="store_type" id="store_type" class="form-control"><br/>
+				</div>
+
+			    <div class="store_connect">
+				    <label for="store_connect" class="dropdown">数据源链接名称：
+			    		<button class="dropdown-toggle" type="button" data-toggle="dropdown" >
+			    			<span class="caret"></span>
+			    		</button>
+			    		<ul class="dropdown-menu active">
+		    				<li><a href="javascript:void(0);">udb0</a></li>
+		    				<li><a href="javascript:void(0);">jdbc0</a></li>
+		    				<li><a href="javascript:void(0);">ssdb0</a></li>
+			    		</ul>
+			    	</label>
+			   		<input type="text" name="store_connect" id="store_connect" value="" class="form-control"><br/>
+			   		<label for="store_sql">数据源参数：</label>
+   					<input type="text" name="store_sql" id="store_sql" value="" class="form-control"><br/>
+			    </div>
+				<div class="store_txt">
+   					<label for="store_txt" class="dropdown">文件名：</label>
+			    	<input type="text" name="store_txt" id="store_txt" value="" class="form-control"><br/>
+			    	<label for="store_param" class="dropdown">参数：</label>
+			    	<input type="text" name="store_param" id="store_param" value="" class="form-control" placeholder="with 参数"><br/>
+   				</div>
+  				<!-- <div class="store_sql">
+			    </div> -->
+			</div>
+			<div class="modal-footer">
+				<button class="btn btn-info" id="subStore" data-dismiss="modal">存储</button>
+				<button class="btn btn-default" data-dismiss="modal">关闭</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="modal fade" id="mt02">
+ 	<div class="modal-dialog ">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">
+					<span aria-hidden="true">&times;</span>
+					<span class="sr-only">Close</span>
+				</button>
+				<h4>表·关联</h4>
+			</div>
+			<div class="modal-body">
+				<label for="tableChiosed">已选择表：</label>
+			    <input type="text" name="tableChiosed" id="tableChiosed" class="form-control"><br/>
+			    <label for="joinType" >关联方式：</label>
+			    <select id="joinType" class="form-control">
+			     	<option value="join">关联</option>
+			     	<option value="df_ljoin">左连接</option>
+			     	<option value="df_rjoin">右连接</option>
+			    </select>
+			    <br/>
+			    <label for="join">请选择需要关联的字段：</label>
+			    <div class="row">
+                    <div class="col-xs-5">
+                       <select name="from" id="multiselect_join" class="form-control" size="8" multiple="multiple">
+                        </select>
+                    </div>
+                   <div class="col-xs-2">
+                   		<button type="button" id="multiselect_join_rightAll" class="btn btn-block">
+                   			<i class="glyphicon glyphicon-forward"></i></button>
+                   		<button type="button" id="multiselect_join_rightSelected" class="btn btn-block">
+                   			<i class="glyphicon glyphicon-chevron-right"></i></button>
+                   		<button type="button" id="multiselect_join_leftSelected" class="btn btn-block">
+                   			<i class="glyphicon glyphicon-chevron-left"></i></button>
+                   		<button type="button" id="multiselect_join_leftAll" class="btn btn-block">
+                   			<i class="glyphicon glyphicon-backward"></i></button>
+                   	</div>
+                   	<div class="col-xs-5">
+                   		<select name="to" id="multiselect_join_to" class="form-control" size="8" multiple="multiple"></select>
+                   	</div>
+				</div>
+			   	<label for="anotherName">新表名：</label>
+		    	<input type="text" name="anotherName" id="anotherName" class="form-control"><br/>
+			</div>
+			<div class="modal-footer">
+				<button class="btn btn-info" id="submit_join" data-dismiss="modal">关联</button>
+				<button class="btn btn-default" data-dismiss="modal">关闭</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="modal fade" id="mt03">
+ 	<div class="modal-dialog ">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">
+					<span aria-hidden="true">&times;</span>
+					<span class="sr-only">Close</span>
+				</button>
+				<h4>表·合并</h4>
+			</div>
+			<div class="modal-body">
+				<label for="tableChiosed_U">已选择表名：</label>
+			    <input type="text" name="tableChiosed_U" id="tableChiosed_U" class="form-control"><br/>
+			    <label for="UnionName">新表名：</label>
+		    	<input type="text" name="UnionName" id="UnionName" class="form-control"><br/>
+			</div>
+			<div class="modal-footer">
+				<button class="btn btn-info" id="submitUnion" data-dismiss="modal">合并</button>
+				<button class="btn btn-default" data-dismiss="modal">关闭</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="modal fade" id="mt04">
+ 	<div class="modal-dialog ">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">
+					<span aria-hidden="true">&times;</span>
+					<span class="sr-only">Close</span>
+				</button>
+				<h4>脚本运行</h4>
+			</div>
+			<div class="modal-body">
+				<label for="txt_fea">脚本文件</label>
+			    <input type="text" name="txt_fea" id="txt_fea" class="form-control"><br/>
+			    <label for="fea_content">参数</label>
+			    <input type="text" name="fea_content" id="fea_content" class="form-control"><br/>
+			</div>
+			<div class="modal-footer">
+				<button class="btn btn-info" id="submit_fea" data-dismiss="modal">运行</button>
+				<button class="btn btn-default" data-dismiss="modal">关闭</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- 小..............工.................具.............栏 -->
+					<!-- 修改列名 -->
+<div class="xglm_box">
+	<div class="input-group">
+		<input id="ChangeColName" type="text" class="form-control" placeholder="请输入新的列名">
+		<!-- <span class="input-group-btn">
+			<button id="ChangeColName_ok" class="btn btn-info" type="button">确定</button>
+			<button id="xglm_close" class="btn btn-default " type="button">关闭</button>
+		</span> -->
+	</div>
+</div>
+					<!-- 修改表名 -->
+<div class="xgbm_box">
+	<div class="input-group">
+		<input id="ChangeTableName" type="text" class="form-control" placeholder="请输入表名">
+		<span class="input-group-btn">
+			<button id="ChangeTableName_ok" class="btn btn-info" type="button">确定</button>
+			<button id="xgbm_close" class="btn btn-default " type="button">关闭</button>
+		</span>
+	</div>
+</div>
+<!-- 新建空表 -->
+
+<div class="modal fade" id="newEmptyDf">
+ 	<div class="modal-dialog ">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">
+					<span aria-hidden="true">&times;</span>
+					<span class="sr-only">Close</span>
+				</button>
+				<h4>新建空表</h4>
+			</div>
+			<div class="modal-body">
+				<label>表名：</label>
+			    <input type="text" name="table_nName" id="table_nName" class="form-control"><br/>
+			</div>
+			<div class="modal-footer">
+				<button class="btn btn-info" id="newEmpty_ok" data-dismiss="modal">确定</button>
+				<button class="btn btn-default" data-dismiss="modal">关闭</button>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- 克隆表 -->
+<div class="modal fade" id="cloneDf">
+ 	<div class="modal-dialog ">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">
+					<span aria-hidden="true">&times;</span>
+					<span class="sr-only">Close</span>
+				</button>
+				<h4>克隆表</h4>
+			</div>
+			<div class="modal-body">
+				<label>新表名:</label>
+			    <input type="text" name="clone_table_nName" id="clone_table_nName" class="form-control"><br/>
+
+			</div>
+			<div class="modal-footer">
+				<button class="btn btn-info" id="cloneDf_ok" data-dismiss="modal">确定</button>
+				<button class="btn btn-default" data-dismiss="modal">关闭</button>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- 单字段分组求和 -->
+<div class="modal fade" id="df_agg_count">
+ 	<div class="modal-dialog ">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">
+					<span aria-hidden="true">&times;</span>
+					<span class="sr-only">Close</span>
+				</button>
+				<h4>单字段分组求和</h4>
+			</div>
+			<div class="modal-body">
+				<label>表名:</label>
+			    <input type="text" name="agg_table_nName" id="agg_table_nName" class="form-control"><br/>
+			    <label>字段名:</label>
+			    <select id="field_key">
+						</select>
+			</div>
+			<div class="modal-footer">
+				<button class="btn btn-info" id="df_agg_count_ok" data-dismiss="modal">确定</button>
+				<button class="btn btn-default" data-dismiss="modal">关闭</button>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- 行列互换 -->
+
+<div class="modal fade" id="df_T">
+ 	<div class="modal-dialog ">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">
+					<span aria-hidden="true">&times;</span>
+					<span class="sr-only">Close</span>
+				</button>
+				<h4>行列互换</h4>
+			</div>
+			<div class="modal-body">
+				<label>表名：</label>
+			    <input type="text" name="df_T_nName" id="df_T_nName" class="form-control"><br/>
+			</div>
+			<div class="modal-footer">
+				<button class="btn btn-info" id="df_T_ok" data-dismiss="modal">确定</button>
+				<button class="btn btn-default" data-dismiss="modal">关闭</button>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- 填充空值 -->
+<div class="modal fade" id="df_fillna">
+ 	<div class="modal-dialog ">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">
+					<span aria-hidden="true">&times;</span>
+					<span class="sr-only">Close</span>
+				</button>
+				<h4>填充空值 </h4>
+			</div>
+			<div class="modal-body">
+				<label>表名：</label>
+			    <input type="text" name="df_fillna_nName" id="df_fillna_nName" class="form-control"><br/>
+			    <label>填充值：</label>
+			    <input type="text" name="df_fillna_value" id="df_fillna_value" class="form-control"><br/>
+			</div>
+			<div class="modal-footer">
+				<button class="btn btn-info" id="df_fillna_ok" data-dismiss="modal">确定</button>
+				<button class="btn btn-default" data-dismiss="modal">关闭</button>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- 设置索引 -->
+<div class="modal fade" id="df_set_index">
+ 	<div class="modal-dialog ">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">
+					<span aria-hidden="true">&times;</span>
+					<span class="sr-only">Close</span>
+				</button>
+				<h4>设置索引</h4>
+			</div>
+			<div class="modal-body">
+				<label>表名:</label>
+			    <input type="text" name="df_set_index_nName" id="df_set_index_nName" class="form-control"><br/>
+			    <label>字段名:</label>
+			    <select id="field_index">
+						</select>
+			</div>
+			<div class="modal-footer">
+				<button class="btn btn-info" id="df_set_index_ok" data-dismiss="modal">确定</button>
+				<button class="btn btn-default" data-dismiss="modal">关闭</button>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- 重置索引 -->
+<div class="modal fade" id="df_reset_index">
+ 	<div class="modal-dialog ">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">
+					<span aria-hidden="true">&times;</span>
+					<span class="sr-only">Close</span>
+				</button>
+				<h4>重置索引</h4>
+			</div>
+			<div class="modal-body">
+				<label>表名:</label>
+			    <input type="text" name="df_reset_index_nName" id="df_reset_index_nName" class="form-control"><br/>
+
+			</div>
+			<div class="modal-footer">
+				<button class="btn btn-info" id="df_reset_index_ok" data-dismiss="modal">确定</button>
+				<button class="btn btn-default" data-dismiss="modal">关闭</button>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- 简要信息 -->
+<div class="modal fade" id="df_info">
+ 	<div class="modal-dialog ">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">
+					<span aria-hidden="true">&times;</span>
+					<span class="sr-only">Close</span>
+				</button>
+				<h4>简要信息</h4>
+			</div>
+			<div class="modal-body">
+				<label>表名:</label>
+			    <input type="text" name="df_info_nName" id="df_info_nName" class="form-control"><br/>
+
+			</div>
+			<div class="modal-footer">
+				<button class="btn btn-info" id="df_info_ok" data-dismiss="modal">确定</button>
+				<button class="btn btn-default" data-dismiss="modal">关闭</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- 增加列 -->
+
+<div class="modal fade" id="mtAdd">
+ 	<div class="modal-dialog ">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">
+					<span aria-hidden="true">&times;</span>
+					<span class="sr-only">Close</span>
+				</button>
+				<h4>增加列</h4>
+			</div>
+			<div class="modal-body">
+				<label for="tableChiosed_N">请输入需要增加的列名：</label>
+			    <input type="text" name="tableChiosed_N" id="tableChiosed_N" class="form-control"><br/>
+			    <p class="tip"> <label for="Add_content">请输入表达式：</label></p>
+			    <input type="text" name="Add_content" id="Add_content" class="form-control">
+			    <span class="tishi">提示：运算符包含 +,-,*,/,range(start,end,setp),==,!=,>=,>,<=,< </span>
+			</div>
+			<div class="modal-footer">
+				<button class="btn btn-info" id="Add_ok" data-dismiss="modal">确定</button>
+				<button class="btn btn-default" data-dismiss="modal">关闭</button>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- 列过滤 -->
+<div class="modal fade" id="mtFilter">
+ 	<div class="modal-dialog" >
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">
+					<span aria-hidden="true">&times;</span>
+					<span class="sr-only">Close</span>
+				</button>
+				<h4>过滤</h4>
+			</div>
+			<div class="modal-body">
+				<!--<label for="Filter">默认表名：</label>
+				<input type="text" name="Filter" id="Filter_oName" class="form-control"><br/>-->
+				<label for="Filter">表名：</label>
+			    <input type="text" name="Filter" id="Filter_nName" class="form-control"><br/>
+			    <p class="tip"> <label for="Filter">请输入表达式：</label></p>
+			    <input type="text" name="Filter_content" id="Filter_content" class="form-control">
+			    <span class="tishi2">提示：条件表达式里支持直接写列名，支持==、!=、>、>=、<、<=、in等运算符和and、or、not等逻辑运算符</span>
+			</div>
+			<div class="modal-footer">
+				<button class="btn btn-info" id="Filter_ok" data-dismiss="modal">确定</button>
+				<button class="btn btn-default" data-dismiss="modal">关闭</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- 列选择 -->
+
+<div class="modal fade" id="mtChoose">
+ 	<div class="modal-dialog ">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">
+					<span aria-hidden="true">&times;</span>
+					<span class="sr-only">Close</span>
+				</button>
+				<h4>选择</h4>
+			</div>
+			<div class="modal-body">
+				<label for="Choose">表名：</label>
+			    <input type="text" name="Choose" id="Choose_nName" class="form-control"><br/>
+				<label for="Choose">请选择列名：</label>
+			    <!--<div id="Choose_content"></div>  -->
+			    <div class="row">
+                    <div class="col-xs-5">
+                       <select name="from" id="multiselect_choose" class="form-control" size="8" multiple="multiple">
+                        </select>
+                    </div>
+                   <div class="col-xs-2">
+                   		<button type="button" id="multiselect_choose_rightAll" class="btn btn-block"><i class="glyphicon glyphicon-forward"></i></button>
+                   		<button type="button" id="multiselect_choose_rightSelected" class="btn btn-block"><i class="glyphicon glyphicon-chevron-right"></i></button>
+                   		<button type="button" id="multiselect_choose_leftSelected" class="btn btn-block"><i class="glyphicon glyphicon-chevron-left"></i></button>
+                   		<button type="button" id="multiselect_choose_leftAll" class="btn btn-block"><i class="glyphicon glyphicon-backward"></i></button>
+                   	</div>
+                   	<div class="col-xs-5">
+                   		<select name="to" id="multiselect_choose_to" class="form-control" size="8" multiple="multiple"></select>
+                   	</div>
+                </div>
+			</div>
+			<div class="modal-footer">
+				<button class="btn btn-info" id="Choose_ok" data-dismiss="modal">确定</button>
+				<button class="btn btn-default" data-dismiss="modal">关闭</button>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- 列排序 -->
+  <div class="modal fade" id="mtOrder">
+ 	<div class="modal-dialog ">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">
+					<span aria-hidden="true">&times;</span>
+					<span class="sr-only">Close</span>
+				</button>
+				<h4>排序</h4>
+			</div>
+			<div class="modal-body">
+				<button id="add_condition" type="button" class="btn btn-default" >添加条件</button>
+				<!-- <button id="del_condition" type="button" class="btn btn-default">删除条件</button> -->
+				<table id="col_order" class="table table-bordered table-hover">
+					<thead>
+						<tr>
+						<th>列</th>
+						<th>次序</th>
+						<th>删除条件</th>
+						</tr>
+					</thead>
+					<tbody>
+					<tr> <td>主要关键字
+						<select id="pri_key">
+						</select></td>
+						<td><select id="pri_key_order">
+							<option value="asc" >升序</option>
+							<option value="desc">降序</option>
+						</select>
+					</td><td><button class="del_condition" type="button">删除条件</button></td>
+				</tr>
+					</tbody>
+				</table>
+
+			</div>
+			<div class="modal-footer">
+				<button class="btn btn-info" id="Order_ok" >确定</button>
+				<button class="btn btn-default" data-dismiss="modal">关闭</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- 列去重 -->
+<div class="modal fade" id="mtDistinct">
+ 	<div class="modal-dialog ">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">
+					<span aria-hidden="true">&times;</span>
+					<span class="sr-only">Close</span>
+				</button>
+				<h4>去重</h4>
+			</div>
+			<div class="modal-body">
+				<label for="Distinct">表名：</label>
+			    <input type="text" name="Distinct_nName" id="Distinct_nName" class="form-control"><br/>
+			    <label for="Distinct">字段名：</label>
+			    <!--<div id="Distinct_content"></div><br/>-->
+			    <div class="row">
+			        <div class="col-xs-5">
+			         <select name="from" id="multiselect_distinct" class="form-control" size="8" multiple="multiple"></select>
+                     </div>
+                    <div class="col-xs-2">
+                        <button type="button" id="multiselect_distinct_rightAll" class="btn btn-block"><i class="glyphicon glyphicon-forward"></i></button>
+                        <button type="button" id="multiselect_distinct_rightSelected" class="btn btn-block"><i class="glyphicon glyphicon-chevron-right"></i></button>
+                        <button type="button" id="multiselect_distinct_leftSelected" class="btn btn-block"><i class="glyphicon glyphicon-chevron-left"></i></button>
+                        <button type="button" id="multiselect_distinct_leftAll" class="btn btn-block"><i class="glyphicon glyphicon-backward"></i></button>
+                    </div>
+                    <div class="col-xs-5">
+                        <select name="to" id="multiselect_distinct_to" class="form-control" size="8" multiple="multiple"></select>
+                    </div>
+                  </div>
+			</div>
+			<div class="modal-footer">
+				<button class="btn btn-info" id="Distinct_ok" data-dismiss="modal">确定</button>
+				<button class="btn btn-default" data-dismiss="modal">关闭</button>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- 更改类型 -->
+
+<div class="modal fade" id="mtAlter">
+ 	<div class="modal-dialog ">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">
+					<span aria-hidden="true">&times;</span>
+					<span class="sr-only">Close</span>
+				</button>
+				<h4>更改类型</h4>
+			</div>
+			<div class="modal-body">
+				<!-- <button type="button" id="clickShow">点击显示</button> -->
+				<table id="col_type_change" class="table table-bordered table-hover">
+					<thead>
+						<th>name</th>
+						<th>type</th>
+						<th>rolTypes</th>
+						 <th>newType</th>
+						 <th>behaved</th>
+					</thead>
+					<tbody></tbody>
+				</table>
+			</div>
+			<div class="modal-footer">
+				<!-- <button class="btn btn-info" id="Alter_ok" data-dismiss="modal">确定</button> -->
+				<button id="alterClose"class="btn btn-default" data-dismiss="modal">关闭</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- 字符串處理 -->
+
+<div class="modal fade" id="mtStr">
+ 	<div class="modal-dialog ">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">
+					<span aria-hidden="true">&times;</span>
+					<span class="sr-only">Close</span>
+				</button>
+				<h4>字符串处理</h4>
+			</div>
+			<div class="modal-body">
+				<table width="100%" class="table table-hover table-bordered top_px" id="str_deal">
+					<thead>
+						<th>字段名</th>
+						<th>表达式</th>
+						<th>新列名</th>
+					</thead>
+					<tbody>
+						<tr>
+							<td width="20%"><select id="Str_col" name="Str_col" class="form-control"></select></td>
+							<td width="60%"><input id="Str_content" name="Str_content" class="form-control"></td>
+							<td width="20%"><input id="Nloc_Name" name="Nloc_Name" class="form-control"></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="modal-footer">
+				<button class="btn btn-info" id="Str_ok" data-dismiss="modal">确定</button>
+				<button class="btn btn-default" data-dismiss="modal">关闭</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="modal fade" id="mtMl">
+ 	<div class="modal-dialog ">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">
+					<span aria-hidden="true">&times;</span>
+					<span class="sr-only">Close</span>
+				</button>
+				<h4>机器学习</h4>
+			</div>
+			<div class="modal-body">
+				<label for="ml">新的表名：</label>
+			    <input type="text" name="ml_nName" id="ml_nName" class="form-control"><br/>
+					 <div id="ml_tabs" class="tabs">
+					 <ul>
+						<li><a  name="load" href="#load">数据处理</a></li>
+						<li><a  name="reduce" href="#reduce">降维</a></li>
+						<li><a  name="class" href="#class">分类</a></li>
+						<li><a  name="regress" href="#regress">回归</a></li>
+						<li><a  name="group" href="#group">聚类</a></li>
+						<li><a  name="analyze" href="#analyze">关联分析</a></li>
+						<li><a  name="model" href="#model">模型处理</a></li>
+						<li><a  name="predict" href="#predict">预测</a></li>
+					 </ul>
+					 <div class='panel-container'>
+					  <div id="load">
+					  	<span class="ml table_name btn btn-default" name="train_load">样例数据加载</span>
+					  	<span class="ml table_name btn btn-default" name="tts">训练测试集划分</span>
+					  </div>
+					  <div id="reduce">
+						<span class="ml table_name btn btn-default" name="pca">主成份分析</span>
+						<span class="ml table_name btn btn-default" name="ica">独立主成分分析</span>
+						<span class="ml table_name btn btn-default" name="tsne">二维可视化函数</span>
+						<span class="ml table_name btn btn-default" name="mds">多维尺度分析</span>
+						<span class="ml table_name btn btn-default" name="svd">奇异值分解</span>
+					  </div>
+					  <div id="class" >
+					  	<span class="ml table_name btn btn-default" name="knn">k- 最近邻分类</span>
+					  	<span class="ml table_name btn btn-default" name="dt">决策树分类</span>
+					  	<span class="ml table_name btn btn-default" name="svm">向量机分类</span>
+					  	<span class="ml table_name btn btn-default" name="gnb">朴素贝叶斯分类</span>
+					  	<span class="ml table_name btn btn-default" name="rf">随机森林分类</span>
+					  	<span class="ml table_name btn btn-default" name="gbdt">迭代决策树分类</span>
+					  	<span class="ml table_name btn btn-default" name="lda">线性判别分类</span>
+					  	<span class="ml table_name btn btn-default" name="qda">二次方判别分类</span>
+					  	<span class="ml table_name btn btn-default" name="adaBoost">弱分类迭代</span>
+						<span class="ml table_name btn btn-default" name="lr">逻辑回归分类</span>
+						</div>
+					  <div id="regress" >
+					  	<span class="ml table_name btn btn-default" name="SVR">svm回归</span>
+					  	<span class="ml table_name btn btn-default" name="LR">线性回归</span>
+					  	<span class="ml table_name btn btn-default" name="DTR">决策树回归</span>
+						<span class="ml table_name btn btn-default" name="RFR">随机森林回归</span>
+						<span class="ml table_name btn btn-default" name="GBDTR">迭代决策树回归</span>
+					  </div>
+					  <div id="group" >
+					  	 <span class="ml table_name btn btn-default" name="kmeans">k均值聚类</span>
+					  	<span class="ml table_name btn btn-default" name="means">均值漂移聚类</span>
+						<span class="ml table_name btn btn-default" name="ac">层次聚类</span>
+						<span class="ml table_name btn btn-default" name="ap">传播聚类</span>
+						<span class="ml table_name btn btn-default" name="dbscan">密度聚类</span>
+						<span class="ml table_name btn btn-default" name="brich">综合层次聚类</span>
+						<span class="ml table_name btn btn-default" name="sc">谱聚类</span>
+						<span class="ml table_name btn btn-default" name="dpt">离群点检测</span>
+					  </div>
+					  <div id="analyze" >
+					  	<span class="ml table_name btn btn-default" name="apri">apriori算法</span>
+					  	<span class="ml table_name btn btn-default" name="fp_growth">生成树挖掘</span>
+					  </div>
+					  <div id="model">
+					  	<span class="ml table_name btn btn-default" name="score">模型打分</span>
+						<span class="ml table_name btn btn-default" name="dt2dot">输出决策树</span>
+						<span class="ml table_name btn btn-default" name="save_model">保存模型</span>
+						<span class="ml table_name btn btn-default" name="load_model">加载模型</span>
+						<!-- <span class="ml table_name btn btn-default" name="rename_to">重命名模型</span>		 -->
+					  </div>
+					  <div id="predict" >
+						<span class="ml table_name btn btn-default" name="predict">预测</span>
+						<span class="ml table_name btn btn-default" name="predict_proba">预测概率</span>
+						<span class="ml table_name btn btn-default" name="gbdt_fw">特征权重</span>
+					  </div>
+					</div>
+					<div id="guanlian"></div>
+					<label for="ml">参数：</label>
+			    		<input type="text" name="ml_content" id="ml_content" class="form-control" ><br/>
+
+			    	</div>
+			</div>
+			<div class="modal-footer">
+				<button class="btn btn-info" id="ml_ok" data-dismiss="modal">确定</button>
+				<button class="btn btn-default" data-dismiss="modal">关闭</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<!-- udf -->
+<div class="modal fade" id="mtUdf">
+ 	<div class="modal-dialog ">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">
+					<span aria-hidden="true">&times;</span>
+					<span class="sr-only">Close</span>
+				</button>
+				<h4>udf函数</h4>
+			</div>
+			<div class="modal-body" id="udf_new">
+				<label for="Udf">新的表名：</label>
+			    <input type="text" name="Udf_nName" id="Udf_nName" class="form-control"><br/>
+				     <div id="tabs" class="tabs">
+					 <ul>
+						<li><a  name="udf0" href="#udf0">udf0包</a></li>
+						<li><a  name="udfA" href="#udfA">udfA包</a></li>
+						<li><a  name="VL" href="#VL">可视化VL包</a></li>
+					 </ul>
+					 <div class='panel-container'>
+					  <div id="udf0">
+					  	<p>常用函数</p>
+					  	<span class="udf0 table_name btn btn-default" name="new_empty_df">新建空表</span>
+					  	<span class="udf0 table_name btn btn-default" name="clone_df">克隆表</span>
+						<span class="udf0 table_name btn btn-default" name="df_agg_count">单字段分组求和</span>
+						<span class="udf0 table_name btn btn-default" name="df_T">行列互换</span>
+					   <span class="udf0 table_name btn btn-default" name="df_fillna">填充空值</span>
+					   <span class="udf0 table_name btn btn-default" name="df_set_index">设置索引</span>
+					   <span class="udf0 table_name btn btn-default" name="df_reset_index">重置索引</span>
+					   <span class="udf0 table_name btn btn-default" name="df_info">简要信息</span>
+
+					   	<p>其他函数</p>
+					   		<span class="udf0 table_name btn btn-default" name="df_append">增加行</span>
+							<span class="udf0 table_name btn btn-default" name="df_drop_col">删除列</span>
+							<span class="udf0 table_name btn btn-default" name="df_types">列类型</span>
+							<span class="udf0 table_name btn btn-default" name="df_mean_std">数据归一化( 零均值)</span>
+							<span class="udf0 table_name btn btn-default" name="df_desc">简要统计</span>
+							<span class="udf0 table_name btn btn-default" name="df_isna">判断空值</span>
+							<span class="udf0 table_name btn btn-default" name="df_sort_index">索引排序</span>
+							<span class="udf0 table_name btn btn-default" name="df_drop_icol">删除数字列</span>
+							<span class="udf0 table_name btn btn-default" name="df_drop_row">删除行</span>
+							<span class="udf0 table_name btn btn-default" name="df_limit">行范围</span>
+							<span class="udf0 table_name btn btn-default" name="df_unstack">转矩阵</span>
+							<span class="udf0 table_name btn btn-default" name="df_min_max">数据归一化(最小-最大)</span>
+							<span class="udf0 table_name btn btn-default" name="df_10k">数据归一化(小数定标)</span>
+							<span class="udf0 table_name btn btn-default" name="new_df_hourrange">时间范围</span>
+							<span class="udf0 table_name btn btn-default" name="new_df_daterange">时间序列</span>
+							<span class="udf0 table_name btn btn-default" name="new_df_range">整数分割</span>
+
+							<span class="udf0 table_name btn btn-default" name="df_l2cs">分割为列</span>
+					  </div>
+					   <div id="udfA">
+					     <span class="udf0 table_name btn btn-default" name="split_by_custom">符号分割</span>
+					     <span class="udf0 table_name btn btn-default" name="merge_col_without_empty">合并列</span>
+					     <span class="udf0 table_name btn btn-default" name="row_numbers_unempty">统计大于0的行数</span>
+					     <span class="udf0 table_name btn btn-default" name="left_join_fill">合并表</span>
+					  </div>
+					  <div id="VL">
+					  <span class="udf0 table_name btn btn-default" name="hotmap">热力图</span>
+					  <span class="udf0 table_name btn btn-default" name="sankey">桑基图</span>
+					  <span class="udf0 table_name btn btn-default" name="rgl">关系图</span>
+					  <span class="udf0 table_name btn btn-default" name="rgl2">自定义关系图</span>
+					  </div>
+					 </div>
+					</div>
+
+					<div id="guanlian_udf1"></div>
+			    <label for="Udf">参数：</label>
+			    <input type="text" name="Udf_content" id="Udf_content" class="form-control"><br/>
+			</div>
+			<div class="modal-footer">
+				<button class="btn btn-info" id="Udf_ok" data-dismiss="modal">确定</button>
+				<button class="btn btn-default" data-dismiss="modal">关闭</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<div class="modal fade" id="mtGroup">
+ 	<div class="modal-dialog ">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">
+					<span aria-hidden="true">&times;</span>
+					<span class="sr-only">Close</span>
+				</button>
+				<h4>分组统计</h4>
+			</div>
+			<div class="modal-body">
+
+			    <label for="Group">新的表名：</label>
+			    <input type="text" name="Group_nName" id="Group_nName" class="form-control">
+			    <div class="Group_col">
+					<label for="Group">分组字段名：</label>
+					<div id="Group_col"></div>
+				</div>
+			    <div class="groupWay">
+				    <label for="loadWay" class="dropdown">统计方式：
+			    		<button class="dropdown-toggle" type="button" data-toggle="dropdown" >
+			    			<span class="caret"></span>
+			    		</button>
+			    		<ul class="dropdown-menu active">
+		    				<li><a href="javascript:void(0);">所有字段统计</a></li>
+		    				<li><a href="javascript:void(0);">多字段统计</a></li>
+		    				<li><a href="javascript:void(0);">单字段多函数统计</a></li>
+			    		</ul>
+			    	</label>
+			   		<input type="text" name="groupWay" id="groupWay" value="" class="form-control"><br/>
+			    </div>
+
+			    <table id="group_table" class="table table-bordered table-hover">
+					<thead><th></th><th>列名</th><th>统计函数</th></thead>
+					<tbody><tr><td></td><td></td><td></td></tr></tbody>
+				</table>
+				<table class="table table-hover table-bordered top_px" id="group_table_single">
+					<thead>
+						<th>字段名</th>
+						<th>统计函数</th>
+
+					</thead>
+					<tbody>
+						<tr>
+							<td><select id="col_name" name="col_name" class="form-control"></select></td>
+							<td><input id="agg_fun" name="agg_fun" class="form-control"></td>
+						</tr>
+					</tbody>
+				</table>
+			    <div class="Group_hName" id="group_fun_name">
+			    	<label for="Group">函数：</label>
+					<input type="text" name="Group_hName" id="Group_hName" class="form-control">
+			    </div>
+			</div>
+			<div class="modal-footer">
+				<button class="btn btn-info" id="Group_ok" data-dismiss="modal">统计</button>
+				<button class="btn btn-default" data-dismiss="modal">关闭</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- lambda  -->
+
+<div class="modal fade" id="mtLambda">
+ 	<div class="modal-dialog ">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">
+					<span aria-hidden="true">&times;</span>
+					<span class="sr-only">Close</span>
+				</button>
+				<h4>lambda函数</h4>
+			</div>
+			<div class="modal-body">
+				<table  class="table table-hover table-bordered top_px" id="plotTable">
+					<thead>
+						<th>字段名</th>
+						<th>表达式</th>
+						<th>新列名</th>
+					</thead>
+					<tbody>
+						<tr>
+							<td width="20%"><select id="lambda_col" name="lambda_col" class="form-control"></select></td>
+							<td width="60%"><input id="lambda_content" name="lambda_content" class="form-control"></td>
+							<td width="20%"><input id="lambda_cName" name="lambda_cName" class="form-control"></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="modal-footer">
+				<button class="btn btn-info" id="lambda_ok" data-dismiss="modal">确定</button>
+				<button class="btn btn-default" data-dismiss="modal">关闭</button>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- plot -->
+<div class="modal fade " id="mtPlot">
+ 	<div class="modal-dialog modal-plot">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" id="closes" data-dismiss="modal">
+					<span aria-hidden="true">&times;</span>
+					<span class="sr-only">Close</span>
+				</button>
+				<h4>绘图</h4>
+			</div>
+			<div class="modal-body">
+				<h5>
+					表名：<span class="label label-primary" id="cur_df"></span>
+					&nbsp;&nbsp;&nbsp;当前工作区：<span class="label label-primary" id="work_space">
+				</span><span id="keyname" class="label label-primary" style=display:none></span>
+
+			</h5>
+			<div class="graph">
+			    <span class="input-group-btn">
+			       <button class="btn btn-default" id="zhexian" type="button">折线图</button>
+			        <button class="btn btn-default" id="zhuzhuang" type="button">柱状图</button>
+			        <button class="btn btn-default" id="sandian" type="button">散点图</button>
+			        <button class="btn btn-default" id="bingtu" type="button">饼图</button>
+			        <button class="btn btn-default" id="duiji" type="button">堆积图</button>
+			        <button class="btn btn-default" id="mianji" type="button">面积图</button>
+			        <button class="btn btn-default" id="paiming" type="button">排名表</button>
+			        <button class="btn btn-default" id="xinxi" type="button">信息块</button>
+			        <button class="btn btn-default" id="wenben" type="button">文本信息</button>
+
+			        <button class="btn btn-default" id="fenyebiaoge" type="button">分页表格</button>
+						<label for="type" class="dropdown" style="top:5px;">&nbsp;其他图形：
+			    		<button class="dropdown-toggle glyphicon glyphicon-menu-down" type="button" data-toggle="dropdown" >
+			    			<!-- <span class="caret"></span> -->
+			    		</button>
+			    		<ul class="dropdown-menu active">
+		    				<!-- <li><a name="paoma" href="javascript:void(0);">跑马灯</a></li> -->
+		    				<li><a name="ditusandian" href="javascript:void(0);">地图散点图</a></li>
+		    				<li><a name="ditureli" href="javascript:void(0);">地图热力图</a></li>
+		    				<li><a name="reli" href="javascript:void(0);">热力图</a></li>
+		    				<li><a name="meigui" href="javascript:void(0);">南丁格尔玫瑰图</a></li>
+		    				<li><a name="qianxi" href="javascript:void(0);">迁徙图</a></li>
+		    				<li><a name="roundrelation" href="javascript:void(0);">圆形关系图</a></li>
+		    				<li><a name="lidaoxiang" href="javascript:void(0);">力导向图</a></li>
+		    				<li><a name="customrelation" href="javascript:void(0);">自定义关系图</a></li>
+		    				<li><a name="sangji" href="javascript:void(0);">桑基图</a></li>
+		    				<li><a name="zhuxian" href="javascript:void(0);">柱线图</a></li>
+		    				<li><a name="hengxiangzhuzhuang" href="javascript:void(0);">横向柱状图</a></li>
+		    				<li><a name="dituerlisandian" href="javascript:void(0);">地图热力散点图</a></li>
+		    				<li><a name="neiwaihuan" href="javascript:void(0);">内外环</a></li>
+		    				<li><a name="yibiaopan" href="javascript:void(0);">仪表盘</a></li>
+		    				<li><a name="hengxiangduiji" href="javascript:void(0);">横向堆积图</a></li>
+		    				<li><a name="mianjiduiji" href="javascript:void(0);">面积堆积图</a></li>
+		    				<!-- <li><a name="hengxiangpaiming" href="javascript:void(0);">横向排名图</a></li> -->
+		    				<!-- <li><a name="renwuhuaxiang" href="javascript:void(0);">人物画像</a></li> -->
+			    		</ul>
+			    	</label>
+			    </span>
+			    <!-- <iframe id="plotIframe" width="100%" height="500" style="background-color=transparent" allowtransparency="true" frameborder="0"></iframe>	 -->
+			    <div id="plotIframe" style="width:100%;height:500px;position:relative;overflow:hidden;"></div>
+			</div>
+
+			</div>
+			<div class="modal-footer">
+				<button class="btn btn-default" data-dismiss="modal">关闭</button>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- 更改表名 -->
+
+<!-- <div class="modal fade" id="mtTbname">
+ 	<div class="modal-dialog ">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">
+					<span aria-hidden="true">&times;</span>
+					<span class="sr-only">Close</span>
+				</button>
+				<h4>显示别名</h4>
+			</div>
+			<div class="modal-body">
+			    <label for="Str">别名：</label>
+			    <input type="text" name="Tbname_nName" id="Tbname_nName" class="form-control"><br/>
+			</div>
+			<div class="modal-footer">
+				<button class="btn btn-info" id="Tbname_ok" data-dismiss="modal">确定</button>
+				<button class="btn btn-default" data-dismiss="modal">关闭</button>
+			</div>
+		</div>
+	</div>
+</div> -->
+    <div id="rMenu">
+		<a href="#" class="list-group-item" id="m_join">关联表</a>
+		<a href="#" class="list-group-item" id="m_union">合并表</a>
+		<a href="#" class="list-group-item" id="m_del">删除表</a>
+    </div>
+
+<script type="text/javascript" src="js/large_tool.js"></script>
+<script type="text/javascript" src="js/little_tool.js"></script>
+</body>
+</html>

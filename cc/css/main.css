@@ -1,0 +1,250 @@
+/*重置*/
+body{
+  margin: 0;
+  padding: 0;
+  background:-webkit-linear-gradient(top,#140000,#110000,#000000), url('../img/cc_background.jpg')  no-repeat;
+
+  background:-moz-linear-gradient(top,#140000,#110000,#000000), url('../img/cc_background.jpg')  no-repeat;
+  background:linear-gradient(top,#140000,#110000,#000000), url('../img/cc_background.png')  no-repeat;
+  background:-o-linear-gradient(top,#140000,#110000,#000000), url('../img/cc_background.jpg')  no-repeat;
+  background-size: cover;
+}
+a{
+  text-decoration: none;
+}
+li,ul{
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.main_cc{
+  width: 100%;
+  position: absolute;
+  height: 100% !important;
+  overflow: hidden;
+  z-index: 1;
+
+}
+/*nav*/
+.nav_cc{
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 41px;
+  background: url('../img/nav_bg.png') center 1px  repeat-x;
+  font-size: 14px;
+  color: #b5b5b5;
+  line-height: 40px;
+  z-index: 2;
+}
+.nav_cc nav{
+  margin-left: 5%;
+  width: 5%;
+  float: left;
+  margin-right: 5%;
+}
+.nav_cc ul{
+  width: 75%;
+  float: left;
+}
+
+.nav_cc ul li{
+  text-align: center;
+  cursor: pointer;
+  width: 13%;
+  display: inline-block;
+  float: left;
+
+}
+.nav_cc ul li span{
+  display:block;
+  width: 99%;
+  float: right;
+
+}
+.nav_cc ul>li span:nth-child(1){
+  float: left;
+}
+.fg{
+  display: inline-block;
+  float: right;
+  width: 1% !important;
+  height: 40px;
+  background:  transparent url('../img/fg.png') no-repeat;
+}
+.nav_click{
+  color: #fff !important;
+  overflow: hidden;
+  background: url('../img/nav_click.png') 0px 1px no-repeat;
+}
+.logo_div{
+  margin-top: 0.3%;
+  width: 200px !important;
+  height: 30px;
+  background: transparent url('../img/jsc_logo.gif') center center no-repeat;
+  overflow: hidden;
+  position: relative;
+}
+.logo_div img{
+  position: absolute;
+  display: inline-block;
+  vertical-align:middle;
+  left: -200px;
+
+}
+.move_logo1{
+  top: 6px;
+  animation:logo1 1.2s linear 2s 1 forwards ;
+
+}
+@keyframes logo1{
+  0%{
+    /* transform:scaleY(0.1); */
+    left: -200px;
+  }
+  100%{
+    left:10px;
+    /* transform:scaleY(1); */
+  }
+}
+@-webkit-keyframes logo1{
+  0%{
+    /* transform:scaleY(0.1); */
+
+    left: -200px;
+  }
+  100%{
+    /* transform:scaleY(1); */
+
+    left:10px;
+  }
+}
+.move_logo2,.move_logo3{
+  top: 9px;
+}
+.move_logo2{
+  animation:logo2 1.2s linear 2 ;
+}
+@keyframes logo2{
+  0%{
+    left: -60px;
+  }
+  100%{
+    left:200px;
+  }
+}
+@-webkit-keyframes logo2{
+  0%{
+    left: -60px;
+  }
+  100%{
+    left:200px;
+  }
+}
+/*footer*/
+.footer_cc{
+  position: fixed;
+  bottom: 0;
+  height: 80px;
+  width: 100%;
+  background: transparent;
+  z-index: 1;
+
+ /*  width: 1220px;
+ height: 80px;
+ left: 17%;
+ background: transparent url('../img/bottom_nav.png') -125px -60px no-repeat;  */
+}
+.left,.right{
+  float: left;
+}
+.foot_main{
+  margin-right: auto;
+  margin-left: auto;
+
+  overflow: hidden;
+  display:-webkit-box;
+  -webkit-box-orient: horizontal;
+  -webkit-box-pack: center;
+  display: -moz-box;
+  -moz-box-orient: horizontal;
+  -moz-box-pack: center;
+  display: -o-box;
+  -o-box-orient: horizontal;
+  -o-box-pack: center;
+  display: -ms-box;
+  -ms-box-orient: horizontal;
+  -ms-box-pack: center;
+  display: box;
+  box-orient: horizontal;
+  box-pack: center;
+}
+.footer_b{
+  height: 50px;
+  /*line-height: 40px;*/
+  text-align: center;
+  color: #fff;
+  float: left;
+  margin-right: 15px;
+}
+.middle_nav{
+  background: transparent url('../img/middle_nav.png') repeat-x;
+}
+.left_nav,.middle_nav,.right_nav{
+  height: 80px;
+}
+.main_cc div{
+  height: 100%;
+  width: 100%;
+  padding-top: 41px;
+
+
+}
+.middle_nav ul{
+  margin-top: 10px;
+}
+.middle_nav ul li{
+  cursor: pointer;
+  position: relative;
+  width: 70px;
+  height: 60px;
+  text-align: center;
+}
+.middle_nav ul li img{
+  text-align: center;
+}
+.middle_nav ul li span{
+  color:#ffd800;
+  font-size: 14px;
+  font-family: 'Microsoft YaHei';
+  display: block;
+  text-align: center;
+  width: 70px;
+  height: 16px;
+  overflow: hidden;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+.middle_nav ul li:last-child{
+  margin-right: 0px !important;
+}
+.left_nav,.right_nav{
+  width: 50px;
+}
+.left_nav{
+  background: transparent url('../img/left_nav.png') no-repeat;
+}
+.right_nav{
+  background: transparent url('../img/right_nav.png') no-repeat;
+}
+.nav_admin{
+  position: absolute;
+  right: 0px;
+}
+.nav_admin span{
+  display: inline-block;
+  margin-right: 15px;
+}

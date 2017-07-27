@@ -1,0 +1,111 @@
+.box_bottom{
+		display: block;
+		width: 26px;
+		height: 28px;
+		margin: auto;
+		text-align: center;
+		text-decoration: none;
+		cursor: pointer;
+		overflow: hidden;
+		position: relative;
+		/* background-color: #d3f6fc;
+		border: 1px solid #cad2e3; */
+		padding: 1px;
+		border-radius: 4px;
+	}
+.one_click_box{
+	transform:rotateY(180deg);
+	-webkit-transform:rotateZ(180deg);
+
+}
+.more_move{
+	animation:more_move 1s ease infinite;
+	position: absolute;
+	left: 10%;
+	width: 80%;
+}
+	@keyframes more_move{
+		0%{
+			top: -1px;
+		}
+		50%{
+			top: 5px;
+		}
+		100%{
+			top: -1px;
+		}
+	}
+	@-webkit-keyframes more_move{
+		0%{
+			top: -1px;
+		}
+		50%{
+			top: 5px;
+		}
+		100%{
+			top: -1px;
+		}
+	}
+	@-moz-keyframes more_move{
+		0%{
+			top: -1px;
+		}
+		50%{
+			top: 5px;
+		}
+		100%{
+			top: -1px;
+		}
+	}
+
+/*               自定义边框开始      */
+.border_1{
+	border:1em solid transparent;
+	border-image: url('../img/user_defined/border/border_1.png');
+    border-image-slice: 10%;
+    border-image-width: 15px;
+    border-width: 18px;
+    border-color: red;
+    border-image-outset: 3px;
+}
+.border_2{
+	border:1em solid transparent;
+	border-image: url('../img/user_defined/border/border_2.png');
+    border-image-slice: 5%;
+    border-image-width: 15px;
+    border-width: 18px;
+    border-color: red;
+    border-image-outset: 14px;
+}
+.border_3{
+	border:1em solid transparent;
+	border-image: url('../img/user_defined/border/border_3.png');
+    border-image-slice: 4%;
+    border-image-width: 14px;
+    border-width: 1px;
+    border-color: red;
+    border-image-outset: 1px;
+}
+.border_4{
+	border:1em solid transparent;
+	border-image: url('../img/user_defined/border/border_4.png');
+    border-image-slice: 6%;
+    border-image-width: 14px;
+    border-width: 1px;
+    border-color: red;
+    border-image-outset: 1px;
+}
+.border_5{
+	border:1em solid transparent;
+	border-image: url('../img/user_defined/border/border_5.png');
+    border-image-slice: 3%;
+    border-image-width: 15px;
+    border-width: 1px;
+    border-color: red;
+    border-image-outset: 1px;;
+}
+/*           自定义边框结束          */
+/*所有构建页面点击之后添加的样式*/
+.zdex{
+	z-index: 11 !important;
+}

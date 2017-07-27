@@ -1,0 +1,244 @@
+@charset "utf-8";
+/* CSS Document */
+.popup {
+	display:none;
+  position: fixed;
+  z-index: 1050;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  background: url(data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7) repeat\0;
+  background: rgba(0, 0, 0, 0.5);
+  zoom: 1\0;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#88000000', endColorstr='#88000000');
+}
+.popup .est-valign-ghost {
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+}
+.popup > .popup-content {
+  display: inline-block;
+  vertical-align: middle;
+}
+@media screen and (min-width:0\0) {
+  .popup {
+    filter: none;
+  }
+}
+.popup .est-valign-ghost {
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+}
+.popup .popup-content {
+  width : 400px;
+  height : 300px;
+  text-align: left;
+  background: white;
+}
+.popup .popup-content .popup-body {
+  overflow: hidden;
+}
+.popup .popup-content .popup-footer {
+  *zoom: 1;
+  min-height: 40px;
+  font-size: 12px;
+}
+.popup .popup-content .popup-footer:before,
+.popup .popup-content .popup-footer:after {
+  display: table;
+  content: "";
+}
+.popup .popup-content .popup-footer:after {
+  clear: both;
+}
+.popup .popup-content .popup-footer:before,
+.popup .popup-content .popup-footer:after {
+  display: table;
+  content: "";
+}
+.popup .popup-content .popup-footer:after {
+  clear: both;
+}
+.popup .popup-content .popup-footer > a {
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  display: inline-block;
+  padding: 5px 15px;
+  margin: 4px;
+  float: right;
+}
+.popup .popup-content .popup-footer .popup-footer-confirm {
+  color: white;
+  background: #82bd3e;
+  border : 0px;
+}
+.popup .popup-content .popup-footer .popup-footer-cancel {
+  color: #666;
+  background: #d7dee3;
+  border : 0px;
+}
+.popup-content {
+  position: relative;
+}
+.popup-iframe {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#88000000', endColorstr='#88000000');
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1050;
+}
+.popup-iframe .iframe-box {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 1053;
+}
+.popup-header {
+  min-width: 200px;
+  background: #f1f4f7;
+  overflow: hidden;
+  line-height: 40px;
+  border-bottom: 1px solid #d6d6d6;
+}
+.popup-header h5 {
+  color: #666;
+  font-size: 14px;
+  float: left;
+  margin: 0 0 0 15px;
+}
+.popup-header .popup-close {
+  float: right;
+  margin-right: 15px;
+  font-size: 14px;
+  color: #666;
+  cursor: pointer;
+}
+.popup-body .common-content-wrap {
+  min-height: 0;
+}
+.popup-body .common-content-main {
+  min-height: 0;
+}
+.popup-body .alert_container {
+  margin: 1.8em;
+  color: #666;
+  font-size: 12px;
+  *zoom: 1;
+}
+.popup-body .alert_container:before,
+.popup-body .alert_container:after {
+  display: table;
+  content: "";
+}
+.popup-body .alert_container:after {
+  clear: both;
+}
+.popup-body .alert_container:before,
+.popup-body .alert_container:after {
+  display: table;
+  content: "";
+}
+
+.label{
+	font-size: 14px;
+	margin-left: 14px;
+}
+.password-edit{
+	width: 325px;
+	margin: 12px auto 12px auto;
+}
+.inputText{
+	height: 20px;
+	width: 245px;
+}
+.password-edit-item{
+	height: 40px;
+}
+.popup-body .alert_container:after {
+  clear: both;
+}
+.popup-body .alert_container .alert_icon {
+  width: 52px;
+  height: 52px;
+  float: left;
+  background: url(/res/img/common/attention.png) no-repeat;
+  margin-right: 1.8em;
+}
+.popup-body .alert_container .alert_icon.success {
+  background: url(/res/img/common/success.png) no-repeat;
+}
+.popup-body .alert_container .alert_message {
+  float: left;
+}
+.popup-body .confirm-tip .confirm_icon {
+  width: 52px;
+  height: 52px;
+  float: left;
+  background: url(/res/img/common/confirm_icon.png) no-repeat;
+  margin-right: 1.8em;
+}
+.popup-footer {
+  
+  *zoom: 1;
+  min-height: 40px;
+  position: relative;
+  font-size: 12px;
+  text-align: right;
+  margin-right: 35px;
+}
+.popup-footer:before,
+.popup-footer:after {
+  display: table;
+  content: "";
+}
+.popup-footer:after {
+  clear: both;
+}
+.popup-footer:before,
+.popup-footer:after {
+  display: table;
+  content: "";
+}
+.popup-footer:after {
+  clear: both;
+}
+.popup-footer > a,
+.popup-footer > button {
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  display: inline-block;
+  padding: 5px 15px;
+  margin: 4px;
+}
+.popup-footer .popup-footer-confirm {
+  color: white;
+  background: #82bd3e;
+}
+.popup-footer .popup-footer-cancel {
+  color: #666;
+  background: #eff2f4;
+}
+@font-face {
+  font-family: 'FontAwesome';
+  src: url('/res/module/font-awesome-master/fonts/fontawesome-webfont.eot?v=4.2.0');
+  src: url('/res/module/font-awesome-master/fonts/fontawesome-webfont.eot?#iefix&v=4.2.0') format('embedded-opentype'), url('/res/module/font-awesome-master/fonts/fontawesome-webfont.woff?v=4.2.0') format('woff'), url('/res/module/font-awesome-master/fonts/fontawesome-webfont.ttf?v=4.2.0') format('truetype'), url('/res/module/font-awesome-master/fonts/fontawesome-webfont.svg?v=4.2.0#fontawesomeregular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+.fa {
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
