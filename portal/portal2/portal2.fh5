@@ -41,7 +41,7 @@
   <div id="main" class="pt-page-rotateSlideIn" style="width:100%;position: absolute;height:100%;"></div>
 </div>
 
-<div id="big_box" style="display:none;width:100%;height:1200px;margin: auto;background:transparent;background-color:rgba(22,30,47,0.7);z-index: 20;">
+<div id="big_box" style="display:none;width:100%;height:1200px;margin: auto;background:transparent;background-color:rgba(22,30,47,0.7);z-index: 1000;">
       <div id="box" style="position: relative;width: 480px;height: 480px;margin:auto;margin-top: 120px;background-image: url(../../images/portal02/portal_3_nav_bg-re1.png);">
         <div class="secondList" id="northbox" data-id="0">
           <span class="secondListspan"></span>
@@ -64,6 +64,7 @@
 
         <img src="../../images/portal02/portal_3_nav_bg_logocenter for DQ.png" style="position: absolute;top: 38%;left:38.5%;z-index: 100;">
       </div>
+      <div class="qhyy"></div>
   </div>
 <div id="dbd"></div>
 
@@ -360,6 +361,7 @@ $.ajax({
         );
       div.append(a);
       box.append(div);
+      qh_yy();
     }
     //$.cookie('dataArr',JSON.stringify(data));
     localStorage.dataArr=JSON.stringify(data);
@@ -745,6 +747,60 @@ function getData(){
               alert(XMLHttpRequest.status+XMLHttpRequest.readyState+textStatus);
        }
     });
+	});
+  function qh_yy() {
+		if(window.sessionStorage.getItem('qh_yingyong')){
+			var use=window.sessionStorage.getItem('qh_yingyong');
+			var uses=use.split(";");
+			for (var i = 0; i < uses.length; i++) {
+				if(uses[i] ==''){
+					uses.splice(i,1);
+				}
+			}
+			$('.qhyy').html('');
+      $('.qhyy').append('<p>应用切换</p>');
+			for (var i = 0; i < uses.length; i++) {
+				$.ajax({
+					type: "get",
+						async: false,
+						dataType:"jsonp",
+						url: "/db/jsonp/ssdb0/"+uses[i],
+						success:function(data){
+							// console.info(data);
+							name= data.name;
+							var div2='<div data-id="'+uses[i]+'">'+name+'</div>';
+							$('.qhyy').append(div2);
+						}
+				});
+			}
+		}
+	}
+	$('body').on('click', '.qhyy div', function() {
+		var use=$(this).attr('data-id');
+		var uses=use.split(":");
+		var ipad_ld = userName+'_'+uses[1];
+		window.localStorage.setItem('ipad_ld',ipad_ld);
+		window.localStorage.setItem('use',use);
+		window.localStorage.setItem('use_cc',uses[1]);
+		$.ajax({
+			type: "get",
+				async: false,
+				dataType:"jsonp",
+				url: "/db/jsonp/ssdb0/"+use,
+				success:function(data){
+					// console.info(data);
+					var nav= data.nav;
+					var portal=data.pot;
+					var logo=data.logo;
+					var plan=data.plan;
+					var portals='portal'+portal;
+					window.localStorage.setItem('mhs',portals);
+					window.sessionStorage.setItem('plan',plan);
+					var new_url='http://'+window.location.host+'/portal/'+'portal'+portal+'/portal'+portal+'.fh5?key='+nav+'&logo='+logo;
+					// window.open(new_url);
+					window.location.href=new_url;
+				}
+		});
 	});
 </script>
 <script type="text/javascript" src="portal2.js"></script>

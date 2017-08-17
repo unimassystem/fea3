@@ -5,9 +5,9 @@ $("#key").val("");$("#width").val("800");
 $("#height").val("480");$("#types").val("01");
 $("#build_title").val("");$("#x").val("0");$("#refresh").val("");
 $("#y").val("0");$("#yname").val("");$("#xname").val("");
-$("#t_zindex").val("5");
-$('#t_legend').attr('data-id','false');
-$('#t_border').attr('data-id','无');
+$("#zindex").val("5");
+$('#legend').attr('data-id','false');
+$('#border').attr('data-id','false');
 //2017.7.25 ycj 修改构建页面标尺
 	function bc_csh() {
 		var w=$(window).width();
@@ -143,27 +143,28 @@ function success(dataNum){
 						// $(div).html("");
 						eval("draw"+type+"(myChart,ckey,height,titles,xname,yname,width,div,border,zindex,legend);");
 						// console.log(div.find($(".icon")));
-						if(div.find($(".icon")).length == 0){
-
-							var result=	'<div class="icon" style="width:'+width+'px;background-color:rgba(37,40,42,0.2);position:absolute;top:0;left:0;z-index:0;">'+
-											'<img class="delete" src="img/icon/close_X_01.png" alt="删除" style="cursor:pointer;float:right;">'+
-											'<img class="drag" src="img/icon/tuodong_icon.png" alt="拖拽" style="cursor:pointer;float:right;">'+
-										'</div>';
-							$(div).append(result);
-						}
+						// if(div.find($(".icon")).length == 0){
+						//
+						// 	var result=	'<div class="icon" style="width:'+width+'px;background-color:rgba(37,40,42,0.2);position:absolute;top:0;left:0;z-index:0;">'+
+						// 					'<img class="delete" src="img/icon/close_X_01.png" alt="删除" style="cursor:pointer;float:right;">'+
+						// 					'<img class="drag" src="img/icon/tuodong_icon.png" alt="拖拽" style="cursor:pointer;float:right;">'+
+						// 				'</div>';
+						// 	$(div).append(result);
+						// }
 					},refreshs,type,myChart,ckey,height,titles,xname,yname,width,div,border,zindex,legend)
 				}else{}
 			}catch(err){
 				console.error(err);
 			}
-			var result=	'<div class="icon" style="width:'+dataNum[i].width+'px;background-color:rgba(37,40,42,0.2);position:absolute;top:0;left:0;z-index:0;">'+
-							'<img class="delete" src="img/icon/close_X_01.png" alt="删除" style="cursor:pointer;float:right;">'+
-							'<img class="drag" src="img/icon/tuodong_icon.png" alt="拖拽" style="cursor:pointer;float:right;">'+
-						'</div>';
-			$(div).append(result);
+			// var result=	'<div class="icon" style="width:'+dataNum[i].width+'px;background-color:rgba(37,40,42,0.2);position:absolute;top:0;left:0;z-index:0;">'+
+			// 				'<img class="delete" src="img/icon/close_X_01.png" alt="删除" style="cursor:pointer;float:right;">'+
+			// 				'<img class="drag" src="img/icon/tuodong_icon.png" alt="拖拽" style="cursor:pointer;float:right;">'+
+			// 			'</div>';
+			// $(div).append(result);
 		});
 
 		//$("#main").append(divBox);
+		$('#main'+i).resizable();
 	}
 }
 //各个配置项 types,width,height,titles,x,y,xname,yname,time,refresh
@@ -406,6 +407,9 @@ $("#huitu").on('click',function(){
 	//获取创建的时间，作为唯一标识
 	var time=new Date();
 	time=time.getTime();
+	huizhi(time);
+});
+function huizhi(time) {
 	//获取配置项内容
 	peizhi();
 	allKey.push({name:oNum.df+'+'+oNum.types,value:time});
@@ -430,6 +434,7 @@ $("#huitu").on('click',function(){
   	//创建dom
   	var div1=$('<div id="'+time+'" class="'+oNum.border+'" name="mypanel" data-id="'+time+'" data-src="'+cs+'" name="mypanel" style="width:'+oNum.width+'px;height:'+oNum.height+'px;position:absolute;top:'+y1+'px;left:'+xx+'px;outline: 1px solid #000;outline-offset:-1px;z-index:'+oNum.zindex+';"></div>');
 	$("#maint").append(div1);
+
 	myChart=echarts.init(document.getElementById(time),'shine');
 	$.getScript('../plot/'+oNum.types+'.js',function(data, textStatus, jqxhr){
 		try{
@@ -438,32 +443,34 @@ $("#huitu").on('click',function(){
 				var refreshs = parseInt(oNum.refresh)*1000;
 				setInterval(function(types,myChart,df,height,titles,xname,yname,width,div1,border,zindex,legend){
 					eval("draw"+types+"(myChart,df,height,titles,xname,yname,width,div1,border,zindex,legend);");
-					if(div.find($(".icon")).length == 0){
-						var result=	'<div class="icon" style="width:'+width+'px;background-color:rgba(37,40,42,0.2);position:absolute;top:0;left:0; z-index:0;">'+
-										'<img class="delete" src="img/icon/close_X_01.png" alt="删除" style="cursor:pointer;float:right;">'+
-										'<img class="drag" src="img/icon/tuodong_icon.png" alt="拖拽" style="cursor:pointer;float:right;">'+
-									'</div>';
-						$(div).append(result);
-					}
+					// if(div1.find($(".icon")).length == 0){
+					// 	var result=	'<div class="icon" style="width:'+width+'px;background-color:rgba(37,40,42,0.2);position:absolute;top:0;left:0; z-index:0;">'+
+					// 					'<img class="delete" src="img/icon/close_X_01.png" alt="删除" style="cursor:pointer;float:right;">'+
+					// 					'<img class="drag" src="img/icon/tuodong_icon.png" alt="拖拽" style="cursor:pointer;float:right;">'+
+					// 				'</div>';
+					// 	$(div1).append(result);
+					// }
+
 				},refreshs,oNum.types,myChart,oNum.df,oNum.height,oNum.titles,oNum.xname,oNum.yname,oNum.width,div1,oNum.border,oNum.zindex,oNum.legend)
 			}else{}
 		}catch(err){
 			console.error(err);
 		}
-		var result=	'<div class="icon" style="width:'+oNum.width+'px;background-color:rgba(37,40,42,0.2);position:absolute;top:0;left:0; z-index:0;">'+
-						'<img class="delete" src="img/icon/close_X_01.png" alt="删除" style="cursor:pointer;float:right;">'+
-						'<img class="drag" src="img/icon/tuodong_icon.png" alt="拖拽" style="cursor:pointer;float:right;">'+
-					'</div>';
-		$(div1).append(result);
+		// var result=	'<div class="icon" style="width:'+oNum.width+'px;background-color:rgba(37,40,42,0.2);position:absolute;top:0;left:0; z-index:0;">'+
+		// 				'<img class="delete" src="img/icon/close_X_01.png" alt="删除" style="cursor:pointer;float:right;">'+
+		// 				'<img class="drag" src="img/icon/tuodong_icon.png" alt="拖拽" style="cursor:pointer;float:right;">'+
+		// 			'</div>';
+		// $(div1).append(result);
 		tuozhuai();
 	});
-});
+	$('#'+time).resizable();
+}
 
 function peizhi(){
-	if($("#t_border").attr('data-id') == '无'){
+	if($("#border").attr('data-id') == '无'){
 		var borders='';
 	}else{
-		var borders=$("#t_border").attr('data-id');
+		var borders=$("#border").attr('data-id');
 	}
 	oNum={
 		"df":$("#key").val(),
@@ -478,8 +485,8 @@ function peizhi(){
 		"time":"",
 		"refresh":$("#refresh").val(),
 		"border":borders,
-		"zindex":$("#t_zindex").val(),
-		"legend":$("#t_legend").attr('data-id')
+		"zindex":$("#zindex").val(),
+		"legend":$("#legend").attr('data-id')
 	};
 	//dataNum.push({dnum:oNum});
 	//console.info(dataNum);
@@ -504,12 +511,16 @@ function tuozhuai(){
 		    }
 				// console.log(csObj);
 		    $.each(csObj,function(id,value){
-		    	//console.info(id,value);
-		    	$('#'+id).val(value);
+		    	// console.info(id,value);
+					if(id!='border'&&id!='legend'){
+						$('#'+id).val(value);
+					}else{
+						$('#'+id).attr('data-id',value);
+					}
+					border_legend();
 		    });
 			 $("#x").val(parseInt((ui.position).left-18));
 			 $("#y").val(parseInt((ui.position).top-18));
-			 border_legend();
 		  },
 		  stop:function(event,ui){
 		  	//$("div[name='mypanel']").not(this).css("background-color","#cfdce4");
@@ -605,7 +616,7 @@ $("body").on('click','#runList li',function(){
 	for (var i = 0; i < dataNum.length; i++) {
 	 	if(uniqe==dataNum[i].time){
 			if(dataNum[i].border == undefined){
-				dataNum[i].border='';
+				dataNum[i].border='false';
 				dataNum[i].zindex='0';
 				dataNum[i].legend='true';
 			}
@@ -619,9 +630,9 @@ $("body").on('click','#runList li',function(){
 			$("#xname").val(dataNum[i].xname);
 			$("#yname").val(dataNum[i].yname);
 			$("#refresh").val(dataNum[i].refresh);
-			$("#t_border").attr('data-id',dataNum[i].border);
-			$("#t_zindex").val(dataNum[i].zindex);
-			$("#t_legend").attr('data-id',dataNum[i].legend);
+			$("#border").attr('data-id',dataNum[i].border);
+			$("#zindex").val(dataNum[i].zindex);
+			$("#legend").attr('data-id',dataNum[i].legend);
 	 	}
 	 }
 	 border_legend();
@@ -639,7 +650,7 @@ $("body").on("click","div[name='mypanel']",function(e){
 
 	 	if(t==dataNum[i].time){
 			if(dataNum[i].border == undefined){
-				dataNum[i].border='';
+				dataNum[i].border='false';
 				dataNum[i].zindex='0';
 				dataNum[i].legend='true';
 			}
@@ -653,12 +664,33 @@ $("body").on("click","div[name='mypanel']",function(e){
 			$("#xname").val(dataNum[i].xname);
 			$("#yname").val(dataNum[i].yname);
 			$("#refresh").val(dataNum[i].refresh);
-			$("#t_border").attr('data-id',dataNum[i].border);
-			$("#t_zindex").val(dataNum[i].zindex);
-			$("#t_legend").attr('data-id',dataNum[i].legend);
+			$("#border").attr('data-id',dataNum[i].border);
+			$("#zindex").val(dataNum[i].zindex);
+			$("#legend").attr('data-id',dataNum[i].legend);
 			border_legend();
 	 	}
 	 }
+	 $('#delete').click(function() {
+		 var t=$('.zdex').attr("data-id");
+		 $('.zdex').remove();
+	 	for (var i = 0; i < dataNum.length; i++) {
+	 		if (t==dataNum[i].time) {
+	 			//alert();
+	 			dataNum.splice($.inArray(dataNum[i],dataNum),1);
+	 		}
+	 	}
+	 	for (var i = 0; i < allKey.length; i++) {
+	 		if (t==allKey[i].value) {
+	 			//alert();
+	 			allKey.splice($.inArray(allKey[i],allKey),1);
+	 		}
+	 	}
+	 });
+	 $('#chonghui').click(function() {
+		 var id=$('.zdex').attr('id');
+		 $('.zdex').remove();
+		 huizhi(id);
+	 });
 });
 $("body").on("click","#yulan",function(){
 	window.open('../dbd/dbd_yl.fh5?key='+key+'&dtitle='+dtitle);
@@ -676,13 +708,13 @@ Array.prototype.del=function(n) {
 }
 $('body').on('click', '#t_border_ul li', function() {
 	var a_text=$(this).children('a').text();
-	$('#t_border').val(a_text);
+	$('#border').val(a_text);
 	var a_data=$(this).attr('data-id');
-	$('#t_border').attr('data-id',a_data);
+	$('#border').attr('data-id',a_data);
 });
 $('body').on('mouseenter', '#t_border_ul li', function() {
 	var n=$(this).attr('data-id');
-	if(n == '无'){
+	if(n == 'false'){
 		$('.border_xz_tc').remove();
 	}else{
 		var H=$(window).height();
@@ -717,62 +749,47 @@ $('body').on('mouseleave', '#t_border_ul li', function() {
 
 $('body').on('click', '#t_zindex_ul li', function() {
 	var a_text=$(this).children('a').text();
-	$('#t_zindex').val(a_text);
+	$('#zindex').val(a_text);
 });
 $('body').on('click', '#t_legend_ul li', function() {
 	var a_text=$(this).children('a').text();
-	$('#t_legend').val(a_text);
+	$('#legend').val(a_text);
 	var a_data=$(this).attr('data-id');
-	$('#t_legend').attr('data-id',a_data);
+	$('#legend').attr('data-id',a_data);
 });
 function border_legend(){
-	var a=$('#t_border').attr('data-id');
-	var b=$('#t_legend').attr('data-id');
-	if(a == 'border_1'){
-		var q=$('#t_border_ul li').eq(1).children('a').text();
-		$('#t_border').val(q);
-	}
-	if(a == 'border_2'){
-		var q=$('#t_border_ul li').eq(2).children('a').text();
-		$('#t_border').val(q);
-	}
-	if(a == 'border_3'){
-		var q=$('#t_border_ul li').eq(3).children('a').text();
-		$('#t_border').val(q);
-	}
-	if(a == 'border_4'){
-		var q=$('#t_border_ul li').eq(4).children('a').text();
-		$('#t_border').val(q);
-	}
-	if(a == 'border_5'){
-		var q=$('#t_border_ul li').eq(5).children('a').text();
-		$('#t_border').val(q);
-	}
-	if(a == '' ||a == '无'){
+	var a=$('#border').attr('data-id');
+	var b=$('#legend').attr('data-id');
+
+	if(a == 'false'){
 		var q=$('#t_border_ul li').eq(0).children('a').text();
-		$('#t_border').val(q);
+		$('#border').val(q);
+	}else{
+		var c=a.split("_");
+		var q=$('#t_border_ul li').eq(c[1]).children('a').text();
+		$('#border').val(q);
 	}
 	if(b == 'left'){
-		$('#t_legend').val('左（竖排）')
+		$('#legend').val('左（竖排）')
 	}
 	if(b == 'right'){
-		$('#t_legend').val('右（竖排）')
+		$('#legend').val('右（竖排）')
 	}
 	if(b == 'top'){
-		$('#t_legend').val('上（横排）')
+		$('#legend').val('上（横排）')
 	}
 	if(b == 'bottom'){
-		$('#t_legend').val('下（横排）')
+		$('#legend').val('下（横排）')
 	}
 	if(b == 'false'){
-		$('#t_legend').val('不显示')
+		$('#legend').val('不显示')
 	}
 }
 border_legend();
-$(function(){//构建页面的尺子的标注线
-	$.pageRuler({
-		v: [1042,1298,1384,1458,1938,3858,4111],
-		h:[786,738,918,1098,2178]
-	});
-});
+// $(function(){//构建页面的尺子的标注线
+// 	$.pageRuler({
+// 		v: [1042,1298,1384,1458,1938,3858,4111],
+// 		h:[786,738,918,1098,2178]
+// 	});
+// });
 });

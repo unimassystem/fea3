@@ -23,8 +23,8 @@ function draw305(myChart,ckey,height,titles,x,y,width,div){
               if(target == 'target' || target == 'targett'){
                 if(kuan == 'kuan'){
                   var main305 = '<div class="box305-content">'+
-                  '<div class="box305-left">'+data[i][0]+'</div>'+
-                  '<div class="box305-right" role="'+data[i][2]+'?'+data[i][3]+'?'+data[i][4]+'?'+data[i][5]+'?'+data[i][6]+'">'+data[i][1]+'</div>'+
+                  '<div class="box305-left" data="305_l'+i+timeDatas+'">'+data[i][0]+'</div>'+
+                  '<div class="box305-right" data="305_r'+i+timeDatas+'" role="'+data[i][2]+'?'+data[i][3]+'?'+data[i][4]+'?'+data[i][5]+'?'+data[i][6]+'">'+data[i][1]+'</div>'+
                   '</div>';
                   $('.box305-right').click(function() {
                     var p=myChart;
@@ -39,8 +39,8 @@ function draw305(myChart,ckey,height,titles,x,y,width,div){
                   });
                 }else {
                   var main305 = '<div class="box305-content">'+
-                  '<div class="box305-left">'+data[i][0]+'</div>'+
-                  '<div class="box305-right" role="'+data[i][2]+'?'+data[i][3]+'?'+data[i][4]+'">'+data[i][1]+'</div>'+
+                  '<div class="box305-left" data="305_l'+i+timeDatas+'">'+data[i][0]+'</div>'+
+                  '<div class="box305-right" data="305_r'+i+timeDatas+'" role="'+data[i][2]+'?'+data[i][3]+'?'+data[i][4]+'">'+data[i][1]+'</div>'+
                   '</div>';
                   $('.box305-right').click(function() {
                     var p=myChart;
@@ -54,11 +54,28 @@ function draw305(myChart,ckey,height,titles,x,y,width,div){
                 }
               }else{
                 var main305 = '<div class="box305-content">'+
-                                    '<div class="box305-left">'+data[i][0]+'</div>'+
-                                    '<div class="box305-right">'+data[i][1]+'</div>'+
+                                    '<div class="box305-left" data="305_l'+i+timeDatas+'">'+data[i][0]+'</div>'+
+                                    '<div class="box305-right" data="305_r'+i+timeDatas+'">'+data[i][1]+'</div>'+
                             '</div>';
               }
               $('#box305'+timeDatas).append(main305);
+              var col=dataAll.columns;
+              var l_305='305_l'+i+timeDatas;
+              var r_305='305_r'+i+timeDatas;
+              if(col.indexOf('fontSize')!=-1){
+                var n1=col.indexOf('fontSize');
+                var n2=data[i][n1];
+                var n3=n2.split(';');
+                $('div[data="'+l_305+'"]').css('font-size',n3[0]+'px');
+                $('div[data="'+r_305+'"]').css('font-size',n3[1]+'px');
+              }
+              if(col.indexOf('color')!=-1){
+                var m1=col.indexOf('color');
+                var m2=data[i][m1];
+                var m3=m2.split(';');
+                $('div[data="'+l_305+'"]').css('color',m3[0]);
+                $('div[data="'+r_305+'"]').css('color',m3[1]);
+              }
             }
 
         },

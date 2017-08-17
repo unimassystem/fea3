@@ -1,0 +1,12 @@
+#python
+*.py[cod]
+*.pyc
+*.so
+*.egg
+*.egg-info
+*.db
+*.log
+*.gz
+#目录
+logs
+.git

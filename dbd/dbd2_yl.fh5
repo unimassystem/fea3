@@ -70,5 +70,6 @@
 <script type="text/javascript" src="../libs/datatable/dataTables.bootstrap.js"></script>
  <script type='text/javascript' src='../portal/portal1/e_portal1.js'></script>
  <script type="text/javascript"  src="../plot/world_china.js"></script>
+ <script type='text/javascript' src='../plot/world_flag.js'></script>
 <script type='text/javascript' src='dbd2_yl.js'></script>
 </html>

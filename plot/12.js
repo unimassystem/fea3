@@ -65,11 +65,14 @@ function draw12(myChart,ckey,height,titles,xname,yname,width,div,border,zindex,l
                 var data=dataAll.data;
                 var name=dataAll.columns;
                 var lenth=name.length;
-                var cutLen;
+                var cutLen=lenth;
                 if (name[lenth-1].indexOf('target')==-1) {
                     cutLen=lenth;
                 }else{
                     cutLen=lenth-3;
+                }
+                if(name.indexOf('width')!=-1){
+                  cutLen=cutLen-2;
                 }
                 var seriesObj=[],inx=[];
                 var center;
@@ -133,6 +136,7 @@ function draw12(myChart,ckey,height,titles,xname,yname,width,div,border,zindex,l
                     var p=$(this)[0]._dom;;
 
                     var data=dataAll.data;
+                    var cul=dataAll.columns;
                     var idx=dataAll.index;
                     //console.info(data);
                     var target=data[0][data[0].length-1];
@@ -141,9 +145,17 @@ function draw12(myChart,ckey,height,titles,xname,yname,width,div,border,zindex,l
                         if(city_name==idx[i]){
                             var dbdK=data[i][len-3];
                             var cs=data[i][len-2];
+                            if(cul.indexOf('width')!=-1){
+                              var m1=cul.indexOf('width');
+                              var k=data[i][m1];
+                              var m2=cul.indexOf('height');
+                              var g=data[i][m2];
+                              targetC(p,target,dbdK,cs,k,g);
+                            }else{
+                              targetC(p,target,dbdK,cs);
+                            }
                             /*console.info(city_name,idx[i]);
                             console.info(dbdK,cs);*/
-                            targetC(p,target,dbdK,cs);
                             return true;
                         }
                     }

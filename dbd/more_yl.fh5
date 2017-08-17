@@ -216,6 +216,7 @@
  <script type='text/javascript' src='dom-to-image.min.js'></script>
  <script type='text/javascript' src='html2canvas.js'></script>
  <script type='text/javascript' src='jspdf.min.js'></script>
+ <script type='text/javascript' src='../plot/world_flag.js'></script>
 <script type='text/javascript' src='more_yl.js'></script>
 <script type="text/javascript"  src="../plot/world_china.js"></script>
 </html>

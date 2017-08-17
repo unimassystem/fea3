@@ -5,6 +5,10 @@ var e_title_textstyle={
     fontSize:16,
     fontWeight:'normal'
 };
+var e_301normal={
+    areaColor:'#2d2c32',
+    borderColor:'#4e4d55'
+};
 
 //---图例文字样式---
 var e_legend_textstyle={

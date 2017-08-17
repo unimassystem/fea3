@@ -134,7 +134,8 @@ function draw43(myChart,ckey,height,titles,xname,yname,width,div,border,zindex,l
               // barGap:'5',
               itemStyle: {
                   normal: {
-                      // color: 'red'
+
+                      color: 'red'
                   }
               },
               data: []

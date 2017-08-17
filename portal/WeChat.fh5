@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<script type='text/javascript' src='../libs/jquery-1.11.0.min.js'></script>
+  <script type="text/javascript" src="../libs/cookie/jquery.cookie.js"></script>
+	<title>WeChat</title>
+</head>
+<body onload="load()">
+	<script>
+		function load(){
+			var name='pot';
+			var pass='ilovefea';
+			var data={
+				"name":name,
+				"auth_key":pass
+			};
+			data=JSON.stringify(data);
+			$.cookie('userName',name);
+			//$.cookie('usePass',pass,{path:'index.fh5'});
+			$.ajax({
+				type:'get',
+				async: true,
+				dataType:'jsonp',
+				url:'http://60.191.16.186:9001/auth2p',
+				data:{data:data},
+				success:function(data){
+					// console.info(data);
+					if(data.success==true){
+						console.info('认证成功');
+						window.location.href='';
+					}else{
+						console.info('认证失败');
+
+					}
+				},
+				error:function(XMLHttpRequest,message){
+					console.log(message)
+				}
+			});
+		};
+	</script>
+</body>
+</html>

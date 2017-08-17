@@ -7,13 +7,16 @@ function draw313(myChart,ckey,height,titles,x,y,width,div){
         dataType : 'jsonp',
         success:function(dataAll){
             var data=dataAll.data;
-            var kuan=dataAll.columns[3];
+            var kuan=dataAll.columns;
+            var len=kuan.length;
             // var title=dataAll.columns;
             // console.log(data);
             // console.log(title);
             // for (var i = 0; i < data.length; i++) {
-            if(kuan == 'width'){
-              var txt_div='<div id="tsk_info" style="z-index:2;overflow:hidden;"><div class="tsk313" role="'+data[0][0]+'?'+data[0][1]+'?'+data[0][2]+'?'+data[0][3]+'?'+data[0][4]+'" onmousedown="mouseDown_313s(this)" style="width:100%;height:100%;overflow:hidden;cursor:pointer;"></div></div>';
+            if(kuan.indexOf('width')!=-1){
+              var m1=kuan.indexOf('width');
+              var m2=kuan.indexOf('height');
+              var txt_div='<div id="tsk_info" style="z-index:2;overflow:hidden;"><div class="tsk313" role="'+data[0][len-3]+'?'+data[0][len-2]+'?'+data[0][len-1]+'?'+data[0][m1]+'?'+data[0][m2]+'" onmousedown="mouseDown_313s(this)" style="width:100%;height:100%;overflow:hidden;cursor:pointer;"></div></div>';
               $('.tsk313').click(function() {
                 /* Act on the event */
                 var p=myChart;
@@ -27,7 +30,7 @@ function draw313(myChart,ckey,height,titles,x,y,width,div){
               	targetC(p,target,dbdK,cs,k,g);
               });
             }else{
-              var txt_div='<div id="tsk_info" style="z-index:2;overflow:hidden;"><div class="tsk313" role="'+data[0][0]+'?'+data[0][1]+'?'+data[0][2]+'" onmousedown="mouseDown_313(this)" style="width:100%;height:100%;overflow:hidden;cursor:pointer;"></div></div>';
+              var txt_div='<div id="tsk_info" style="z-index:2;overflow:hidden;"><div class="tsk313" role="'+data[0][len-3]+'?'+data[0][len-2]+'?'+data[0][len-1]+'" onmousedown="mouseDown_313(this)" style="width:100%;height:100%;overflow:hidden;cursor:pointer;"></div></div>';
               $('.tsk313').click(function() {
                 /* Act on the event */
                 var p=myChart;

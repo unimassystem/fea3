@@ -117,6 +117,6 @@
 <script type="text/javascript" src="../libs/jquery-kxbdmarquee/js/jquery.kxbdmarquee.js"></script>
 <script type="text/javascript" src="../libs/datatable/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="../libs/datatable/dataTables.bootstrap.js"></script>
-
+<script type='text/javascript' src='../plot/world_flag.js'></script>
 <script src="am_run.js" type="text/javascript"></script>
 </html>

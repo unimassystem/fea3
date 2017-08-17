@@ -8,23 +8,25 @@ function draw18(myChart,ckey,height,titles,x,y,width,div){
         dataType : 'jsonp',
         success:function(dataAll){
             var data=dataAll.data;
-            var target=data[0][3];
-            var kuan=data[0][4];
-            if(target != null){
-            	for (var i = 0; i < data.length; i++) {
-                if(kuan != null){
-                  var txt_div='<div id="txt_info" role="'+data[0][1]+'?'+data[0][2]+'?'+data[0][3]+'?'+data[0][4]+'?'+data[0][5]+'">'+data[i][0]+'</div>';
-
+            var cul=dataAll.columns;
+            var lens=cul.length;
+            if(cul.indexOf('target')!=-1){
+              for (var i = 0; i < data.length; i++) {
+                if(cul.indexOf('width')!=-1){
+                  var m1=cul.indexOf('width');
+                  var m2=cul.indexOf('height');
+                  var txt_div='<div id="txt_info" role="'+data[0][lens-3]+'?'+data[0][lens-2]+'?'+data[0][lens-1]+'?'+data[0][m1]+'?'+data[0][m2]+'">'+data[i][0]+'</div>';
                 }else{
-                  var txt_div='<div id="txt_info" role="'+data[0][1]+'?'+data[0][2]+'?'+data[0][3]+'">'+data[i][0]+'</div>';
-
+                  var txt_div='<div id="txt_info" role="'+data[0][lens-3]+'?'+data[0][lens-2]+'?'+data[0][lens-1]+'">'+data[i][0]+'</div>';
                 }
 	            }
             }else{
-            	for (var i = 0; i < data.length; i++) {
+              for (var i = 0; i < data.length; i++) {
 	              var txt_div='<div id="txt_info">'+data[i]+'</div>';
 	            }
             }
+
+
             div.html(txt_div);
             div.find("#txt_info").css('width',width);
             div.find("#txt_info").css('overflow','hidden');

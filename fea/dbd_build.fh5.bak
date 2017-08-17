@@ -4,13 +4,14 @@
 		<meta charset="UTF-8">
 		<title>dashboard搭建</title>
 		<link rel="stylesheet" type="text/css" href="../libs/jqueryUI/jqueryui-ruler/css/jquery.ui.ruler.css">
+		<link rel="stylesheet" type="text/css" href="../libs/jqueryUI/ruler_for_zip/css/ruler.css">
 		<link href="../libs/nestable/css/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 		<link href="../libs/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
 		<link type='text/css' rel="stylesheet" href ='../portal/portal1/portal1_total.css'>
 		<!-- <link hrelibs/nestable/css/components.min.css" rel="stylesheet" id="style_components" type="text/css" /> -->
 		<link rel="stylesheet" type="text/css" href="css/yulan.css"/>
+		<link rel="stylesheet" type="text/css" href="css/user_defined.css">
 		<script type="text/javascript" src="../libs/jquery-1.11.0.min.js"></script>
-		<!-- <script type="text/javascript" src="../libs/jquery-2.2.3.min.js"></script> -->
 
 
 		<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=mRh57fdOt8eV4XAmeGK5Ou6pk8HoDFLK"></script>
@@ -21,7 +22,7 @@
 <script type="text/javascript" src="../libs/jqmeter/jqmeter.min.js"></script>
 <script type="text/javascript" src="../libs/jUploader/jquery.jUploader-1.0.min.js" ></script>
 <script type="text/javascript"src="../libs/echarts3/echarts.js"></script>
-<script type="text/javascript" src="../libs/echarts-gl-master/dist/echarts-gl.min.js"></script>
+<script type="text/javascript" src="../libs/echarts3/echarts-gl.min.js"></script>
 <script type="text/javascript"src="../libs/echarts3/echarts-liquidfill.min.js"></script>
 
 <script type="text/javascript"src="../libs/echarts3/theme/shine.js"></script>
@@ -66,17 +67,25 @@
 <script type="text/javascript" src="../libs/datatable/dataTables.bootstrap.js"></script>
  <script type='text/javascript' src='../portal/portal1/e_portal1.js'></script>
 <script src="../libs/jqueryUI/jqueryui-ruler/js/jquery.ui.ruler.js"></script>
+<script src="../libs/jqueryUI/ruler_for_zip/js/jquery.zxxPageRuler.1.1.js"></script>
  <script type="text/javascript" src="../libs/heatmap/heatmap_min.js"></script>
 <script src="cfg/menu.js"></script>
+<script type='text/javascript' src='../plot/world_flag.js'></script>
 <script type="text/javascript"  src="dbd_build.js"></script>
 <script type="text/javascript"  src="../plot/world_china.js"></script>
 <!-- <script type="text/javascript" src="js/yulan.js"></script> -->
 <style type="text/css">
+.zxxScaleBox{
+	top:308px;
+}
+	.input-group-btn>.btn:active, .input-group-btn>.btn:focus, .input-group-btn>.btn{
+		z-index: 2;
+	}
 	.box{
 		width: 86%;
 		margin: auto;
 		margin-top: 10px;
-		 height: 310px;
+		 height: 350px;
 		background-color: #ffffff;
 		border: solid 1px #cdced1;
 	}
@@ -119,8 +128,9 @@
 		z-index: -2;
 	}
 	.maxZ{
-		z-index: 1000
+		z-index: 1000 !important;
 	}
+
 </style>
 </head>
 <body style="background-color: #edf6f8;">
@@ -142,8 +152,8 @@
 		        <input class="form-control" type="text" value="" id="title" style>
 		   </div>
 		   <div class="col-md-4">
-		        <label style="float: left;width: 20%;">类型 </label>
-				<div class="input-group" style="width: 72%;float: left;">
+		        <label style="float: left;width: 15%;">类型 </label>
+				<div class="input-group" style="width: 70%;float: left;">
 			      	<input id="types" type="text" class="form-control" style="height: 28px;margin-left: 0;">
 			      	<div class="input-group-btn">
 			        	<button id="chartButton" style="height: 28px;padding-top: 4px;" type="button" class="btn btn-primary">选择</button>
@@ -161,9 +171,16 @@
 		        <input class="form-control" type="text" value="200" id="height">
 			</div>
 			<div class="col-md-4">
-		      	<label>刷新时间</label>
-		        <input class="form-control" type="text" value="200" id="refresh">
+				<label style="float: left;width: 15%;">图表选择</label>
+				<div class="input-group" style="width: 70%;float: left;">
+							<input id="feaName" type="text" class="form-control" style="height: 28px;margin-left: 0;">
+							<div class="input-group-btn">
+								<button id="runButton" style="height: 28px;padding-top: 4px;top:0;" type="button" class="btn btn-primary dropdown-toggle " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="caret"></span>选择</button>
+								<ul id="runList"class="dropdown-menu dropdown-menu-right"></ul>
+							</div>
+					</div>
 			</div>
+
 		</div>
 
 		<div class="first col-md-12" style="margin-top:20px">
@@ -175,32 +192,131 @@
 		       	<label>纵坐标</label>
 		        <input class="form-control" type="text" value="0" id="y">
 		    </div>
-		    <div class="col-md-4">
-		    	<label style="float: left;width: 20%;">图表选择 </label>
-				<div class="input-group" style="width: 72%;float: left;">
-			      	<input id="feaName" type="text" class="form-control" style="height: 28px;margin-left: 0;">
-			      	<div class="input-group-btn">
-			        	<button id="runButton" style="height: 28px;padding-top: 4px;top:0;" type="button" class="btn btn-primary dropdown-toggle " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="caret"></span>选择</button>
-			        	<ul id="runList"class="dropdown-menu dropdown-menu-right"></ul>
-			      	</div>
-			    </div>
-		   	</div>
+				<div class="col-md-4">
+			      	<label>刷新时间</label>
+			        <input class="form-control" type="text" value="200" id="refresh">
+				</div>
 
 		</div>
-		<div class="first col-md-12" style="margin-top:20px">
-			<div class="col-md-4 ">
-		       	<label>x轴名称</label>
-		        <input class="form-control" type="text" value="0" id="xname">
+		<div class="first col-md-12 box_false" style="margin-top:20px">
+			<div class="col-md-4">
+				<label style="float: left;width: 4em;">图层</label>
+				<div class="input-group" style="width: 70%;float: left;">
+							<input id="zindex" type="text" class="form-control" value="5" readonly style="height: 28px;margin-left: 0px;">
+							<div class="input-group-btn">
+								<button id="t_zindex_button" style="height: 28px;padding-top: 4px;top:0;" type="button" class="btn btn-primary dropdown-toggle " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="caret"></span>选择</button>
+								<ul id="t_zindex_ul"class="dropdown-menu dropdown-menu-right">
+									<li><a>0</a></li>
+									<li><a>1</a></li>
+									<li><a>2</a></li>
+									<li><a>3</a></li>
+									<li><a>4</a></li>
+									<li><a>5</a></li>
+									<li><a>6</a></li>
+									<li><a>7</a></li>
+									<li><a>8</a></li>
+									<li><a>9</a></li>
+									<li><a>10</a></li>
+								</ul>
+							</div>
+					</div>
+			</div>
+			<div class="col-md-4 "><!-- 2017.7.20 ycj 新增图例的位置左（竖排），上（横排），下（横排），右（竖排） -->
+				<label style="float: left;width: 4em;">图例</label>
+				<div class="input-group" style="width: 70%;float: left;">
+							<input id="legend" type="text" data-id="false" class="form-control" value="不显示" readonly style="height: 28px;margin-left: 0px;">
+							<div class="input-group-btn">
+								<button id="t_legend_button" style="height: 28px;padding-top: 4px;top:0;" type="button" class="btn btn-primary dropdown-toggle " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="caret"></span>选择</button>
+								<ul id="t_legend_ul"class="dropdown-menu dropdown-menu-right">
+									<li data-id="false">
+										<a>不显示</a>
+									</li>
+									<li data-id="left">
+										<a>左（竖排）</a>
+									</li>
+									<li data-id="right">
+										<a>右（竖排）</a>
+									</li>
+									<li data-id="top">
+										<a>上（横排）</a>
+									</li>
+									<li data-id="bottom">
+										<a>下（横排）</a>
+									</li>
+								</ul>
+							</div>
+					</div>
 		    </div>
 			<div class="col-md-4">
-		       	<label>y轴名称</label>
-		        <input class="form-control" type="text" value="0" id="yname">
-		    </div>
+				<label style="float: left;width: 4em;">边框</label>
+				<div class="input-group" style="width: 70%;float: left;">
+							<input id="border" type="text" class="form-control" data-id="无" value="无" readonly style="height: 28px;margin-left: 0px;">
+							<div class="input-group-btn">
+								<button id="t_border_button" style="height: 28px;padding-top: 4px;top:0;" type="button" class="btn btn-primary dropdown-toggle " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="caret"></span>选择</button>
+								<ul id="t_border_ul" class="dropdown-menu dropdown-menu-right">
+									<li data-id="false">
+										<a>无</a>
+									</li>
+									<li data-id="border_1">
+										<a>方案一</a>
+									</li>
+									<li data-id="border_2">
+										<a>方案二</a>
+									</li>
+									<li data-id="border_3">
+										<a>方案三</a>
+									</li>
+									<li data-id="border_4">
+										<a>方案四</a>
+									</li>
+									<li data-id="border_5">
+										<a>方案五</a>
+									</li>
+									<li data-id="border_6">
+										<a>方案六</a>
+									</li>
+									<li data-id="border_7">
+										<a>方案七</a>
+									</li>
+									<li data-id="border_8">
+										<a>方案八</a>
+									</li>
+									<li data-id="border_9">
+										<a>方案九</a>
+									</li>
+									<li data-id="border_10">
+										<a>方案十</a>
+									</li>
+								</ul>
+							</div>
+					</div>
+	    </div>
+
 
 		</div>
 
 
-		   <div class="col-md-12" id="maint" style="width:2000px;padding:0;margin-top: 23px;height:1000px;position:absolute;left:0;top:290px;z-index:-2;">
+
+		<div class="first col-md-12 box_false" style="margin-top:20px">
+			<div class="col-md-4 ">
+	       	<label>x轴名称</label>
+	        <input class="form-control" type="text" value="0" id="xname">
+	    </div>
+			<div class="col-md-4">
+	       	<label>y轴名称</label>
+	        <input class="form-control" type="text" value="0" id="yname">
+	    </div>
+
+				<div class="col-md-4">
+			      	<label>高级参数</label>
+			        <input class="form-control" type="text" id="senior">
+				</div>
+
+		</div>
+		<div class="first col-md-12" style="margin-top:20px"><a class="box_bottom" title="高级选项"><img src="./img/more_move.png" class="more_move"> </a></div>
+
+
+		   <div class="col-md-12" id="maint" style="width:4096px;padding:0;margin-top: 23px;height:2160px;position:absolute;left:0;top:335px;z-index:-2;">
 		      <!-- <div ></div> -->
 		   </div>
 	</div>
@@ -233,11 +349,11 @@
 	  	</div><!-- /.modal-dialog -->
 	</div>
 
-	<div class="modal fade" id="smallChart">
+	<div id="smallChart" style="display:none;">
 	  	<div class="modal-dialog modal-lg">
 		    <div class="modal-content">
 			      <div class="modal-header">
-			        	<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			        	<button type="button" class="close" id="close_tb_select" ><span aria-hidden="true">&times;</span></button>
 			        	<h4 class="modal-title">图表选择</h4>
 			      </div>
 			      <div class="modal-body" id="chart" style="overflow: auto;">
@@ -514,7 +630,7 @@
 						</div>
 			      </div>
 			      <div class="modal-footer">
-			        	<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+			        	<button type="button" class="btn btn-default" id="tb_select">关闭</button>
 
 			      </div>
 		    </div><!-- /.modal-content -->

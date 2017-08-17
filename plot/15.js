@@ -25,7 +25,8 @@ function draw15(myChart,ckey,height,titles,xname,yname,width,div){
                         formatter: '{b}'
                     }
                 },
-
+                width:2,
+                height:2,
                 roam: true,
                 lineStyle: {
                     normal:e_forceline_normal,

@@ -17,6 +17,11 @@ var menu_data = [
           "name":"面积图",
           "type":"20",
           "img":"./img/zhexian/zx-mj.png"
+        },
+        {
+          "name":"平行系",
+          "type":"66",
+          "img":"./img/zhexian/zx-mj.png"
         }
       ]
     },
@@ -42,6 +47,16 @@ var menu_data = [
         {
           "name":"横向柱状图",
           "type":"21",
+          "img":"./img/zzt/zz-hxzzt.png"
+        },
+        {
+          "name":"自定义横向柱状图",
+          "type":"75",
+          "img":"./img/zzt/zz-hxzzt.png"
+        },
+        {
+          "name":"自定义柱状图",
+          "type":"78",
           "img":"./img/zzt/zz-hxzzt.png"
         },
         {
@@ -78,6 +93,11 @@ var menu_data = [
           "name":"柱线图双Y轴",
           "type":"53",
           "img":"./img/zzt/zz-zxt.png"
+        },
+        {
+          "name":"象形柱状图",
+          "type":"77",
+          "img":"./img/zzt/zz-zxt.png"
         }
       ]
     },
@@ -113,6 +133,11 @@ var menu_data = [
         {
           "name":"外环",
           "type":"50",
+          "img":"./img/bt/bt-nwh.png"
+        },
+        {
+          "name":"圆环进度条",
+          "type":"76",
           "img":"./img/bt/bt-nwh.png"
         }
       ]
@@ -180,6 +205,11 @@ var menu_data = [
           "name":"地图散点路线图",
           "type":"326",
           "img":"./img/dt/dt-qxt.png"
+        },
+        {
+          "name":"地图3d热力迁徙图",
+          "type":"65",
+          "img":"./img/dt/dt-qxt.png"
         }
 
       ]
@@ -219,6 +249,21 @@ var menu_data = [
           "img":"./img/bg/bg-xxk304.png"
         },
         {
+          "name":"信息块71",
+          "type":"71",
+          "img":"./img/bg/xxk_71.png"
+        },
+        {
+          "name":"信息块72",
+          "type":"72",
+          "img":"./img/bg/xxk_72.png"
+        },
+        {
+          "name":"信息块74",
+          "type":"74",
+          "img":"./img/bg/xxk_72.png"
+        },
+        {
           "name":"信息块305",
           "type":"305",
           "img":"./img/bg/bg-xxk305.png"
@@ -236,6 +281,21 @@ var menu_data = [
         {
           "name":"空",
           "type":"59",
+          "img":"./img/bg/bg-pmb.png"
+        },
+        {
+          "name":"股票",
+          "type":"60",
+          "img":"./img/bg/bg-pmb.png"
+        },
+        {
+          "name":"透明表格",
+          "type":"61",
+          "img":"./img/bg/bg-pmb.png"
+        },
+        {
+          "name":"带标题透明表格",
+          "type":"68",
           "img":"./img/bg/bg-pmb.png"
         }
 
@@ -325,6 +385,11 @@ var menu_data = [
           "img":"./img/bg/bg-xxk307.png"
         },
         {
+          "name":"无背景标题",
+          "type":"69",
+          "img":"./img/bg/bg-xxk307.png"
+        },
+        {
           "name":"热点标题",
           "type":"309",
           "img":"./img/wb/rd_309.png"
@@ -358,6 +423,21 @@ var menu_data = [
           "name":"工具条",
           "type":"54",
           "img":"./img/wb/rd_313.png"
+        },
+        {
+          "name":"iframe控件",
+          "type":"63",
+          "img":"./img/bg/bg-pmb.png"
+        },
+        {
+          "name":"数字翻转",
+          "type":"80",
+          "img":"./img/bg/bg-pmb.png"
+        },
+        {
+          "name":"组合文本框",
+          "type":"81",
+          "img":"./img/bg/bg-pmb.png"
         }
       ]
     },
@@ -432,6 +512,16 @@ var menu_data = [
           "name":"实时路线图",
           "type":"301",
           "img":"./img/Kxt/gjt.jpg"
+        },
+        {
+          "name":"实时透明表格",
+          "type":"62",
+          "img":"./img/Kxt/gjt.jpg"
+        },
+        {
+          "name":"实时环形进度条",
+          "type":"73",
+          "img":"./img/Kxt/gjt.jpg"
         }
       ]
     },
@@ -453,52 +543,52 @@ var menu_data = [
         {
           "name":"3d柱图",
           "type":"314",
-          "img":"./img/Kxt/radar-aqi.png"
+          "img":"./img/Kxt/314.png"
         },
         {
           "name":"3d进度图",
           "type":"317",
-          "img":"./img/Kxt/radar-aqi.png"
+          "img":"./img/Kxt/317.png"
         },
-        {
-          "name":"3d地图柱子",
-          "type":"315",
-          "img":"./img/dt/dt-qxt.png"
-        },
+        // {
+        //   "name":"3d地图柱子",
+        //   "type":"315",
+        //   "img":"./img/Kxt/315.png"
+        // },
         {
           "name":"3d旋转地图",
           "type":"316",
-          "img":"./img/dt/dt-qxt.png"
+          "img":"./img/Kxt/316.png"
         },
         {
           "name":"3d攻击路线图1",
           "type":"320",
-          "img":"./img/dt/dt-qxt.png"
+          "img":"./img/Kxt/3D_map_320.png"
         },
         {
           "name":"3d攻击路线图2",
           "type":"321",
-          "img":"./img/dt/dt-qxt.png"
+          "img":"./img/Kxt/3D_map_321.png"
         },
         {
           "name":"3d轮廓地球",
           "type":"322",
-          "img":"./img/dt/dt-qxt.png"
+          "img":"./img/Kxt/3D_map_322.png"
         },
         {
           "name":"3d实时攻击路线图1",
           "type":"323",
-          "img":"./img/dt/dt-qxt.png"
+          "img":"./img/Kxt/3D_map_323.png"
         },
         {
           "name":"3d实时攻击路线图2",
           "type":"324",
-          "img":"./img/dt/dt-qxt.png"
+          "img":"./img/Kxt/3D_map_324.png"
         },
         {
           "name":"3d轮廓实时攻击路线图",
           "type":"325",
-          "img":"./img/dt/dt-qxt.png"
+          "img":"./img/Kxt/3D_map_325.png"
         },
         {
           "name":"3D地球板状",
@@ -514,17 +604,32 @@ var menu_data = [
         {
           "name":"动画插件1",
           "type":"55",
-          "img":"./img/Kxt/radar-aqi.png"
+          "img":"./img/dt/move_55.png"
         },
         {
           "name":"动画插件2",
           "type":"56",
-          "img":"./img/Kxt/radar-aqi.png"
+          "img":"./img/dt/move_56.png"
         },
         {
           "name":"动画插件3",
           "type":"57",
-          "img":"./img/dt/dt-qxt.png"
+          "img":"./img/dt/move_57.png"
+        },
+        {
+          "name":"动画插件4",
+          "type":"64",
+          "img":"./img/dt/move_64.png"
+        },
+        {
+          "name":"动画插件5",
+          "type":"67",
+          "img":"./img/dt/move_67.png"
+        },
+        {
+          "name":"动画插件6",
+          "type":"70",
+          "img":"./img/dt/move_70.png"
         }
       ]
     }

@@ -21,17 +21,24 @@ function draw28(myChart,ckey,height,titles,x,y,width,div){
 	    	var data=res.data;
 	    	// console.info(res);
 				var columns=res.columns;
-				var world_flag=res.columns[0];
+				var len=columns.length;
+				var world_flags=res.columns[0];
 	    	//localStorage.data=JSON.stringify(res);
 	    	var index=res.index;
-				if(world_flag=='world_flag'){
+				if(world_flags=='world_flag'){
 					for (var i = 0; i < data.length; i++) {
 		    		//计算每一个色条的宽度，定义第一条为100%；
 		    		var d=data[i][2]/data[0][2];
 		    		d=(d.toFixed(2))*100;
 		    		var n=i+1;
+						for(var k=0;k<world_flag.length;k++){
+							if(world_flag[k].country==data[i][0]){
+								var	flag=world_flag[k].num;
+							}
+						}
+						var img='<img class="png" src="../images/world_flag/'+flag+'.png">'
 			    		var li='<li class="top10-li">'+
-			    					'<span class="list list'+n+'">'+data[i][0]+'</span>'+
+			    					'<span class="list list'+n+'">'+img+'</span>'+
 			    					'<div class="trans_list_bg">'+
 			    						'<div class="list_data_bg list'+n+'" style="width:'+d+'%;">'+
 
@@ -56,15 +63,17 @@ function draw28(myChart,ckey,height,titles,x,y,width,div){
 		    		var n=i+1;
 						// console.log(data[0][4]);
 						// console.log(data[0][5]);
-						if(data[0][4] != undefined){
-							if(columns[5] == 'width'){
+						if(columns.indexOf('target')!=-1){
+							if(columns.indexOf('width')!=-1){
+								var m1=columns.indexOf('width');
+                var m2=columns.indexOf('height');
 								var li='<li class="top10-li">'+
 				    					'<span class="list list'+n+'">'+n+'</span>'+
 				    					'<div class="trans_list_bg">'+
 				    						'<div class="list_data_bg list'+n+'" style="width:'+d+'%;">'+
 				    							'<span class="num">'+data[i][1]+'</span>'+
 				    						'</div>'+
-				    						'<p class="trans_list_txt" datas="'+data[i][5]+'?'+data[i][6]+'" role="'+data[i][4]+'?'+data[i][2]+'?'+data[i][3]+'">'+
+				    						'<p class="trans_list_txt" datas="'+data[i][m1]+'?'+data[i][m2]+'" role="'+data[i][len-1]+'?'+data[i][len-3]+'?'+data[i][len-2]+'">'+
 				    							'<span class="country">'+data[i][0]+'</span>'+
 
 				    						'</p>'+
@@ -78,7 +87,7 @@ function draw28(myChart,ckey,height,titles,x,y,width,div){
 
 				    							'<span class="num">'+data[i][1]+'</span>'+
 				    						'</div>'+
-				    						'<p class="trans_list_txt" role="'+data[i][4]+'?'+data[i][2]+'?'+data[i][3]+'" >'+
+				    						'<p class="trans_list_txt" role="'+data[i][len-1]+'?'+data[i][len-3]+'?'+data[i][len-2]+'" >'+
 				    							'<span class="country">'+data[i][0]+'</span>'+
 
 				    						'</p>'+

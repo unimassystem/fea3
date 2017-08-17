@@ -1,6 +1,6 @@
 @charset "utf-8";
 /* by zhangxinxu 2010-07-30  http://www.zhangxinxu.com/ -download by http://www.jb51.net*/
-.zxxScaleBox{position:absolute;; left:0; top:308px; _position:absolute; z-index:-3; overflow:hidden;}
+.zxxScaleBox{position:absolute;; left:0; _position:absolute; z-index:-3; overflow:hidden;}
 .zxxScaleRuler_h,.zxxScaleRuler_v,.zxxRefLine_v,.zxxRefLine_h,.zxxRefDot_h,.zxxRefDot_v{position:absolute; overflow:hidden; z-index:0;}
 .zxxScaleRuler_h{width:100%; left:18px; height:18px; background:url(../image/ruler_h.png) repeat-x;}
 .zxxScaleRuler_v{width:18px; top:18px; height:100%; background:url(../image/ruler_v.png) repeat-y;}

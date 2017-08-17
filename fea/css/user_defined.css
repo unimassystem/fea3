@@ -1,3 +1,9 @@
+body{
+	
+}
+div[name="mypanel"]{
+	outline: 1px solid rgb(186, 186, 186) !important;
+}
 .box_bottom{
 		display: block;
 		width: 26px;
@@ -64,16 +70,16 @@
 	border-image: url('../img/user_defined/border/border_1.png');
     border-image-slice: 10%;
     border-image-width: 15px;
-    border-width: 18px;
+    border-width: 1px;
     border-color: red;
     border-image-outset: 3px;
 }
 .border_2{
 	border:1em solid transparent;
 	border-image: url('../img/user_defined/border/border_2.png');
-    border-image-slice: 5%;
-    border-image-width: 15px;
-    border-width: 18px;
+    border-image-slice: 8%;
+    border-image-width: 32px;
+    border-width: 1px;
     border-color: red;
     border-image-outset: 14px;
 }
@@ -100,6 +106,51 @@
 	border-image: url('../img/user_defined/border/border_5.png');
     border-image-slice: 3%;
     border-image-width: 15px;
+    border-width: 1px;
+    border-color: red;
+    border-image-outset: 1px;;
+}
+.border_6{
+	border:1em solid transparent;
+	border-image: url('../img/user_defined/border/border_6.png');
+    border-image-slice: 4%;
+    border-image-width: 15px;
+    border-width: 1px;
+    border-color: red;
+    border-image-outset: 1px;;
+}
+.border_7{
+	border:1em solid transparent;
+	border-image: url('../img/user_defined/border/border_7.png');
+    border-image-slice:13% 9% 13% 9%;
+    border-image-width: 15px;
+    border-width: 1px;
+    border-color: red;
+    border-image-outset: 1px;;
+}
+.border_8{
+	border:1em solid transparent;
+	border-image: url('../img/user_defined/border/border_8.png');
+    border-image-slice:13% 9% 13% 9%;
+    border-image-width: 15px;
+    border-width: 1px;
+    border-color: red;
+    border-image-outset: 1px;;
+}
+.border_9{
+	border:1em solid transparent;
+	border-image: url('../img/user_defined/border/border_9.png');
+    border-image-slice:5%;
+    border-image-width: 17px;
+    border-width: 1px;
+    border-color: red;
+    border-image-outset: 1px;;
+}
+.border_10{
+	border:1em solid transparent;
+	border-image: url('../img/user_defined/border/border_10.png');
+    border-image-slice:5%;
+    border-image-width: 17px;
     border-width: 1px;
     border-color: red;
     border-image-outset: 1px;;

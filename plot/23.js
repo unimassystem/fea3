@@ -79,7 +79,14 @@ function draw23(myChart,ckey,height,titles,xname,yname,width,div,border,zindex,l
                 var oArr3=[oArr1,oArr2];
                 var oArr6 = [];
                 var oArr7 = new Array();
-                for(var i = 0;i < columns.length-1;i++){
+                var lens=columns.length;
+                if(columns.indexOf('target')!=-1){
+                  lens=lens-3;
+                }
+                if(columns.indexOf('width')!=-1){
+                  lens=lens-2;
+                }
+                for(var i = 0;i < lens-1;i++){
                     for (var j = 0; j < data.length; j++) {
                         var o={
                             value:data[j][2],
@@ -192,6 +199,34 @@ function draw23(myChart,ckey,height,titles,xname,yname,width,div,border,zindex,l
                 option.legend.data=dataName;
                 option.series=seriesObj;
                 myChart.setOption(option);
+                myChart.on('click', function (params) {
+                   //console.info(params);
+                   var city_idx = params.dataIndex;
+                   var city_name=params.name;
+                   var p=$(this)[0]._dom;//div
+
+                   var data=dataAll.data;
+                   var idx=dataAll.index;
+                   var culs=dataAll.columns;
+                   //console.info(data);
+                   var target=data[0][data[0].length-1];
+                   for (var i = 0; i < data.length; i++) {
+                       var len=data[i].length;
+                           //console.info(city_idx,data[i][0]);
+                           var dbdK=data[i][len-3];
+                           var cs=data[i][len-2];
+                           if(culs.indexOf('width')!=-1){
+                             var m1=culs.indexOf('width');
+                             var m2=culs.indexOf('height');
+                             var k=data[i][m1];
+                             var g=data[i][m2];
+                             targetC(p,target,dbdK,cs,k,g)
+                           }else{
+                             targetC(p,target,dbdK,cs);
+                           }
+                           return true;
+                   }
+                 });
             },
             error:function(error){
                 console.log(error);

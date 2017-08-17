@@ -5,7 +5,10 @@ var e_title_textstyle={
     fontSize:16,
     fontWeight:'normal'
 };
-
+var e_301normal={
+    areaColor:'#2d2c32',
+    borderColor:'#4e4d55'
+};
 //26横向堆积色组
 //var e_26angle_color=['rgba(195,195,195,.6)','rgba(0,92,139,0.8)','rgba(0,255,234,.5)','rgba(150,3,3,.7)'];
 //26横向堆积渐变色组

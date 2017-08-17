@@ -49,7 +49,12 @@ body{
 	font-size:14px;
 	float:right;
 	width:85%;
-	height:auto;
+	/* height:680px;
+	overflow-y: scroll; */
+}
+#chart{
+	overflow-y: scroll;
+	height: 500px;
 }
 .content a{
 	overflow:hidden;
@@ -83,6 +88,14 @@ body{
 }
 .modal-body{
 	padding: 2px;
+}
+
+
+.col-md-4>label{
+	width: 4em !important;
+}
+.col-md-4 .input-group{
+	margin-left: 10px;
 }
 /*.zhuzhuang{
 	display:none;

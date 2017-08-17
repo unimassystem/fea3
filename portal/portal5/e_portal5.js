@@ -16,7 +16,10 @@ var e_title_textstyle={
     fontSize:16,
     fontWeight:'normal'
 };
-
+var e_301normal={
+    areaColor:'#2d2c32',
+    borderColor:'#4e4d55'
+};
 //26横向堆积色组
 //var e_26angle_color=['rgba(195,195,195,.6)','rgba(0,92,139,0.8)','rgba(0,255,234,.5)','rgba(150,3,3,.7)'];
 //26横向堆积渐变色组
@@ -248,8 +251,8 @@ var e_zzt_jb_0=['rgba(0,136,172,1)','red','blue','yellow','red','blue','yellow']
 var e_zzt_jb_1=['rgba(0,149,149,0.03)','blue','yellow','red','blue','yellow','red'];
 var e_barwidth='30%';
 /*21柱状图渐变颜色*/
-var e_zzt_jbh_0=['rgba(0,149,149,0.03)','rgba(99,99,99,.1)','rgba(195,195,195,.1)','blue','yellow','blue','yellow'];
-var e_zzt_jbh_1=['rgba(0,136,172,1)','rgba(99,99,99,1)','rgba(195,195,195,1)','red','blue','blue','yellow'];
+var e_zzt_jbh_0=['rgba(255,255,31,.8)','rgba(101,245,243,.8)','rgba(47,143,190,.8)','blue','yellow','blue','yellow'];
+var e_zzt_jbh_1=['rgba(255,255,31,1)','rgba(101,245,243,1)','rgba(47,143,190,1)','red','blue','blue','yellow'];
 
 //-------------------------热力图-----------------------
 
@@ -381,7 +384,7 @@ var e_area_textstyle={
 
 //---横向柱状(坐标轴)文字样式
 var e_rowbar_textstyle={
-	color:'#f0f0f0',
+	color:'#f8f5f1',
 	fontSize:12
 };
 
@@ -439,16 +442,16 @@ var e_gauge_linecolor_right={
 var e_gauge_linelabel={
 	/*fontWeight: 'bolder',*/
     color: '#fff',
-    shadowColor : '#fff', //默认透明
+    shadowColor : '#00060f', //默认透明
     shadowBlur: 1
 };
 //---坐标轴刻度---
 var e_gauge_tick={            // 坐标轴小标记
-    length :10,        // 属性length控制线长
+    length :2,        // 属性length控制线长
     lineStyle: {       // 属性lineStyle控制线条样式
         color: 'auto',
         shadowColor : e_41_shadow_color, //默认透明
-        shadowBlur: 10
+        shadowBlur: 1
     }
 };
 //--标题---
@@ -456,11 +459,11 @@ var e_gauge_title={
     offsetCenter: [0, '-25%'],
     textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
         fontWeight: 'bolder',
-        fontSize: 20,
+        fontSize: 12,
         fontStyle: 'italic',
         color: '#fff',
         shadowColor : '#fff', //默认透明
-        shadowBlur: 10
+        shadowBlur: 1
     }
 };
 //--仪表盘详情---
@@ -469,6 +472,7 @@ var e_gauge_detail={
     shadowBlur: 5,
     offsetCenter: [0, '30%'],       // x, y，单位px
     textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+        fontSize:15,
         fontWeight: 'bolder',
         color: '#fff'
     }
@@ -481,25 +485,26 @@ var e_41_itemstyle = {
         borderWidth: 0,
         borderType: 'solid',
         shadowBlur: 0,//阴影大小
-        shadowColor: '#fff',
+        shadowColor: '#00060f',
     }
 };
 //----// 分隔线---长的---
 var e_gauge_splitLine = {
-    length :20,         // 属性length控制线长
+    length :10,         // 属性length控制线长
     lineStyle: {       // 属性lineStyle（详见lineStyle）控制线条样式
-        width:3,
+        width:2,
         color: '#fff',
         shadowColor : '#fff', //默认透明
-        shadowBlur: 10
+        shadowBlur: 1
     }
 };
 var e_gauge_axisLabel = { //坐标轴小标记
     textStyle: {       // 属性lineStyle控制线条样式
-        fontWeight: 'bolder',
+        fontWeight: 'normal',
         color: '#fff',
+        fontSize:12,
         shadowColor : '#fff', //默认透明
-        shadowBlur: 10
+        shadowBlur: 1
     }
 };
 

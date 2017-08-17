@@ -11,8 +11,8 @@
 		<!-- <link hrelibs/nestable/css/components.min.css" rel="stylesheet" id="style_components" type="text/css" /> -->
 		<link rel="stylesheet" type="text/css" href="css/yulan.css"/>
 		<link rel="stylesheet" type="text/css" href="css/user_defined.css">
+		<link rel="stylesheet" type="text/css" href="css/edit.css">
 		<script type="text/javascript" src="../libs/jquery-1.11.0.min.js"></script>
-		<!-- <script type="text/javascript" src="../libs/jquery-2.2.3.min.js"></script> -->
 
 
 		<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=mRh57fdOt8eV4XAmeGK5Ou6pk8HoDFLK"></script>
@@ -66,15 +66,19 @@
 <script type="text/javascript" src="../libs/jquery-kxbdmarquee/js/jquery.kxbdmarquee.js"></script>
 <script type="text/javascript" src="../libs/datatable/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="../libs/datatable/dataTables.bootstrap.js"></script>
- <script type='text/javascript' src='../portal/portal1/e_portal1.js'></script>
+ <script type='text/javascript' src='../portal/portal2/e_portal2_1.js'></script>
 <script src="../libs/jqueryUI/jqueryui-ruler/js/jquery.ui.ruler.js"></script>
 <script src="../libs/jqueryUI/ruler_for_zip/js/jquery.zxxPageRuler.1.1.js"></script>
  <script type="text/javascript" src="../libs/heatmap/heatmap_min.js"></script>
 <script src="cfg/menu.js"></script>
+<script type='text/javascript' src='../plot/world_flag.js'></script>
 <script type="text/javascript"  src="dbd_build.js"></script>
 <script type="text/javascript"  src="../plot/world_china.js"></script>
 <!-- <script type="text/javascript" src="js/yulan.js"></script> -->
 <style type="text/css">
+.zxxScaleBox{
+	top:308px;
+}
 	.input-group-btn>.btn:active, .input-group-btn>.btn:focus, .input-group-btn>.btn{
 		z-index: 2;
 	}
@@ -137,8 +141,10 @@
 			<a href="javascript: void(0);"  id="back"><img  src="img/icon/back.png"></a>
 			<a href="javascript: void(0);"  id="yulan"><img  src="img/icon/yulan.png"></a>
 			<a href="javascript: void(0);"  id="save"><img  src="img/icon/save.png"></a>
-	    	<a href="javascript: void(0);"  id="huitu"><img  src="img/icon/draw.png"></a>
-    	</div>
+	    <a href="javascript: void(0);"  id="huitu"><img  src="img/icon/draw.png"></a>
+	    <a href="javascript: void(0);"  id="chonghui">重绘</a>
+	    <a href="javascript: void(0);"  id="delete">删除</a>
+    </div>
 	   	<div class="first col-md-12" style="margin-top: 20px">
 		   <div class="col-md-4">
 		      	<label >Key</label>
@@ -198,8 +204,8 @@
 		<div class="first col-md-12 box_false" style="margin-top:20px">
 			<div class="col-md-4">
 				<label style="float: left;width: 4em;">图层</label>
-				<div class="input-group" style="width: 72%;float: left;">
-							<input id="t_zindex" type="text" class="form-control" value="5" readonly style="height: 28px;margin-left: 10px;">
+				<div class="input-group" style="width: 70%;float: left;">
+							<input id="zindex" type="text" class="form-control" value="5" readonly style="height: 28px;margin-left: 0px;">
 							<div class="input-group-btn">
 								<button id="t_zindex_button" style="height: 28px;padding-top: 4px;top:0;" type="button" class="btn btn-primary dropdown-toggle " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="caret"></span>选择</button>
 								<ul id="t_zindex_ul"class="dropdown-menu dropdown-menu-right">
@@ -220,8 +226,8 @@
 			</div>
 			<div class="col-md-4 "><!-- 2017.7.20 ycj 新增图例的位置左（竖排），上（横排），下（横排），右（竖排） -->
 				<label style="float: left;width: 4em;">图例</label>
-				<div class="input-group" style="width: 72%;float: left;">
-							<input id="t_legend" type="text" data-id="false" class="form-control" value="不显示" readonly style="height: 28px;margin-left: 10px;">
+				<div class="input-group" style="width: 70%;float: left;">
+							<input id="legend" type="text" data-id="false" class="form-control" value="不显示" readonly style="height: 28px;margin-left: 0px;">
 							<div class="input-group-btn">
 								<button id="t_legend_button" style="height: 28px;padding-top: 4px;top:0;" type="button" class="btn btn-primary dropdown-toggle " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="caret"></span>选择</button>
 								<ul id="t_legend_ul"class="dropdown-menu dropdown-menu-right">
@@ -246,12 +252,12 @@
 		    </div>
 			<div class="col-md-4">
 				<label style="float: left;width: 4em;">边框</label>
-				<div class="input-group" style="width: 72%;float: left;">
-							<input id="t_border" type="text" class="form-control" data-id="无" value="无" readonly style="height: 28px;margin-left: 10px;">
+				<div class="input-group" style="width: 70%;float: left;">
+							<input id="border" type="text" class="form-control" data-id="无" value="无" readonly style="height: 28px;margin-left: 0px;">
 							<div class="input-group-btn">
 								<button id="t_border_button" style="height: 28px;padding-top: 4px;top:0;" type="button" class="btn btn-primary dropdown-toggle " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="caret"></span>选择</button>
 								<ul id="t_border_ul" class="dropdown-menu dropdown-menu-right">
-									<li data-id="无">
+									<li data-id="false">
 										<a>无</a>
 									</li>
 									<li data-id="border_1">
@@ -268,6 +274,21 @@
 									</li>
 									<li data-id="border_5">
 										<a>方案五</a>
+									</li>
+									<li data-id="border_6">
+										<a>方案六</a>
+									</li>
+									<li data-id="border_7">
+										<a>方案七</a>
+									</li>
+									<li data-id="border_8">
+										<a>方案八</a>
+									</li>
+									<li data-id="border_9">
+										<a>方案九</a>
+									</li>
+									<li data-id="border_10">
+										<a>方案十</a>
 									</li>
 								</ul>
 							</div>

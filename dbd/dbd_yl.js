@@ -93,7 +93,7 @@ function getOption(list){
 	if(list.border){
 		border=list.border;
 	}else{
-		border='';
+		border='false';
 	}
 	if(list.zindex){
 		zindex=list.zindex;

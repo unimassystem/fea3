@@ -6,19 +6,23 @@ var e_title_textstyle={
     fontWeight:'normal'
 };
 
+var e_301normal={
+    areaColor:'#2d2c32',
+    borderColor:'#4e4d55'
+};
 //26横向堆积色组
 //var e_26angle_color=['#b73d35','rgba(0,92,139,0.8)','rgba(0,255,234,.5)','rgba(150,3,3,.7)'];
 //26横向堆积渐变色组
-var e_26Gradient_0=['rgba(0,136,172,1)','rgba(195,195,195,1)','red','yellow','blue','gray','#999','#666','#ccc','#333'];
-var e_26Gradient_1=['rgba(0,136,172,0)','rgba(195,195,195,0)','red','yellow','blue','gray','#999','#666','#ccc','#333'];
+var e_26Gradient_0=['rgba(220,138,3,1)','rgba(193,70,30,1)','red','yellow','blue','gray','#999','#666','#ccc','#333'];
+var e_26Gradient_1=['rgba(220,138,3,0)','rgba(193,70,30,0)','red','yellow','blue','gray','#999','#666','#ccc','#333'];
 //---图例文字样式---
 var e_legend_textstyle={
     color:'#f0f0f0',
     fontSize:12
 };
 //38js流数据多线波浪图区域渐变
-var e_38areacolor_0=['rgba(255,102,102,1)','rgba(21,191,129,1)','rgba(255,102,102,1)','rgba(21,191,129,1)'];
-var e_38areacolor_1=['rgba(255,102,102,0.3)','rgba(21,191,129,0)','rgba(255,102,102,1)','rgba(21,191,129,1)'];
+var e_38areacolor_0=['rgba(232,88,39,1)','rgba(252,168,0,1)','rgba(28,122,160,1)','rgba(21,191,129,1)'];
+var e_38areacolor_1=['rgba(232,88,39,0.3)','rgba(252,168,0,0)','rgba(28,122,160,0)','rgba(21,191,129,1)'];
 //327默认色组圆圈
 var e_327colorgroup=['#fcdb00','#ebebeb','blue'];
 
@@ -26,7 +30,7 @@ var e_327colorgroup=['#fcdb00','#ebebeb','blue'];
 var e_back_color='rgba(38,137,175,0.2)';
 
 // 48,23,直角系以及饼图颜色循环
-var e_angle_color=['#ebebeb','#c3c3c3','#9c9c9c','#636363','#414141','#00ffea','#005c8b'];
+var e_angle_color=['#eb460f','#f79a00','#4a5432','#636363','#414141','#64792f','#005c8b'];
 //var e_angle_color=['#9c9c9c','#636363','#f4cb0b','#3751a7','#22de0f','#db0bf4'];
 var e_angle_colors=['#8eb82b','#ff7417','#bdbdbd','#bdbdbd'];
 //53柱线图线的颜色
@@ -53,12 +57,12 @@ var e_line_textstyle={
 };
 
 /*02柱状图渐变颜色*/
-var e_zzt_jb_0=['rgba(0,136,172,1)','red','blue','yellow','red','blue','yellow'];
-var e_zzt_jb_1=['rgba(0,149,149,0.03)','blue','yellow','red','blue','yellow','red'];
+var e_zzt_jb_0=['rgba(208,81,38,1)','rgba(247,154,0,1)','rgba(74,84,50,1)','rgba(208,18,38,1)','red','blue','yellow'];
+var e_zzt_jb_1=['rgba(208,81,38,0.03)','rgba(247,154,0,.1)','rgba(74,84,50,.1)','rgba(208,18,38,0.03)','blue','yellow','red'];
 var e_barwidth='30%';
 /*21柱状图渐变颜色*/
-var e_zzt_jbh_0=['rgba(0,149,149,0.03)','rgba(99,99,99,.1)','rgba(195,195,195,.1)','blue','yellow','blue','yellow'];
-var e_zzt_jbh_1=['rgba(0,136,172,1)','rgba(99,99,99,1)','rgba(195,195,195,1)','red','blue','blue','yellow'];
+var e_zzt_jbh_0=['rgba(208,81,38,0.03)','rgba(247,154,0,.1)','rgba(74,84,50,.1)','rgba(208,18,38,0.03)','yellow','blue','yellow'];
+var e_zzt_jbh_1=['rgba(208,81,38,1)','rgba(247,154,0,1)','rgba(74,84,50,1)','rgba(208,18,38,1)','blue','blue','yellow'];
 
 
 //线条是否平滑
@@ -76,7 +80,7 @@ var e_areastyle_1color=['rgba(199,199,199,.1)','rgba(0,0,19,.5)','rgba(0,255,234
 var e_arealine_color=['#fff','#00ffea','#fff','#ffff00','#396858'];
 
 //-------------------------多颜色单数据柱状图-----------------------
-var e_itemnormal_color=['rgba(99,99,99,1)','#e9dd06','#4249ca','#00f3fc','#e9dd06','#4249ca','#00f3fc','#e9dd06','#4249ca'];
+var e_itemnormal_color=['#d25225','#fba200','#1c7b9b','#52661e','#a0230d','#46502e','#00f3fc','#e9dd06','#4249ca'];
 
 //---柱状图(坐标轴)文字样式
 var e_bar_textstyle={
@@ -136,21 +140,21 @@ var e_pie_shadowColor_2='#414141';
 
 
 //----47柱线图渐变颜色
-var e_bar_color_jb1=["#00b4e4",'#636363','#636363','#86a8ff','#00ffe4'];  // 0% 处的颜色
-var e_bar_color_jb2=['rgba(0,183,181,0.01)','rgba(99,99,99,0.01)','rgba(0,157,151,0.31)','#1a00b7','#aa2c0f']; // 100% 处的颜色
+var e_bar_color_jb1=["#dd4c1b",'#ffa511','#636363','#86a8ff','#00ffe4'];  // 0% 处的颜色
+var e_bar_color_jb2=['rgba(208,81,38,0.01)','rgba(247,154,0,0.01)','rgba(0,157,151,0.31)','#1a00b7','#aa2c0f']; // 100% 处的颜色
 
 var e_line_zx_color='#fff';
 
 //-------------------------地图散点-----------------------------
 
-var e_mapscatter_visul_color=['#ff4500','#ffcf00','#97d5d8'];
+var e_mapscatter_visul_color=['#ff4500','#ffcf00','#6fae00'];
 var e_mapscatter_visul_textstyle={
 	color:'#f0f0f0',
 	fontSize:12
 };
 //43地图散点排名图右侧top10，这个名字的样式
 var e_43_barnamestyle={
-    color:'#4d5f7a',
+    color:'#7e7e7e',
     fontWeight:'bold',
     fontSize:14,
    /* fontFamily:'sans-serif',
@@ -158,8 +162,8 @@ var e_43_barnamestyle={
 };
 //43地图散点排名横柱旁边Y轴的字的样式
 var e_43_barlabelstyle={
-    color:'#4d5f7a',
-    fontWeight:'bold',
+    color:'#7e7e7e',
+    fontWeight:'normal',
     fontSize:14,
     /*fontFamily:'sans-serif',
     fontStyle:'normal'
@@ -168,58 +172,61 @@ var e_43_barlabelstyle={
 };
 //---地图散点·地图颜色·正常状态---
 var e_mapscatter_geo_itemnormal={
-	areaColor: '#9c9c9c',//块背景
-    borderColor: '#c3c3c3',//区域边线
-    shadowColor:'rgba(65,65,65,.8)',
-    shadowBlur:10,
-    shadowOffsetY:2,
-    shadowOffsetX:2,
+	areaColor: 'rgba(45,44,50,0.2)',//块背景
+    borderColor: '#a6a694',//区域边线
+    shadowColor:'rgba(90,90,76,.8)',
+    shadowBlur:3,
+    shadowOffsetY:0,
+    shadowOffsetX:0,
 };
 //---地图散点·地图颜色·鼠标放置---
 var e_mapscatter_geo_itememphasis={
 	label:{show:true},
-    areaColor:'#c3c3c3',
-    borderColor:'#fff',
+    areaColor:'rgba(45,44,50,.8)',
+    borderColor:'#5a5a4c',
     borderWidth:1
 };
 //43地图散点圆点的阴影
 var e_43portal1_1_dot={
     shadowBlur:5,
-    shadowColor:'#414141',
-    shadowOffsetY:1,
-    shadowOffsetX:1,
+    shadowColor:'#35352c',
+    shadowOffsetY:0,
+    shadowOffsetX:0,
 };
 //---地图散点·点颜色·鼠标放置---
 var e_mapscatter_scatter_itememphasis={
-	borderColor: '#fff',
+	borderColor: '#5a5a4c',
     borderWidth: 1
 };
 
+//
+
 //-------------------------地图-----------------------------
 
-var e_map_visul_color=['#ff4500','#ffcf00','#97d5d8'];
+var e_map_visul_color=['#f14c15','#f79a00','#a8f414'];
 var e_map_visul_textstyle={
 	color:'#f0f0f0',
 	fontSize:12
 };
 //---地图·正常状态---
 var e_map_itemnormal={
-    areaColor:'#9c9c9c',
-    shadowColor:'rgba(65,65,65,.8)',
-    shadowBlur:10,
-    shadowOffsetY:2,
-    shadowOffsetX:2,
+    areaColor:'rgba(45,44,50,.3)',
+    shadowColor:'rgba(82,80,90,.8)',
+    shadowBlur:3,
+    shadowOffsetY:0,
+    shadowOffsetX:0,
 
     
 	label:{
 		show:false,
 		textStyle:{color:'#f0f0f0'}
 	},//地名样式
-	borderColor:'#ebebeb'
+	borderColor:'#656565',
+    borderWidth:1
 };
 //---地图·鼠标放置---
 var e_map_itememphasis={
-    areaColor:'#c3c3c3',
+    areaColor:'rgba(45,44,50,.8)',
 	label:{show:true},
     
 	borderColor:'#ebebeb',
@@ -228,7 +235,7 @@ var e_map_itememphasis={
 
 
 //-----47柱线图阴影颜色
-var e_bar_zx_shadowColor='#414141';
+var e_bar_zx_shadowColor='#111110';
 
 //-----47柱线图阴影的模糊大小
 var e_bar_zx_shadowBlur=1;
@@ -247,7 +254,7 @@ var e_hot_textstyle={
 	fontSize:12
 };
 //---热力图映射---
-var e_hot_visul_color=['#b73d35','#d27c5c','#9c9c9c','#c3c3c3'];
+var e_hot_visul_color=['#e54a16','#fd9905','#9c9c9c','#3e3936'];
 
 //-------------------------南丁格尔玫瑰图-----------------------
 
@@ -314,7 +321,8 @@ var e_selfline_emphasis={
 //------------------------桑基图------------------------
 
 //---块颜色循环---
-var e_sankey_color=["#005db0","#fcce10","#11ddee","#fad860","#9bca63","#a0a7e6","#96dee8"];
+var e_sankey_color=["#d05126","#ffa800","#485230","#fad860","#9bca63","#f79a00","#d05126"];
+//var e_sankey_color=["red","yellow","blue","gray","#9bca63","#f79a00","#d05126"];
 //---标签样式---
 var e_sankey_label={
 	normal:{
@@ -338,11 +346,11 @@ var e_sankey_label={
 var e_sankey_item={
 	normal: {
         borderWidth: 1,
-        borderColor: '#aaa'
+        borderColor: '#d05126'
     },
     emphasis:{
-    	borderWidth: 2,
-        borderColor: '#aaa'
+    	borderWidth: 1,
+        borderColor: '#d05126'
     }
 };
 //---桑基图·线样式--
@@ -416,7 +424,7 @@ var e_pies_color=["#5db51d","#e4dc0e","#ef1600","#f37814","#72b2ee",'#60c0dd','#
 
 //---坐标轴---
 var e_gauge_linecolor={
-    color: [[0.29, '#ebebeb'],[0.72, '#636363'],[1, '#00c0f3']],
+    color: [[0.29, '#e35323'],[0.72, '#f79a00'],[1, '#188cbd']],
     width: 2,
     shadowColor : '#414141', //默认透明
     shadowBlur: 1,
@@ -424,7 +432,7 @@ var e_gauge_linecolor={
     shadowOffsetX:2
 };
 var e_gauge_linecolor_left={
-    color: [[0.29, '#ebebeb'],[0.72, '#636363'],[1, '#00c0f3']],
+    color: [[0.29, '#e35323'],[0.72, '#f79a00'],[1, '#00c0f3']],
     width: 2,
     shadowColor : '#414141', //默认透明
     shadowBlur: 1,
@@ -432,7 +440,7 @@ var e_gauge_linecolor_left={
     shadowOffsetX:2
 };
 var e_gauge_linecolor_right={
-    color: [[0.29, '#ebebeb'],[0.72, '#636363'],[1, '#00c0f3']],
+    color: [[0.29, '#e35323'],[0.72, '#f79a00'],[1, '#00c0f3']],
     width: 2,
     shadowColor : '#414141', //默认透明
     shadowBlur: 1,
@@ -548,7 +556,7 @@ function getBorder(type){
 
 //---雷达图---------------
 //雷达图的指示器名字的颜色
-var e_radername_color='rgb(238, 197, 102)';
+var e_radername_color='rgb(235, 235, 235)';
 //坐标轴区域中的分隔线的颜色
 var e_splitline_color=[
     'rgba(238, 197, 102, 0.1)', 'rgba(238, 197, 102, 0.2)',

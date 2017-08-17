@@ -233,12 +233,12 @@ if(d){
     var k=new Array();
 	require.config({
 		paths : {
-			echarts : '../libs/echarts/build/dist',
-			'defaultTheme' : '../libs/echarts/src/theme'
+			echarts : '../libs/echarts3/dist',
+			'defaultTheme' : '../libs/echarts3/theme'
 		},
 		packages : [ {
 			name : 'BMap',
-			location : '../libs/echarts/extension/BMap/src',
+			location : '../libs/echarts3/extension/BMap/src',
 			main : 'main'
 		}]
 	});

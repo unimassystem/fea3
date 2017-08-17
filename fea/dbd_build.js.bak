@@ -5,6 +5,21 @@ $("#key").val("");$("#width").val("800");
 $("#height").val("480");$("#types").val("01");
 $("#build_title").val("");$("#x").val("0");$("#refresh").val("");
 $("#y").val("0");$("#yname").val("");$("#xname").val("");
+$("#zindex").val("5");
+$('#legend').attr('data-id','false');
+$('#border').attr('data-id','false');
+//2017.7.25 ycj 修改构建页面标尺
+	function bc_csh() {
+		var w=$(window).width();
+		var h=$(window).height();
+		if(w>4096){
+			$('#maint').css('width', w);
+		}
+		if(h>2160){
+			$('#maint').css('height', h);
+		}
+	}
+	bc_csh();
 
 $("#czIcon a").eq(3).hover(function(){
 	$(this).find('img').attr('src','img/icon/draw-hover.png');
@@ -27,6 +42,25 @@ $("#czIcon a").eq(0).hover(function(){
 	$(this).find('img').attr('src','img/icon/back.png');
 });
 
+$('.box_false').hide();
+$('.box').css('height','300px');
+$('#maint').css('top','285px');
+$('#zxxScaleBox').css('top','308px');
+$('.box_bottom').click(function() {
+	if($('.box_bottom').hasClass('one_click_box')){
+		$('.box_bottom').removeClass('one_click_box');
+		$('.box').animate({'height':'300px'}, 1000);
+		$('.box_false').slideUp(1000);
+		$('#maint').animate({'top':'285px'}, 1000)
+		$('#zxxScaleBox').animate({'top':'308px'}, 1000)
+	}else{
+		$('.box_bottom').addClass('one_click_box')
+		$('.box').animate({'height':'400px'}, 1000);
+		$('.box_false').slideDown(1000);
+		$('#maint').animate({'top':'385px'}, 1000);
+		$('#zxxScaleBox').animate({'top':'408px'}, 1000);
+	}
+});
 
 var theRequest ={},oNum={};
 var dataNum=[],dataTitle,divFrame,allKey=[],allDiv;
@@ -93,18 +127,21 @@ function success(dataNum){
 		var yy=parseInt(y)+18;
 		// var refreshs = (dataNum[i].refresh)*1000;
 		//var divBox=$('<div name="mypanel" style="width:'+width+'px;height:'+height+'px;position:absolute;top:'+yy+'px;left:'+xx+'px;"></div>');
-		var div=$('<div id="main'+i+'" data-id="'+time+'" data-src="'+cs+'" name="mypanel" style="width:'+width+'px;height:'+height+'px;position:absolute;top:'+yy+'px;left:'+xx+'px;outline: 1px solid #000;outline-offset:-1px;"></div>');
+		// if(){
+		//
+		// }
+		var div=$('<div id="main'+i+'" class="'+border+'" data-id="'+time+'" data-src="'+cs+'" name="mypanel" style="width:'+width+'px;height:'+height+'px;position:absolute;top:'+yy+'px;left:'+xx+'px;outline: 1px solid #000;outline-offset:-1px;z-index:'+zindex+';"></div>');
 		$("#maint").append(div);
 		myChart=echarts.init(document.getElementById('main'+i),'shine');
 		$.getScript('../plot/'+type+'.js',function(data, textStatus, jqxhr){
 			try{
-				eval("draw"+type+"(myChart,ckey,height,titles,xname,yname,width,div);");
+				eval("draw"+type+"(myChart,ckey,height,titles,xname,yname,width,div,border,zindex,legend);");
 				// console.log(refresh);
 				if(refresh!=undefined && refresh != "" &&refresh!="0"){
 					var refreshs = parseInt(dataNum[i].refresh)*1000;
-					setInterval(function(type,myChart,ckey,height,titles,xname,yname,width,div){
+					setInterval(function(type,myChart,ckey,height,titles,xname,yname,width,div,border,zindex,legend){
 						// $(div).html("");
-						eval("draw"+type+"(myChart,ckey,height,titles,xname,yname,width,div);");
+						eval("draw"+type+"(myChart,ckey,height,titles,xname,yname,width,div,border,zindex,legend);");
 						// console.log(div.find($(".icon")));
 						if(div.find($(".icon")).length == 0){
 
@@ -114,7 +151,7 @@ function success(dataNum){
 										'</div>';
 							$(div).append(result);
 						}
-					},refreshs,type,myChart,ckey,height,titles,xname,yname,width,div)
+					},refreshs,type,myChart,ckey,height,titles,xname,yname,width,div,border,zindex,legend)
 				}else{}
 			}catch(err){
 				console.error(err);
@@ -145,7 +182,22 @@ function getOption(list){
 	yname=list.yname;
 	time=list.time;
 	refresh=list.refresh;
-	oo.push("key="+ckey,"width="+width,"height="+height,"types="+type,"title="+titles,"refresh="+refresh,"xname="+xname,"yname="+yname);
+	if(list.border){
+		border=list.border;
+	}else{
+		border='';
+	}
+	if(list.zindex){
+		zindex=list.zindex;
+	}else{
+		zindex='0';
+	}
+	if(list.legend){
+		legend=list.legend;
+	}else{
+		legend='true';
+	}
+	oo.push("key="+ckey,"width="+width,"height="+height,"types="+type,"title="+titles,"refresh="+refresh,"xname="+xname,"yname="+yname,"border="+border,"zindex="+zindex,"legend="+legend);
 	cs=oo.join("&");
 }
 
@@ -153,10 +205,14 @@ function getOption(list){
 //选择图类型
 $(".navul").html('');
 $(".content").html('');
+$('#close_tb_select,#tb_select').click(function() {
+	$("#smallChart").slideUp();
+});
 $("#chartButton").click(function(){
   $(".content").html('');
 	$(".navul").html('');
-	$("#smallChart").modal("toggle");
+	// $("#smallChart").modal("toggle");
+	$("#smallChart").slideDown();
 	for(var i=0;i<menu_data.length;i++){
 		$(".navul").append('<li><a href="#" target="_self">'+menu_data[i].name+'</a></li>');
       //判断选择框内时候没有数字
@@ -183,7 +239,8 @@ $("#chartButton").click(function(){
   				//console.info(a_id);
   				$('#types').val(a_id);
           $('#types').attr('role',a_role);
-  				$("#smallChart").modal("toggle");
+  				// $("#smallChart").modal("toggle");
+					$("#smallChart").slideUp();
   			});
       }else{
         if($('#types').attr('role') == null){
@@ -252,7 +309,8 @@ $("#chartButton").click(function(){
 		//console.info(a_id);
 		$('#types').val(a_id);
 		$('#types').attr('role',a_role);
-		$("#smallChart").modal("toggle");
+		// $("#smallChart").modal("toggle");
+		$("#smallChart").slideUp();
 	})
 
 	//鼠标移开时触发
@@ -316,15 +374,18 @@ $("#chartButton").click(function(){
 										time=time.getTime();
 										//获取配置项内容
 										var oo=[];
+										var border='';
+										var zindex='1050';
+										var legend='true';
 										oo.push("key="+key,"width="+width,"height="+height,"types="+a_id);
 										var cs=oo.join("&");
 									  	//创建dom
-								  	var div1=$('<div id="'+time+'" name="mypanel" data-id="'+time+'" data-src="'+cs+'" name="mypanel" style="width:'+width+'px;height:'+height+'px;margin:auto;overflow:hidden;"></div>');
+								  	var div1=$('<div id="'+time+'" name="mypanel" class="'+border+'" data-id="'+time+'" data-src="'+cs+'" name="mypanel" style="width:'+width+'px;height:'+height+'px;margin:auto;overflow:hidden;z-index:'+zindex+';"></div>');
 										$(".tb_xz_tc").append(div1);
 										myChart=echarts.init(document.getElementById(time),'shine');
 										$.getScript('../plot/'+a_id+'.js',function(data, textStatus, jqxhr){
 											try{
-												eval("draw"+a_id+"(myChart,key,height,titles,x,y,width,div1);");
+												eval("draw"+a_id+"(myChart,key,height,titles,x,y,width,div1,border,zindex,legend);");
 											}catch(err){
 												console.error(err);
 											}
@@ -362,29 +423,29 @@ $("#huitu").on('click',function(){
 	// console.info(dataNum);
 	// console.info(oNum);
 	var oo=[];
-	oo.push("key="+oNum.df,"width="+oNum.width,"height="+oNum.height,"types="+oNum.types,"title="+oNum.titles,"refresh="+oNum.refresh,"xname="+oNum.xname,"yname="+oNum.yname);
+	oo.push("key="+oNum.df,"width="+oNum.width,"height="+oNum.height,"types="+oNum.types,"title="+oNum.titles,"refresh="+oNum.refresh,"xname="+oNum.xname,"yname="+oNum.yname,"border="+oNum.border,"zindex="+oNum.zindex,"legend="+oNum.legend);
 	var cs=oo.join("&");
   	//var str='../../plot/'+oNum.types+'.fh5?'+cs;
   	//console.info(str);
   	//创建dom
-  	var div1=$('<div id="'+time+'" name="mypanel" data-id="'+time+'" data-src="'+cs+'" name="mypanel" style="width:'+oNum.width+'px;height:'+oNum.height+'px;position:absolute;top:'+y1+'px;left:'+xx+'px;outline: 1px solid #000;outline-offset:-1px;"></div>');
+  	var div1=$('<div id="'+time+'" class="'+oNum.border+'" name="mypanel" data-id="'+time+'" data-src="'+cs+'" name="mypanel" style="width:'+oNum.width+'px;height:'+oNum.height+'px;position:absolute;top:'+y1+'px;left:'+xx+'px;outline: 1px solid #000;outline-offset:-1px;z-index:'+oNum.zindex+';"></div>');
 	$("#maint").append(div1);
 	myChart=echarts.init(document.getElementById(time),'shine');
 	$.getScript('../plot/'+oNum.types+'.js',function(data, textStatus, jqxhr){
 		try{
-			eval("draw"+oNum.types+"(myChart,oNum.df,oNum.height,oNum.titles,oNum.xname,oNum.yname,oNum.width,div1);");
+			eval("draw"+oNum.types+"(myChart,oNum.df,oNum.height,oNum.titles,oNum.xname,oNum.yname,oNum.width,div1,oNum.border,oNum.zindex,oNum.legend);");
 			if(oNum.refresh!=undefined && oNum.refresh != "" && oNum.refresh!="0"){
 				var refreshs = parseInt(oNum.refresh)*1000;
-				setInterval(function(types,myChart,df,height,titles,xname,yname,width,div){
-					eval("draw"+types+"(myChart,df,height,titles,xname,yname,width,div);");
-					if(div.find($(".icon")).length == 0){
+				setInterval(function(types,myChart,df,height,titles,xname,yname,width,div1,border,zindex,legend){
+					eval("draw"+types+"(myChart,df,height,titles,xname,yname,width,div1,border,zindex,legend);");
+					if(div1.find($(".icon")).length == 0){
 						var result=	'<div class="icon" style="width:'+width+'px;background-color:rgba(37,40,42,0.2);position:absolute;top:0;left:0; z-index:0;">'+
 										'<img class="delete" src="img/icon/close_X_01.png" alt="删除" style="cursor:pointer;float:right;">'+
 										'<img class="drag" src="img/icon/tuodong_icon.png" alt="拖拽" style="cursor:pointer;float:right;">'+
 									'</div>';
-						$(div).append(result);
+						$(div1).append(result);
 					}
-				},refreshs,oNum.types,myChart,oNum.df,oNum.height,oNum.titles,oNum.xname,oNum.yname,oNum.width,div1)
+				},refreshs,oNum.types,myChart,oNum.df,oNum.height,oNum.titles,oNum.xname,oNum.yname,oNum.width,div1,oNum.border,oNum.zindex,oNum.legend)
 			}else{}
 		}catch(err){
 			console.error(err);
@@ -399,6 +460,11 @@ $("#huitu").on('click',function(){
 });
 
 function peizhi(){
+	if($("#border").attr('data-id') == '无'){
+		var borders='';
+	}else{
+		var borders=$("#border").attr('data-id');
+	}
 	oNum={
 		"df":$("#key").val(),
 		"width":$("#width").val(),
@@ -410,7 +476,10 @@ function peizhi(){
 		"xname":$("#xname").val(),
 		"yname":$("#yname").val(),
 		"time":"",
-		"refresh":$("#refresh").val()
+		"refresh":$("#refresh").val(),
+		"border":borders,
+		"zindex":$("#zindex").val(),
+		"legend":$("#legend").attr('data-id')
 	};
 	//dataNum.push({dnum:oNum});
 	//console.info(dataNum);
@@ -422,7 +491,8 @@ function tuozhuai(){
 		//console.info(dom);
 	  	$(dom).draggable({
 		  drag: function(event,ui) {
-		  	//console.info(ui);
+		  	// console.info(ui);
+		  	// console.info(event);
 		  	$(this).find('.icon').css("background-color","#3ecfff");
 			$("div[name='mypanel']").not(this).find('.icon').css("background-color","#cfdce4");
 		  	var obj=$(dom).attr("data-src");
@@ -432,10 +502,15 @@ function tuozhuai(){
 			for(var i = 0; i < csStr.length; i ++) {
 		        csObj[csStr[i].split("=")[0]]=unescape(csStr[i].split("=")[1]);
 		    }
-		   // console.info(csObj);
+				// console.log(csObj);
 		    $.each(csObj,function(id,value){
-		    	//console.info(id,value);
-		    	$('#'+id).val(value);
+		    	// console.info(id,value);
+					if(id!='border'&&id!='legend'){
+						$('#'+id).val(value);
+					}else{
+						$('#'+id).attr('data-id',value);
+					}
+					border_legend();
 		    });
 			 $("#x").val(parseInt((ui.position).left-18));
 			 $("#y").val(parseInt((ui.position).top-18));
@@ -455,6 +530,7 @@ function tuozhuai(){
 					dataNum.push(oNum);
 				}
 			}
+			border_legend();
 		  		//console.info(dataarr);
 		  }
 	  });
@@ -532,6 +608,11 @@ $("body").on('click','#runList li',function(){
 	}
 	for (var i = 0; i < dataNum.length; i++) {
 	 	if(uniqe==dataNum[i].time){
+			if(dataNum[i].border == undefined){
+				dataNum[i].border='false';
+				dataNum[i].zindex='0';
+				dataNum[i].legend='true';
+			}
 		 	$("#key").val(dataNum[i].df);
 		 	$("#width").val(dataNum[i].width);
 			$("#height").val(dataNum[i].height);
@@ -542,18 +623,30 @@ $("body").on('click','#runList li',function(){
 			$("#xname").val(dataNum[i].xname);
 			$("#yname").val(dataNum[i].yname);
 			$("#refresh").val(dataNum[i].refresh);
+			$("#border").attr('data-id',dataNum[i].border);
+			$("#zindex").val(dataNum[i].zindex);
+			$("#legend").attr('data-id',dataNum[i].legend);
 	 	}
 	 }
+	 border_legend();
 });
 
 $("body").on("click","div[name='mypanel']",function(e){
+	$('div[name="mypanel"]').removeClass('zdex');
+	$(this).addClass('zdex');
 	$(this).find('.icon').css("background-color","#3ecfff");
 	$("div[name='mypanel']").not(this).find('.icon').css("background-color","#cfdce4");
 	var t=$(this).attr("data-id");//获取时间
 	$('div[name="mypanel"]').removeClass('maxZ');
 	$(this).addClass('maxZ');
 	 for (var i = 0; i < dataNum.length; i++) {
+
 	 	if(t==dataNum[i].time){
+			if(dataNum[i].border == undefined){
+				dataNum[i].border='false';
+				dataNum[i].zindex='0';
+				dataNum[i].legend='true';
+			}
 		 	$("#key").val(dataNum[i].df);
 		 	$("#width").val(dataNum[i].width);
 			$("#height").val(dataNum[i].height);
@@ -564,6 +657,10 @@ $("body").on("click","div[name='mypanel']",function(e){
 			$("#xname").val(dataNum[i].xname);
 			$("#yname").val(dataNum[i].yname);
 			$("#refresh").val(dataNum[i].refresh);
+			$("#border").attr('data-id',dataNum[i].border);
+			$("#zindex").val(dataNum[i].zindex);
+			$("#legend").attr('data-id',dataNum[i].legend);
+			border_legend();
 	 	}
 	 }
 });
@@ -580,5 +677,91 @@ Array.prototype.del=function(n) {
 	}else{
 		return this.slice(0,n).concat(this.slice(n+1,this.length));
 	}
+}
+$('body').on('click', '#t_border_ul li', function() {
+	var a_text=$(this).children('a').text();
+	$('#border').val(a_text);
+	var a_data=$(this).attr('data-id');
+	$('#border').attr('data-id',a_data);
+});
+$('body').on('mouseenter', '#t_border_ul li', function() {
+	var n=$(this).attr('data-id');
+	if(n == 'false'){
+		$('.border_xz_tc').remove();
+	}else{
+		var H=$(window).height();
+		var W=$(window).width();
+		var oEvent=event;
+		var oDiv=document.createElement('div');
+		if((H-oEvent.clientY)<350){
+			oDiv.style.top=oEvent.clientY-350+'px';  // 指定创建的DIV在文档中距离顶部的位置
+		}else{
+			oDiv.style.top=oEvent.clientY+'px';  // 指定创建的DIV在文档中距离顶部的位置
+		}
+		if((W-oEvent.clientX)<350){
+			oDiv.style.left=oEvent.clientX-350+'px';  // 指定创建的DIV在文档中距离左侧的位置
+		}else{
+			oDiv.style.left=oEvent.clientX+'px';  // 指定创建的DIV在文档中距离左侧的位置
+		}
+				// oDiv.style.border='1px solid #FF0000'; // 设置边框
+				oDiv.style.position='fixed'; // 为新创建的DIV指定绝对定位
+				oDiv.style.width='350px'; // 指定宽度
+				oDiv.style.height='350px'; // 指定高度
+				oDiv.style.zIndex =1050; //
+				oDiv.style.backgroundColor ='#fff'; //
+				oDiv.classList.add("border_xz_tc");
+				document.body.appendChild(oDiv);
+				$('.border_xz_tc').css('overflow', 'hidden').css('box-shadow', '0px 1px 1px 2px #ccc').css('padding', '15px');
+				$('.border_xz_tc').append('<div class="'+n+'" style="width：300px;height:300px;margin-top:25px;margin-left:25px;"></div>')
 	}
+});
+$('body').on('mouseleave', '#t_border_ul li', function() {
+	$('.border_xz_tc').remove();
+});
+
+$('body').on('click', '#t_zindex_ul li', function() {
+	var a_text=$(this).children('a').text();
+	$('#zindex').val(a_text);
+});
+$('body').on('click', '#t_legend_ul li', function() {
+	var a_text=$(this).children('a').text();
+	$('#legend').val(a_text);
+	var a_data=$(this).attr('data-id');
+	$('#legend').attr('data-id',a_data);
+});
+function border_legend(){
+	var a=$('#border').attr('data-id');
+	var b=$('#legend').attr('data-id');
+
+	if(a == 'false'){
+		var q=$('#t_border_ul li').eq(0).children('a').text();
+		$('#border').val(q);
+	}else{
+		var c=a.split("_");
+		var q=$('#t_border_ul li').eq(c[1]).children('a').text();
+		$('#border').val(q);
+	}
+	if(b == 'left'){
+		$('#legend').val('左（竖排）')
+	}
+	if(b == 'right'){
+		$('#legend').val('右（竖排）')
+	}
+	if(b == 'top'){
+		$('#legend').val('上（横排）')
+	}
+	if(b == 'bottom'){
+		$('#legend').val('下（横排）')
+	}
+	if(b == 'false'){
+		$('#legend').val('不显示')
+	}
+}
+border_legend();
+$(function(){//构建页面的尺子的标注线
+	$.pageRuler({
+		v: [1042,1298,1384,1458,1938,3858,4111],
+		h:[786,738,918,1098,2178]
+	});
+});
 });

@@ -247,6 +247,7 @@ function draw46(myChart,ckey,height,titles,xname,yname,width,div,border,zindex,l
                     trigger: 'item'
                 },
                 visualMap: {
+                    type:'continuous',
                     min: 0,
                     max: valueMax,
                     // max: 1000,

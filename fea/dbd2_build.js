@@ -12,9 +12,9 @@ $(document).ready(function(){
 	$("#yname").val("");
 	$("#xname").val("");
 	$("#refresh").val("");
-	$("#t_zindex").val("5");
-	$('#t_legend').attr('data-id','false');
-	$('#t_border').attr('data-id','无');
+	$("#zindex").val("5");
+	$('#legend').attr('data-id','false');
+	$('#border').attr('data-id','false');
 	//2017.7.25 ycj 修改构建页面标尺
 		function bc_csh() {
 			var w=$(window).width();
@@ -186,9 +186,9 @@ $(document).ready(function(){
 				$("#y").val(last.y);
 				$("#xname").val(last.xname);
 				$("#yname").val(last.yname);
-				$("#t_border").attr('data-id',last.border);
-				$("#t_zindex").val(last.zindex);
-				$("#t_legend").attr('data-id',last.legend);
+				$("#border").attr('data-id',last.border);
+				$("#zindex").val(last.zindex);
+				$("#legend").attr('data-id',last.legend);
 			}
 			border_legend();
 			//拖动的对象和配置对应
@@ -235,10 +235,10 @@ function peizhi(){
 	 	d=df.replace(j,value);
 	 	df=d;
 	}
-	if($("#t_border").attr('data-id') == '无'){
+	if($("#border").attr('data-id') == '无'){
 		var borders='';
 	}else{
-		var borders=$("#t_border").attr('data-id');
+		var borders=$("#border").attr('data-id');
 	}
 	oNum={
 		"df":df,
@@ -253,8 +253,8 @@ function peizhi(){
 		"time":"",
 		"refresh":$("#refresh").val(),
 		"border":borders,
-		"zindex":$("#t_zindex").val(),
-		"legend":$("#t_legend").attr('data-id')
+		"zindex":$("#zindex").val(),
+		"legend":$("#legend").attr('data-id')
 	};
 	//theEND=JSON.stringify(theRequest);
 	//theEND=theEND.join("&");
@@ -287,9 +287,9 @@ function tuozhuai(){
 					$("#xname").val(dataNum[i].xname);
 					$("#yname").val(dataNum[i].yname);
 					$("#refresh").val(dataNum[i].refresh);
-					$("#t_border").attr('data-id',dataNum[i].border);
-					$("#t_zindex").val(dataNum[i].zindex);
-					$("#t_legend").attr('data-id',dataNum[i].legend);
+					$("#border").attr('data-id',dataNum[i].border);
+					$("#zindex").val(dataNum[i].zindex);
+					$("#legend").attr('data-id',dataNum[i].legend);
 			 	}
 			 }
 			 $("#x").val(parseInt((ui.position).left-18));
@@ -695,9 +695,9 @@ $("body").on('click','#runList li',function(){
 			$("#xname").val(dataNum[i].xname);
 			$("#yname").val(dataNum[i].yname);
 			$("#refresh").val(dataNum[i].refresh);
-			$("#t_border").attr('data-id',dataNum[i].border);
-			$("#t_zindex").val(dataNum[i].zindex);
-			$("#t_legend").attr('data-id',dataNum[i].legend);
+			$("#border").attr('data-id',dataNum[i].border);
+			$("#zindex").val(dataNum[i].zindex);
+			$("#legend").attr('data-id',dataNum[i].legend);
 	 	}
 	 }
 });
@@ -727,9 +727,9 @@ $("body").on("click","div[name='mypanel']",function(e){
 			$("#xname").val(dataNum[i].xname);
 			$("#yname").val(dataNum[i].yname);
 			$("#refresh").val(dataNum[i].refresh);
-			$("#t_border").attr('data-id',dataNum[i].border);
-			$("#t_zindex").val(dataNum[i].zindex);
-			$("#t_legend").attr('data-id',dataNum[i].legend);
+			$("#border").attr('data-id',dataNum[i].border);
+			$("#zindex").val(dataNum[i].zindex);
+			$("#legend").attr('data-id',dataNum[i].legend);
 	 	}
 	 }
 });
@@ -752,61 +752,46 @@ Array.prototype.del=function(n) {
 
 	$('body').on('click', '#t_border_ul li', function() {
 		var a_text=$(this).children('a').text();
-		$('#t_border').val(a_text);
+		$('#border').val(a_text);
 		var a_data=$(this).attr('data-id');
-		$('#t_border').attr('data-id',a_data);
+		$('#border').attr('data-id',a_data);
 	});
 	$('body').on('click', '#t_zindex_ul li', function() {
 		var a_text=$(this).children('a').text();
-		$('#t_zindex').val(a_text);
+		$('#zindex').val(a_text);
 	});
 	$('body').on('click', '#t_legend_ul li', function() {
 		var a_text=$(this).children('a').text();
-		$('#t_legend').val(a_text);
+		$('#legend').val(a_text);
 		var a_data=$(this).attr('data-id');
-		$('#t_legend').attr('data-id',a_data);
+		$('#legend').attr('data-id',a_data);
 	});
 	function border_legend(){
-		var a=$('#t_border').attr('data-id');
-		var b=$('#t_legend').attr('data-id');
-		if(a == 'border_1'){
-			var q=$('#t_border_ul li').eq(1).children('a').text();
-			$('#t_border').val(q);
-		}
-		if(a == 'border_2'){
-			var q=$('#t_border_ul li').eq(2).children('a').text();
-			$('#t_border').val(q);
-		}
-		if(a == 'border_3'){
-			var q=$('#t_border_ul li').eq(3).children('a').text();
-			$('#t_border').val(q);
-		}
-		if(a == 'border_4'){
-			var q=$('#t_border_ul li').eq(4).children('a').text();
-			$('#t_border').val(q);
-		}
-		if(a == 'border_5'){
-			var q=$('#t_border_ul li').eq(5).children('a').text();
-			$('#t_border').val(q);
-		}
+		var a=$('#border').attr('data-id');
+		var b=$('#legend').attr('data-id');
+
 		if(a == '' ||a == '无'){
 			var q=$('#t_border_ul li').eq(0).children('a').text();
-			$('#t_border').val(q);
+			$('#border').val(q);
+		}else{
+			var c=a.split("_");
+			var q=$('#t_border_ul li').eq(c[1]).children('a').text();
+			$('#border').val(q);
 		}
 		if(b == 'left'){
-			$('#t_legend').val('左（竖排）')
+			$('#legend').val('左（竖排）')
 		}
 		if(b == 'right'){
-			$('#t_legend').val('右（竖排）')
+			$('#legend').val('右（竖排）')
 		}
 		if(b == 'top'){
-			$('#t_legend').val('上（横排）')
+			$('#legend').val('上（横排）')
 		}
 		if(b == 'bottom'){
-			$('#t_legend').val('下（横排）')
+			$('#legend').val('下（横排）')
 		}
 		if(b == 'false'){
-			$('#t_legend').val('不显示')
+			$('#legend').val('不显示')
 		}
 	}
 	border_legend();

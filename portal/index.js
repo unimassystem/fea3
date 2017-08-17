@@ -95,6 +95,7 @@ $(document).ready(function($) {
 						var h1=h*0.5;
 						var h2=h1-$('.yy_xz_title').height()-$('.yy_xz_bottoms').height();
 						$('.yy_xz_main').css('height', h2);
+						window.sessionStorage.setItem('qh_yingyong',use);
 						var uses=use.split(";");
 						for (var i = 0; i < uses.length; i++) {
 							if(uses[i] ==''){

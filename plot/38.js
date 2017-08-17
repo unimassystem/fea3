@@ -166,6 +166,11 @@ function draw38(myChart,ckey,height,titles,xname,yname,width,div,border,zindex,l
             }
             var o={
               name:name[i],
+              lineStyle:{
+                normal:{
+                  width:1
+                }
+              },
       				showSymbol: false,
       				hoverAnimation: false,
       				smooth:true,

@@ -11,6 +11,7 @@
 		<!-- <link hrelibs/nestable/css/components.min.css" rel="stylesheet" id="style_components" type="text/css" /> -->
 		<link rel="stylesheet" type="text/css" href="css/yulan.css"/>
 		<link rel="stylesheet" type="text/css" href="css/user_defined.css">
+		<link rel="stylesheet" type="text/css" href="css/edit.css">
 		<style type="text/css">
 		.ef-ruler{z-index: -2;}
 			.ef-ruler .stage{
@@ -78,6 +79,9 @@
 				text-decoration: none;
 				cursor: pointer;
 			}
+			.zxxScaleBox{
+				top:353px;
+			}
 			.banner { overflow: auto; }
 			.banner-ul{padding-left: 0;position: relative;
 				width:1100% !important;}
@@ -139,6 +143,7 @@
 <script src="../libs/jqueryUI/jqueryui-ruler/js/jquery.ui.ruler.js"></script>
 <script src="../libs/jqueryUI/ruler_for_zip/js/jquery.zxxPageRuler.1.1.js"></script>
 <script src="../libs/unslider/unslider.js"></script>
+<script type='text/javascript' src='../plot/world_flag.js'></script>
 <script src="cfg/menu.js"></script>
 	<script type="text/javascript"  src="more_build.js"></script>
 <script type="text/javascript"  src="../plot/world_china.js"></script>
@@ -237,7 +242,7 @@
 				<div class="col-md-4">
 					<label style="float: left;width: 15%;">图层</label>
 					<div class="input-group" style="width: 70%;float: left;">
-								<input id="t_zindex" type="text" class="form-control" value="5" readonly style="height: 28px;margin-left: 0;">
+								<input id="zindex" type="text" class="form-control" value="5" readonly style="height: 28px;margin-left: 0;">
 								<div class="input-group-btn">
 									<button id="t_zindex_button" style="height: 28px;padding-top: 4px;top:0;" type="button" class="btn btn-primary dropdown-toggle " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="caret"></span>选择</button>
 									<ul id="t_zindex_ul"class="dropdown-menu dropdown-menu-right">
@@ -259,7 +264,7 @@
 				<div class="col-md-4 ">
 					<label style="float: left;width: 15%;">图例</label>
 					<div class="input-group" style="width: 70%;float: left;">
-								<input id="t_legend" type="text" data-id="false" class="form-control" value="不显示" readonly style="height: 28px;margin-left: 0;">
+								<input id="legend" type="text" data-id="false" class="form-control" value="不显示" readonly style="height: 28px;margin-left: 0;">
 								<div class="input-group-btn">
 									<button id="t_legend_button" style="height: 28px;padding-top: 4px;top:0;" type="button" class="btn btn-primary dropdown-toggle " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="caret"></span>选择</button>
 									<ul id="t_legend_ul"class="dropdown-menu dropdown-menu-right">
@@ -285,11 +290,11 @@
 				<div class="col-md-4">
 					<label style="float: left;width: 15%;">边框</label>
 					<div class="input-group" style="width: 70%;float: left;">
-								<input id="t_border" type="text" class="form-control" data-id="无" value="无" readonly style="height: 28px;margin-left: 0;">
+								<input id="border" type="text" class="form-control" data-id="无" value="无" readonly style="height: 28px;margin-left: 0;">
 								<div class="input-group-btn">
 									<button id="t_border_button" style="height: 28px;padding-top: 4px;top:0;" type="button" class="btn btn-primary dropdown-toggle " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="caret"></span>选择</button>
 									<ul id="t_border_ul" class="dropdown-menu dropdown-menu-right">
-										<li data-id="无">
+										<li data-id="false">
 											<a>无</a>
 										</li>
 										<li data-id="border_1">
@@ -306,6 +311,21 @@
 										</li>
 										<li data-id="border_5">
 											<a>方案五</a>
+										</li>
+										<li data-id="border_6">
+											<a>方案六</a>
+										</li>
+										<li data-id="border_7">
+											<a>方案七</a>
+										</li>
+										<li data-id="border_8">
+											<a>方案八</a>
+										</li>
+										<li data-id="border_9">
+											<a>方案九</a>
+										</li>
+										<li data-id="border_10">
+											<a>方案十</a>
 										</li>
 									</ul>
 								</div>

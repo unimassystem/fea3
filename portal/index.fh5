@@ -18,8 +18,8 @@
 
     }
     .logbox{
-      border: 1px #005b62 solid;
-      background-color: rgb(0, 96, 158);
+      border: 1px #19a2b5 solid;
+      background-color: rgb(11, 67, 212);
       top: 31%;
       left: 51%;
     }

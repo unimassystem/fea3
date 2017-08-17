@@ -90,13 +90,16 @@ var str=[],tl=[];
                 var datas=dataAll.data;
 								var indexs=dataAll.index;
                 var legend=[];
+								var arr1=[];
                 for(var i=0;i<name.length;i++){
                     var value=[];
-
-                    // for(var j=0;j<datas.length;j++){
-                    //     var valueAll=datas[j];
-                    //     value.push(valueAll);
-                    // }
+										var max=0;
+                    for(var j=0;j<datas.length;j++){
+											if(datas[j][i]>max){
+												max=datas[j][i];
+											}
+                    }
+										arr1.push(max);
 										for(var j=0;j<datas.length;j++){
                         var valueAll={
 													value:datas[j],
@@ -108,12 +111,12 @@ var str=[],tl=[];
 												};
                         value.push(valueAll);
                     }
-										//console.log(value);
 										var indicators={
 											name:name[i],
-											max:100
+											max:arr1[i]
 										}
 										e_rader_indicator.push(indicators)
+										//console.log(value);
 										//console.log(indicators);
 
 

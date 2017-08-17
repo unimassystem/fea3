@@ -17,7 +17,7 @@
 			color: #ffffff;
 		}
         #build_box{
-            width: 86%; 
+            width: 86%;
             margin:auto;
             background-color: #ffffFF;
             overflow: hidden;
@@ -52,12 +52,12 @@
 	<div id="build_box" class="mar" style="height: 600px">
 
 		<div class="mar" style="margin-top:10px;text-align:center;font-size: 24px;color: rgb(51,122,183);font-weight: bold;overflow: hidden;"><span id="build_top"></span>·构建</div>
-		<div id="btnBox">					
+		<div id="btnBox">
 			<a href="#" id="back_btn"><img src="img/icon/back.png"></a>
 			<a href="#" id="yulan_btn"><img src="img/icon/yulan.png"></a>
 			<a href="#" id="save_btn"><img src="img/icon/save.png"></a>
 	    	<a href="#" id="add_btn"><img src="img/icon/add.png"></a>
-	    	<a href="#" class="btn btn-info" style="line-height:16px;" id="amkey"></a>			
+	    	<a href="#" class="btn btn-info" style="line-height:16px;" id="amkey"></a>
 		</div>
 
 		<div class="col-md-12 mar">
@@ -69,10 +69,10 @@
 		        	<ul id="runList" style="height: 280px;overflow: auto;" class="dropdown-menu dropdown-menu-right"></ul>
 		      	</div>
 		    </div>
-			<div class="col-md-2"></div>	
-			
+			<div class="col-md-2"></div>
+
 		</div>
-		
+
 		<div id="build_table" class="col-md-12 mar">
 			<table  class=" table table-bordered">
 				<thead>
@@ -82,7 +82,7 @@
 					<th>类型</th>
 					<th>是否显示</th>
 					<th>字典关联</th>
-					<th></th>					
+					<th></th>
 				</thead>
 				<tbody></tbody>
 			</table>
@@ -96,18 +96,18 @@
 		      	<input  id="dbdKey" type="text" class="form-control" aria-label="...">
 		      	<div class="input-group-btn">
 			        <button id="dbdChoose" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">静态面板<span class="caret"></span></button>
-			        <ul id="keyList" style="height: 180px;overflow: auto;"class="dropdown-menu dropdown-menu-right" >			          	
-			        </ul> 
+			        <ul id="keyList" style="height: 180px;overflow: auto;"class="dropdown-menu dropdown-menu-right" >
+			        </ul>
 		        </div>
 		        <div class="input-group-btn">
 			        <button id="dbdChoose2" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">动态面板<span class="caret"></span></button>
-			        <ul id="keyList2" style="height: 180px;overflow: auto;" class="dropdown-menu dropdown-menu-right" >			          	
-			        </ul> 
+			        <ul id="keyList2" style="height: 180px;overflow: auto;" class="dropdown-menu dropdown-menu-right" >
+			        </ul>
 		        </div>
 		        <div class="input-group-btn">
 			        <button id="dpChoose" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">多屏互动<span class="caret"></span></button>
-			        <ul id="keyList3" style="height: 180px;overflow: auto;" class="dropdown-menu dropdown-menu-right" >			          	
-			        </ul> 
+			        <ul id="keyList3" style="height: 180px;overflow: auto;" class="dropdown-menu dropdown-menu-right" >
+			        </ul>
 		        </div>
 			</div>
 	    </div>
@@ -116,6 +116,7 @@
 	</div>
 	<script type="text/javascript"  src="../libs/jquery-1.11.0.min.js"></script>
 	<script type="text/javascript" src="../libs/bootstrap/js/bootstrap.min.js"></script>
+	<script type='text/javascript' src='../plot/world_flag.js'></script>
 	<!-- <script type="text/javascript" src="libs/jqueryUI/jquey-ui-1.11.4.js"></script> -->
 	<script type="text/javascript"  src="am_build.js"></script>
 </body>

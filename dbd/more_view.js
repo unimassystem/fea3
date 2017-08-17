@@ -43,7 +43,17 @@ $(document).ready(function(){
         document.getElementsByTagName("head")[0].appendChild(link);
     }
 
-    loadSytle('../portal/'+mh+'/'+mh+'_total.css');
+		if(mh!='portal2'){
+			loadSytle('../portal/'+mh+'/'+mh+'_total.css');
+			loadScript('../portal/'+mh+'/e_'+mh+'.js');
+		}else{
+			if(window.sessionStorage.getItem('plan') != null){
+				var n=window.sessionStorage.getItem('plan');
+				loadSytle('../portal/'+mh+'/'+mh+'_total_'+n+'.css');
+			}else{
+				loadSytle('../portal/'+mh+'/'+mh+'_total_1.css');
+			}
+		}
 
 	delete theRequest["mtitle"];
 	delete theRequest["key"];
@@ -152,7 +162,7 @@ function getOption(list){
 	if(list.border){
 		border=list.border;
 	}else{
-		border='';
+		border='false';
 	}
 	if(list.zindex){
 		zindex=list.zindex;

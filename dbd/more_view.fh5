@@ -19,7 +19,7 @@
 
 	.banner_ul{padding-left: 0;position: relative;}
   .banner_li {
-    width:calc(100/11*1%);height:1000px;list-style: none; position: relative;float: left;z-index: 0;
+    width:calc(100/11*1%);height:1000px;list-style: none; position: relative;z-index: 0;float: left;
     /*transform:scale(0);transition:transform 0.5s ease 0s, opacity 1.5s ease 0s;*/
   }
   /*#content li.active{opacity:1;transform:scale(1);}*/
@@ -148,7 +148,16 @@
     return theRequest;
   }
   GetRequest();
-  loadScript('../portal/'+mh+'/e_'+mh+'.js');
+	if(mh!='portal2'){
+		loadScript('../portal/'+mh+'/e_'+mh+'.js');
+	}else{
+		if(window.sessionStorage.getItem('plan') != null){
+			var n=window.sessionStorage.getItem('plan');
+			loadScript('../portal/'+mh+'/e_'+mh+'_'+n+'.js');
+		}else{
+			loadScript('../portal/'+mh+'/e_'+mh+'_1.js');
+		}
+	}
   function loadScript(url) {
     //console.info(url);
       var script = document.createElement("script");
@@ -160,7 +169,7 @@
   <!-- <div id="dbdtitle"></div> -->
   <div id="content" style="position:absolute;width: 100%">
 
-  	<ul class="banner move banner_ul" style="width:100%;padding-left: 0;">
+  	<ul class="banner move banner_ul" style="width:1100%;padding-left: 0;">
   			<li data-id="dp0" class="active banner_li"></li>
   			<li data-id="dp1" class="banner_li"></li>
   			<li data-id="dp2" class="banner_li"></li>
@@ -249,6 +258,7 @@
 <script type='text/javascript' src='dom-to-image.min.js'></script>
 <script type='text/javascript' src='html2canvas.js'></script>
 <script type='text/javascript' src='jspdf.min.js'></script>
+<script type='text/javascript' src='../plot/world_flag.js'></script>
 <script type='text/javascript' src='more_view.js'></script>
 <script type="text/javascript"  src="../plot/world_china.js"></script>
 </html>

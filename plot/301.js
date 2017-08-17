@@ -32,12 +32,7 @@ function draw301(myChart,ckey,height,titles,xname,yname,width,div) {
             },
             // nameMap: nameMap,//可以显示中文
             itemStyle: {
-              normal: {
-                  borderColor: '#f0f0f0',
-                  areaColor: '#0a3f66',
-                  //opacity:1
-
-              },
+              normal:e_301normal,
               emphasis: {
                   areaColor: '#7bbb9b'
               }

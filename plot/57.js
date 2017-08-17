@@ -9,7 +9,7 @@ function draw57(myChart,ckey,height,titles,x,y,width,div){
         success:function(dataAll){
           var div1='<div class="dh2" style="width:'+width+'px;height:'+height+'px;"><div class="move3"><img src="../images/logo/light4.png"></div></div>';
           div.html(div1);
-          setInterval('date_2();', 3000);  //每隔3秒循环执行过程函数！
+          setInterval('date_2();', 0);  //每隔3秒循环执行过程函数！
         }
     });
 }
